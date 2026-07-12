@@ -1,0 +1,324 @@
+/* Nano UI & SuperGloss UI - BebiHost */
+:root {
+  --primary-color: #0f172a;
+  --secondary-color: #3b82f6;
+  --accent-color: #8b5cf6;
+  --bg-color: #f8fafc;
+  --text-color: #1e293b;
+  --text-muted: #64748b;
+  --glass-bg: rgba(255, 255, 255, 0.7);
+  --glass-border: 1px solid rgba(255, 255, 255, 0.4);
+  --glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
+  --border-radius: 16px;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 2rem;
+  --spacing-xl: 4rem;
+}
+
+[data-theme="dark"] {
+  --primary-color: #f8fafc;
+  --secondary-color: #3b82f6;
+  --bg-color: #020617;
+  --text-color: #f1f5f9;
+  --text-muted: #94a3b8;
+  --glass-bg: rgba(15, 23, 42, 0.6);
+  --glass-border: 1px solid rgba(255, 255, 255, 0.05);
+  --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  line-height: 1.6;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Glassmorphism Classes */
+.glass-panel {
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: var(--glass-border);
+  border-radius: var(--border-radius);
+  box-shadow: var(--glass-shadow);
+  padding: var(--spacing-lg);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.glass-panel:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 40px 0 rgba(31, 38, 135, 0.1);
+}
+
+/* Buttons */
+.btn {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 600;
+  text-decoration: none;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: none;
+  font-size: 1rem;
+}
+
+.btn-primary {
+  background: var(--secondary-color);
+  color: white;
+  box-shadow: 0 4px 14px 0 rgba(59, 130, 246, 0.39);
+}
+
+.btn-primary:hover {
+  background: #2563eb;
+  transform: translateY(-1px);
+}
+
+.btn-secondary {
+  background: var(--glass-bg);
+  color: var(--text-color);
+  border: var(--glass-border);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--text-color);
+  border: 1px solid var(--text-color);
+}
+
+/* Typography */
+h1, h2, h3, h4 {
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: var(--spacing-md);
+  letter-spacing: -0.02em;
+}
+
+h1 { font-size: clamp(2.5rem, 5vw, 4rem); }
+h2 { font-size: clamp(2rem, 4vw, 3rem); }
+h3 { font-size: 1.5rem; }
+
+p {
+  margin-bottom: var(--spacing-md);
+  color: var(--text-muted);
+  font-size: 1.125rem;
+}
+
+/* Layout Elements */
+.main-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  position: sticky;
+  top: 1rem;
+  margin: 0 1rem;
+  z-index: 100;
+}
+
+.mega-menu ul {
+  display: flex;
+  list-style: none;
+  gap: 2rem;
+}
+
+.mega-menu a {
+  text-decoration: none;
+  color: var(--text-color);
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.mega-menu a:hover {
+  color: var(--secondary-color);
+}
+
+.hero-section {
+  padding: var(--spacing-xl) 2rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.live-statistics {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+.pricing-section, .features-section {
+  padding: var(--spacing-xl) 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.pricing-tables {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+  text-align: left;
+}
+
+.pricing-card {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.pricing-card.popular {
+  border: 2px solid var(--secondary-color);
+  transform: scale(1.05);
+}
+
+.badge {
+  position: absolute;
+  top: -12px;
+  right: 24px;
+  background: var(--secondary-color);
+  color: white;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.price {
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--text-color);
+  margin-bottom: 2rem;
+}
+
+.price span {
+  font-size: 1rem;
+  color: var(--text-muted);
+}
+
+.pricing-card ul {
+  list-style: none;
+  margin-bottom: 2rem;
+  flex-grow: 1;
+}
+
+.pricing-card li {
+  padding: 0.5rem 0;
+  border-bottom: 1px solid rgba(150, 150, 150, 0.1);
+}
+
+.feature-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+  text-align: left;
+}
+
+.domain-search-section {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 3rem;
+}
+
+.domain-search-form {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.domain-search-form input, .domain-search-form select {
+  padding: 1rem;
+  border-radius: 8px;
+  border: 1px solid var(--glass-border);
+  background: var(--bg-color);
+  color: var(--text-color);
+  font-size: 1rem;
+}
+
+.domain-search-form input {
+  flex-grow: 1;
+}
+
+.site-footer {
+  background: var(--primary-color);
+  color: #f1f5f9;
+  padding: var(--spacing-xl) 2rem 2rem;
+  margin-top: var(--spacing-xl);
+}
+
+.footer-columns {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.footer-columns h4 {
+  color: white;
+}
+
+.footer-columns ul {
+  list-style: none;
+}
+
+.footer-columns a {
+  color: #cbd5e1;
+  text-decoration: none;
+  transition: color 0.2s;
+  display: inline-block;
+  padding: 0.25rem 0;
+}
+
+.footer-columns a:hover {
+  color: white;
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 4rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  color: #94a3b8;
+}
+
+@media (max-width: 768px) {
+  .hero-section {
+    grid-template-columns: 1fr;
+  }
+  .pricing-card.popular {
+    transform: none;
+  }
+  .main-header {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .mega-menu ul {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .domain-search-form {
+    flex-direction: column;
+  }
+}
