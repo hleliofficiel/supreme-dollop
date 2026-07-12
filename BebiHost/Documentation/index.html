@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BebiHost - Documentation</title>
+    <style>
+        :root {
+          --primary-color: #0f172a;
+          --secondary-color: #3b82f6;
+          --bg-color: #f8fafc;
+          --text-color: #1e293b;
+          --glass-bg: rgba(255, 255, 255, 0.7);
+          --glass-border: 1px solid rgba(255, 255, 255, 0.4);
+        }
+        body { font-family: 'Inter', sans-serif; background-color: var(--bg-color); color: var(--text-color); line-height: 1.6; padding: 2rem; max-width: 1200px; margin: 0 auto; }
+        .glass-panel { background: var(--glass-bg); backdrop-filter: blur(12px); padding: 3rem; border-radius: 16px; border: var(--glass-border); box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07); margin-bottom: 2rem;}
+        h1, h2, h3 { color: var(--primary-color); margin-top: 2rem; margin-bottom: 1rem; border-bottom: 1px solid rgba(0,0,0,0.1); padding-bottom: 0.5rem;}
+        h1 { font-size: 2.5rem; border: none;}
+        nav ul { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 3rem;}
+        nav a { color: var(--secondary-color); text-decoration: none; font-weight: 500;}
+        nav a:hover { text-decoration: underline; }
+        code { background: rgba(0,0,0,0.05); padding: 0.2rem 0.4rem; border-radius: 4px; font-family: monospace; }
+        pre { background: var(--primary-color); color: white; padding: 1rem; border-radius: 8px; overflow-x: auto; }
+    </style>
+</head>
+<body>
+    <div class="glass-panel">
+        <h1>BebiHost Documentation</h1>
+        <p>Welcome to the official documentation for the BebiHost enterprise-grade web hosting template. This document outlines the architecture, installation, and customization of the unified design system across HTML, WordPress, and WHMCS.</p>
+
+        <h2>Table of Contents</h2>
+        <nav>
+            <ul>
+                <li><a href="#installation-guide">Installation Guide</a></li>
+                <li><a href="#project-structure">Project Structure</a></li>
+                <li><a href="#development-guide">Development Guide</a></li>
+                <li><a href="#customization-guide">Customization Guide</a></li>
+                <li><a href="#theme-options">Theme Options</a></li>
+                <li><a href="#wordpress-installation">WordPress Installation</a></li>
+                <li><a href="#whmcs-installation">WHMCS Installation</a></li>
+                <li><a href="#build-instructions">Build Instructions</a></li>
+                <li><a href="#deployment-guide">Deployment Guide</a></li>
+                <li><a href="#components-documentation">Components Documentation</a></li>
+                <li><a href="#css-guide">CSS Guide</a></li>
+                <li><a href="#typescript-guide">TypeScript Guide</a></li>
+                <li><a href="#file-structure">File Structure</a></li>
+                <li><a href="#assets-guide">Assets Guide</a></li>
+                <li><a href="#seo-guide">SEO Guide</a></li>
+                <li><a href="#performance-guide">Performance Guide</a></li>
+                <li><a href="#accessibility-guide">Accessibility Guide</a></li>
+                <li><a href="#faq">FAQ</a></li>
+                <li><a href="#troubleshooting">Troubleshooting</a></li>
+                <li><a href="#changelog">Changelog</a></li>
+                <li><a href="#credits">Credits</a></li>
+                <li><a href="#license">License</a></li>
+            </ul>
+        </nav>
+
+        <section id="installation-guide">
+            <h2>Installation Guide</h2>
+            <p>To begin using BebiHost, extract the archive and choose your desired platform folder: <code>Main-Template</code>, <code>WordPress-Theme</code>, or <code>WHMCS-Template</code>. Each folder contains production-ready code.</p>
+        </section>
+
+        <section id="project-structure">
+            <h2>Project Structure</h2>
+            <pre>
+BebiHost/
+├── Main-Template/       (Static HTML/CSS/JS)
+├── WordPress-Theme/     (Custom WP Theme)
+├── WHMCS-Template/      (WHMCS Client Area)
+└── Documentation/       (This guide)
+            </pre>
+        </section>
+
+        <section id="development-guide">
+            <h2>Development Guide</h2>
+            <p>BebiHost strictly adheres to the principles defined in the Ultimate Web Design Agent guidelines. All templates share the exact same UI components, CSS (Nano UI & SuperGloss UI), and UX patterns to guarantee brand consistency.</p>
+        </section>
+
+        <section id="wordpress-installation">
+            <h2>WordPress Installation</h2>
+            <p>1. Navigate to <code>wp-content/themes/</code>.<br>
+               2. Upload the <code>BebiHost/WordPress-Theme</code> folder.<br>
+               3. Go to WP Admin > Appearance > Themes and activate 'BebiHost'.</p>
+        </section>
+
+        <section id="whmcs-installation">
+            <h2>WHMCS Installation</h2>
+            <p>1. Copy the <code>BebiHost/WHMCS-Template</code> folder to your WHMCS <code>templates/</code> directory.<br>
+               2. In WHMCS Admin, go to Setup > General Settings > General and select the new template.</p>
+        </section>
+
+        <section id="css-guide">
+            <h2>CSS Guide (Nano UI)</h2>
+            <p>The styling uses CSS variables for easy customization. The core aesthetic relies on glassmorphism (<code>.glass-panel</code>) and strict spacing variables.</p>
+            <pre>
+:root {
+  --primary-color: #0f172a;
+  --secondary-color: #3b82f6;
+  --glass-bg: rgba(255, 255, 255, 0.7);
+}
+            </pre>
+        </section>
+
+        <section id="accessibility-guide">
+            <h2>Accessibility Guide</h2>
+            <p>All components meet WCAG 2.1 AA standards. Color contrast ratios are verified, semantic HTML5 tags are used (header, main, footer, article, nav), and ARIA labels should be maintained when modifying templates.</p>
+        </section>
+
+        <section id="license">
+            <h2>License</h2>
+            <p>BebiHost is distributed under the GNU General Public License v2 or later. Enterprise usage requires retaining the attribution where applicable.</p>
+        </section>
+
+        <p style="margin-top: 3rem; text-align: center; color: var(--text-muted);">End of documentation. Please refer to specific source files for inline comments.</p>
+    </div>
+</body>
+</html>

@@ -1,0 +1,7 @@
+name: BebiHost WHMCS Template
+author: BebiHost Team
+description: Premium enterprise-grade WHMCS template matching the BebiHost design system.
+version: 1.0.0
+support_url: https://bebihost.com
+config:
+  parent: twenty-one # Inherit core logic from twenty-one where custom tpls are missing
