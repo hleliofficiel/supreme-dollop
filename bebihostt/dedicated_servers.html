@@ -187,21 +187,84 @@
 </head>
 <body class="bg-space-blue text-on-surface font-body-md antialiased overflow-x-hidden">
 <!-- TopNavBar -->
+<!-- TopNavBar -->
 <nav class="fixed top-0 w-full z-50 flex justify-between items-center px-margin-mobile md:px-margin-desktop py-4 bg-midnight-surface/70 backdrop-blur-xl border-b border-white/10 shadow-[0_4px_30px_rgba(0,0,0,0.1)]">
-<div class="flex items-center gap-lg">
-<a class="font-display-lg text-display-lg font-extrabold text-electric-blue tracking-tighter" href="#">BebiHost</a>
-<div class="hidden md:flex gap-md items-center">
-<a class="font-body-md text-body-md text-on-surface-variant hover:text-white transition-colors hover:bg-white/5 transition-all duration-300 px-3 py-2 rounded-lg active:scale-95 transition-transform" href="hosting.html">Hosting</a>
-<a class="font-body-md text-body-md text-on-surface-variant hover:text-white transition-colors hover:bg-white/5 transition-all duration-300 px-3 py-2 rounded-lg active:scale-95 transition-transform" href="domains.html">Domains</a>
-<a class="font-body-md text-body-md text-neon-cyan border-b-2 border-neon-cyan pb-1 px-3 pt-2 hover:bg-white/5 transition-all duration-300 active:scale-95 transition-transform" href="infrastructure.html">Infrastructure</a>
-<a class="font-body-md text-body-md text-on-surface-variant hover:text-white transition-colors hover:bg-white/5 transition-all duration-300 px-3 py-2 rounded-lg active:scale-95 transition-transform" href="support.html">Support</a>
-</div>
-</div>
-<div class="flex items-center gap-sm">
-<button class="font-body-md text-body-md text-on-surface hover:text-electric-blue transition-colors hidden md:block">Client Login</button>
-<button class="btn-primary-gloss text-white font-label-caps text-label-caps px-sm py-xs rounded-DEFAULT">Get Started</button>
-</div>
+    <a href="index.html" class="flex items-center gap-2">
+        <div class="font-display-lg text-display-lg font-extrabold text-electric-blue tracking-tighter">BebiHost</div>
+    </a>
+
+    <!-- Desktop Menu -->
+    <div class="hidden lg:flex items-center gap-gutter">
+        <a class="font-body-md text-body-md text-on-surface-variant hover:text-white transition-colors hover:bg-white/5 transition-all duration-300 rounded px-2 py-1 active:scale-95 transition-transform" href="hosting.html">Hosting</a>
+        <a class="font-body-md text-body-md text-on-surface-variant hover:text-white transition-colors hover:bg-white/5 transition-all duration-300 rounded px-2 py-1 active:scale-95 transition-transform" href="domains.html">Domains</a>
+        <a class="font-body-md text-body-md text-on-surface-variant hover:text-white transition-colors hover:bg-white/5 transition-all duration-300 rounded px-2 py-1 active:scale-95 transition-transform" href="infrastructure.html">Infrastructure</a>
+        <a class="font-body-md text-body-md text-on-surface-variant hover:text-white transition-colors hover:bg-white/5 transition-all duration-300 rounded px-2 py-1 active:scale-95 transition-transform" href="support.html">Support</a>
+    </div>
+
+    <!-- Actions (Desktop & Mobile Hamburger) -->
+    <div class="flex items-center gap-sm">
+        <a class="hidden md:block font-label-caps text-label-caps text-on-surface-variant hover:text-white transition-colors px-sm py-2" href="#">Client Login</a>
+        <a class="hidden md:block font-label-caps text-label-caps bg-gradient-to-b from-electric-blue to-[#0058cb] text-white px-6 py-2 rounded super-gloss hover:opacity-90 active:scale-95 transition-all border border-transparent" href="#">Get Started</a>
+
+        <!-- Mobile Menu Toggle -->
+        <button id="mobile-menu-btn" class="lg:hidden text-on-surface-variant hover:text-white focus:outline-none p-2 z-[60] relative">
+            <span class="material-symbols-outlined text-3xl menu-icon" style="font-variation-settings: 'FILL' 0;">menu</span>
+            <span class="material-symbols-outlined text-3xl close-icon hidden" style="font-variation-settings: 'FILL' 0;">close</span>
+        </button>
+    </div>
 </nav>
+
+<!-- Mobile Menu Overlay -->
+<div id="mobile-menu-overlay" class="fixed inset-0 bg-space-blue/95 backdrop-blur-md z-[55] hidden flex-col pt-[100px] px-6 transition-all duration-300 opacity-0 pointer-events-none lg:hidden">
+    <div class="flex flex-col gap-6 mt-8">
+        <a class="text-white text-2xl font-bold hover:text-neon-cyan transition-colors" href="index.html">Home</a>
+        <a class="text-white text-2xl font-bold hover:text-neon-cyan transition-colors" href="hosting.html">Hosting</a>
+        <a class="text-white text-2xl font-bold hover:text-neon-cyan transition-colors" href="domains.html">Domains</a>
+        <a class="text-white text-2xl font-bold hover:text-neon-cyan transition-colors" href="infrastructure.html">Infrastructure</a>
+        <a class="text-white text-2xl font-bold hover:text-neon-cyan transition-colors" href="support.html">Support</a>
+        <div class="h-px bg-white/10 w-full my-4"></div>
+        <a class="text-on-surface-variant text-xl hover:text-white transition-colors" href="#">Client Login</a>
+        <a class="bg-electric-blue text-center text-white text-xl font-bold py-3 rounded-lg mt-4" href="#">Get Started</a>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const btn = document.getElementById('mobile-menu-btn');
+        const overlay = document.getElementById('mobile-menu-overlay');
+        const menuIcon = btn?.querySelector('.menu-icon');
+        const closeIcon = btn?.querySelector('.close-icon');
+
+        if(btn && overlay) {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                const isOpen = !overlay.classList.contains('hidden');
+
+                if(isOpen) {
+                    // Close menu
+                    overlay.classList.remove('opacity-100', 'pointer-events-auto');
+                    overlay.classList.add('opacity-0', 'pointer-events-none');
+                    setTimeout(() => overlay.classList.add('hidden'), 300);
+                    menuIcon.classList.remove('hidden');
+                    closeIcon.classList.add('hidden');
+                    document.body.style.overflow = '';
+                } else {
+                    // Open menu
+                    overlay.classList.remove('hidden');
+                    // Force reflow
+                    void overlay.offsetWidth;
+                    overlay.classList.remove('opacity-0', 'pointer-events-none');
+                    overlay.classList.add('opacity-100', 'pointer-events-auto');
+                    menuIcon.classList.add('hidden');
+                    closeIcon.classList.remove('hidden');
+                    document.body.style.overflow = 'hidden';
+                }
+            });
+        }
+    });
+</script>
+
 <!-- Main Content -->
 <main class="pt-[100px] relative">
 <!-- Hero Section -->
