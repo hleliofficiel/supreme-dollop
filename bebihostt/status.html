@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>BebiHost | Network Status</title>
+<!-- Fonts & Icons -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&amp;family=JetBrains+Mono:wght@400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Theme Configuration -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-tint": "#b0c6ff",
+                    "on-primary-container": "#002661",
+                    "secondary-fixed": "#63f7ff",
+                    "surface": "#111318",
+                    "secondary-container": "#00f4fe",
+                    "midnight-surface": "#11141B",
+                    "surface-variant": "#333539",
+                    "surface-container-high": "#282a2e",
+                    "outline-variant": "#424655",
+                    "tertiary": "#d1bcff",
+                    "inverse-surface": "#e2e2e8",
+                    "surface-bright": "#37393e",
+                    "primary-fixed-dim": "#b0c6ff",
+                    "on-error-container": "#ffdad6",
+                    "neon-cyan": "#00F5FF",
+                    "inverse-primary": "#0058cb",
+                    "danger-red": "#EF4444",
+                    "on-primary-fixed-variant": "#00429c",
+                    "secondary-fixed-dim": "#00dce5",
+                    "on-surface": "#e2e2e8",
+                    "surface-container-highest": "#333539",
+                    "surface-container-low": "#1a1c20",
+                    "surface-dim": "#111318",
+                    "error-container": "#93000a",
+                    "error": "#ffb4ab",
+                    "outline": "#8c90a1",
+                    "on-tertiary-fixed-variant": "#5700c9",
+                    "success-green": "#10B981",
+                    "on-tertiary": "#3c0090",
+                    "on-primary": "#002d6f",
+                    "primary-container": "#568dff",
+                    "on-tertiary-fixed": "#23005b",
+                    "background": "#111318",
+                    "tertiary-fixed-dim": "#d1bcff",
+                    "inverse-on-surface": "#2f3035",
+                    "on-background": "#e2e2e8",
+                    "tertiary-fixed": "#e9ddff",
+                    "warning-amber": "#F59E0B",
+                    "primary-fixed": "#d9e2ff",
+                    "on-secondary-fixed-variant": "#004f53",
+                    "on-secondary-fixed": "#002021",
+                    "surface-container": "#1e2026",
+                    "surface-container-lowest": "#0c0e12",
+                    "on-secondary-container": "#006c71",
+                    "on-secondary": "#003739",
+                    "on-error": "#690005",
+                    "on-tertiary-container": "#34007f",
+                    "space-blue": "#0A0C10",
+                    "secondary": "#e6feff",
+                    "on-surface-variant": "#c2c6d8",
+                    "on-primary-fixed": "#001945",
+                    "electric-blue": "#0070FF",
+                    "tertiary-container": "#a178ff",
+                    "primary": "#b0c6ff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "sm": "16px",
+                    "md": "24px",
+                    "lg": "32px",
+                    "xs": "8px",
+                    "margin-mobile": "16px",
+                    "base": "4px",
+                    "xxl": "64px",
+                    "xl": "48px",
+                    "gutter": "24px",
+                    "huge": "80px",
+                    "margin-desktop": "40px"
+            },
+            "fontFamily": {
+                    "headline-h2": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "display-xl": ["Inter"],
+                    "code-snippet": ["JetBrains Mono"],
+                    "headline-h1-mobile": ["Inter"],
+                    "label-caps": ["Inter"],
+                    "body-md": ["Inter"],
+                    "headline-h1": ["Inter"],
+                    "display-lg": ["Inter"],
+                    "body-sm": ["Inter"]
+            },
+            "fontSize": {
+                    "headline-h2": ["30px", { "lineHeight": "1.4", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                    "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                    "display-xl": ["64px", { "lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "800" }],
+                    "code-snippet": ["14px", { "lineHeight": "1.7", "fontWeight": "400" }],
+                    "headline-h1-mobile": ["30px", { "lineHeight": "1.3", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                    "label-caps": ["12px", { "lineHeight": "1.2", "letterSpacing": "0.08em", "fontWeight": "600" }],
+                    "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                    "headline-h1": ["36px", { "lineHeight": "1.3", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                    "display-lg": ["48px", { "lineHeight": "1.2", "letterSpacing": "-0.03em", "fontWeight": "700" }],
+                    "body-sm": ["14px", { "lineHeight": "1.5", "fontWeight": "400" }]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+        /* Nano UI Utilities */
+        .glass-edge {
+            box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.1);
+        }
+        .supergloss-card {
+            background: rgba(17, 20, 27, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: all 0.3s ease;
+        }
+        .supergloss-card:hover {
+            border-color: rgba(255, 255, 255, 0.2);
+            box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.1), 0 8px 30px rgba(0, 0, 0, 0.4);
+        }
+        .uptime-bar {
+            width: 4px;
+            border-radius: 1px;
+            background-color: #10B981; /* success-green */
+            opacity: 0.8;
+            transition: opacity 0.2s;
+        }
+        .uptime-bar:hover {
+            opacity: 1;
+        }
+        .uptime-bar.issue {
+            background-color: #F59E0B; /* warning-amber */
+        }
+        .uptime-bar.downtime {
+            background-color: #EF4444; /* danger-red */
+        }
+    </style>
+</head>
+<body class="bg-space-blue text-on-surface min-h-screen flex flex-col font-body-md selection:bg-electric-blue selection:text-white pt-[80px]">
+<!-- TopNavBar Component -->
+<nav class="fixed top-0 w-full z-50 flex justify-between items-center px-margin-desktop py-4 bg-midnight-surface/70 backdrop-blur-xl border-b border-white/10 shadow-[0_4px_30px_rgba(0,0,0,0.1)]">
+<a href="index.html"><div class="font-display-lg text-display-lg font-extrabold text-electric-blue tracking-tighter">BebiHost</div></a>
+<div class="hidden md:flex gap-lg items-center">
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-white transition-colors hover:bg-white/5 transition-all duration-300 active:scale-95 px-3 py-1.5 rounded-md" href="hosting.html">Hosting</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-white transition-colors hover:bg-white/5 transition-all duration-300 active:scale-95 px-3 py-1.5 rounded-md" href="domains.html">Domains</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-white transition-colors hover:bg-white/5 transition-all duration-300 active:scale-95 px-3 py-1.5 rounded-md" href="infrastructure.html">Infrastructure</a>
+<!-- Active Navigation Logic: "Support" is closest to Status intent -->
+<a class="font-body-md text-body-md text-neon-cyan border-b-2 border-neon-cyan pb-1 active:scale-95 transition-transform px-3 py-1.5" href="support.html">Support</a>
+</div>
+<div class="flex gap-sm items-center">
+<button class="font-body-md text-body-md text-on-surface-variant hover:text-white transition-colors hover:bg-white/5 transition-all duration-300 active:scale-95 px-4 py-2 rounded-md hidden sm:block">Client Login</button>
+<button class="bg-gradient-to-b from-electric-blue to-[#005bb5] text-white font-body-md text-body-md px-6 py-2 rounded-md glass-edge hover:opacity-90 transition-opacity shadow-[0_0_15px_rgba(0,112,255,0.3)]">Get Started</button>
+</div>
+</nav>
+<main class="flex-grow">
+<!-- Hero Section -->
+<header class="py-xxl px-margin-mobile md:px-margin-desktop flex flex-col items-center justify-center text-center relative overflow-hidden bg-midnight-surface/70">
+<!-- Subtle background glow -->
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-success-green/5 rounded-full blur-[100px] pointer-events-none"></div>
+<div class="relative mb-lg mt-xl z-10 group cursor-default">
+<div class="absolute inset-0 bg-success-green/20 blur-[30px] rounded-full transition-all duration-700 group-hover:bg-success-green/30 group-hover:blur-[40px]"></div>
+<div class="relative bg-space-blue/80 backdrop-blur-md border border-success-green/40 px-lg py-sm rounded-full flex items-center gap-sm glass-edge shadow-[0_0_20px_rgba(16,185,129,0.1)]">
+<span class="material-symbols-outlined text-success-green" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="font-label-caps text-label-caps tracking-widest text-success-green">All Systems Operational</span>
+</div>
+</div>
+<h1 class="font-headline-h1-mobile md:font-display-xl text-headline-h1-mobile md:text-display-xl text-white mb-md z-10 tracking-tight">Global Network Status</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl z-10">Real-time overview of BebiHost infrastructure availability, performance metrics, and scheduled maintenance windows across all global regions.</p>
+</header>
+<!-- Real-time Metrics Bento Grid -->
+<section class="px-margin-mobile md:px-margin-desktop mb-xxl">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<!-- Metric 1 -->
+<div class="supergloss-card rounded-xl p-lg relative overflow-hidden">
+<div class="font-label-caps text-label-caps text-on-surface-variant mb-sm flex items-center gap-xs uppercase">
+<span class="material-symbols-outlined text-on-surface-variant text-[18px]">public</span>
+                        Global Uptime
+                    </div>
+<div class="font-headline-h1 text-headline-h1 text-white mb-xs tracking-tight">99.999%</div>
+<div class="font-body-sm text-body-sm text-success-green flex items-center gap-xs">
+<span class="material-symbols-outlined text-[14px]">trending_up</span>
+                        Trailing 90 Days
+                    </div>
+</div>
+<!-- Metric 2 -->
+<div class="supergloss-card rounded-xl p-lg relative overflow-hidden">
+<div class="font-label-caps text-label-caps text-on-surface-variant mb-sm flex items-center gap-xs uppercase">
+<span class="material-symbols-outlined text-on-surface-variant text-[18px]">speed</span>
+                        Average Latency
+                    </div>
+<div class="font-headline-h1 text-headline-h1 text-white mb-xs tracking-tight">14ms</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant flex items-center gap-xs">
+<span class="material-symbols-outlined text-[14px]">dns</span>
+                        Core Routing Network
+                    </div>
+</div>
+<!-- Metric 3 -->
+<div class="supergloss-card rounded-xl p-lg relative overflow-hidden">
+<div class="font-label-caps text-label-caps text-on-surface-variant mb-sm flex items-center gap-xs uppercase">
+<span class="material-symbols-outlined text-on-surface-variant text-[18px]">warning</span>
+                        Active Incidents
+                    </div>
+<div class="font-headline-h1 text-headline-h1 text-white mb-xs tracking-tight">0</div>
+<div class="font-body-sm text-body-sm text-success-green flex items-center gap-xs">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">verified</span>
+                        No ongoing issues
+                    </div>
+</div>
+</div>
+</section>
+<!-- Regional Health Grid -->
+<section class="px-margin-mobile md:px-margin-desktop mb-xxl">
+<div class="flex items-center justify-between mb-lg border-b border-white/5 pb-sm">
+<h2 class="font-headline-h2 text-headline-h2 text-white">Regional Health</h2>
+<div class="font-label-caps text-label-caps text-on-surface-variant uppercase">90 Days History</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-md">
+<!-- Region Item -->
+<div class="supergloss-card rounded-lg p-md bg-midnight-surface/70">
+<div class="flex justify-between items-center mb-md">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-on-surface-variant">location_on</span>
+<span class="font-body-lg text-body-lg text-white font-medium">US-East (Virginia)</span>
+</div>
+<span class="text-success-green font-body-md text-body-md">100%</span>
+</div>
+<div class="flex gap-[3px] h-8 items-end w-full" id="uptime-bars-1">
+<!-- Script will populate these -->
+</div>
+</div>
+<!-- Region Item -->
+<div class="supergloss-card rounded-lg p-md bg-midnight-surface/70">
+<div class="flex justify-between items-center mb-md">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-on-surface-variant">location_on</span>
+<span class="font-body-lg text-body-lg text-white font-medium">US-West (Oregon)</span>
+</div>
+<span class="text-success-green font-body-md text-body-md">100%</span>
+</div>
+<div class="flex gap-[3px] h-8 items-end w-full" id="uptime-bars-2"></div>
+</div>
+<!-- Region Item -->
+<div class="supergloss-card rounded-lg p-md bg-midnight-surface/70">
+<div class="flex justify-between items-center mb-md">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-on-surface-variant">location_on</span>
+<span class="font-body-lg text-body-lg text-white font-medium">EU-Central (Frankfurt)</span>
+</div>
+<span class="text-success-green font-body-md text-body-md">99.98%</span>
+</div>
+<div class="flex gap-[3px] h-8 items-end w-full" id="uptime-bars-3"></div>
+</div>
+<!-- Region Item -->
+<div class="supergloss-card rounded-lg p-md bg-midnight-surface/70">
+<div class="flex justify-between items-center mb-md">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-on-surface-variant">location_on</span>
+<span class="font-body-lg text-body-lg text-white font-medium">Asia-South (Mumbai)</span>
+</div>
+<span class="text-success-green font-body-md text-body-md">100%</span>
+</div>
+<div class="flex gap-[3px] h-8 items-end w-full" id="uptime-bars-4"></div>
+</div>
+</div>
+</section>
+<!-- Incidents and Maintenance Split -->
+<section class="px-margin-mobile md:px-margin-desktop mb-xxl grid grid-cols-1 lg:grid-cols-2 gap-gutter">
+<!-- Past Incidents -->
+<div>
+<div class="flex items-center gap-sm mb-lg border-b border-white/5 pb-sm">
+<span class="material-symbols-outlined text-electric-blue">history</span>
+<h2 class="font-headline-h2 text-headline-h2 text-white">Incident History</h2>
+</div>
+<div class="supergloss-card rounded-xl p-lg flex flex-col items-center justify-center min-h-[300px] text-center bg-midnight-surface/70">
+<span class="material-symbols-outlined text-[48px] text-on-surface-variant mb-md opacity-50">task_alt</span>
+<h3 class="font-body-lg text-body-lg text-white mb-xs">No incidents reported</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">All systems have been fully operational for the last 30 days.</p>
+</div>
+</div>
+<!-- Scheduled Maintenance -->
+<div>
+<div class="flex items-center gap-sm mb-lg border-b border-white/5 pb-sm">
+<span class="material-symbols-outlined text-electric-blue">build</span>
+<h2 class="font-headline-h2 text-headline-h2 text-white">Scheduled Maintenance</h2>
+</div>
+<div class="space-y-sm">
+<!-- Maintenance Item -->
+<div class="supergloss-card rounded-lg p-md flex flex-col md:flex-row gap-md justify-between items-start md:items-center group bg-midnight-surface/70">
+<div>
+<div class="font-label-caps text-label-caps text-electric-blue mb-xs">Oct 25, 2026 • 02:00 UTC</div>
+<h3 class="font-body-lg text-body-lg text-white font-medium mb-xs group-hover:text-electric-blue transition-colors">Core Router Firmware Upgrade (EU-Central)</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant max-w-md">Routine firmware updates to edge routing infrastructure. Expected network flutter &lt; 2 minutes.</p>
+</div>
+<span class="inline-flex items-center gap-xs px-3 py-1 rounded-full bg-white/5 border border-white/10 font-label-caps text-label-caps text-on-surface-variant">
+                            Upcoming
+                        </span>
+</div>
+<!-- Maintenance Item -->
+<div class="supergloss-card rounded-lg p-md flex flex-col md:flex-row gap-md justify-between items-start md:items-center group bg-midnight-surface/70">
+<div>
+<div class="font-label-caps text-label-caps text-electric-blue mb-xs">Nov 02, 2026 • 04:00 UTC</div>
+<h3 class="font-body-lg text-body-lg text-white font-medium mb-xs group-hover:text-electric-blue transition-colors">Database Cluster Resharding (US-East)</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant max-w-md">Backend optimization process. No customer-facing downtime expected.</p>
+</div>
+<span class="inline-flex items-center gap-xs px-3 py-1 rounded-full bg-white/5 border border-white/10 font-label-caps text-label-caps text-on-surface-variant">
+                            Upcoming
+                        </span>
+</div>
+</div>
+</div>
+</section>
+<!-- Subscription Section -->
+<section class="px-margin-mobile md:px-margin-desktop mb-xxl flex justify-center">
+<div class="supergloss-card rounded-2xl p-xl max-w-3xl w-full text-center relative overflow-hidden bg-midnight-surface/70">
+<!-- Decorative glow -->
+<div class="absolute -top-24 -right-24 w-64 h-64 bg-electric-blue/20 rounded-full blur-[80px] pointer-events-none"></div>
+<span class="material-symbols-outlined text-[40px] text-electric-blue mb-md">notifications_active</span>
+<h2 class="font-headline-h2 text-headline-h2 text-white mb-sm">Stay Updated</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mb-lg max-w-lg mx-auto">Get notified immediately about major infrastructure incidents or scheduled maintenance via email or webhook.</p>
+<form class="flex flex-col sm:flex-row gap-sm max-w-md mx-auto relative z-10">
+<input class="flex-grow bg-black/30 border border-white/10 rounded-md px-md py-3 font-body-md text-body-md text-white placeholder:text-on-surface-variant/50 focus:outline-none focus:border-electric-blue focus:ring-1 focus:ring-electric-blue/50 transition-all" placeholder="sysadmin@company.com" type="email"/>
+<button class="bg-gradient-to-b from-electric-blue to-[#005bb5] text-white font-body-md text-body-md px-lg py-3 rounded-md glass-edge hover:opacity-90 transition-opacity whitespace-nowrap shadow-[0_0_20px_rgba(0,112,255,0.2)] font-medium" type="button">Subscribe</button>
+</form>
+</div>
+</section>
+</main>
+<!-- Footer Component -->
+<footer class="w-full py-xl px-margin-desktop grid grid-cols-1 md:grid-cols-4 gap-gutter bg-space-blue border-t border-white/10 mt-auto">
+<div class="col-span-1 md:col-span-1 flex flex-col gap-sm">
+<a href="index.html"><div class="font-headline-h1 text-headline-h1 text-white tracking-tighter">BebiHost</div></a>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-sm">© 2026 BebiHost Infrastructure. All rights reserved.</p>
+</div>
+<!-- Empty columns to maintain grid layout for links alignment if needed, or distribute links -->
+<div class="flex flex-col gap-sm">
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:text-neon-cyan transition-colors opacity-80 hover:opacity-100" href="sitemap.html">Sitemap</a>
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:text-neon-cyan transition-colors opacity-80 hover:opacity-100" href="privacy.html">Privacy Policy</a>
+</div>
+<div class="flex flex-col gap-sm">
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:text-neon-cyan transition-colors opacity-80 hover:opacity-100" href="terms.html">Terms of Service</a>
+<a class="font-body-sm text-body-sm text-electric-blue hover:text-neon-cyan transition-colors opacity-80 hover:opacity-100" href="status.html">Status</a> <!-- Active mapping context -->
+</div>
+<div class="flex justify-start md:justify-end items-start gap-sm">
+<!-- Optional social icons could go here -->
+</div>
+</footer>
+<script>
+        // Script to generate the 90-day uptime bars dynamically for visual density
+        function generateUptimeBars(containerId, errorIndex = -1) {
+            const container = document.getElementById(containerId);
+            if (!container) return;
+
+            const days = 60; // Adjusted for visual fit in the grid
+            for (let i = 0; i < days; i++) {
+                const bar = document.createElement('div');
+                bar.className = 'uptime-bar flex-grow';
+
+                // Randomize heights slightly for an organic data look
+                const heightPercent = 80 + Math.random() * 20;
+                bar.style.height = `${heightPercent}%`;
+
+                // Inject an artificial issue if specified for demonstration
+                if (i === errorIndex) {
+                    bar.classList.add('issue');
+                    bar.style.height = '40%';
+                    bar.title = "Partial Outage on Day " + (days - i);
+                } else if (i === errorIndex + 1 && errorIndex !== -1) {
+                     bar.classList.add('downtime');
+                     bar.style.height = '20%';
+                     bar.title = "Major Outage on Day " + (days - i);
+                } else {
+                    bar.title = "100% Uptime on Day " + (days - i);
+                }
+
+                container.appendChild(bar);
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            generateUptimeBars('uptime-bars-1');
+            generateUptimeBars('uptime-bars-2');
+            generateUptimeBars('uptime-bars-3', 45); // Add a warning in EU
+            generateUptimeBars('uptime-bars-4');
+        });
+    </script>
+</body></html>
