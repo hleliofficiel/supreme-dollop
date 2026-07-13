@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>BebiHost - Contact</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&amp;family=JetBrains+Mono:wght@400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-bright": "#37393e",
+                        "on-error": "#690005",
+                        "outline-variant": "#424655",
+                        "on-surface": "#e2e2e8",
+                        "electric-blue": "#0070FF",
+                        "secondary-fixed": "#63f7ff",
+                        "space-blue": "#0A0C10",
+                        "secondary-container": "#00f4fe",
+                        "on-surface-variant": "#c2c6d8",
+                        "on-secondary": "#003739",
+                        "surface-container": "#1e2026",
+                        "surface-container-lowest": "#0c0e12",
+                        "neon-cyan": "#00F5FF",
+                        "on-primary": "#002d6f",
+                        "background": "#111318",
+                        "on-primary-container": "#002661",
+                        "on-tertiary-fixed-variant": "#5700c9",
+                        "on-secondary-container": "#006c71",
+                        "tertiary-fixed-dim": "#d1bcff",
+                        "error-container": "#93000a",
+                        "on-tertiary-container": "#34007f",
+                        "on-primary-fixed-variant": "#00429c",
+                        "primary": "#b0c6ff",
+                        "secondary": "#e6feff",
+                        "on-tertiary": "#3c0090",
+                        "on-secondary-fixed-variant": "#004f53",
+                        "danger-red": "#EF4444",
+                        "on-background": "#e2e2e8",
+                        "surface-variant": "#333539",
+                        "tertiary": "#d1bcff",
+                        "outline": "#8c90a1",
+                        "tertiary-container": "#a178ff",
+                        "inverse-primary": "#0058cb",
+                        "surface-container-high": "#282a2e",
+                        "inverse-surface": "#e2e2e8",
+                        "secondary-fixed-dim": "#00dce5",
+                        "surface-container-highest": "#333539",
+                        "midnight-surface": "#11141B",
+                        "error": "#ffb4ab",
+                        "surface": "#111318",
+                        "tertiary-fixed": "#e9ddff",
+                        "primary-container": "#568dff",
+                        "inverse-on-surface": "#2f3035",
+                        "on-tertiary-fixed": "#23005b",
+                        "success-green": "#10B981",
+                        "primary-fixed-dim": "#b0c6ff",
+                        "primary-fixed": "#d9e2ff",
+                        "on-secondary-fixed": "#002021",
+                        "on-primary-fixed": "#001945",
+                        "surface-tint": "#b0c6ff",
+                        "surface-dim": "#111318",
+                        "on-error-container": "#ffdad6",
+                        "warning-amber": "#F59E0B",
+                        "surface-container-low": "#1a1c20"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xxl": "64px",
+                        "lg": "32px",
+                        "base": "4px",
+                        "md": "24px",
+                        "xl": "48px",
+                        "margin-desktop": "40px",
+                        "gutter": "24px",
+                        "margin-mobile": "16px",
+                        "huge": "80px",
+                        "sm": "16px",
+                        "xs": "8px"
+                    },
+                    "fontFamily": {
+                        "headline-h1": ["Inter"],
+                        "display-xl": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "label-caps": ["Inter"],
+                        "headline-h2": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "code-snippet": ["JetBrains Mono"],
+                        "display-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-h1-mobile": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-h1": ["36px", { "lineHeight": "1.3", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "display-xl": ["64px", { "lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "800" }],
+                        "body-sm": ["14px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                        "label-caps": ["12px", { "lineHeight": "1.2", "letterSpacing": "0.08em", "fontWeight": "600" }],
+                        "headline-h2": ["30px", { "lineHeight": "1.4", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "code-snippet": ["14px", { "lineHeight": "1.7", "fontWeight": "400" }],
+                        "display-lg": ["48px", { "lineHeight": "1.2", "letterSpacing": "-0.03em", "fontWeight": "700" }],
+                        "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "headline-h1-mobile": ["30px", { "lineHeight": "1.3", "letterSpacing": "-0.02em", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { background-color: #0A0C10; color: #e2e2e8; }
+
+        .supergloss-card {
+            background: rgba(17, 20, 27, 0.7);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: all 0.3s ease;
+        }
+        .supergloss-card:hover {
+            border-color: rgba(255, 255, 255, 0.2);
+            box-shadow: inset 0 0 20px rgba(0, 112, 255, 0.05), 0 4px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn-primary {
+            background: linear-gradient(180deg, #0070FF 0%, #0058cb 100%);
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 4px 20px rgba(0, 112, 255, 0.2);
+        }
+        .btn-primary:hover {
+            box-shadow: 0 4px 30px rgba(0, 112, 255, 0.4);
+        }
+
+        .btn-secondary {
+            border: 1px solid #0070FF;
+            background: transparent;
+            transition: all 0.3s ease;
+        }
+        .btn-secondary:hover {
+            background: rgba(0, 112, 255, 0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        .input-base {
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.2s ease;
+        }
+        .input-base:focus {
+            outline: none;
+            border-color: #0070FF;
+            box-shadow: 0 0 0 4px rgba(0, 112, 255, 0.15);
+        }
+
+        .ambient-glow-primary {
+            position: relative;
+        }
+        .ambient-glow-primary::before {
+            content: '';
+            position: absolute;
+            inset: -2px;
+            background: rgba(0, 112, 255, 0.15);
+            filter: blur(30px);
+            z-index: -1;
+            border-radius: inherit;
+        }
+
+        /* Custom Scrollbar for dark theme */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #0A0C10; }
+        ::-webkit-scrollbar-thumb { background: #333539; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #424655; }
+    </style>
+</head>
+<body class="antialiased min-h-screen flex flex-col font-body-md text-body-md">
+<!-- TopNavBar Shared Component -->
+<nav class="bg-midnight-surface/70 backdrop-blur-xl border-b border-white/10 shadow-[0_4px_30px_rgba(0,0,0,0.1)] fixed top-0 w-full z-50 flex justify-between items-center px-margin-desktop py-4">
+<a href="index.html"><div class="font-display-lg text-display-lg font-extrabold text-electric-blue tracking-tighter">BebiHost</div></a>
+<div class="hidden md:flex space-x-lg items-center">
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-white transition-colors hover:bg-white/5 transition-all duration-300 px-3 py-2 rounded-lg active:scale-95 transition-transform" href="hosting.html">Hosting</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-white transition-colors hover:bg-white/5 transition-all duration-300 px-3 py-2 rounded-lg active:scale-95 transition-transform" href="domains.html">Domains</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-white transition-colors hover:bg-white/5 transition-all duration-300 px-3 py-2 rounded-lg active:scale-95 transition-transform" href="infrastructure.html">Infrastructure</a>
+<a class="font-body-md text-body-md text-neon-cyan border-b-2 border-neon-cyan pb-1 hover:bg-white/5 transition-all duration-300 px-3 py-2 rounded-lg active:scale-95 transition-transform" href="support.html">Support</a>
+</div>
+<div class="flex items-center space-x-md">
+<button class="font-body-md text-body-md text-on-surface-variant hover:text-white transition-colors">Client Login</button>
+<button class="btn-primary font-body-md text-body-md text-white px-md py-xs rounded-lg active:scale-95 transition-transform">Get Started</button>
+</div>
+</nav>
+<main class="flex-grow pt-[100px] pb-xxl px-margin-mobile md:px-margin-desktop w-full max-w-[1440px] mx-auto">
+<!-- Section 1: Hero -->
+<header class="mb-xxl text-center max-w-3xl mx-auto pt-lg">
+<h1 class="font-display-xl text-display-xl text-white mb-md">Get in Touch with our Infrastructure Experts</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Global support, enterprise-grade response times. Choose your communication channel below or submit a detailed inquiry.</p>
+</header>
+<!-- Section 2: Department Routing -->
+<section class="grid grid-cols-1 md:grid-cols-3 gap-gutter mb-xxl">
+<!-- Support -->
+<div class="supergloss-card rounded-xl p-lg flex flex-col items-start relative overflow-hidden group">
+<div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+<span class="material-symbols-outlined text-[100px]" style="font-variation-settings: 'FILL' 1;">support_agent</span>
+</div>
+<div class="w-12 h-12 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center mb-md">
+<span class="material-symbols-outlined text-electric-blue">support_agent</span>
+</div>
+<h2 class="font-headline-h2 text-headline-h2 text-white mb-xs z-10">Support</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-lg z-10 flex-grow">24/7 technical assistance for existing clients and infrastructure issues.</p>
+<div class="flex flex-col space-y-xs w-full z-10">
+<a class="btn-secondary rounded-lg px-md py-sm text-center text-electric-blue font-label-caps text-label-caps flex items-center justify-center gap-2" href="#">
+<span class="material-symbols-outlined text-[16px]">chat</span> Live Chat
+                    </a>
+</div>
+</div>
+<!-- Sales -->
+<div class="supergloss-card rounded-xl p-lg flex flex-col items-start relative overflow-hidden group">
+<div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+<span class="material-symbols-outlined text-[100px]" style="font-variation-settings: 'FILL' 1;">shopping_cart</span>
+</div>
+<div class="w-12 h-12 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center mb-md">
+<span class="material-symbols-outlined text-neon-cyan">shopping_cart</span>
+</div>
+<h2 class="font-headline-h2 text-headline-h2 text-white mb-xs z-10">Sales</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-lg z-10 flex-grow">Pricing, plan selection, and custom infrastructure quotes.</p>
+<div class="flex flex-col space-y-xs w-full z-10">
+<a class="btn-secondary rounded-lg px-md py-sm text-center text-neon-cyan font-label-caps text-label-caps flex items-center justify-center gap-2 border-neon-cyan hover:bg-neon-cyan/10" href="#">
+<span class="material-symbols-outlined text-[16px]">call</span> +1 (800) 555-0199
+                    </a>
+</div>
+</div>
+<!-- Enterprise Partnerships -->
+<div class="supergloss-card rounded-xl p-lg flex flex-col items-start relative overflow-hidden group">
+<div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+<span class="material-symbols-outlined text-[100px]" style="font-variation-settings: 'FILL' 1;">domain</span>
+</div>
+<div class="w-12 h-12 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center mb-md">
+<span class="material-symbols-outlined text-tertiary">domain</span>
+</div>
+<h2 class="font-headline-h2 text-headline-h2 text-white mb-xs z-10">Enterprise</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-lg z-10 flex-grow">Strategic partnerships, bulk deployments, and SLA discussions.</p>
+<div class="flex flex-col space-y-xs w-full z-10">
+<a class="btn-secondary rounded-lg px-md py-sm text-center text-tertiary font-label-caps text-label-caps flex items-center justify-center gap-2 border-tertiary hover:bg-tertiary/10" href="mailto:enterprise@bebihost.com">
+<span class="material-symbols-outlined text-[16px]">mail</span> Email Team
+                    </a>
+</div>
+</div>
+</section>
+<!-- Main Content Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter mb-xxl">
+<!-- Section 3: Contact Form (Left, 7 cols) -->
+<div class="lg:col-span-7">
+<div class="supergloss-card rounded-xl p-lg ambient-glow-primary">
+<h3 class="font-headline-h2 text-headline-h2 text-white mb-lg">Send a Message</h3>
+<form action="#" class="space-y-md" method="POST">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-sm">
+<div class="flex flex-col space-y-base">
+<label class="font-label-caps text-label-caps text-on-surface-variant" for="name">Full Name</label>
+<input class="input-base rounded-lg px-sm py-2 text-white" id="name" name="name" placeholder="John Doe" type="text"/>
+</div>
+<div class="flex flex-col space-y-base">
+<label class="font-label-caps text-label-caps text-on-surface-variant" for="email">Business Email</label>
+<input class="input-base rounded-lg px-sm py-2 text-white" id="email" name="email" placeholder="john@company.com" type="email"/>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-sm">
+<div class="flex flex-col space-y-base">
+<label class="font-label-caps text-label-caps text-on-surface-variant" for="company">Company Name</label>
+<input class="input-base rounded-lg px-sm py-2 text-white" id="company" name="company" placeholder="Acme Corp" type="text"/>
+</div>
+<div class="flex flex-col space-y-base">
+<label class="font-label-caps text-label-caps text-on-surface-variant" for="topic">Topic</label>
+<select class="input-base rounded-lg px-sm py-2 text-white appearance-none" id="topic" name="topic">
+<option disabled="" selected="" value="">Select a topic...</option>
+<option value="sales">Sales Inquiry</option>
+<option value="support">Technical Support</option>
+<option value="billing">Billing &amp; Invoices</option>
+<option value="other">Other</option>
+</select>
+</div>
+</div>
+<div class="flex flex-col space-y-base">
+<label class="font-label-caps text-label-caps text-on-surface-variant" for="message">Message</label>
+<textarea class="input-base rounded-lg px-sm py-2 text-white resize-none" id="message" name="message" placeholder="How can we help you?" rows="5"></textarea>
+</div>
+<button class="btn-primary w-full rounded-lg py-3 font-label-caps text-label-caps text-white mt-sm" type="submit">Submit Inquiry</button>
+</form>
+</div>
+</div>
+<!-- Right Column (5 cols) -->
+<div class="lg:col-span-5 flex flex-col space-y-gutter">
+<!-- Section 4: Global Offices -->
+<div class="supergloss-card rounded-xl p-lg">
+<h3 class="font-headline-h2 text-headline-h2 text-white mb-md">Global Offices</h3>
+<div class="space-y-md">
+<!-- US -->
+<div class="flex items-start gap-sm border-b border-white/5 pb-sm">
+<span class="material-symbols-outlined text-electric-blue mt-1">location_on</span>
+<div>
+<h4 class="font-body-lg text-body-lg text-white font-semibold">North America (HQ)</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">100 Tech Plaza, Suite 400<br/>San Francisco, CA 94105</p>
+<div class="flex items-center gap-xs mt-2">
+<span class="w-2 h-2 rounded-full bg-success-green"></span>
+<span class="font-label-caps text-label-caps text-on-surface-variant">09:00 AM PST</span>
+</div>
+</div>
+</div>
+<!-- EU -->
+<div class="flex items-start gap-sm border-b border-white/5 pb-sm">
+<span class="material-symbols-outlined text-neon-cyan mt-1">location_on</span>
+<div>
+<h4 class="font-body-lg text-body-lg text-white font-semibold">Europe</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Innovation Tower, 15th Floor<br/>London, UK E1 6AN</p>
+<div class="flex items-center gap-xs mt-2">
+<span class="w-2 h-2 rounded-full bg-warning-amber"></span>
+<span class="font-label-caps text-label-caps text-on-surface-variant">17:00 GMT</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Section 5: Support Resources -->
+<div class="supergloss-card rounded-xl p-lg">
+<h3 class="font-headline-h2 text-headline-h2 text-white mb-md">Quick Resources</h3>
+<ul class="space-y-sm">
+<li>
+<a class="flex items-center justify-between p-sm rounded-lg hover:bg-white/5 border border-transparent hover:border-white/10 transition-all group" href="#">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-electric-blue transition-colors">menu_book</span>
+<span class="font-body-md text-body-md text-white">Knowledge Base</span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant text-[16px]">chevron_right</span>
+</a>
+</li>
+<li>
+<a class="flex items-center justify-between p-sm rounded-lg hover:bg-white/5 border border-transparent hover:border-white/10 transition-all group" href="#">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-success-green transition-colors">dns</span>
+<span class="font-body-md text-body-md text-white">System Status</span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant text-[16px]">chevron_right</span>
+</a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer Shared Component -->
+<footer class="bg-space-blue border-t border-white/10 w-full py-xl px-margin-desktop grid grid-cols-1 md:grid-cols-4 gap-gutter mt-auto">
+<div class="col-span-1 md:col-span-1">
+<a href="index.html"><div class="font-headline-h1 text-headline-h1 text-white mb-md">BebiHost</div></a>
+<p class="font-body-sm text-body-sm text-on-surface-variant">© 2026 BebiHost Infrastructure. All rights reserved.</p>
+</div>
+<div class="col-span-1 md:col-span-3 flex justify-end items-center space-x-lg">
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:text-neon-cyan transition-colors opacity-80 hover:opacity-100" href="sitemap.html">Sitemap</a>
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:text-neon-cyan transition-colors opacity-80 hover:opacity-100" href="privacy.html">Privacy Policy</a>
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:text-neon-cyan transition-colors opacity-80 hover:opacity-100" href="terms.html">Terms of Service</a>
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:text-neon-cyan transition-colors opacity-80 hover:opacity-100" href="status.html">Status</a>
+</div>
+</footer>
+</body></html>

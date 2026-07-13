@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>BebiHost - Enterprise VPS Hosting</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&amp;family=JetBrains+Mono:wght@400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-secondary-fixed-variant": "#004f53",
+                    "outline-variant": "#424655",
+                    "danger-red": "#EF4444",
+                    "success-green": "#10B981",
+                    "on-secondary-fixed": "#002021",
+                    "on-background": "#e2e2e8",
+                    "inverse-surface": "#e2e2e8",
+                    "on-tertiary-fixed-variant": "#5700c9",
+                    "primary-fixed": "#d9e2ff",
+                    "surface-container-lowest": "#0c0e12",
+                    "on-error": "#690005",
+                    "tertiary-fixed": "#e9ddff",
+                    "on-secondary-container": "#006c71",
+                    "error-container": "#93000a",
+                    "secondary-fixed-dim": "#00dce5",
+                    "inverse-primary": "#0058cb",
+                    "on-surface": "#e2e2e8",
+                    "tertiary": "#d1bcff",
+                    "error": "#ffb4ab",
+                    "warning-amber": "#F59E0B",
+                    "surface-dim": "#111318",
+                    "on-secondary": "#003739",
+                    "primary-container": "#568dff",
+                    "on-primary": "#002d6f",
+                    "surface-container-high": "#282a2e",
+                    "electric-blue": "#0070FF",
+                    "outline": "#8c90a1",
+                    "on-primary-container": "#002661",
+                    "surface-container-highest": "#333539",
+                    "inverse-on-surface": "#2f3035",
+                    "surface-variant": "#333539",
+                    "secondary-fixed": "#63f7ff",
+                    "primary": "#b0c6ff",
+                    "neon-cyan": "#00F5FF",
+                    "on-tertiary": "#3c0090",
+                    "surface-container-low": "#1a1c20",
+                    "secondary-container": "#00f4fe",
+                    "surface": "#111318",
+                    "surface-bright": "#37393e",
+                    "on-tertiary-fixed": "#23005b",
+                    "on-surface-variant": "#c2c6d8",
+                    "primary-fixed-dim": "#b0c6ff",
+                    "on-error-container": "#ffdad6",
+                    "background": "#111318",
+                    "space-blue": "#0A0C10",
+                    "tertiary-container": "#a178ff",
+                    "midnight-surface": "#11141B",
+                    "secondary": "#e6feff",
+                    "on-primary-fixed": "#001945",
+                    "on-primary-fixed-variant": "#00429c",
+                    "on-tertiary-container": "#34007f",
+                    "tertiary-fixed-dim": "#d1bcff",
+                    "surface-container": "#1e2026",
+                    "surface-tint": "#b0c6ff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "lg": "32px",
+                    "xxl": "64px",
+                    "xs": "8px",
+                    "margin-desktop": "40px",
+                    "sm": "16px",
+                    "gutter": "24px",
+                    "margin-mobile": "16px",
+                    "base": "4px",
+                    "huge": "80px",
+                    "xl": "48px",
+                    "md": "24px"
+            },
+            "fontFamily": {
+                    "display-lg": ["Inter"],
+                    "label-caps": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "code-snippet": ["JetBrains Mono"],
+                    "body-md": ["Inter"],
+                    "headline-h1": ["Inter"],
+                    "headline-h2": ["Inter"],
+                    "body-sm": ["Inter"],
+                    "headline-h1-mobile": ["Inter"],
+                    "display-xl": ["Inter"]
+            },
+            "fontSize": {
+                    "display-lg": ["48px", {"lineHeight": "1.2", "letterSpacing": "-0.03em", "fontWeight": "700"}],
+                    "label-caps": ["12px", {"lineHeight": "1.2", "letterSpacing": "0.08em", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "code-snippet": ["14px", {"lineHeight": "1.7", "fontWeight": "400"}],
+                    "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "headline-h1": ["36px", {"lineHeight": "1.3", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-h2": ["30px", {"lineHeight": "1.4", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "body-sm": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "headline-h1-mobile": ["30px", {"lineHeight": "1.3", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "display-xl": ["64px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "800"}]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+        body {
+            background-color: #0A0C10;
+            color: #e2e2e8;
+            overflow-x: hidden;
+        }
+
+        .supergloss-card {
+            background: rgba(17, 20, 27, 0.7);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: inset 1px 1px 0 rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .supergloss-card:hover {
+            border-color: rgba(255, 255, 255, 0.2);
+            box-shadow: inset 1px 1px 0 rgba(255, 255, 255, 0.1), 0 0 30px rgba(0, 112, 255, 0.1);
+        }
+
+        .btn-primary {
+            background: linear-gradient(180deg, #0070FF 0%, #0058cb 100%);
+            box-shadow: inset 0px 1px 0px rgba(255, 255, 255, 0.2);
+        }
+
+        .btn-primary:hover {
+            box-shadow: inset 0px 1px 0px rgba(255, 255, 255, 0.3), 0 0 20px rgba(0, 112, 255, 0.4);
+        }
+
+        .nano-border {
+            border: 0.5px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .bg-grid-pattern {
+            background-image:
+                linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+
+        .text-gradient {
+            background: linear-gradient(90deg, #00F5FF 0%, #0070FF 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body class="antialiased min-h-screen flex flex-col font-body-md text-body-md">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 flex justify-between items-center px-margin-desktop py-4 bg-midnight-surface/70 backdrop-blur-xl border-b border-white/10 shadow-[0_4px_30px_rgba(0,0,0,0.1)]">
+<div class="flex items-center gap-md">
+<span class="font-display-lg text-display-lg font-extrabold text-electric-blue tracking-tighter">BebiHost</span>
+<div class="hidden md:flex gap-md ml-lg">
+<a class="font-body-md text-body-md text-neon-cyan border-b-2 border-neon-cyan pb-1 active:scale-95 transition-transform hover:bg-white/5 transition-all duration-300" href="hosting.html">Hosting</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-white transition-colors active:scale-95 transition-transform hover:bg-white/5 transition-all duration-300" href="domains.html">Domains</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-white transition-colors active:scale-95 transition-transform hover:bg-white/5 transition-all duration-300" href="infrastructure.html">Infrastructure</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-white transition-colors active:scale-95 transition-transform hover:bg-white/5 transition-all duration-300" href="support.html">Support</a>
+</div>
+</div>
+<div class="flex items-center gap-sm">
+<button class="font-body-md text-body-md text-electric-blue hover:bg-white/5 px-sm py-xs rounded-DEFAULT transition-all">Client Login</button>
+<button class="font-body-md text-body-md bg-electric-blue text-white px-md py-xs rounded-DEFAULT hover:bg-electric-blue/90 transition-all">Get Started</button>
+</div>
+</nav>
+<main class="flex-grow pt-huge relative">
+<!-- Abstract Background -->
+<div class="absolute inset-0 z-[-1] overflow-hidden">
+<div class="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-electric-blue/10 rounded-full blur-[120px] opacity-50"></div>
+<div class="absolute bottom-0 right-0 w-[600px] h-[600px] bg-neon-cyan/5 rounded-full blur-[100px] opacity-40"></div>
+<div class="absolute inset-0 bg-grid-pattern z-[-1]"></div>
+</div>
+<!-- Hero Section -->
+<section class="px-margin-mobile md:px-margin-desktop py-xxl flex flex-col items-center text-center max-w-5xl mx-auto mt-lg">
+<div class="inline-flex items-center gap-xs px-sm py-base rounded-full bg-electric-blue/10 border border-electric-blue/30 mb-lg">
+<span class="w-2 h-2 rounded-full bg-neon-cyan shadow-[0_0_8px_rgba(0,245,255,0.8)]"></span>
+<span class="font-label-caps text-label-caps text-neon-cyan">KVM VPS GEN 4 AVAILABLE</span>
+</div>
+<h1 class="font-display-xl text-display-xl text-white mb-md">
+                Uncompromising <br/>
+<span class="text-gradient">Cloud Performance</span>
+</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mb-xl">
+                Deploy high-frequency virtual private servers with NVMe storage, dedicated resources, and instant provisioning. Engineered for intensive enterprise workloads.
+            </p>
+<div class="flex gap-md">
+<button class="btn-primary font-body-md text-body-md text-white px-lg py-sm rounded-lg transition-all flex items-center gap-xs">
+                    Deploy VPS
+                    <span class="material-symbols-outlined text-[20px]">rocket_launch</span>
+</button>
+<button class="border border-outline-variant text-white hover:bg-white/5 font-body-md text-body-md px-lg py-sm rounded-lg transition-all">
+                    View Specs
+                </button>
+</div>
+</section>
+<!-- Pricing Section -->
+<section class="px-margin-mobile md:px-margin-desktop py-xxl">
+<div class="max-w-7xl mx-auto">
+<h2 class="font-headline-h2 text-headline-h2 text-white text-center mb-xl">Scalable Compute Instances</h2>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<!-- Starter -->
+<div class="supergloss-card rounded-xl p-lg flex flex-col">
+<h3 class="font-headline-h2 text-headline-h2 text-white mb-xs">Starter</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-md">For development and small apps.</p>
+<div class="mb-lg">
+<span class="font-display-lg text-display-lg text-white">$5</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">/mo</span>
+</div>
+<ul class="space-y-sm mb-xl flex-grow">
+<li class="flex items-center gap-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-neon-cyan text-[18px]">memory</span>
+                                1 vCPU
+                            </li>
+<li class="flex items-center gap-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-neon-cyan text-[18px]">speed</span>
+                                1 GB RAM
+                            </li>
+<li class="flex items-center gap-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-neon-cyan text-[18px]">hard_drive</span>
+                                25 GB NVMe
+                            </li>
+<li class="flex items-center gap-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-neon-cyan text-[18px]">public</span>
+                                1 TB Bandwidth
+                            </li>
+</ul>
+<button class="w-full border border-electric-blue text-electric-blue hover:bg-electric-blue/10 font-body-md text-body-md py-sm rounded-lg transition-all">
+                            Deploy Starter
+                        </button>
+</div>
+<!-- Professional (Most Popular) -->
+<div class="supergloss-card rounded-xl p-lg flex flex-col relative border-electric-blue/50 transform md:-translate-y-4 shadow-[0_0_40px_rgba(0,112,255,0.15)]">
+<div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-electric-blue text-white font-label-caps text-label-caps px-md py-xs rounded-full">
+                            MOST POPULAR
+                        </div>
+<h3 class="font-headline-h2 text-headline-h2 text-white mb-xs">Professional</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-md">For production workloads.</p>
+<div class="mb-lg">
+<span class="font-display-lg text-display-lg text-white">$15</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">/mo</span>
+</div>
+<ul class="space-y-sm mb-xl flex-grow">
+<li class="flex items-center gap-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-electric-blue text-[18px]">memory</span>
+                                2 vCPU
+                            </li>
+<li class="flex items-center gap-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-electric-blue text-[18px]">speed</span>
+                                4 GB RAM
+                            </li>
+<li class="flex items-center gap-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-electric-blue text-[18px]">hard_drive</span>
+                                80 GB NVMe
+                            </li>
+<li class="flex items-center gap-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-electric-blue text-[18px]">public</span>
+                                4 TB Bandwidth
+                            </li>
+</ul>
+<button class="btn-primary w-full text-white font-body-md text-body-md py-sm rounded-lg transition-all">
+                            Deploy Pro
+                        </button>
+</div>
+<!-- Elite -->
+<div class="supergloss-card rounded-xl p-lg flex flex-col">
+<h3 class="font-headline-h2 text-headline-h2 text-white mb-xs">Elite</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-md">For intensive enterprise apps.</p>
+<div class="mb-lg">
+<span class="font-display-lg text-display-lg text-white">$40</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">/mo</span>
+</div>
+<ul class="space-y-sm mb-xl flex-grow">
+<li class="flex items-center gap-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-neon-cyan text-[18px]">memory</span>
+                                4 vCPU
+                            </li>
+<li class="flex items-center gap-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-neon-cyan text-[18px]">speed</span>
+                                8 GB RAM
+                            </li>
+<li class="flex items-center gap-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-neon-cyan text-[18px]">hard_drive</span>
+                                160 GB NVMe
+                            </li>
+<li class="flex items-center gap-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-neon-cyan text-[18px]">public</span>
+                                8 TB Bandwidth
+                            </li>
+</ul>
+<button class="w-full border border-electric-blue text-electric-blue hover:bg-electric-blue/10 font-body-md text-body-md py-sm rounded-lg transition-all">
+                            Deploy Elite
+                        </button>
+</div>
+</div>
+</div>
+</section>
+<!-- Technical Specs & Features -->
+<section class="px-margin-mobile md:px-margin-desktop py-xxl bg-surface-container-low/50 border-y border-white/5">
+<div class="max-w-7xl mx-auto">
+<h2 class="font-headline-h2 text-headline-h2 text-white mb-xl text-center">Engineered for Performance</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter mb-xxl">
+<!-- Feature 1 -->
+<div class="supergloss-card rounded-xl p-lg flex gap-md">
+<div class="w-12 h-12 rounded-lg bg-electric-blue/10 border border-electric-blue/30 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-electric-blue">storage</span>
+</div>
+<div>
+<h4 class="font-body-lg text-body-lg text-white font-semibold mb-xs">NVMe SSD Storage</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Experience blistering I/O performance with Enterprise NVMe drives, configured in RAID 10 for maximum data redundancy and speed.</p>
+</div>
+</div>
+<!-- Feature 2 -->
+<div class="supergloss-card rounded-xl p-lg flex gap-md">
+<div class="w-12 h-12 rounded-lg bg-neon-cyan/10 border border-neon-cyan/30 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-neon-cyan">dns</span>
+</div>
+<div>
+<h4 class="font-body-lg text-body-lg text-white font-semibold mb-xs">KVM Virtualization</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">True hardware virtualization guarantees dedicated resources. Your compute power is isolated, secure, and never oversold.</p>
+</div>
+</div>
+<!-- Feature 3 -->
+<div class="supergloss-card rounded-xl p-lg flex gap-md">
+<div class="w-12 h-12 rounded-lg bg-electric-blue/10 border border-electric-blue/30 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-electric-blue">security</span>
+</div>
+<div>
+<h4 class="font-body-lg text-body-lg text-white font-semibold mb-xs">L4-L7 DDoS Protection</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Always-on mitigation protects against volumetric and application-layer attacks, ensuring your services stay online seamlessly.</p>
+</div>
+</div>
+<!-- Feature 4 -->
+<div class="supergloss-card rounded-xl p-lg flex gap-md">
+<div class="w-12 h-12 rounded-lg bg-neon-cyan/10 border border-neon-cyan/30 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-neon-cyan">network_check</span>
+</div>
+<div>
+<h4 class="font-body-lg text-body-lg text-white font-semibold mb-xs">1Gbps Uplinks</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Redundant, highly-available network core providing unmetered ingress and robust burst capabilities across premium tier-1 carriers.</p>
+</div>
+</div>
+</div>
+<!-- Global Infrastructure Map -->
+<div class="supergloss-card rounded-xl p-lg relative overflow-hidden">
+<div class="absolute inset-0 bg-space-blue/80 z-10"></div>
+<div class="absolute inset-0 flex items-center justify-center z-20">
+<div class="text-center">
+<h3 class="font-headline-h2 text-headline-h2 text-white mb-sm">Global Data Centers</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-md">Deploy closer to your users across 15+ global locations.</p>
+<button class="border border-outline-variant text-white hover:bg-white/5 font-body-md text-body-md px-lg py-sm rounded-lg transition-all">
+                                View Network Map
+                            </button>
+</div>
+</div>
+<div class="h-64 opacity-30" data-alt="A stylized, glowing, futuristic map of the world depicting global data center locations in electric blue and neon cyan nodes against a deep space dark background, high-end server aesthetic." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuANOAsUZLjEoW1hEN0l74S9DW95jUAw1ZvAsXSfcUVrOh8JG9Eh_cbJSaI6cZOoSRr6JuqVfXeaKWYxr3FT1AZE-ovlKctb0KcheL7z_ZDP5tkd4ibk4F8b-VdYv6ZWurYSLyNVuSBWRClim7WrMQ-dFCWqkTZFuaAYo39yjLLhkjDrFCjO_LwzVmFdW3xoxM0NW_JjmbNhU_fmzrbQj64ZnUswvG-fJ_XilITmX681wB2Fxlgqi2W05NufezoNACzcnp-G0ZQyh9U')"></div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full py-xl px-margin-desktop grid grid-cols-1 md:grid-cols-4 gap-gutter bg-space-blue border-t border-white/10 mt-xxl">
+<div class="col-span-1 md:col-span-1">
+<span class="font-headline-h1 text-headline-h1 text-white block mb-sm">BebiHost</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant opacity-80">© 2026 BebiHost Infrastructure. All rights reserved.</p>
+</div>
+<div class="col-span-1 md:col-span-3 flex justify-end gap-lg items-center">
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:text-neon-cyan transition-colors opacity-80 hover:opacity-100" href="sitemap.html">Sitemap</a>
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:text-neon-cyan transition-colors opacity-80 hover:opacity-100" href="privacy.html">Privacy Policy</a>
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:text-neon-cyan transition-colors opacity-80 hover:opacity-100" href="terms.html">Terms of Service</a>
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:text-neon-cyan transition-colors opacity-80 hover:opacity-100" href="status.html">Status</a>
+</div>
+</footer>
+</body></html>

@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>About Us | BebiHost</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&amp;family=JetBrains+Mono:wght@400&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-bright": "#37393e",
+                        "on-error": "#690005",
+                        "outline-variant": "#424655",
+                        "on-surface": "#e2e2e8",
+                        "electric-blue": "#0070FF",
+                        "secondary-fixed": "#63f7ff",
+                        "space-blue": "#0A0C10",
+                        "secondary-container": "#00f4fe",
+                        "on-surface-variant": "#c2c6d8",
+                        "on-secondary": "#003739",
+                        "surface-container": "#1e2026",
+                        "surface-container-lowest": "#0c0e12",
+                        "neon-cyan": "#00F5FF",
+                        "on-primary": "#002d6f",
+                        "background": "#111318",
+                        "on-primary-container": "#002661",
+                        "on-tertiary-fixed-variant": "#5700c9",
+                        "on-secondary-container": "#006c71",
+                        "tertiary-fixed-dim": "#d1bcff",
+                        "error-container": "#93000a",
+                        "on-tertiary-container": "#34007f",
+                        "on-primary-fixed-variant": "#00429c",
+                        "primary": "#b0c6ff",
+                        "secondary": "#e6feff",
+                        "on-tertiary": "#3c0090",
+                        "on-secondary-fixed-variant": "#004f53",
+                        "danger-red": "#EF4444",
+                        "on-background": "#e2e2e8",
+                        "surface-variant": "#333539",
+                        "tertiary": "#d1bcff",
+                        "outline": "#8c90a1",
+                        "tertiary-container": "#a178ff",
+                        "inverse-primary": "#0058cb",
+                        "surface-container-high": "#282a2e",
+                        "inverse-surface": "#e2e2e8",
+                        "secondary-fixed-dim": "#00dce5",
+                        "surface-container-highest": "#333539",
+                        "midnight-surface": "#11141B",
+                        "error": "#ffb4ab",
+                        "surface": "#111318",
+                        "tertiary-fixed": "#e9ddff",
+                        "primary-container": "#568dff",
+                        "inverse-on-surface": "#2f3035",
+                        "on-tertiary-fixed": "#23005b",
+                        "success-green": "#10B981",
+                        "primary-fixed-dim": "#b0c6ff",
+                        "primary-fixed": "#d9e2ff",
+                        "on-secondary-fixed": "#002021",
+                        "on-primary-fixed": "#001945",
+                        "surface-tint": "#b0c6ff",
+                        "surface-dim": "#111318",
+                        "on-error-container": "#ffdad6",
+                        "warning-amber": "#F59E0B",
+                        "surface-container-low": "#1a1c20"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xxl": "64px",
+                        "lg": "32px",
+                        "base": "4px",
+                        "md": "24px",
+                        "xl": "48px",
+                        "margin-desktop": "40px",
+                        "gutter": "24px",
+                        "margin-mobile": "16px",
+                        "huge": "80px",
+                        "sm": "16px",
+                        "xs": "8px"
+                    },
+                    "fontFamily": {
+                        "headline-h1": ["Inter"],
+                        "display-xl": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "label-caps": ["Inter"],
+                        "headline-h2": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "code-snippet": ["JetBrains Mono"],
+                        "display-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-h1-mobile": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-h1": ["36px", { "lineHeight": "1.3", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "display-xl": ["64px", { "lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "800" }],
+                        "body-sm": ["14px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                        "label-caps": ["12px", { "lineHeight": "1.2", "letterSpacing": "0.08em", "fontWeight": "600" }],
+                        "headline-h2": ["30px", { "lineHeight": "1.4", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "code-snippet": ["14px", { "lineHeight": "1.7", "fontWeight": "400" }],
+                        "display-lg": ["48px", { "lineHeight": "1.2", "letterSpacing": "-0.03em", "fontWeight": "700" }],
+                        "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "headline-h1-mobile": ["30px", { "lineHeight": "1.3", "letterSpacing": "-0.02em", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { background-color: #0A0C10; color: #e2e2e8; }
+        .glass-panel {
+            background-color: rgba(17, 20, 27, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        }
+        .btn-primary {
+            background: linear-gradient(180deg, #0070FF 0%, #0058cb 100%);
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 0 20px rgba(0, 112, 255, 0.3);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .text-gradient {
+            background: linear-gradient(to right, #00F5FF, #0070FF);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .super-gloss-card:hover {
+            border-color: rgba(255, 255, 255, 0.2);
+            box-shadow: inset 0 0 20px rgba(0, 112, 255, 0.1);
+        }
+    </style>
+</head>
+<body class="antialiased min-h-screen flex flex-col font-body-md text-body-md">
+<!-- TopNavBar -->
+<nav class="bg-midnight-surface/70 backdrop-blur-xl border-b border-white/10 shadow-[0_4px_30px_rgba(0,0,0,0.1)] fixed top-0 w-full z-50 flex justify-between items-center px-margin-desktop py-4">
+<div class="flex items-center gap-md">
+<span class="font-display-lg text-display-lg font-extrabold text-electric-blue tracking-tighter">BebiHost</span>
+</div>
+<div class="hidden md:flex gap-lg items-center font-body-md text-body-md">
+<a class="text-on-surface-variant hover:text-white transition-colors hover:bg-white/5 transition-all duration-300 px-3 py-2 rounded" href="hosting.html">Hosting</a>
+<a class="text-on-surface-variant hover:text-white transition-colors hover:bg-white/5 transition-all duration-300 px-3 py-2 rounded" href="domains.html">Domains</a>
+<a class="text-on-surface-variant hover:text-white transition-colors hover:bg-white/5 transition-all duration-300 px-3 py-2 rounded" href="infrastructure.html">Infrastructure</a>
+<a class="text-on-surface-variant hover:text-white transition-colors hover:bg-white/5 transition-all duration-300 px-3 py-2 rounded" href="support.html">Support</a>
+</div>
+<div class="flex items-center gap-sm">
+<button class="font-body-md text-body-md text-neon-cyan border border-electric-blue px-4 py-2 rounded-lg hover:bg-white/5 transition-all duration-300 active:scale-95">Client Login</button>
+<button class="font-body-md text-body-md btn-primary text-white px-4 py-2 rounded-lg transition-all duration-300 active:scale-95">Get Started</button>
+</div>
+</nav>
+<!-- Main Canvas -->
+<main class="flex-grow pt-[80px]">
+<!-- Hero Section -->
+<section class="relative min-h-[819px] flex items-center justify-center px-margin-mobile md:px-margin-desktop py-xxl overflow-hidden">
+<div class="absolute inset-0 z-0" data-alt="A highly detailed, ultra-realistic image of a futuristic, dark enterprise server room. Rows of high-end, sleek black server racks stretch into the distance. The scene is illuminated by piercing, intense electric blue and neon cyan LED lights glowing from the hardware. The mood is highly technical, secure, and authoritative, perfectly reflecting the high-performance 'SuperGloss UI' aesthetic with deep blacks and sharp, glowing accents." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDOJaz3IyvvHF2JFJbCnjOSp1dX6rDWOlydojm99aLrIpuPLEPfkpKvOyzxbvz-4M_bXay-gE649-Yzp_f-Die9rI-jdJZVGz5rT5_xhn1ssNYkpedErOdBXwTxBAl5PE5zLBNMJQSxCuPNOwrx0XsNzPrKJawsWTfkUMXUTEV4ni7Aa3N0NJfJNR8UkTmXtMMLfFN1011b288ZyRmLEwq-OyXetzFiAtAG5sb01X1DBf9_BLWtETHUKik2DQcvWIYtD4-FY48tdr4')"></div>
+<div class="absolute inset-0 bg-space-blue/80 z-10"></div>
+<div class="relative z-20 max-w-4xl mx-auto text-center">
+<h1 class="font-display-xl text-display-xl text-white mb-md">Architecting the <span class="text-gradient">Future</span> of Cloud Infrastructure</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-xl max-w-2xl mx-auto">We engineer high-performance, globally distributed bare-metal and cloud environments designed for enterprise CTOs who demand absolute reliability, limitless scalability, and nano-second precision.</p>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter mt-xl">
+<div class="glass-panel p-lg rounded-xl text-left super-gloss-card transition-all duration-300">
+<span class="material-symbols-outlined text-neon-cyan text-[32px] mb-sm">rocket_launch</span>
+<h3 class="font-headline-h2 text-headline-h2 text-white mb-xs">Mission</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">To empower global enterprises with unyielding, transparent, and ultra-low latency infrastructure, ensuring 100% uptime through relentless technical innovation.</p>
+</div>
+<div class="glass-panel p-lg rounded-xl text-left super-gloss-card transition-all duration-300">
+<span class="material-symbols-outlined text-electric-blue text-[32px] mb-sm">verified_user</span>
+<h3 class="font-headline-h2 text-headline-h2 text-white mb-xs">Values</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Precision in execution. Absolute security. Relentless innovation. We operate on the bleeding edge of hardware capability to deliver silent, flawless performance.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Leadership Section -->
+<section class="px-margin-mobile md:px-margin-desktop py-xxl bg-background">
+<div class="max-w-7xl mx-auto">
+<div class="text-center mb-xl">
+<h2 class="font-display-lg text-display-lg text-white mb-sm">Executive Leadership</h2>
+<p class="font-body-md text-body-md text-outline">The engineering minds driving our global expansion.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<!-- Profile 1 -->
+<div class="glass-panel p-md rounded-xl super-gloss-card transition-all duration-300 flex flex-col items-center text-center">
+<div class="w-24 h-24 rounded-full mb-sm overflow-hidden border border-electric-blue/30 shadow-[0_0_15px_rgba(0,112,255,0.2)]">
+<img class="w-full h-full object-cover" data-alt="A professional corporate headshot of a confident tech CEO in their 40s. They are wearing a sharp, dark modern suit. The background is a subtly blurred, dimly lit server room with hints of neon cyan lighting, aligning perfectly with the dark, high-end enterprise aesthetic. The lighting on their face is crisp and top-down." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBHR48W4KAS4QXCBBQN54Y6oRMORsgDcAKGnPnG3RKpNr3boZMr07RHzkCM248cs1rTUohEzC30519jgHmD3oBroCifT3HvXUquv70M6W_mt_AZHrcJ8BEXcH0HmVo0REOXTmDkL3a4knpS31HZk7hxh8G7tSmvf14_owkeHZLraM8NItTYo9N20oefxUi2aW-Jh2xyHQ7pban3QLFWGkpTANyX3aaDsqpNbSqMiVoIhay0Av_K6x4aMIHclWYthim0rFdKdLGH7KU"/>
+</div>
+<h4 class="font-headline-h2 text-headline-h2 text-white text-[24px]">Elena Rostova</h4>
+<span class="font-label-caps text-label-caps text-electric-blue mb-sm mt-xs">Chief Executive Officer</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Former Lead Architect at major cloud providers, Elena brings 20 years of distributed systems engineering to BebiHost.</p>
+</div>
+<!-- Profile 2 -->
+<div class="glass-panel p-md rounded-xl super-gloss-card transition-all duration-300 flex flex-col items-center text-center">
+<div class="w-24 h-24 rounded-full mb-sm overflow-hidden border border-neon-cyan/30 shadow-[0_0_15px_rgba(0,245,255,0.2)]">
+<img class="w-full h-full object-cover" data-alt="A professional corporate headshot of an intense, intelligent CTO in their 30s. They wear a minimalist dark tech-casual outfit. The lighting is sophisticated and dramatic, with a subtle electric blue rim light highlighting their profile against a deep black, glossy background, matching the Nano UI design system." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCAjqHGcRW21w3IXrRiJ3UjyfVkliQg0YXjbirA4wVF0LtGtpHDYGqNpWw2cJD2PUBAGktD8M1nDWj300Z1Lh6lwwH11L9HeFOD27iatu5nib0p9zQoy6RarsKKw8SgQxU0GwKt28SLTsFsQqfBk2FrgFSguhGoGsiXuEqxD5vjVY2ZNXfG2XBE-nzfFRki944IpspSntoSsP01-TYOdlEIKAjLJnhpdeps_AxkyQvRrtDvyEnooyfy-JwTOIogF3fS7ly_c7SFOPg"/>
+</div>
+<h4 class="font-headline-h2 text-headline-h2 text-white text-[24px]">Marcus Thorne</h4>
+<span class="font-label-caps text-label-caps text-neon-cyan mb-sm mt-xs">Chief Technology Officer</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Pioneer in bare-metal orchestration and dark fiber networks. Marcus oversees our global network topology.</p>
+</div>
+<!-- Profile 3 -->
+<div class="glass-panel p-md rounded-xl super-gloss-card transition-all duration-300 flex flex-col items-center text-center">
+<div class="w-24 h-24 rounded-full mb-sm overflow-hidden border border-electric-blue/30 shadow-[0_0_15px_rgba(0,112,255,0.2)]">
+<img class="w-full h-full object-cover" data-alt="A professional corporate headshot of a determined CISO in their 50s. Sharp, focused expression. Wearing dark, professional attire. The background is entirely black with a very faint, abstract blue geometric pattern implying digital security. The image is hyper-realistic and lit to emphasize authority and trust." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC_kivWUJjQX5v4VYLrYd3Dr3swBA3SF9FcNLn6_Yt-JKvtlyIwWWx5tHZm7sT5Zc15yDmQqP7b7lsgmhaduiob-uWzYkZ472UPfE_6SyG7DC_Q50hPWDKRlP2i_Zv3kMei0ZbOlsZfA-PrCSDeG31ReJ8p1eXvGkFXRQKS7J7BApjTUz5rZ_-Ban8yS5Bttue8nuoKFAyJ2hcwzG-UJ7VFwn8rKIPPf24y3Y2BaevG3JCF6xZ6Lo_UfSjGYmFXMrM6rmbzE1uS03Q"/>
+</div>
+<h4 class="font-headline-h2 text-headline-h2 text-white text-[24px]">David Chen</h4>
+<span class="font-label-caps text-label-caps text-electric-blue mb-sm mt-xs">Chief Information Security Officer</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Ensuring absolute compliance and zero-trust architecture across all 45+ global data centers.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- CTA Section -->
+<section class="px-margin-mobile md:px-margin-desktop py-xxl bg-midnight-surface relative overflow-hidden">
+<div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-electric-blue/10 via-space-blue/0 to-space-blue/0"></div>
+<div class="relative z-10 max-w-3xl mx-auto text-center glass-panel p-xl rounded-xl">
+<h2 class="font-display-lg text-display-lg text-white mb-md">Ready to Scale?</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-lg">Join the thousands of enterprises relying on BebiHost for mission-critical infrastructure.</p>
+<div class="flex justify-center gap-md">
+<button class="btn-primary text-white font-label-caps text-label-caps px-8 py-4 rounded-lg tracking-wider">Deploy Now</button>
+<button class="bg-transparent border border-electric-blue text-electric-blue font-label-caps text-label-caps px-8 py-4 rounded-lg tracking-wider hover:bg-white/5 transition-all">Contact Sales</button>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-space-blue border-t border-white/10 w-full py-xl px-margin-desktop grid grid-cols-1 md:grid-cols-4 gap-gutter mt-auto z-40 relative">
+<div class="col-span-1 md:col-span-1 flex flex-col justify-center">
+<span class="font-headline-h1 text-headline-h1 text-white mb-sm">BebiHost</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">© 2026 BebiHost Infrastructure. All rights reserved.</p>
+</div>
+<div class="col-span-1 md:col-span-3 flex flex-wrap gap-lg md:justify-end items-center font-body-sm text-body-sm">
+<a class="text-on-surface-variant hover:text-neon-cyan transition-colors opacity-80 hover:opacity-100" href="sitemap.html">Sitemap</a>
+<a class="text-on-surface-variant hover:text-neon-cyan transition-colors opacity-80 hover:opacity-100" href="privacy.html">Privacy Policy</a>
+<a class="text-on-surface-variant hover:text-neon-cyan transition-colors opacity-80 hover:opacity-100" href="terms.html">Terms of Service</a>
+<a class="text-on-surface-variant hover:text-neon-cyan transition-colors opacity-80 hover:opacity-100" href="status.html">Status</a>
+</div>
+</footer>
+</body></html>
