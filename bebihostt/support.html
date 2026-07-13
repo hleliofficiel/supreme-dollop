@@ -194,6 +194,7 @@
     <div class="hidden lg:flex items-center gap-gutter">
         <a class="font-body-md text-body-md text-on-surface-variant hover:text-white transition-colors hover:bg-white/5 transition-all duration-300 rounded px-2 py-1 active:scale-95 transition-transform" href="hosting.html">Hosting</a>
         <a class="font-body-md text-body-md text-on-surface-variant hover:text-white transition-colors hover:bg-white/5 transition-all duration-300 rounded px-2 py-1 active:scale-95 transition-transform" href="domains.html">Domains</a>
+        <a class="font-body-md text-body-md text-on-surface-variant hover:text-white transition-colors hover:bg-white/5 transition-all duration-300 rounded px-2 py-1 active:scale-95 transition-transform" href="dedicated_servers.html">Servers</a>
         <a class="font-body-md text-body-md text-on-surface-variant hover:text-white transition-colors hover:bg-white/5 transition-all duration-300 rounded px-2 py-1 active:scale-95 transition-transform" href="infrastructure.html">Infrastructure</a>
         <a class="font-body-md text-body-md text-on-surface-variant hover:text-white transition-colors hover:bg-white/5 transition-all duration-300 rounded px-2 py-1 active:scale-95 transition-transform" href="support.html">Support</a>
     </div>
@@ -212,16 +213,21 @@
 </nav>
 
 <!-- Mobile Menu Overlay -->
-<div id="mobile-menu-overlay" class="fixed inset-0 bg-space-blue/95 backdrop-blur-md z-[55] hidden flex-col pt-[100px] px-6 transition-all duration-300 opacity-0 pointer-events-none lg:hidden">
-    <div class="flex flex-col gap-6 mt-8">
+<div id="mobile-menu-overlay" class="fixed inset-0 bg-space-blue/95 backdrop-blur-md z-[55] hidden flex-col pt-[100px] px-6 transition-all duration-300 opacity-0 pointer-events-none lg:hidden overflow-y-auto pb-10">
+    <div class="flex flex-col gap-5 mt-4">
         <a class="text-white text-2xl font-bold hover:text-neon-cyan transition-colors" href="index.html">Home</a>
         <a class="text-white text-2xl font-bold hover:text-neon-cyan transition-colors" href="hosting.html">Hosting</a>
         <a class="text-white text-2xl font-bold hover:text-neon-cyan transition-colors" href="domains.html">Domains</a>
+        <a class="text-white text-2xl font-bold hover:text-neon-cyan transition-colors" href="dedicated_servers.html">Dedicated Servers</a>
+        <a class="text-white text-2xl font-bold hover:text-neon-cyan transition-colors" href="email_hosting.html">Email Hosting</a>
         <a class="text-white text-2xl font-bold hover:text-neon-cyan transition-colors" href="infrastructure.html">Infrastructure</a>
+        <a class="text-white text-2xl font-bold hover:text-neon-cyan transition-colors" href="datacenters.html">Datacenters</a>
+        <a class="text-white text-2xl font-bold hover:text-neon-cyan transition-colors" href="leadership.html">Leadership</a>
+        <a class="text-white text-2xl font-bold hover:text-neon-cyan transition-colors" href="blog.html">Blog</a>
         <a class="text-white text-2xl font-bold hover:text-neon-cyan transition-colors" href="support.html">Support</a>
-        <div class="h-px bg-white/10 w-full my-4"></div>
+        <div class="h-px bg-white/10 w-full my-2"></div>
         <a class="text-on-surface-variant text-xl hover:text-white transition-colors" href="#">Client Login</a>
-        <a class="bg-electric-blue text-center text-white text-xl font-bold py-3 rounded-lg mt-4" href="#">Get Started</a>
+        <a class="bg-electric-blue text-center text-white text-xl font-bold py-3 rounded-lg mt-2" href="#">Get Started</a>
     </div>
 </div>
 
@@ -261,6 +267,7 @@
         }
     });
 </script>
+
 
 <main class="flex-grow pt-[100px] pb-xxl px-margin-mobile md:px-margin-desktop w-full max-w-[1440px] mx-auto">
 <!-- Section 1: Hero -->
@@ -420,16 +427,39 @@
 </div>
 </main>
 <!-- Footer Shared Component -->
-<footer class="bg-space-blue border-t border-white/10 w-full py-xl px-margin-desktop grid grid-cols-1 md:grid-cols-4 gap-gutter mt-auto">
-<div class="col-span-1 md:col-span-1">
-<a href="index.html"><div class="font-headline-h1 text-headline-h1 text-white mb-md">BebiHost</div></a>
-<p class="font-body-sm text-body-sm text-on-surface-variant">© 2026 BebiHost Infrastructure. All rights reserved.</p>
-</div>
-<div class="col-span-1 md:col-span-3 flex justify-end items-center space-x-lg">
-<a class="font-body-sm text-body-sm text-on-surface-variant hover:text-neon-cyan transition-colors opacity-80 hover:opacity-100" href="sitemap.html">Sitemap</a>
-<a class="font-body-sm text-body-sm text-on-surface-variant hover:text-neon-cyan transition-colors opacity-80 hover:opacity-100" href="privacy.html">Privacy Policy</a>
-<a class="font-body-sm text-body-sm text-on-surface-variant hover:text-neon-cyan transition-colors opacity-80 hover:opacity-100" href="terms.html">Terms of Service</a>
-<a class="font-body-sm text-body-sm text-on-surface-variant hover:text-neon-cyan transition-colors opacity-80 hover:opacity-100" href="status.html">Status</a>
-</div>
+<footer class="w-full py-xl px-margin-desktop grid grid-cols-1 md:grid-cols-4 gap-gutter bg-space-blue border-t border-white/10 mt-auto z-10 relative">
+    <div class="col-span-1 md:col-span-1 flex flex-col gap-sm">
+        <a href="index.html" class="font-headline-h1 text-headline-h1 text-white tracking-tight">BebiHost</a>
+        <p class="font-body-sm text-body-sm text-on-surface-variant mt-4">
+            © 2026 BebiHost Infrastructure. All rights reserved.
+        </p>
+    </div>
+    <div class="col-span-1 md:col-span-3 grid grid-cols-2 md:grid-cols-4 gap-lg justify-items-start md:justify-items-end">
+        <div class="flex flex-col gap-sm">
+            <span class="font-label-caps text-label-caps text-white mb-2">Products</span>
+            <a class="font-body-sm text-body-sm text-on-surface-variant hover:text-neon-cyan transition-colors" href="hosting.html">Hosting</a>
+            <a class="font-body-sm text-body-sm text-on-surface-variant hover:text-neon-cyan transition-colors" href="domains.html">Domains</a>
+            <a class="font-body-sm text-body-sm text-on-surface-variant hover:text-neon-cyan transition-colors" href="email_hosting.html">Email Hosting</a>
+            <a class="font-body-sm text-body-sm text-on-surface-variant hover:text-neon-cyan transition-colors" href="dedicated_servers.html">Dedicated Servers</a>
+        </div>
+        <div class="flex flex-col gap-sm">
+            <span class="font-label-caps text-label-caps text-white mb-2">Platform</span>
+            <a class="font-body-sm text-body-sm text-on-surface-variant hover:text-neon-cyan transition-colors" href="infrastructure.html">Infrastructure</a>
+            <a class="font-body-sm text-body-sm text-on-surface-variant hover:text-neon-cyan transition-colors" href="datacenters.html">Datacenters</a>
+            <a class="font-body-sm text-body-sm text-on-surface-variant hover:text-neon-cyan transition-colors" href="status.html">Network Status</a>
+            <a class="font-body-sm text-body-sm text-on-surface-variant hover:text-neon-cyan transition-colors" href="sitemap.html">Sitemap</a>
+        </div>
+        <div class="flex flex-col gap-sm">
+            <span class="font-label-caps text-label-caps text-white mb-2">Company</span>
+            <a class="font-body-sm text-body-sm text-on-surface-variant hover:text-neon-cyan transition-colors" href="leadership.html">Leadership</a>
+            <a class="font-body-sm text-body-sm text-on-surface-variant hover:text-neon-cyan transition-colors" href="blog.html">Blog</a>
+            <a class="font-body-sm text-body-sm text-on-surface-variant hover:text-neon-cyan transition-colors" href="support.html">Support</a>
+        </div>
+        <div class="flex flex-col gap-sm">
+            <span class="font-label-caps text-label-caps text-white mb-2">Legal</span>
+            <a class="font-body-sm text-body-sm text-on-surface-variant hover:text-neon-cyan transition-colors" href="privacy.html">Privacy Policy</a>
+            <a class="font-body-sm text-body-sm text-on-surface-variant hover:text-neon-cyan transition-colors" href="terms.html">Terms of Service</a>
+        </div>
+    </div>
 </footer>
 </body></html>
