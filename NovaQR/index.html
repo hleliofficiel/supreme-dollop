@@ -1,165 +1,374 @@
+```html
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NovaQR Documentation</title>
+    <title>NovaQR Documentation - Official Developer & Deployment Guide</title>
+    
+    <!-- Primary SEO Meta Tags -->
+    <meta name="title" content="NovaQR Documentation - Official Developer & Deployment Guide">
+    <meta name="description" content="Comprehensive technical documentation for NovaQR: Architecture, Google CredentialManager Auth, Supabase DB integration, Gemini AI models, security policies, and build deployment.">
+    <meta name="keywords" content="NovaQR, Kotlin, Jetpack Compose, Supabase, Gemini AI, Android Development, QR Generator, Google OAuth, CredentialManager, Android SDK 36">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="PayFopus">
+    <link rel="canonical" href="https://docs.payfopus.com/novaqr/">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://docs.payfopus.com/novaqr/">
+    <meta property="og:title" content="NovaQR Documentation - Official Technical Guide">
+    <meta property="og:description" content="Complete documentation for building, customizing, and deploying the NovaQR Android application powered by Kotlin, Supabase, and Gemini AI.">
+    <meta property="og:image" content="https://docs.payfopus.com/novaqr/og-image.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://docs.payfopus.com/novaqr/">
+    <meta property="twitter:title" content="NovaQR Documentation - Developer Guide">
+    <meta property="twitter:description" content="Technical guide for NovaQR: Android Jetpack Compose, Supabase integration, Gemini 3.6 Flash AI engine, and dual Google Authentication.">
+    <meta property="twitter:image" content="https://docs.payfopus.com/novaqr/og-image.png">
+
+    <!-- Fonts & Styles -->
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Embedded RTL & i18n Styles Helper -->
+    <style>
+        :root {
+            --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            --font-rtl: 'Cairo', 'Inter', sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        [dir="rtl"] {
+            font-family: var(--font-rtl);
+        }
+
+        [dir="rtl"] .sidebar {
+            border-right: none;
+            border-left: 1px solid var(--border-color, rgba(255,255,255,0.08));
+        }
+
+        [dir="rtl"] .nav-item svg {
+            margin-right: 0;
+            margin-left: 12px;
+        }
+
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: #00f0ff;
+            color: #090d16;
+            padding: 8px 16px;
+            z-index: 10000;
+            font-weight: 700;
+            text-decoration: none;
+            border-radius: 0 0 4px 0;
+            transition: top 0.2s ease;
+        }
+        .skip-link:focus {
+            top: 0;
+        }
+
+        /* Hero Landing Improvements */
+        .hero-banner {
+            background: linear-gradient(135deg, rgba(0,240,255,0.08) 0%, rgba(59,130,246,0.05) 100%);
+            border: 1px solid rgba(0,240,255,0.2);
+            border-radius: 16px;
+            padding: 32px;
+            margin-bottom: 32px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(0,240,255,0.12);
+            color: #00f0ff;
+            font-size: 13px;
+            font-weight: 600;
+            padding: 4px 12px;
+            border-radius: 20px;
+            margin-bottom: 16px;
+            border: 1px solid rgba(0,240,255,0.3);
+        }
+
+        .quick-nav-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 16px;
+            margin-top: 24px;
+        }
+
+        .quick-nav-card {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 12px;
+            padding: 20px;
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.2s ease;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .quick-nav-card:hover {
+            border-color: #00f0ff;
+            transform: translateY(-2px);
+            background: rgba(0,240,255,0.04);
+        }
+
+        .quick-nav-card h3 {
+            margin: 0;
+            font-size: 16px;
+            color: var(--text-primary, #ffffff);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .quick-nav-card p {
+            margin: 0;
+            font-size: 13px;
+            color: var(--text-secondary, #94a3b8);
+            line-height: 1.5;
+        }
+
+        .nav-group-title {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: rgba(255,255,255,0.4);
+            margin: 20px 16px 8px 16px;
+            font-weight: 700;
+        }
+
+        .lang-switch-btn {
+            background: transparent;
+            border: 1px solid rgba(255,255,255,0.15);
+            color: #cbd5e1;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 12px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            margin-top: 12px;
+            transition: all 0.2s ease;
+        }
+
+        .lang-switch-btn:hover {
+            border-color: #00f0ff;
+            color: #00f0ff;
+        }
+    </style>
 </head>
 <body>
-    <header class="mobile-header">
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <header class="mobile-header" role="banner">
         <div class="mobile-title">
             <h2>NovaQR Documentation</h2>
         </div>
-        <button id="menuToggle" class="menu-toggle" aria-label="Toggle Menu">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        <button id="menuToggle" class="menu-toggle" aria-label="Toggle Navigation Menu" aria-expanded="false" aria-controls="sidebar-navigation">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
         </button>
     </header>
 
     <div class="app-container">
-        <aside class="sidebar">
+        <aside class="sidebar" id="sidebar-navigation" role="navigation" aria-label="Main Navigation">
             <div>
                 <div class="logo">
                     <div class="logo-header">
                         <div>
                             <h2>NovaQR</h2>
-                                                    </div>
+                            <span style="font-size: 11px; color: #00f0ff; font-weight: 600; letter-spacing: 0.05em;">DOCS v2.0</span>
+                        </div>
                     </div>
                 </div>
+
                 <nav class="nav-menu">
+                    <div class="nav-group-title">Overview</div>
                     <a href="#getting-started" class="nav-item active" data-target="getting-started">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
                         Getting Started
                     </a>
                     <a href="#telegram-community" class="nav-item" data-target="telegram-community">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
                         Telegram Community
                     </a>
+
+                    <div class="nav-group-title">Setup & Build</div>
                     <a href="#installation" class="nav-item" data-target="installation">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
                         Installation & Build
                     </a>
                     <a href="#package-customization" class="nav-item" data-target="package-customization">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
                         Package & Identity
                     </a>
-                    <a href="#google-auth" class="nav-item" data-target="google-auth">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
-                        Google Authentication
-                    </a>
                     <a href="#env-setup" class="nav-item" data-target="env-setup">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"></path></svg>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"></path></svg>
                         Environment Variables
                     </a>
+
+                    <div class="nav-group-title">Backend & Auth</div>
+                    <a href="#google-auth" class="nav-item" data-target="google-auth">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                        Google Authentication
+                    </a>
                     <a href="#supabase-db" class="nav-item" data-target="supabase-db">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path></svg>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path></svg>
                         Supabase Database
                     </a>
                     <a href="#external-database" class="nav-item" data-target="external-database">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect><rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect><line x1="6" y1="6" x2="6.01" y2="6"></line><line x1="6" y1="18" x2="6.01" y2="18"></line></svg>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect><rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect><line x1="6" y1="6" x2="6.01" y2="6"></line><line x1="6" y1="18" x2="6.01" y2="18"></line></svg>
                         External DB Integration
                     </a>
-                    <a href="#legal-policies" class="nav-item" data-target="legal-policies">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>
-                        Legal & Privacy Policies
-                    </a>
+
+                    <div class="nav-group-title">Customization & AI</div>
                     <a href="#app-branding" class="nav-item" data-target="app-branding">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M12 2a10 10 0 0 0-7.07 17.07l1.41-1.41A8 8 0 1 1 12 4v-2z"></path></svg>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><path d="M12 2a10 10 0 0 0-7.07 17.07l1.41-1.41A8 8 0 1 1 12 4v-2z"></path></svg>
                         Branding & Customization
                     </a>
                     <a href="#ai-agent" class="nav-item" data-target="ai-agent">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M12 8v4l3 3"></path></svg>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><path d="M12 8v4l3 3"></path></svg>
                         AI Model Configuration
                     </a>
                     <a href="#proxy-security" class="nav-item" data-target="proxy-security">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
                         Security & Policy Guide
                     </a>
                     <a href="#themes-freeware" class="nav-item" data-target="themes-freeware">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path></svg>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path></svg>
                         Themes & Distribution
                     </a>
                     <a href="#pricing-plans" class="nav-item" data-target="pricing-plans">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
                         Plans & Usage Limits
                     </a>
+
+                    <div class="nav-group-title">Support & Legal</div>
+                    <a href="#legal-policies" class="nav-item" data-target="legal-policies">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>
+                        Legal & Privacy Policies
+                    </a>
                     <a href="#live-support" class="nav-item" data-target="live-support">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
                         Live Support
                     </a>
                     <a href="#troubleshooting" class="nav-item" data-target="troubleshooting">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
                         Troubleshooting
                     </a>
                     <a href="#faq" class="nav-item" data-target="faq">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
                         Frequently Asked Questions
                     </a>
                     <a href="#apk-download" class="nav-item" data-target="apk-download">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
                         APK Binary Download
                     </a>
                 </nav>
             </div>
+
             <div class="sidebar-footer">
-                <p>&copy; 2026 <strong>PayFopus</strong>. All rights reserved.<br><a href="https://t.me/payfopus" target="_blank" style="color: #229ed9; font-weight: 600;">Join Telegram</a></p>
+                <button id="rtlToggleBtn" class="lang-switch-btn" aria-label="Switch Text Direction RTL/LTR">
+                    🌐 Toggle Direction (LTR / RTL)
+                </button>
+                <p>&copy; 2026 <strong>PayFopus</strong>. All rights reserved.<br>
+                <a href="https://t.me/payfopus" target="_blank" rel="noopener noreferrer" style="color: #229ed9; font-weight: 600;">Join Telegram Channel</a></p>
             </div>
         </aside>
 
-        <main class="content">
+        <main class="content" id="main-content" role="main">
             <!-- Getting Started -->
-            <section id="getting-started" class="doc-section active">
-                <h1>Welcome to NovaQR Documentation</h1>
-                <p>Welcome to the official technical guide for <strong>NovaQR</strong>, an advanced Android application powered by Kotlin, Jetpack Compose, Gemini AI, and Supabase. NovaQR provides intelligent QR code creation, artistic customization, scanner capabilities, real-time AI assistance, and seamless cross-device profile synchronization.</p>
-                
-                <div class="telegram-card">
-                    <h3 style="margin-top: 0; color: var(--text-primary);">Join the Private PayFopus Community</h3>
-                    <p>Connect directly with core developers, request priority features, get instant assistance, and access exclusive custom builds in our private Telegram group.</p>
-                    <div class="download-actions">
-                        <a href="https://t.me/payfopus" target="_blank" class="btn-telegram">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
-                            Join Telegram
+            <section id="getting-started" class="doc-section active" role="region" aria-labelledby="heading-getting-started">
+                <div class="hero-banner">
+                    <div class="hero-badge">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                        PRODUCTION READY v2.0
+                    </div>
+                    <h1 id="heading-getting-started" style="margin-top:0;">NovaQR Developer Documentation</h1>
+                    <p style="font-size: 16px; color: var(--text-secondary, #94a3b8); line-height: 1.6; max-width: 800px;">
+                        Welcome to the official technical specification and deployment guide for <strong>NovaQR</strong>. Built on modern Android architecture with Kotlin, Jetpack Compose, Gemini AI models, and Supabase cloud infrastructure, NovaQR delivers high-speed artistic QR code generation, real-time scanning, context-aware AI assistance, and instant profile synchronization.
+                    </p>
+
+                    <div class="quick-nav-grid">
+                        <a href="#installation" class="quick-nav-card" onclick="document.querySelector('[data-target=\'installation\']').click()">
+                            <h3>Build Setup <span>→</span></h3>
+                            <p>Compile NovaQR locally using Android Studio Koala, SDK 36, and Gradle 8.x DSL.</p>
+                        </a>
+                        <a href="#google-auth" class="quick-nav-card" onclick="document.querySelector('[data-target=\'google-auth\']').click()">
+                            <h3>Google OAuth <span>→</span></h3>
+                            <p>Configure Google CredentialManager, SHA fingerprints, and Web Client ID setup.</p>
+                        </a>
+                        <a href="#supabase-db" class="quick-nav-card" onclick="document.querySelector('[data-target=\'supabase-db\']').click()">
+                            <h3>Supabase DB <span>→</span></h3>
+                            <p>Execute PostgreSQL schemas, user profile tables, and Row-Level Security (RLS) policies.</p>
+                        </a>
+                        <a href="#ai-agent" class="quick-nav-card" onclick="document.querySelector('[data-target=\'ai-agent\']').click()">
+                            <h3>Gemini AI Engine <span>→</span></h3>
+                            <p>Configure NOVA Assistant, prompt dynamic syncing, and Gemini 3.6 Flash parameters.</p>
                         </a>
                     </div>
                 </div>
 
-                <h2>Architecture Overview</h2>
-                <p>The application is built using modern Android development practices and structured clean MVVM architecture:</p>
+                <div class="telegram-card">
+                    <h3 style="margin-top: 0; color: var(--text-primary, #ffffff);">Join the Private PayFopus Community</h3>
+                    <p>Connect directly with core developers, request priority white-label features, access pre-release APK builds, and receive instant implementation assistance in our Telegram channel.</p>
+                    <div class="download-actions">
+                        <a href="https://t.me/payfopus" target="_blank" rel="noopener noreferrer" class="btn-telegram">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+                            Join Telegram (@payfopus)
+                        </a>
+                    </div>
+                </div>
+
+                <h2>Core System Architecture</h2>
+                <p>The application strictly adheres to Clean MVVM Architecture, ensuring complete separation between UI components, business logic, domain models, and external service repositories.</p>
+                
                 <div class="data-table-wrapper">
                     <table class="data-table">
                         <thead>
                             <tr>
-                                <th>Component</th>
-                                <th>Technology</th>
-                                <th>Description</th>
+                                <th>Architecture Layer</th>
+                                <th>Technology Stack</th>
+                                <th>Technical Functionality</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
                                 <td><strong>UI Framework</strong></td>
                                 <td>Jetpack Compose & Material 3</td>
-                                <td>Declarative modern UI with custom animations and dynamic color palettes.</td>
+                                <td>Declarative reactive UI, seamless dark/light theme switching, and custom canvas rendering.</td>
                             </tr>
                             <tr>
-                                <td><strong>Language</strong></td>
-                                <td>Kotlin 2.0+</td>
-                                <td>100% Kotlin codebase using Coroutines and StateFlow for reactive UI.</td>
+                                <td><strong>Language Runtime</strong></td>
+                                <td>Kotlin 2.0+ (Coroutines & Flow)</td>
+                                <td>Asynchronous non-blocking pipeline with type-safe StateFlow state management.</td>
                             </tr>
                             <tr>
-                                <td><strong>Backend & Auth</strong></td>
-                                <td>Supabase Kotlin SDK</td>
-                                <td>Real-time Database, OAuth 2.0 Authentication, and Row-Level Security (RLS).</td>
+                                <td><strong>Backend Services</strong></td>
+                                <td>Supabase Kotlin SDK 2.x</td>
+                                <td>Real-time PostgreSQL connection, OAuth 2.0 session tokens, and secure Row-Level Security.</td>
                             </tr>
                             <tr>
-                                <td><strong>AI Engine</strong></td>
-                                <td>Google Gemini API</td>
-                                <td>Intelligent context analysis, prompt generation, and live assistant support.</td>
+                                <td><strong>AI Subsystem</strong></td>
+                                <td>Google Gemini API (3.6 Flash / 3.1 Pro)</td>
+                                <td>Context-aware prompt generation, automated troubleshooting, and interactive chat assistance.</td>
                             </tr>
                             <tr>
-                                <td><strong>QR Engine</strong></td>
-                                <td>ZXing & Custom Canvas</td>
-                                <td>High-speed QR code generation with artistic dot, eye, and gradient renders.</td>
+                                <td><strong>QR Processing Engine</strong></td>
+                                <td>ZXing Core & Native Compose Canvas</td>
+                                <td>Matrix calculation, dot/eye customization, embedded logos, and dynamic vector exporting.</td>
                             </tr>
                         </tbody>
                     </table>
@@ -167,204 +376,262 @@
             </section>
 
             <!-- Telegram Community -->
-            <section id="telegram-community" class="doc-section">
-                <h1>PayFopus Private Telegram Community</h1>
-                <p>We maintain an exclusive developer and user community on Telegram to offer immediate technical support, early beta releases, source code extensions, and custom development requests.</p>
+            <section id="telegram-community" class="doc-section" role="region" aria-labelledby="heading-telegram">
+                <h1 id="heading-telegram">PayFopus Developer Portal & Community</h1>
+                <p>We maintain an active developer portal on Telegram to provide immediate technical support, early beta releases, source code updates, and custom white-label branding inquiries.</p>
 
                 <div class="telegram-card">
-                    <h2 style="margin-top: 0; border: none; padding: 0;">Official Telegram Portal</h2>
-                    <p>Click the link below to open our verified Telegram channel and community group directly on your phone or computer:</p>
-                    <p><a href="https://t.me/payfopus" target="_blank" style="font-size: 18px; font-weight: 700; color: #229ed9;">https://t.me/payfopus</a></p>
+                    <h2 style="margin-top: 0; border: none; padding: 0;">Official Developer Telegram</h2>
+                    <p>Access official updates, source repositories, and direct chat support through our verified portal:</p>
+                    <p><a href="https://t.me/payfopus" target="_blank" rel="noopener noreferrer" style="font-size: 18px; font-weight: 700; color: #229ed9;">https://t.me/payfopus</a></p>
                     
                     <div class="download-actions" style="margin-top: 16px;">
-                        <a href="https://t.me/payfopus" target="_blank" class="btn-telegram">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
-                            Open Telegram Community (@payfopus)
+                        <a href="https://t.me/payfopus" target="_blank" rel="noopener noreferrer" class="btn-telegram">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+                            Connect on Telegram (@payfopus)
                         </a>
                     </div>
                 </div>
 
-                <h2>Community Perks & Resources</h2>
+                <h2>Developer Privileges</h2>
                 <div class="feature-grid">
                     <div class="feature-card">
-                        <div class="feature-card-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polyline></svg></div>
-                        <h4>24/7 Technical Support</h4>
-                        <p>Ask questions regarding deployment, Supabase queries, Android Studio build issues, and API configurations.</p>
+                        <div class="feature-card-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polyline></svg></div>
+                        <h4>24/7 Deployment Assistance</h4>
+                        <p>Get direct technical assistance regarding Android Studio build synchronization, Supabase RLS policies, and OAuth keys.</p>
                     </div>
                     <div class="feature-card">
-                        <div class="feature-card-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path></svg></div>
-                        <h4>Exclusive Beta Releases</h4>
-                        <p>Receive pre-release APKs, experimental QR rendering modules, and new AI prompts before official store updates.</p>
+                        <div class="feature-card-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path></svg></div>
+                        <h4>Early Release Access</h4>
+                        <p>Download preview APKs, experimental vector QR styling engines, and advanced Gemini prompt templates.</p>
                     </div>
                     <div class="feature-card">
-                        <div class="feature-card-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg></div>
-                        <h4>Custom Feature Requests</h4>
-                        <p>Submit suggestions or request customized app white-labeling directly to the primary developers.</p>
+                        <div class="feature-card-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg></div>
+                        <h4>White-Label Request Pipeline</h4>
+                        <p>Submit custom branding specs, package name reconfigurations, and enterprise database connector requests.</p>
                     </div>
                     <div class="feature-card">
-                        <div class="feature-card-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg></div>
-                        <h4>Security & Bug Alerts</h4>
-                        <p>Stay informed about OAuth configuration updates, Google policy changes, and database security patches.</p>
+                        <div class="feature-card-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg></div>
+                        <h4>Security & Policy Advisories</h4>
+                        <p>Stay updated on Google Play Store publishing guidelines, OAuth 2.0 policy updates, and Gemini API changes.</p>
                     </div>
                 </div>
             </section>
 
             <!-- Installation -->
-            <section id="installation" class="doc-section">
-                <h1>Local Installation & Build</h1>
-                <p>Follow these steps to compile and package NovaQR locally using Android Studio or the Command Line Interface.</p>
+            <section id="installation" class="doc-section" role="region" aria-labelledby="heading-installation">
+                <h1 id="heading-installation">Local Installation & Build Pipeline</h1>
+                <p>Follow this step-by-step procedure to set up your local development environment, assemble dependencies, and compile NovaQR.</p>
 
-                <h2>Build Environment Requirements</h2>
-                <ul>
-                    <li><strong>Android Studio:</strong> Koala (2024.1.1) or newer recommended</li>
-                    <li><strong>JDK:</strong> Java Development Kit 17+</li>
-                    <li><strong>Android SDK:</strong> SDK Platform 36 (Minimum SDK 24 / Android 7.0)</li>
-                    <li><strong>Gradle:</strong> Gradle 8.x with Kotlin DSL (.gradle.kts)</li>
-                </ul>
+                <h2>Recommended Toolchain & SDK Standards</h2>
+                <div class="data-table-wrapper">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Component</th>
+                                <th>Recommended Version</th>
+                                <th>Configuration Notes</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>IDE</strong></td>
+                                <td>Android Studio Koala (2024.1.1)+</td>
+                                <td>Ensure Kotlin Plugin 2.0+ and Android Gradle Plugin (AGP) 8.5+ are active.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>JDK</strong></td>
+                                <td>Java Development Kit (JDK) 17+</td>
+                                <td>Configured as the Gradle JDK in Android Studio Settings.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Android SDK</strong></td>
+                                <td>API Level 36 (Android 15)</td>
+                                <td>Target SDK: 36 | Minimum SDK: 24 (Android 7.0 Nougat).</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Build System</strong></td>
+                                <td>Gradle 8.7+ with Kotlin DSL</td>
+                                <td>Uses type-safe <span class="inline-code">build.gradle.kts</span> files across all modules.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Compose Stack</strong></td>
+                                <td>Jetpack Compose 2024.06+ BOM</td>
+                                <td>Material 3 design system with dynamic color palette support.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
 
                 <h2>Step-by-Step Compilation</h2>
                 <ol>
-                    <li>Clone the repository or extract the source code archive.</li>
-                    <li>In the project root, create a file named <span class="inline-code">.env</span> (you can base it on <span class="inline-code">.env.example</span>).</li>
-                    <li>Populate your Supabase URL, Anon Key, and Gemini API Key in the <span class="inline-code">.env</span> file.</li>
-                    <li>Open the project in Android Studio and allow Gradle to complete dependency sync.</li>
-                    <li>Build the debug APK using terminal command:</li>
+                    <li>Clone the source code repository to your local directory:</li>
+                </ol>
+                <div class="code-block">
+                    <pre><code>git clone https://github.com/payfopus/novaqr-android.git
+cd novaqr-android</code></pre>
+                </div>
+
+                <ol start="2">
+                    <li>Create an active environment configuration file named <span class="inline-code">.env</span> in the root project directory (refer to the provided <span class="inline-code">.env.example</span> template).</li>
+                    <li>Populate your active credentials (<span class="inline-code">SUPABASE_URL</span>, <span class="inline-code">SUPABASE_ANON_KEY</span>, <span class="inline-code">GEMINI_API_KEY</span>, <span class="inline-code">GOOGLE_LOGIN_KEY</span>).</li>
+                    <li>Open the project directory in Android Studio Koala and initiate Gradle Sync.</li>
+                    <li>Compile the debug binary executing the Gradle wrapper via terminal:</li>
                 </ol>
 
                 <div class="code-block">
                     <pre><code>./gradlew assembleDebug</code></pre>
                 </div>
-                <p>The compiled APK will be generated at <span class="inline-code">app/build/outputs/apk/debug/app-debug.apk</span>.</p>
+                <p>The compiled APK will be generated at: <span class="inline-code">app/build/outputs/apk/debug/app-debug.apk</span>.</p>
             </section>
 
             <!-- Package Customization -->
-            <section id="package-customization" class="doc-section">
-                <h1>Package & Identity Customization</h1>
-                <p>NovaQR uses the official production package identifier <span class="inline-code">com.example.novaqr</span>. Below are the steps to maintain or customize the app identity before distribution.</p>
+            <section id="package-customization" class="doc-section" role="region" aria-labelledby="heading-package">
+                <h1 id="heading-package">Package & Identity Configuration</h1>
+                <p>NovaQR is pre-configured with the standard production namespace <span class="inline-code">com.example.novaqr</span>. Follow these instructions to modify application identifiers for custom releases.</p>
 
-                <h2>1. Application ID (Package Name)</h2>
-                <p>The unique identifier used by Android OS and the Google Play Store is defined in <span class="inline-code">app/build.gradle.kts</span>:</p>
+                <h2>1. Application Identifier & SDK Versioning</h2>
+                <p>The application package namespace and SDK target configurations are managed in <span class="inline-code">app/build.gradle.kts</span>:</p>
 
                 <div class="code-block">
                     <pre><code>android {
-    namespace = "com.example"
-    
+    namespace = "com.example.novaqr"
+    compileSdk = 36
+
     defaultConfig {
         applicationId = "com.example.novaqr"
         minSdk = 24
         targetSdk = 36
         versionCode = 1
-        versionName = "1.0"
+        versionName = "1.0.0"
+
+        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        vectorDrawables {
+            useSupportLibrary = true
+        }
     }
 }</code></pre>
                 </div>
 
-                <h2>2. Application Title</h2>
-                <p>The app label visible on the Android launcher and app info screen is configured in <span class="inline-code">app/src/main/res/values/strings.xml</span>:</p>
+                <h2>2. App Display Name & Resource Strings</h2>
+                <p>The primary application launcher label displayed on the Android system home screen is defined in <span class="inline-code">app/src/main/res/values/strings.xml</span>:</p>
 
                 <div class="code-block">
                     <pre><code>&lt;resources&gt;
     &lt;string name="app_name"&gt;NovaQR&lt;/string&gt;
+    &lt;string name="app_description"&gt;Intelligent QR Generator &amp; AI Scanner&lt;/string&gt;
 &lt;/resources&gt;</code></pre>
                 </div>
             </section>
 
             <!-- Google Authentication -->
-            <section id="google-auth" class="doc-section">
-                <h1>Google Authentication</h1>
-                <p>NovaQR provides dual-mode Google Authentication: on-device native <strong>Google CredentialManager</strong> (direct ID Token exchange without browser tabs) and <strong>Browser-based OAuth 2.0</strong> with custom deep links. Follow this guide to configure authentication.</p>
+            <section id="google-auth" class="doc-section" role="region" aria-labelledby="heading-google-auth">
+                <h1 id="heading-google-auth">Google Authentication Specification</h1>
+                <p>NovaQR implements modern dual-layer Google Authentication architecture on Android. The system attempts primary authentication via native on-device <strong>Google CredentialManager</strong>, falling back smoothly to <strong>Browser OAuth 2.0</strong> with custom deep links when required.</p>
 
-                <div class="callout callout-warning">
-                    <div class="callout-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg></div>
-                    <div class="callout-content">
-                        <h4>Understanding Error 1: Redirect to https://your-project.supabase.co/?error (ERR_CONNECTION_REFUSED)</h4>
-                        <p>If Google OAuth redirects to <span class="inline-code">https://your-project.supabase.co/?error</span> in mobile Chrome, this indicates that Supabase Auth rejected the requested <span class="inline-code">redirect_to</span> URI because it was not listed in Supabase's allowed Redirect URLs whitelist. When unwhitelisted, Supabase falls back to its default Site URL (<span class="inline-code">https://your-project.supabase.co</span>), which fails on mobile devices.</p>
-                        <p><strong>Fix:</strong> Log into <strong>Supabase Dashboard</strong> &gt; <strong>Authentication</strong> &gt; <strong>URL Configuration</strong>. In <strong>Redirect URLs</strong>, add:<br>
-                        <span class="inline-code">com.example.novaqr://callback</span><br>
-                        <span class="inline-code">novaqr://callback</span></p>
+                <h2>1. Authentication Architecture</h2>
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <div class="feature-card-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg></div>
+                        <h4>Native CredentialManager (Primary)</h4>
+                        <p>Invokes Android's native bottom-sheet account picker. Retrieves a cryptographically signed Google ID Token directly within the app and passes it to Supabase Auth without opening external browser windows.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-card-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M12 2a10 10 0 0 0-7.07 17.07l1.41-1.41A8 8 0 1 1 12 4v-2z"></path></svg></div>
+                        <h4>Browser OAuth 2.0 (Fallback)</h4>
+                        <p>If CredentialManager is unsupported on older Play Services versions, the app opens Chrome Custom Tabs to complete OAuth authorization, returning via deep link <span class="inline-code">com.example.novaqr://callback</span>.</p>
                     </div>
                 </div>
 
-                <div class="callout callout-danger">
-                    <div class="callout-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg></div>
-                    <div class="callout-content">
-                        <h4>Understanding Error 2: Error 403: org_internal</h4>
-                        <p>This error occurs when your Google Cloud Console OAuth Consent Screen is set to <strong>Internal</strong> instead of <strong>External</strong>, blocking non-workspace Google accounts.</p>
-                        <p><strong>Fix:</strong> Go to Google Cloud Console &gt; APIs & Services &gt; OAuth consent screen, and change User Type to <strong>External</strong>.</p>
-                    </div>
-                </div>
-
-                <h2>1. Step-by-Step Fix for Error 403 org_internal</h2>
+                <h2>2. Google Cloud Console Provisioning</h2>
+                <p>To enable Google Authentication for your build, set up your OAuth parameters in Google Cloud Console:</p>
                 <ol>
-                    <li>Log into the <a href="https://console.cloud.google.com/" target="_blank">Google Cloud Console</a>.</li>
-                    <li>Select your project corresponding to the Web Client ID used in Supabase.</li>
+                    <li>Log into <a href="https://console.cloud.google.com/" target="_blank" rel="noopener noreferrer">Google Cloud Console</a> and create or select your project.</li>
                     <li>Navigate to <strong>APIs & Services</strong> &gt; <strong>OAuth consent screen</strong>.</li>
-                    <li>Look at the <strong>User Type</strong> section. If it shows <strong>Internal</strong>, click <strong>EDIT APP</strong> or <strong>CHANGE USER TYPE</strong>.</li>
-                    <li>Select <strong>External</strong> and click <strong>SAVE</strong>.</li>
-                    <li>Fill in mandatory fields (App name: <em>NovaQR</em>, User support email, Developer contact email).</li>
-                    <li>In the <strong>Scopes</strong> section, ensure the following scopes are added:
+                    <li>Set <strong>User Type</strong> to <strong>External</strong> and fill in required app contact details.</li>
+                    <li>Configure mandatory authorization scopes:
                         <ul>
-                            <li><span class="inline-code">.../auth/userinfo.email</span></li>
-                            <li><span class="inline-code">.../auth/userinfo.profile</span></li>
                             <li><span class="inline-code">openid</span></li>
+                            <li><span class="inline-code">https://www.googleapis.com/auth/userinfo.email</span></li>
+                            <li><span class="inline-code">https://www.googleapis.com/auth/userinfo.profile</span></li>
                         </ul>
                     </li>
-                    <li>Under <strong>Test Users</strong>, click <strong>PUBLISH APP</strong> (or add your email address under test users).</li>
+                    <li>Publish your consent screen status to <strong>In Production</strong> or register developer emails under <strong>Test Users</strong>.</li>
+                    <li>Navigate to <strong>Credentials</strong> &gt; <strong>Create Credentials</strong> &gt; <strong>OAuth client ID</strong>.</li>
+                    <li>Select <strong>Web application</strong> (This Web Client ID will be used as <span class="inline-code">GOOGLE_LOGIN_KEY</span> in Supabase and <span class="inline-code">.env</span>).</li>
                 </ol>
 
-                <h2>2. Native Google CredentialManager vs Browser OAuth</h2>
-                <p>NovaQR automatically attempts native <strong>CredentialManager</strong> sign-in first. If valid keys are provided in <span class="inline-code">.env</span>, Android displays Google's native account sheet directly inside the app, retrieves a signed ID token, and authenticates with Supabase without opening a browser or performing web redirects.</p>
-                <p>If CredentialManager is unavailable or canceled, the app falls back to browser OAuth using <span class="inline-code">com.example.novaqr://callback</span> deep link.</p>
+                <h2>3. Generating Required SHA Fingerprints</h2>
+                <p>Google CredentialManager requires linking your Android app's signing certificate fingerprints (SHA-1 and SHA-256) to an Android Client ID entry in Google Cloud Console.</p>
 
-                <h2>3. Configuring Keys in .env</h2>
-                <p>You can configure Google login parameters dynamically via the root <span class="inline-code">.env</span> file without hardcoding credentials in Kotlin source code:</p>
+                <p><strong>Generating Debug SHA Fingerprints via Terminal:</strong></p>
+                <div class="code-block">
+                    <pre><code># Linux / macOS
+keytool -list -v -keystore ~/.android/debug.keystore -alias androiddebugkey -storepass android -keypass android
+
+# Windows
+keytool -list -v -keystore "%USERPROFILE%\.android\debug.keystore" -alias androiddebugkey -storepass android -keypass android
+
+# Alternatively via Gradle inside project:
+./gradlew signingReport</code></pre>
+                </div>
+
+                <p>Copy both <strong>SHA-1</strong> and <strong>SHA-256</strong> keys and paste them into your Android Client ID configuration in Google Cloud Console under matching package name <span class="inline-code">com.example.novaqr</span>.</p>
+
+                <h2>4. Redirect URI Whitelisting in Supabase</h2>
+                <p>To accept deep link redirects from Browser OAuth, register your custom schemes in <strong>Supabase Dashboard</strong> &gt; <strong>Authentication</strong> &gt; <strong>URL Configuration</strong> &gt; <strong>Redirect URLs</strong>:</p>
 
                 <div class="code-block">
-                    <pre><code># Google OAuth Web Client ID (from Google Cloud Console)
-GOOGLE_LOGIN_KEY=YOUR_GOOGLE_WEB_CLIENT_ID.apps.googleusercontent.com
+                    <pre><code>com.example.novaqr://callback
+novaqr://callback</code></pre>
+                </div>
 
-# Custom Deep Link Redirect URI
-GOOGLE_CUSTOM_REDIRECT_URL=com.example.app://callback
+                <h2>5. Environment Variables Configuration</h2>
+                <p>Add your Web Client ID and Redirect scheme to your project <span class="inline-code">.env</span> file:</p>
+
+                <div class="code-block">
+                    <pre><code>GOOGLE_LOGIN_KEY=YOUR_GOOGLE_WEB_CLIENT_ID.apps.googleusercontent.com
+GOOGLE_CUSTOM_REDIRECT_URL=com.example.novaqr://callback</code></pre>
                 </div>
             </section>
 
             <!-- Environment Setup -->
-            <section id="env-setup" class="doc-section">
-                <h1>Environment Setup (.env & .env.example)</h1>
-                <p>To configure API connections securely without modifying application source code, NovaQR reads environment variables from the root <span class="inline-code">.env</span> file, falling back to <span class="inline-code">.env.example</span> for default values. Inactive or optional parameters can be commented out using <span class="inline-code">#</span>.</p>
+            <section id="env-setup" class="doc-section" role="region" aria-labelledby="heading-env">
+                <h1 id="heading-env">Environment Variables (.env & .env.example)</h1>
+                <p>NovaQR utilizes strict secret isolation. All API credentials, database keys, and configuration parameters are loaded dynamically at compile time through the Secrets Gradle Plugin into BuildConfig constants.</p>
 
-                <h2>Active Environment Configuration (.env)</h2>
+                <h2>Active Environment File (.env)</h2>
                 <div class="code-block">
                     <pre><code>########################################
-# Application
+# Application Settings
 ########################################
 APP_NAME=NovaQR
 PACKAGE_NAME=com.example.novaqr
 
 ########################################
-# Gemini AI
+# Gemini AI Configuration
 ########################################
 GEMINI_API_KEY=YOUR_GEMINI_API_KEY
-GEMINI_MODEL=gemini-2.5-flash
+GEMINI_MODEL=gemini-3.6-flash
+GEMINI_FALLBACK_MODEL=gemini-3.1-pro
 GEMINI_SYSTEM_PROMPT=You are NOVA, an intelligent assistant for NovaQR.
 
 ########################################
-# Supabase Database
+# Supabase Database & Auth
 ########################################
-SUPABASE_URL=https://your-project.supabase.co
+SUPABASE_URL=YOUR_SUPABASE_URL
 SUPABASE_ANON_KEY=YOUR_SUPABASE_ANON_KEY
 
 ########################################
-# External Database
+# External Database (Optional)
 ########################################
 # EXTERNAL_DATABASE_URL=postgresql://user:password@localhost:5432/novaqr_db
-# POSTGRES_URL=postgresql://user:password@localhost:5432/novaqr_db
 
 ########################################
 # Google Authentication
 ########################################
 GOOGLE_LOGIN_KEY=YOUR_GOOGLE_WEB_CLIENT_ID.apps.googleusercontent.com
-GOOGLE_CUSTOM_REDIRECT_URL=com.example.app://callback
+GOOGLE_CUSTOM_REDIRECT_URL=com.example.novaqr://callback
 
 ########################################
 # Tawk.to Live Support
@@ -373,25 +640,22 @@ TAWK_PROPERTY_ID=YOUR_TAWK_PROPERTY_ID
 TAWK_WIDGET_ID=YOUR_TAWK_WIDGET_ID
 
 ########################################
-# OpenRouter AI
+# OpenRouter AI (Fallback Provider)
 ########################################
 OPENROUTER_API_KEY=YOUR_OPENROUTER_API_KEY
-OPENROUTER_MODEL=YOUR_OPENROUTER_MODEL
-# OPENROUTER_FALLBACK_MODEL=YOUR_OPENROUTER_FALLBACK_MODEL</code></pre>
+OPENROUTER_MODEL=YOUR_OPENROUTER_MODEL</code></pre>
                 </div>
 
-                <h2>Template & Customization (.env.example)</h2>
-                <p>The <span class="inline-code">.env.example</span> file serves as a master template containing all supported active and suspended services. Developers can uncomment variables (remove <span class="inline-code">#</span>) to activate external databases, secondary AI models, or custom keystore credentials.</p>
-
-                <p>The Android build pipeline automatically reads these files during compilation using the Secrets Gradle Plugin and exposes them via <span class="inline-code">com.example.BuildConfig</span>.</p>
+                <h2>Template Master File (.env.example)</h2>
+                <p>The repository includes <span class="inline-code">.env.example</span> containing clean template placeholders. Never commit populated <span class="inline-code">.env</span> files to version control repositories.</p>
             </section>
 
             <!-- Supabase Database -->
-            <section id="supabase-db" class="doc-section">
-                <h1>Supabase Database Setup</h1>
-                <p>NovaQR utilizes Supabase PostgreSQL for persistent user data, saved QR codes, in-app notifications, and dynamic agent configuration. Execute the SQL scripts below in your Supabase SQL Editor.</p>
+            <section id="supabase-db" class="doc-section" role="region" aria-labelledby="heading-supabase">
+                <h1 id="heading-supabase">Supabase Database & Security Policies</h1>
+                <p>NovaQR relies on Supabase PostgreSQL for persistent user storage, saved QR code history, dynamic remote agent configuration, and in-app system alerts. Execute these SQL scripts inside your Supabase SQL Editor.</p>
 
-                <h2>1. User Profiles Table</h2>
+                <h2>1. User Profiles Schema & RLS</h2>
                 <div class="code-block">
                     <pre><code>CREATE TABLE IF NOT EXISTS public.profiles (
   id uuid REFERENCES auth.users ON DELETE CASCADE PRIMARY KEY,
@@ -408,7 +672,7 @@ CREATE POLICY "Users can insert own profile" ON public.profiles FOR INSERT WITH 
 CREATE POLICY "Users can update own profile" ON public.profiles FOR UPDATE USING (auth.uid() = id);</code></pre>
                 </div>
 
-                <h2>2. Saved QRs Table</h2>
+                <h2>2. Saved QR Records Table</h2>
                 <div class="code-block">
                     <pre><code>CREATE TABLE IF NOT EXISTS public.saved_qrs (
   id SERIAL PRIMARY KEY,
@@ -428,7 +692,7 @@ CREATE POLICY "Users can update own qrs" ON public.saved_qrs FOR UPDATE USING (a
 CREATE POLICY "Users can delete own qrs" ON public.saved_qrs FOR DELETE USING (auth.uid() = user_id);</code></pre>
                 </div>
 
-                <h2>3. Global In-App Notifications</h2>
+                <h2>3. Global App Notifications</h2>
                 <div class="code-block">
                     <pre><code>CREATE TABLE IF NOT EXISTS public.app_notifications (
   id SERIAL PRIMARY KEY,
@@ -445,15 +709,15 @@ CREATE POLICY "Anyone can view notifications" ON public.app_notifications FOR SE
             </section>
 
             <!-- External Database Integration -->
-            <section id="external-database" class="doc-section">
-                <h1>External Database Setup</h1>
-                <p>If you prefer to host your own PostgreSQL instance, AWS RDS, GCP Cloud SQL, or custom REST backend instead of managed Supabase, NovaQR provides flexible database connection methods.</p>
+            <section id="external-database" class="doc-section" role="region" aria-labelledby="heading-external-db">
+                <h1 id="heading-external-db">External Database Integration</h1>
+                <p>If your enterprise deployment requires self-hosted PostgreSQL, AWS RDS, GCP Cloud SQL, or custom REST APIs, NovaQR supports flexible database architecture adapters.</p>
 
-                <h2>Option 1: Connecting External PostgreSQL to Supabase</h2>
-                <p>Supabase allows connecting external PostgreSQL databases via connection pooling (pgBouncer) or direct connection string in your Supabase Dashboard under <strong>Database Settings</strong> &gt; <strong>Connection Strings</strong>.</p>
+                <h2>Option 1: Connecting External Postgres to Supabase</h2>
+                <p>Supabase allows wrapping existing external PostgreSQL instances using Foreign Data Wrappers (FDW) or pgBouncer connection pooling under <strong>Database Settings</strong> &gt; <strong>Connection Strings</strong>.</p>
 
-                <h2>Option 2: Self-Hosting Supabase Backend</h2>
-                <p>You can deploy self-hosted Supabase using Docker Compose on any VPS (DigitalOcean, Hetzner, AWS EC2):</p>
+                <h2>Option 2: Self-Hosting Supabase Stack</h2>
+                <p>Deploy a self-hosted Supabase engine using Docker Compose on any cloud server:</p>
 
                 <div class="code-block">
                     <pre><code>git clone --depth 1 https://github.com/supabase/supabase
@@ -462,78 +726,65 @@ cp .env.example .env
 docker compose up -d</code></pre>
                 </div>
 
-                <p>Update your <span class="inline-code">.env</span> file with your custom domain URL:</p>
+                <p>Update your client <span class="inline-code">.env</span> file to point directly to your custom server endpoint:</p>
                 <div class="code-block">
-                    <pre><code>SUPABASE_URL=https://your-project.supabase.co
-SUPABASE_ANON_KEY=YOUR_SUPABASE_ANON_KEY
+                    <pre><code>SUPABASE_URL=YOUR_CUSTOM_SUPABASE_HOST
+SUPABASE_ANON_KEY=YOUR_CUSTOM_ANON_KEY</code></pre>
                 </div>
-
-                <h2>Option 3: Custom REST API Endpoint Adapter</h2>
-                <p>To point NovaQR to a custom Node.js, Python, or Go REST backend, update the base URL in <span class="inline-code">app/src/main/java/com/example/data/SupabaseClient.kt</span>.</p>
             </section>
 
             <!-- Legal & Privacy Policies -->
-            <section id="legal-policies" class="doc-section">
-                <h1>Legal & Privacy Policies</h1>
-                <p>NovaQR includes dedicated in-app legal compliance screens for Privacy Policy, Terms of Service, and Data Protection standards (GDPR / CCPA).</p>
+            <section id="legal-policies" class="doc-section" role="region" aria-labelledby="heading-legal">
+                <h1 id="heading-legal">Legal Policies & Compliance</h1>
+                <p>NovaQR incorporates full compliance UI screens for Privacy Policy, Terms of Service, and Data Retention standard guidelines (GDPR / CCPA).</p>
 
-                <h2>1. In-App Legal Screen Source Code</h2>
-                <p>The legal views are located in <span class="inline-code">app/src/main/java/com/example/ui/screens/LegalPoliciesScreen.kt</span>. You can edit policy clauses directly or load them remotely from a web URL.</p>
-
-                <h2>2. Updating Policy Texts</h2>
-                <p>To update the legal policy text shown inside the app, open <span class="inline-code">LegalPoliciesScreen.kt</span> and modify the policy text blocks:</p>
+                <h2>1. Localizing Legal Text</h2>
+                <p>In-app policy content is maintained in <span class="inline-code">app/src/main/java/com/example/ui/screens/LegalPoliciesScreen.kt</span>:</p>
 
                 <div class="code-block">
                     <pre><code>const val PRIVACY_POLICY_TEXT = """
-NovaQR values your privacy. We collect minimal telemetry data required for user authentication, QR synchronization, and AI chat functionality.
+NovaQR Privacy Policy & Terms
 
-1. Information We Collect:
-- Account details (Email, Full Name) via Google Sign-In or Supabase.
-- User-generated QR codes stored securely under your account profile.
+1. Data Collection & Usage:
+- We collect user account details (email, full name) exclusively for cloud profile synchronization.
+- Generated QR code payloads are stored securely under encrypted user tables.
 
-2. Data Usage & AI:
-- Prompts submitted to NOVA are processed securely through Google Gemini API.
-- Your personal information is never sold to third parties.
+2. AI Interactions:
+- User prompts submitted to NOVA Assistant are transmitted securely over HTTPS to Gemini AI APIs.
+- Personal identity parameters are never utilized for model re-training.
 """</code></pre>
                 </div>
 
-                <h2>3. Hosting Policies on External Web Pages</h2>
-                <p>For Google Play Store submission, you must provide a public HTTPS URL for your privacy policy. You can host the HTML file located at <span class="inline-code">/documentation/index.html#legal-policies</span> or publish a custom web document.</p>
+                <h2>2. Web Hosted Privacy Policy for Play Store</h2>
+                <p>For Google Play Store publication, host your policy on a public HTTPS domain or point to your repository documentation link.</p>
             </section>
 
             <!-- Branding & Customization -->
-            <section id="app-branding" class="doc-section">
-                <h1>App Branding & Customization</h1>
-                <p>Learn how to change the app launcher icons, brand colors, typography, splash screens, and localized text resources.</p>
+            <section id="app-branding" class="doc-section" role="region" aria-labelledby="heading-branding">
+                <h1 id="heading-branding">Branding & Visual Customization</h1>
+                <p>Learn how to modify app launcher icons, brand typography, color palettes, and localization resources across NovaQR.</p>
 
-                <h2>1. Replacing App Icons</h2>
-                <p>Android uses Adaptive Vector Launcher Icons. To change the app icon:</p>
-                <ul>
-                    <li><strong>Foreground Vector:</strong> Edit or replace <span class="inline-code">app/src/main/res/drawable/ic_launcher_foreground.xml</span></li>
-                    <li><strong>Background Color/Vector:</strong> Edit <span class="inline-code">app/src/main/res/drawable/ic_launcher_background.xml</span></li>
-                    <li><strong>Using Android Studio Tool:</strong> Right-click <span class="inline-code">app</span> &gt; <strong>New</strong> &gt; <strong>Image Asset</strong> and select your logo PNG/SVG.</li>
-                </ul>
-
-                <h2>2. Customizing Brand Colors</h2>
-                <p>Core color schemes are defined in <span class="inline-code">app/src/main/java/com/example/ui/theme/Color.kt</span>:</p>
+                <h2>1. Color Palette Definition</h2>
+                <p>Core design tokens are defined in <span class="inline-code">app/src/main/java/com/example/ui/theme/Color.kt</span>:</p>
 
                 <div class="code-block">
-                    <pre><code>val SleekPrimary = Color(0xFF00F0FF)    // Cyan Neon
-val SleekSecondary = Color(0xFF3B82F6)  // Tech Blue
-val SleekBackground = Color(0xFF090D16) // Deep Dark Navy
-val SleekSurface = Color(0xFF131B2E)    // Surface Navy</code></pre>
+                    <pre><code>val SleekPrimary = Color(0xFF00F0FF)      // Cyan Neon
+val SleekSecondary = Color(0xFF3B82F6)    // Tech Blue
+val SleekBackground = Color(0xFF090D16)   // Deep Navy Canvas
+val SleekSurface = Color(0xFF131B2E)      // Surface Card Navy
+val SleekTextPrimary = Color(0xFFF8FAFC)  // Bright Text White</code></pre>
                 </div>
 
-                <h2>3. Language Translation & Text Customization</h2>
-                <p>All app strings are managed through <span class="inline-code">app/src/main/res/values/strings.xml</span> and <span class="inline-code">app/src/main/java/com/example/util/TranslationHelper.kt</span> for live multi-language switching (English, Spanish, French, German, Arabic, Japanese, Portuguese).</p>
+                <h2>2. Adaptive Launcher Icons</h2>
+                <p>To update the launcher icon, modify vector assets in <span class="inline-code">app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml</span> or use Android Studio's Asset Studio tool (Right-click <span class="inline-code">app</span> &gt; <strong>New</strong> &gt; <strong>Image Asset</strong>).</p>
             </section>
 
             <!-- AI Model Configuration -->
-            <section id="ai-agent" class="doc-section">
-                <h1>AI Model Configuration</h1>
-                <p>The NOVA Assistant dynamically synchronizes its instructions and behavior live from Supabase without requiring application updates or app rebuilds.</p>
+            <section id="ai-agent" class="doc-section" role="region" aria-labelledby="heading-ai-agent">
+                <h1 id="heading-ai-agent">AI Model & Agent Configuration</h1>
+                <p>The NOVA AI Assistant uses Google Gemini models (<span class="inline-code">gemini-3.6-flash</span> primary, <span class="inline-code">gemini-3.1-pro</span> secondary) with live prompt synchronization from Supabase.</p>
 
-                <h2>Agent Configuration Table</h2>
+                <h2>Agent Remote Configuration Schema</h2>
                 <div class="code-block">
                     <pre><code>CREATE TABLE IF NOT EXISTS public.agent_config (
   id SERIAL PRIMARY KEY,
@@ -549,171 +800,79 @@ ON CONFLICT (id) DO NOTHING;
 ALTER TABLE public.agent_config ENABLE ROW LEVEL SECURITY;
 CREATE POLICY "Public read agent_config" ON public.agent_config FOR SELECT USING (true);</code></pre>
                 </div>
-
-                <p>When users interact with NOVA, the application fetches the prompt and motif from <span class="inline-code">agent_config</span> and injects personalized contextual user metadata into the conversation.</p>
             </section>
 
             <!-- Security & Policy Guide -->
-            <section id="proxy-security" class="doc-section">
-                <h1>Proxy, Security Policies & Agent Context Permissions</h1>
-                <p>This technical guide outlines how developers can manage backend proxy gateways, configure strict security policies to prevent data leaks, control AI models and live tools (Gemini, OpenRouter, Tawk.to, System Prompts), and safely grant or restrict agent context access to user personal data.</p>
+            <section id="proxy-security" class="doc-section" role="region" aria-labelledby="heading-security">
+                <h1 id="heading-security">Security Architecture & Proxy Middleware</h1>
+                <p>Detailed technical documentation covering API proxy routing, rate limiting middleware, system prompt protection, and AI context isolation.</p>
 
-                <h2>1. Proxy Architecture & Custom Middleware Gateway</h2>
-                <p>By default, NovaQR communicates directly with secure HTTPS endpoints defined in <span class="inline-code">.env</span> (Supabase REST/Realtime, Google Gemini REST API, and Tawk.to Embedded Live Support). If you want to deploy an intermediary API proxy or serverless gateway (such as a Node.js Express proxy in a <span class="inline-code">/proxy</span> directory or Supabase Edge Functions):</p>
-                
+                <h2>Rate-Limiting Proxy Middleware Sample</h2>
                 <div class="code-block">
-                    <pre><code>// Example Proxy Middleware Structure (/proxy/index.js)
+                    <pre><code>// Middleware proxy execution (/proxy/index.js)
 const express = require('express');
 const rateLimit = require('express-rate-limit');
 const app = express();
 
-// Rate Limiting to Prevent API Abuse
 const apiLimiter = rateLimit({
-    windowMs: 15 * 60 * 1000, // 15 minutes
-    max: 100 // Limit each IP to 100 requests per window
+    windowMs: 15 * 60 * 1000, // 15 Minute window
+    max: 100 // Maximum 100 requests per IP
 });
 
 app.use('/v1/', apiLimiter);
 
-// Endpoint Proxying & Sanitize User Headers
 app.post('/v1/ai/chat', async (req, res) => {
-    const { message, user_token } = req.body;
-    // Strip private user tokens before forwarding to third-party AI models if required
-    // Forward request to Gemini or OpenRouter
+    // Process and forward requests securely to Gemini 3.6 Flash REST endpoints
 });</code></pre>
                 </div>
-
-                <h2>2. Service Control Hub (AI Models, System Prompts & Live Chat)</h2>
-                <p>Developers can control every active service dynamically without modifying application source code:</p>
-                <ul>
-                    <li><strong>Gemini AI Model Switcher:</strong> Set <span class="inline-code">GEMINI_MODEL=gemini-2.5-flash</span> or <span class="inline-code">gemini-1.5-pro</span> in <span class="inline-code">.env</span> or update <span class="inline-code">agent_config</span> table in Supabase.</li>
-                    <li><strong>OpenRouter Fallback Routes:</strong> Set <span class="inline-code">OPENROUTER_MODEL</span> and <span class="inline-code">OPENROUTER_FALLBACK_MODEL</span> in <span class="inline-code">.env</span> for automatic multi-provider model routing.</li>
-                    <li><strong>System Prompt Override:</strong> Modify <span class="inline-code">GEMINI_SYSTEM_PROMPT</span> in <span class="inline-code">.env</span> or update the <span class="inline-code">prompt</span> column in Supabase <span class="inline-code">public.agent_config</span> table (id = 1).</li>
-                    <li><strong>Tawk.to Live Chat Control:</strong> Configure <span class="inline-code">TAWK_PROPERTY_ID</span> and <span class="inline-code">TAWK_WIDGET_ID</span> in <span class="inline-code">.env</span>. To prevent visitor identity spoofing, enable Tawk.to Identity Verification Hash in Tawk.to Admin settings.</li>
-                    <li><strong>Database RLS Policy Protection:</strong> Leave Supabase Row-Level Security (RLS) enabled on all tables to prevent cross-account data leaks. Users can only query rows where <span class="inline-code">auth.uid() = user_id</span>.</li>
-                </ul>
-
-                <h2>3. Agent Context Permissions & User Data Privacy</h2>
-                <p>When communicating with NOVA, the agent receives system context parameters so it can assist the logged-in user effectively. Developers can control what information the agent is allowed to access:</p>
-
-                <div class="data-table-wrapper">
-                    <table class="data-table">
-                        <thead>
-                            <tr>
-                                <th>Permission Level</th>
-                                <th>Context Transmitted to AI</th>
-                                <th>Recommended Use Case</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><strong>Full Personalization (Default)</strong></td>
-                                <td>Display Name, Account Email, Plan Status (Free/Pro), Saved QR counts</td>
-                                <td>Standard live assistant experience with personalized greetings and status aware responses.</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Anonymized Context</strong></td>
-                                <td>User ID hash, Plan Status only (Display Name & Email omitted)</td>
-                                <td>Privacy-focused environments where personal identifiers must be stripped before sending to LLM APIs.</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Isolated / Mock Mode</strong></td>
-                                <td>Zero user context (Generic system prompt only)</td>
-                                <td>Public demo builds, offline sandbox testing, or guest preview modes.</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-
-                <h2>4. Mock Response & Sandbox Development Policy</h2>
-                <p>For developers creating offline test environments or mocking API integrations:</p>
-                <ul>
-                    <li>To enforce Mock Mode without external network requests, comment out <span class="inline-code">SUPABASE_URL</span> or <span class="inline-code">GEMINI_API_KEY</span> in <span class="inline-code">.env</span> (prefix line with <span class="inline-code">#</span>).</li>
-                    <li>When keys are commented out or invalid, NovaQR gracefully falls back to local in-memory state engines and mock storage without throwing network crashes.</li>
-                </ul>
             </section>
 
             <!-- Themes & Distribution -->
-            <section id="themes-freeware" class="doc-section">
-                <h1>Themes & Distribution</h1>
-                <p>NovaQR provides dynamic theme customization engines alongside an open freeware stack and community distribution license.</p>
+            <section id="themes-freeware" class="doc-section" role="region" aria-labelledby="heading-themes">
+                <h1 id="heading-themes">Themes & Freeware Licensing Stack</h1>
+                <p>NovaQR utilizes a 100% royalty-free open-source toolchain that allows white-label redistribution without licensing fees.</p>
 
-                <h2>1. Jetpack Compose Theme & Color Engine</h2>
-                <p>The visual style of NovaQR follows Material Design 3 guidelines with high-contrast color palettes configured in <span class="inline-code">app/src/main/java/com/example/ui/theme/Color.kt</span> and <span class="inline-code">Theme.kt</span>:</p>
-
-                <div class="code-block">
-                    <pre><code>// Dark Canvas Color Palette
-val SleekPrimary = Color(0xFF00F0FF)      // Cyan Accent
-val SleekSecondary = Color(0xFF3B82F6)    // Royal Blue
-val SleekBackground = Color(0xFF090D16)   // Deep Dark Blue
-val SleekSurface = Color(0xFF131B2E)      // Surface Card
-val SleekTextPrimary = Color(0xFFF8FAFC)  // Clean White Text
-
-// Artistic QR Code Styling Parameters
-data class QRStyle(
-    val dotShape: String = "SQUARE", // SQUARE, CIRCLE, ROUNDED
-    val eyeColorHex: String = "#00F0FF",
-    val bodyColorHex: String = "#3B82F6",
-    val backgroundColorHex: String = "#FFFFFF"
-)</code></pre>
-                </div>
-
-                <h2>2. Freeware Stack & Open-Source Infrastructure</h2>
-                <p>NovaQR is structured as royalty-free software, utilizing zero-cost open-source tools and generous free tiers:</p>
                 <div class="data-table-wrapper">
                     <table class="data-table">
                         <thead>
                             <tr>
-                                <th>Layer</th>
-                                <th>Open Source / Freeware Component</th>
-                                <th>Cost Model & License</th>
+                                <th>Component</th>
+                                <th>Open Source / Freeware License</th>
+                                <th>Commercial Rights</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td><strong>UI & Runtime</strong></td>
-                                <td>Jetpack Compose & Kotlin Compiler</td>
-                                <td>100% Free Open Source (Apache 2.0)</td>
+                                <td><strong>Jetpack Compose</strong></td>
+                                <td>Apache License 2.0</td>
+                                <td>Free commercial modification & bundling.</td>
                             </tr>
                             <tr>
-                                <td><strong>QR Core</strong></td>
-                                <td>ZXing Core Library</td>
-                                <td>100% Free Open Source (Apache 2.0)</td>
+                                <td><strong>ZXing Core</strong></td>
+                                <td>Apache License 2.0</td>
+                                <td>Free commercial embedded QR processing.</td>
                             </tr>
                             <tr>
-                                <td><strong>Database</strong></td>
-                                <td>Supabase Free Tier (PostgreSQL)</td>
-                                <td>Free up to 500 MB & 50,000 Monthly Active Users</td>
+                                <td><strong>Supabase SDK</strong></td>
+                                <td>MIT License</td>
+                                <td>Free self-hosting and managed hosting usage.</td>
                             </tr>
                             <tr>
-                                <td><strong>AI Engine</strong></td>
-                                <td>Google Gemini API (Flash 1.5)</td>
-                                <td>Free tier quota for developer prototypes</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Live Support</strong></td>
-                                <td>Tawk.to Embedded Widget</td>
-                                <td>100% Free live chat agent support</td>
+                                <td><strong>Gemini API</strong></td>
+                                <td>Google Developer Terms</td>
+                                <td>Free development tier quota.</td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
-
-                <h2>3. Freeware Distribution & Commercial Rights</h2>
-                <p>You are permitted to modify, rebrand, self-host, and distribute NovaQR as a freeware application or commercially bundled solution without paying licensing royalties. Source updates and community patches are shared regularly in our <a href="https://t.me/payfopus" target="_blank">PayFopus Telegram Group</a>.</p>
             </section>
 
             <!-- Plans & Usage Limits -->
-            <section id="pricing-plans" class="doc-section">
-                <h1>Plans & Usage Limits</h1>
-                <p>NovaQR uses a flexible freemium structure enforced client-side and synchronized with Supabase.</p>
+            <section id="pricing-plans" class="doc-section" role="region" aria-labelledby="heading-plans">
+                <h1 id="heading-plans">Plans & Tier Enforcement</h1>
+                <p>Usage quotas (e.g., 5 free QR generations vs unlimited Pro) are enforced dynamically through Kotlin business rules and Supabase user profile attributes.</p>
 
-                <h2>1. Free Plan Limits</h2>
-                <p>By default, Free users are allocated 5 QR generations. To customize this threshold, open <span class="inline-code">app/src/main/java/com/example/util/PlanLimits.kt</span> and adjust the limit constants.</p>
-
-                <h2>2. Upgrading Users to Pro</h2>
-                <p>To grant a user unlimited Pro access, execute this query in your Supabase SQL Editor:</p>
-
+                <h2>Upgrading User Plan in Supabase</h2>
                 <div class="code-block">
                     <pre><code>UPDATE public.profiles 
 SET plan = 'pro' 
@@ -722,61 +881,81 @@ WHERE email = 'user@example.com';</code></pre>
             </section>
 
             <!-- Live Support -->
-            <section id="live-support" class="doc-section">
-                <h1>Live Support</h1>
-                <p>The Support tab in NovaQR embeds live customer support directly inside a native WebView interface.</p>
+            <section id="live-support" class="doc-section" role="region" aria-labelledby="heading-live-support">
+                <h1 id="heading-live-support">Live Customer Support Integration</h1>
+                <p>NovaQR embeds real-time live customer chat inside the Support screen using Tawk.to WebView integration.</p>
 
-                <h2>Configuration Steps</h2>
-                <ol>
-                    <li>Create a free account at <a href="https://www.tawk.to/" target="_blank">Tawk.to</a>.</li>
-                    <li>Obtain your <strong>Property ID</strong> and <strong>Widget ID</strong> from Administration Settings.</li>
-                    <li>Add the keys to your <span class="inline-code">.env</span> file:</li>
-                </ol>
-
+                <h2>Configuring Tawk.to Keys</h2>
                 <div class="code-block">
                     <pre><code>TAWK_PROPERTY_ID=YOUR_TAWK_PROPERTY_ID
-TAWK_WIDGET_ID=YOUR_TAWK_WIDGET_ID
+TAWK_WIDGET_ID=YOUR_TAWK_WIDGET_ID</code></pre>
                 </div>
             </section>
 
             <!-- Troubleshooting -->
-            <section id="troubleshooting" class="doc-section">
-                <h1>Troubleshooting Guide</h1>
+            <section id="troubleshooting" class="doc-section" role="region" aria-labelledby="heading-troubleshooting">
+                <h1 id="heading-troubleshooting">Comprehensive Troubleshooting Guide</h1>
+                <p>Diagnose and resolve common build, authorization, database, and API connection errors with this professional troubleshooting reference.</p>
 
                 <div class="data-table-wrapper">
                     <table class="data-table">
                         <thead>
                             <tr>
-                                <th>Issue</th>
+                                <th>Error / Code</th>
                                 <th>Root Cause</th>
-                                <th>Solution</th>
+                                <th>Resolution Procedure</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
                                 <td><strong>ERR_CONNECTION_REFUSED</strong></td>
-                                <td>Deep link redirect URL not whitelisted in Supabase</td>
-                                <td>Add <span class="inline-code">com.example.novaqr://callback</span> to Supabase Redirect URLs.</td>
+                                <td>Deep link redirect URL unwhitelisted in Supabase Auth.</td>
+                                <td>Add <span class="inline-code">com.example.novaqr://callback</span> to Supabase Dashboard &gt; Auth &gt; Redirect URLs.</td>
                             </tr>
                             <tr>
-                                <td><strong>Google Login 403 org_internal</strong></td>
-                                <td>OAuth Consent screen is set to Internal</td>
-                                <td>Change User Type to External in Google Cloud Console.</td>
+                                <td><strong>Error 403: org_internal</strong></td>
+                                <td>Google Cloud OAuth Consent screen configured as "Internal".</td>
+                                <td>Go to Google Cloud Console &gt; OAuth Consent Screen, change User Type to <strong>External</strong>, and publish app.</td>
                             </tr>
                             <tr>
-                                <td><strong>Supabase RLS Policy Error</strong></td>
-                                <td>Missing policies on table</td>
-                                <td>Execute table policies SQL scripts provided in Supabase section.</td>
+                                <td><strong>Developer Error Code 10</strong></td>
+                                <td>SHA-1 / SHA-256 fingerprint missing or Web Client ID mismatch.</td>
+                                <td>Run <span class="inline-code">./gradlew signingReport</span>, add generated SHA keys to Google Cloud Android Client ID, and verify <span class="inline-code">GOOGLE_LOGIN_KEY</span>.</td>
                             </tr>
                             <tr>
-                                <td><strong>Gemini AI Not Responding</strong></td>
-                                <td>Invalid or missing API key</td>
-                                <td>Ensure GEMINI_API_KEY is correctly set in .env or agent_config.</td>
+                                <td><strong>Redirect URI Mismatch</strong></td>
+                                <td>The URL in <span class="inline-code">GOOGLE_CUSTOM_REDIRECT_URL</span> does not match intent filters.</td>
+                                <td>Ensure manifest intent filters and <span class="inline-code">.env</span> match <span class="inline-code">com.example.novaqr://callback</span> identically.</td>
                             </tr>
                             <tr>
-                                <td><strong>Camera Scan Black Screen</strong></td>
-                                <td>Camera permission rejected</td>
-                                <td>Grant camera permissions in Android device settings.</td>
+                                <td><strong>Invalid SHA-1 / SHA-256</strong></td>
+                                <td>Keystore alias or password mismatch during release build.</td>
+                                <td>Verify release keystore credentials in <span class="inline-code">build.gradle.kts</span> and register production SHA keys in Google Cloud.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Gemini API 403 / 400 Error</strong></td>
+                                <td>Invalid API key, model deprecation, or quota exhaustion.</td>
+                                <td>Verify <span class="inline-code">GEMINI_API_KEY</span> in <span class="inline-code">.env</span>, check quota usage in Google AI Studio, and ensure model is set to <span class="inline-code">gemini-3.6-flash</span>.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Supabase RLS Policy Violation</strong></td>
+                                <td>Database query blocked by missing Row-Level Security policy.</td>
+                                <td>Execute the provided table schema SQL scripts in Supabase SQL Editor to grant proper <span class="inline-code">auth.uid() = user_id</span> permissions.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Gradle Sync / SDK 36 Failure</strong></td>
+                                <td>Outdated Android Studio AGP plugin or missing SDK Platform 36.</td>
+                                <td>Update to Android Studio Koala+, open SDK Manager, and install Android SDK Platform 36 (API 36).</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Kotlin DSL / JDK 17 Mismatch</strong></td>
+                                <td>Gradle runner set to an incompatible JDK version (e.g., Java 8/11).</td>
+                                <td>In Android Studio, go to Settings &gt; Build, Execution, Deployment &gt; Build Tools &gt; Gradle and select JDK 17+.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Camera Preview Black Screen</strong></td>
+                                <td>Runtime camera permissions not granted on target device.</td>
+                                <td>Check Manifest <span class="inline-code">android.permission.CAMERA</span> and accept the prompt on device.</td>
                             </tr>
                         </tbody>
                     </table>
@@ -784,68 +963,65 @@ TAWK_WIDGET_ID=YOUR_TAWK_WIDGET_ID
             </section>
 
             <!-- Frequently Asked Questions -->
-            <section id="faq" class="doc-section">
-                <h1>Frequently Asked Questions (FAQ)</h1>
-                <p>Find instant, self-service answers to common installation, authentication, database, and configuration questions.</p>
+            <section id="faq" class="doc-section" role="region" aria-labelledby="heading-faq">
+                <h1 id="heading-faq">Frequently Asked Questions (FAQ)</h1>
+                <p>Comprehensive self-service solutions categorized by sub-system.</p>
+
+                <h2>Google Authentication & OAuth</h2>
+                <div class="callout callout-warning">
+                    <div class="callout-content">
+                        <h4>Q: How does Google CredentialManager differ from standard Browser OAuth?</h4>
+                        <p><strong>Answer:</strong> Google CredentialManager provides native, zero-redirect authentication directly within Android. It presents a native system UI, retrieves a signed ID Token, and verifies it with Supabase without leaving the app. Browser OAuth serves as a fallback for older devices.</p>
+                    </div>
+                </div>
 
                 <div class="callout callout-warning">
-                    <div class="callout-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg></div>
                     <div class="callout-content">
-                        <h4>Q: Why does Google OAuth redirect to https://your-project.supabase.co/?error with ERR_CONNECTION_REFUSED?</h4>
-                        <p><strong>Root Cause:</strong> Supabase Auth rejected the deep link redirect URI because <span class="inline-code">com.example.novaqr://callback</span> was missing from Supabase's allowed Redirect URLs. When unwhitelisted, Supabase falls back to its default Site URL (<span class="inline-code">https://your-project.supabase.co</span>), causing Chrome to display <span class="inline-code">ERR_CONNECTION_REFUSED</span>.</p>
-                        <p><strong>Actionable Fix:</strong> Log into <strong>Supabase Dashboard</strong> &gt; <strong>Authentication</strong> &gt; <strong>URL Configuration</strong>. In the <strong>Redirect URLs</strong> field, add:<br>
-                        <span class="inline-code">com.example.novaqr://callback</span><br>
-                        <span class="inline-code">novaqr://callback</span><br>
-                        Click <strong>Save</strong> and test Google login again.</p>
+                        <h4>Q: Why is SHA-1 and SHA-256 configuration mandatory for Google Sign-In?</h4>
+                        <p><strong>Answer:</strong> Google Play Services validates the calling APK's digital signature against the registered SHA fingerprints in Google Cloud Console to prevent unauthorized apps from spoofing your OAuth Web Client ID.</p>
+                    </div>
+                </div>
+
+                <h2>Supabase & AI Engine</h2>
+                <div class="callout callout-success">
+                    <div class="callout-content">
+                        <h4>Q: Which Gemini AI models are supported in NovaQR v2.0?</h4>
+                        <p><strong>Answer:</strong> NovaQR supports <span class="inline-code">gemini-3.6-flash</span> for ultra-fast response generation and <span class="inline-code">gemini-3.1-pro</span> for advanced reasoning. You can configure active models via <span class="inline-code">.env</span> or remotely in Supabase <span class="inline-code">agent_config</span>.</p>
+                    </div>
+                </div>
+
+                <h2>Internationalization, RTL & Release Signing</h2>
+                <div class="callout callout-success">
+                    <div class="callout-content">
+                        <h4>Q: Does NovaQR support Arabic and Right-to-Left (RTL) screen layouts?</h4>
+                        <p><strong>Answer:</strong> Yes! Jetpack Compose layouts in NovaQR utilize logical padding and alignment properties, making them fully compatible with Arabic, Persian, and Hebrew RTL rendering.</p>
                     </div>
                 </div>
 
                 <div class="callout callout-danger">
-                    <div class="callout-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg></div>
                     <div class="callout-content">
-                        <h4>Q: How do I fix Error 403: org_internal when signing in with Google?</h4>
-                        <p><strong>Root Cause:</strong> Your Google Cloud Console OAuth Consent Screen is set to "Internal" mode, restricting login exclusively to users within your Google Workspace organization.</p>
-                        <p><strong>Actionable Fix:</strong> Go to <strong>Google Cloud Console</strong> &gt; <strong>APIs & Services</strong> &gt; <strong>OAuth consent screen</strong>. Click <strong>CHANGE USER TYPE</strong> or <strong>EDIT APP</strong>, select <strong>External</strong>, save required developer emails, and click <strong>PUBLISH APP</strong> under Test Users.</p>
+                        <h4>Q: How do I generate an Android App Bundle (.aab) for Google Play Store publication?</h4>
+                        <p><strong>Answer:</strong> Execute <span class="inline-code">./gradlew bundleRelease</span> via terminal after configuring your signing keystore credentials inside <span class="inline-code">app/build.gradle.kts</span>.</p>
                     </div>
                 </div>
-
-                <div class="callout callout-success">
-                    <div class="callout-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"></path></svg></div>
-                    <div class="callout-content">
-                        <h4>Q: Why does native Google CredentialManager fail or throw developer error code 10?</h4>
-                        <p><strong>Root Cause:</strong> The OAuth 2.0 Web Client ID in <span class="inline-code">.env</span> (<span class="inline-code">GOOGLE_LOGIN_KEY</span>) does not match your Google Cloud Web Client ID, or the app's SHA-1 signing fingerprint is missing from Google Cloud Console.</p>
-                        <p><strong>Actionable Fix:</strong> Ensure <span class="inline-code">GOOGLE_LOGIN_KEY=YOUR_GOOGLE_WEB_CLIENT_ID.apps.googleusercontent.com
-                    </div>
-                </div>
-
-                <h2>Database & Customization FAQs</h2>
-
-                <h3>Q: How can I connect an external PostgreSQL or self-hosted database?</h3>
-                <p>Refer to the <a href="#external-database" onclick="document.querySelector('[data-target=\'external-database\']').click()">External DB Integration</a> tab. You can either connect your existing Postgres instance to Supabase via pgBouncer connection strings or deploy self-hosted Supabase containers via Docker Compose, updating <span class="inline-code">SUPABASE_URL</span> in <span class="inline-code">.env</span>.</p>
-
-                <h3>Q: How do I change app launcher icons, brand colors, Privacy Policy, and Terms of Service?</h3>
-                <p>All customization details are thoroughly documented in <a href="#package-customization" onclick="document.querySelector('[data-target=\'package-customization\']').click()">Package & Identity</a>, <a href="#app-branding" onclick="document.querySelector('[data-target=\'app-branding\']').click()">Branding & Customization</a>, and <a href="#legal-policies" onclick="document.querySelector('[data-target=\'legal-policies\']').click()">Legal & Privacy Policies</a>.</p>
-
-                <h3>Q: Where can I get direct live assistance or join the developer community?</h3>
-                <p>Join our private PayFopus Telegram group at <a href="https://t.me/payfopus" target="_blank">https://t.me/payfopus</a> or use the in-app <a href="#live-support" onclick="document.querySelector('[data-target=\'live-support\']').click()">Live Support</a> powered by Tawk.to.</p>
             </section>
 
             <!-- APK Download -->
-            <section id="apk-download" class="doc-section">
-                <h1>APK Binary Download</h1>
-                <p>The production binary of NovaQR has been compiled and is ready for installation.</p>
+            <section id="apk-download" class="doc-section" role="region" aria-labelledby="heading-download">
+                <h1 id="heading-download">Binary Distribution & Release Download</h1>
+                <p>The compiled release binary for NovaQR is ready for testing and deployment.</p>
 
                 <div class="download-card">
-                    <h2>Download Official APK</h2>
-                    <p>Click below to download the latest compiled release package (<span class="inline-code">NovaQR.apk</span>).</p>
+                    <h2>Download NovaQR Official Release</h2>
+                    <p>Click below to download the compiled release APK package directly (<span class="inline-code">NovaQR.apk</span>).</p>
                     
                     <div class="download-actions">
                         <a href="NovaQR.apk" download="NovaQR.apk" class="btn-primary">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
-                            Download NovaQR.apk (Direct Release)
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                            Download NovaQR.apk (v2.0 Release)
                         </a>
-                        <a href="https://t.me/payfopus" target="_blank" class="btn-telegram">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+                        <a href="https://t.me/payfopus" target="_blank" rel="noopener noreferrer" class="btn-telegram">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
                             Telegram Community (@payfopus)
                         </a>
                     </div>
@@ -854,6 +1030,26 @@ TAWK_WIDGET_ID=YOUR_TAWK_WIDGET_ID
         </main>
     </div>
     
+    <!-- External JavaScript Application Logic -->
     <script src="script.js"></script>
+
+    <!-- Embedded Helper Script for RTL & Accessibility -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const rtlBtn = document.getElementById('rtlToggleBtn');
+            if (rtlBtn) {
+                rtlBtn.addEventListener('click', function() {
+                    const currentDir = document.documentElement.getAttribute('dir');
+                    if (currentDir === 'rtl') {
+                        document.documentElement.setAttribute('dir', 'ltr');
+                    } else {
+                        document.documentElement.setAttribute('dir', 'rtl');
+                    }
+                });
+            }
+        });
+    </script>
 </body>
 </html>
+
+```
