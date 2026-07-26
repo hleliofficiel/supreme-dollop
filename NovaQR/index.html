@@ -293,7 +293,8 @@
                 <div class="hero-banner">
                     <div class="hero-badge">
                         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
-                        PRODUCTION READY v1.0
+                        Official documentation
+ 1.0
                     </div>
                     <h1 id="heading-getting-started" style="margin-top:0;">NovaQR Developer Documentation</h1>
                     <p style="font-size: 16px; color: var(--text-secondary, #94a3b8); line-height: 1.6; max-width: 800px;">
@@ -303,7 +304,7 @@
                     <div class="quick-nav-grid">
                         <a href="#installation" class="quick-nav-card" onclick="document.querySelector('[data-target=\'installation\']').click()">
                             <h3>Build Setup <span>→</span></h3>
-                            <p>Compile NovaQR locally using Android Studio Koala, SDK 36, and Gradle 8.x DSL.</p>
+                            <p>Compile locally using the latest stable Android Studio, Android SDK, and Gradle with Kotlin DSL.</p>
                         </a>
                         <a href="#google-auth" class="quick-nav-card" onclick="document.querySelector('[data-target=\'google-auth\']').click()">
                             <h3>Google OAuth <span>→</span></h3>
@@ -351,7 +352,7 @@
                             </tr>
                             <tr>
                                 <td><strong>Language Runtime</strong></td>
-                                <td>Kotlin 2.0+ (Coroutines & Flow)</td>
+                                <td>Kotlin 2.2+ (Coroutines & Flow)</td>
                                 <td>Asynchronous non-blocking pipeline with type-safe StateFlow state management.</td>
                             </tr>
                             <tr>
@@ -435,28 +436,28 @@
                         <tbody>
                             <tr>
                                 <td><strong>IDE</strong></td>
-                                <td>Android Studio Koala (2024.1.1)+</td>
-                                <td>Ensure Kotlin Plugin 2.0+ and Android Gradle Plugin (AGP) 8.5+ are active.</td>
+                                <td>Android Studio Quail 2 (2026.1.2)+</td>
+                                <td>Ensure Kotlin Plugin 2.2+ and Android Gradle Plugin (AGP) 9.2+ are active.</td>
                             </tr>
                             <tr>
                                 <td><strong>JDK</strong></td>
-                                <td>Java Development Kit (JDK) 17+</td>
-                                <td>Configured as the Gradle JDK in Android Studio Settings.</td>
+                                <td>Java Development Kit (JDK) 21 LTS+</td>
+                                <td>Configure JDK 21 or later as the Gradle JDK in Android Studio Settings for full compatibility with the latest Android Gradle Plugin (AGP).</td>
                             </tr>
                             <tr>
                                 <td><strong>Android SDK</strong></td>
-                                <td>API Level 36 (Android 15)</td>
-                                <td>Target SDK: 36 | Minimum SDK: 24 (Android 7.0 Nougat).</td>
+                                <td>API Level 37 (Android 17)</td>
+                                <td>Target SDK: 37 | Minimum SDK: 24 (Android 7.0 Nougat).</td>
                             </tr>
                             <tr>
                                 <td><strong>Build System</strong></td>
-                                <td>Gradle 8.7+ with Kotlin DSL</td>
+                                <td>Gradle 9.2+ with Kotlin DSL</td>
                                 <td>Uses type-safe <span class="inline-code">build.gradle.kts</span> files across all modules.</td>
                             </tr>
                             <tr>
                                 <td><strong>Compose Stack</strong></td>
-                                <td>Jetpack Compose 2024.06+ BOM</td>
-                                <td>Material 3 design system with dynamic color palette support.</td>
+                                <td>Jetpack Compose 2026.06.00+ BOM</td>
+                                <td>Material 3 design system with dynamic color, adaptive layouts, and the latest Compose libraries managed through the Compose BOM.</td>
                             </tr>
                         </tbody>
                     </table>
@@ -467,8 +468,7 @@
                     <li>Clone the source code repository to your local directory:</li>
                 </ol>
                 <div class="code-block">
-                    <pre><code>git clone https://github.com/payfopus/novaqr-android.git
-cd novaqr-android</code></pre>
+                    <pre><code>https://novaqr.onrender.com</code></pre>
                 </div>
 
                 <ol start="2">
@@ -942,13 +942,13 @@ TAWK_WIDGET_ID=YOUR_TAWK_WIDGET_ID</code></pre>
                                 <td>Execute the provided table schema SQL scripts in Supabase SQL Editor to grant proper <span class="inline-code">auth.uid() = user_id</span> permissions.</td>
                             </tr>
                             <tr>
-                                <td><strong>Gradle Sync / SDK 36 Failure</strong></td>
-                                <td>Outdated Android Studio AGP plugin or missing SDK Platform 36.</td>
-                                <td>Update to Android Studio Koala+, open SDK Manager, and install Android SDK Platform 36 (API 36).</td>
+                                <td><strong>Gradle Sync / Android SDK Failure</strong></td>
+                                <td>Outdated Android Studio, incompatible Android Gradle Plugin (AGP), unsupported Gradle version, or the required Android SDK Platform is not installed</td>
+                                <td>Update Android Studio, Android Gradle Plugin (AGP), and Gradle to the latest stable versions, then install the required Android SDK Platform through SDK Manager.</td>
                             </tr>
                             <tr>
-                                <td><strong>Kotlin DSL / JDK 17 Mismatch</strong></td>
-                                <td>Gradle runner set to an incompatible JDK version (e.g., Java 8/11).</td>
+                                <td><strong>Kotlin DSL / JDK 21 Mismatch</strong></td>
+                                <td>Gradle runner is configured with an incompatible JDK version (e.g., Java 17 or earlier). Configure the Gradle JDK to use JDK 21 or later in Android Studio.</td>
                                 <td>In Android Studio, go to Settings &gt; Build, Execution, Deployment &gt; Build Tools &gt; Gradle and select JDK 17+.</td>
                             </tr>
                             <tr>
