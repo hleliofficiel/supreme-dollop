@@ -1,0 +1,2719 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NovaQR Documentation - Official Developer & Deployment Guide</title>
+    
+    <!-- Primary SEO Meta Tags -->
+    <meta name="title" content="NovaQR Documentation - Official Developer & Deployment Guide">
+    <meta name="description" content="Comprehensive technical documentation for NovaQR: Architecture, Google CredentialManager Auth, Supabase DB integration, Gemini AI models, security policies, and build deployment.">
+    <meta name="keywords" content="NovaQR, Kotlin, Jetpack Compose, Supabase, Gemini AI, Android Development, QR Generator, Google OAuth, CredentialManager, Android SDK 36">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="PayFopus">
+    <link rel="canonical" href="https://docs.payfopus.com/novaqr/">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://docs.payfopus.com/novaqr/">
+    <meta property="og:title" content="NovaQR Documentation - Official Technical Guide">
+    <meta property="og:description" content="Complete documentation for building, customizing, and deploying the NovaQR Android application powered by Kotlin, Supabase, and Gemini AI.">
+    <meta property="og:image" content="https://docs.payfopus.com/novaqr/og-image.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://docs.payfopus.com/novaqr/">
+    <meta property="twitter:title" content="NovaQR Documentation - Developer Guide">
+    <meta property="twitter:description" content="Technical guide for NovaQR: Android Jetpack Compose, Supabase integration, Gemini 3.6 Flash AI engine, and dual Google Authentication.">
+    <meta property="twitter:image" content="https://docs.payfopus.com/novaqr/og-image.png">
+
+    <!-- Fonts & Styles -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Embedded RTL & i18n Styles Helper -->
+    <style>
+        :root {
+            --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            --font-rtl: 'Cairo', 'Inter', sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        [dir="rtl"] {
+            font-family: var(--font-rtl);
+        }
+
+        [dir="rtl"] .sidebar {
+            border-right: none;
+            border-left: 1px solid var(--border-color, rgba(255,255,255,0.08));
+        }
+
+        [dir="rtl"] .nav-item svg {
+            margin-right: 0;
+            margin-left: 12px;
+        }
+
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: #00f0ff;
+            color: #090d16;
+            padding: 8px 16px;
+            z-index: 10000;
+            font-weight: 700;
+            text-decoration: none;
+            border-radius: 0 0 4px 0;
+            transition: top 0.2s ease;
+        }
+        .skip-link:focus {
+            top: 0;
+        }
+
+        /* Hero Landing Improvements */
+        .hero-banner {
+            background: linear-gradient(135deg, rgba(0,240,255,0.08) 0%, rgba(59,130,246,0.05) 100%);
+            border: 1px solid rgba(0,240,255,0.2);
+            border-radius: 16px;
+            padding: 32px;
+            margin-bottom: 32px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(0,240,255,0.12);
+            color: #00f0ff;
+            font-size: 13px;
+            font-weight: 600;
+            padding: 4px 12px;
+            border-radius: 20px;
+            margin-bottom: 16px;
+            border: 1px solid rgba(0,240,255,0.3);
+        }
+
+        .quick-nav-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 16px;
+            margin-top: 24px;
+        }
+
+        .quick-nav-card {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 12px;
+            padding: 20px;
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.2s ease;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .quick-nav-card:hover {
+            border-color: #00f0ff;
+            transform: translateY(-2px);
+            background: rgba(0,240,255,0.04);
+        }
+
+        .quick-nav-card h3 {
+            margin: 0;
+            font-size: 16px;
+            color: var(--text-primary, #ffffff);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .quick-nav-card p {
+            margin: 0;
+            font-size: 13px;
+            color: var(--text-secondary, #94a3b8);
+            line-height: 1.5;
+        }
+
+        .nav-group-title {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: rgba(255,255,255,0.4);
+            margin: 20px 16px 8px 16px;
+            font-weight: 700;
+        }
+
+        .lang-switch-btn {
+            background: transparent;
+            border: 1px solid rgba(255,255,255,0.15);
+            color: #cbd5e1;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 12px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            margin-top: 12px;
+            transition: all 0.2s ease;
+        }
+
+        .lang-switch-btn:hover {
+            border-color: #00f0ff;
+            color: #00f0ff;
+        }
+    </style>
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <header class="mobile-header" role="banner">
+        <div class="mobile-title">
+            <h2>NovaQR Documentation</h2>
+        </div>
+        <button id="menuToggle" class="menu-toggle" aria-label="Toggle Navigation Menu" aria-expanded="false" aria-controls="sidebar-navigation">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        </button>
+    </header>
+
+    <div class="app-container">
+        <aside class="sidebar" id="sidebar-navigation" role="navigation" aria-label="Main Navigation">
+            <div>
+                <div class="logo">
+                    <div class="logo-header">
+                        <div>
+                            <h2>NovaQR</h2>
+                            <span style="font-size: 11px; color: #00f0ff; font-weight: 600; letter-spacing: 0.05em;">DOCS v1.1</span>
+                        </div>
+                    </div>
+                </div>
+
+                <nav class="nav-menu">
+                    <div class="nav-group-title">Overview</div>
+                    <a href="#getting-started" class="nav-item active" data-target="getting-started">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                        Getting Started
+                    </a>
+                    <a href="#important-notice" class="nav-item" data-target="important-notice">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+                        Important Buyer Notice
+                    </a>
+                    <a href="#requirements" class="nav-item" data-target="requirements">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+                        System Requirements
+                    </a>
+                    <a href="#ai-service-notice" class="nav-item" data-target="ai-service-notice">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+                        AI Services & Quotas
+                    </a>
+                    <a href="#telegram-community" class="nav-item" data-target="telegram-community">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+                        Telegram Community
+                    </a>
+
+                    <div class="nav-group-title">Setup & Architecture</div>
+                    <a href="#installation" class="nav-item" data-target="installation">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+                        Beginner Installation
+                    </a>
+                    <a href="#app-assembly" class="nav-item" data-target="app-assembly">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+                        Application Assembly & APK Build
+                    </a>
+                    <a href="#app-flow" class="nav-item" data-target="app-flow">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+                        Visual App User Flow
+                    </a>
+                    <a href="#app-screens" class="nav-item" data-target="app-screens">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line></svg>
+                        Screen Walkthrough
+                    </a>
+
+                    <div class="nav-group-title">Backend & Auth</div>
+                    <a href="#google-auth" class="nav-item" data-target="google-auth">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                        Google Authentication
+                    </a>
+                    <a href="#supabase-db" class="nav-item" data-target="supabase-db">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path></svg>
+                        Supabase DB & RLS Security
+                    </a>
+                    <a href="#in-app-notifications" class="nav-item" data-target="in-app-notifications">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
+                        In-App Customer Notifications
+                    </a>
+                    <a href="#premium-features" class="nav-item" data-target="premium-features">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                        Premium Features & Plans
+                    </a>
+                    <a href="#env-setup" class="nav-item" data-target="env-setup">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"></path></svg>
+                        Environment Variables
+                    </a>
+
+                    <div class="nav-group-title">Customization & Identity</div>
+                    <a href="#app-branding" class="nav-item" data-target="app-branding">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg>
+                        Branding & Identity Customization
+                    </a>
+                    <a href="#theme-customization" class="nav-item" data-target="theme-customization">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><path d="M12 2a10 10 0 0 0-7.07 17.07l1.41-1.41A8 8 0 1 1 12 4v-2z"></path></svg>
+                        Customizable Themes & Styling
+                    </a>
+                    <a href="#card-builder-setup" class="nav-item" data-target="card-builder-setup">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="2"></rect><line x1="2" y1="10" x2="22" y2="10"></line></svg>
+                        Business Card Builder Setup
+                    </a>
+                    <a href="#localization" class="nav-item" data-target="localization">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                        Multi-Language Localization
+                    </a>
+                    <a href="#ai-agent" class="nav-item" data-target="ai-agent">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><path d="M12 8v4l3 3"></path></svg>
+                        AI Model Configuration
+                    </a>
+
+                    <div class="nav-group-title">Support & Legal</div>
+                    <a href="#legal-policies" class="nav-item" data-target="legal-policies">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>
+                        Legal & Privacy Policies
+                    </a>
+                    <a href="#live-support" class="nav-item" data-target="live-support">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+                        Live Support
+                    </a>
+                    <a href="#troubleshooting" class="nav-item" data-target="troubleshooting">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+                        Troubleshooting
+                    </a>
+                    <a href="#faq" class="nav-item" data-target="faq">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+                        Frequently Asked Questions
+                    </a>
+                    <a href="#apk-download" class="nav-item" data-target="apk-download">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                        APK Binary Download
+                    </a>
+                    <a href="#changelog" class="nav-item" data-target="changelog">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>
+                        Change Log & Updates
+                    </a>
+                </nav>
+            </div>
+
+            <div class="sidebar-footer">
+                <button id="rtlToggleBtn" class="lang-switch-btn" aria-label="Switch Text Direction RTL/LTR">
+                    Toggle Direction (LTR / RTL)
+                </button>
+                <p>&copy; 2026 <strong>PayFopus</strong>. All rights reserved.<br>
+                <a href="https://t.me/payfopus" target="_blank" rel="noopener noreferrer" style="color: #229ed9; font-weight: 600;">Join Telegram Channel</a></p>
+            </div>
+        </aside>
+
+        <main class="content" id="main-content" role="main">
+            <!-- Getting Started -->
+            <section id="getting-started" class="doc-section active" role="region" aria-labelledby="heading-getting-started">
+                <div class="hero-banner">
+                    <div class="hero-badge">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                        Official documentation v1.1
+                    </div>
+                    <h1 id="heading-getting-started" style="margin-top:0;">NovaQR Developer Documentation</h1>
+                    <p style="font-size: 16px; color: var(--text-secondary, #94a3b8); line-height: 1.6; max-width: 800px;">
+                        Welcome to the official technical specification and deployment guide for <strong>NovaQR</strong>. Built on modern Android architecture with Kotlin, Jetpack Compose, Gemini AI models, and Supabase cloud infrastructure, NovaQR delivers high-speed artistic QR code generation, real-time scanning, context-aware AI assistance, and instant profile synchronization.
+                    </p>
+
+                    <div class="quick-nav-grid">
+                        <a href="#installation" class="quick-nav-card" onclick="document.querySelector('[data-target=\'installation\']').click()">
+                            <h3>Build Setup <span>&rarr;</span></h3>
+                            <p>Compile locally using the latest stable Android Studio, Android SDK, and Gradle with Kotlin DSL.</p>
+                        </a>
+                        <a href="#app-assembly" class="quick-nav-card" onclick="document.querySelector('[data-target=\'app-assembly\']').click()">
+                            <h3>APK & Bundle Build <span>&rarr;</span></h3>
+                            <p>Assemble ready Debug/Release APKs, sign keystores, and export Google Play AAB bundles.</p>
+                        </a>
+                        <a href="#theme-customization" class="quick-nav-card" onclick="document.querySelector('[data-target=\'theme-customization\']').click()">
+                            <h3>Color Themes & i18n <span>&rarr;</span></h3>
+                            <p>Customize 8 built-in color schemes, launcher assets, and 7 multi-language translations.</p>
+                        </a>
+                        <a href="#supabase-db" class="quick-nav-card" onclick="document.querySelector('[data-target=\'supabase-db\']').click()">
+                            <h3>Supabase DB <span>&rarr;</span></h3>
+                            <p>Execute PostgreSQL schemas, user profile tables, and Row-Level Security (RLS) policies.</p>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="telegram-card">
+                    <h3 style="margin-top: 0; color: var(--text-primary, #ffffff);">Join the Private PayFopus Community</h3>
+                    <p>Connect directly with core developers, request priority white-label features, access pre-release APK builds, and receive instant implementation assistance in our Telegram channel.</p>
+                    <div class="download-actions">
+                        <a href="https://t.me/payfopus" target="_blank" rel="noopener noreferrer" class="btn-telegram">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+                            Join Telegram (@payfopus)
+                        </a>
+                    </div>
+                </div>
+
+                <h2>Core System Architecture</h2>
+                <p>The application strictly adheres to Clean MVVM Architecture, ensuring complete separation between UI components, business logic, domain models, and external service repositories.</p>
+                
+                <div class="data-table-wrapper">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Architecture Layer</th>
+                                <th>Technology Stack</th>
+                                <th>Technical Functionality</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>UI Framework</strong></td>
+                                <td>Jetpack Compose & Material 3</td>
+                                <td>Declarative reactive UI, seamless dark/light theme switching, and custom canvas rendering.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Language Runtime</strong></td>
+                                <td>Kotlin 2.2+ (Coroutines & Flow)</td>
+                                <td>Asynchronous non-blocking pipeline with type-safe StateFlow state management.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Backend Services</strong></td>
+                                <td>Supabase Kotlin SDK 2.x</td>
+                                <td>Real-time PostgreSQL connection, OAuth 2.0 session tokens, and secure Row-Level Security.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>AI Subsystem</strong></td>
+                                <td>Google Gemini API (3.6 Flash / 3.1 Pro)</td>
+                                <td>Context-aware prompt generation, automated troubleshooting, and interactive chat assistance.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>QR Processing Engine</strong></td>
+                                <td>ZXing Core & Native Compose Canvas</td>
+                                <td>Matrix calculation, dot/eye customization, embedded logos, and dynamic vector exporting.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Telegram Community -->
+            <section id="telegram-community" class="doc-section" role="region" aria-labelledby="heading-telegram">
+                <h1 id="heading-telegram">PayFopus Developer Portal & Community</h1>
+                <p>We maintain an active developer portal on Telegram to provide immediate technical support, early beta releases, source code updates, and custom white-label branding inquiries.</p>
+
+                <div class="telegram-card">
+                    <h2 style="margin-top: 0; border: none; padding: 0;">Official Developer Telegram</h2>
+                    <p>Access official updates, source repositories, and direct chat support through our verified portal:</p>
+                    <p><a href="https://t.me/payfopus" target="_blank" rel="noopener noreferrer" style="font-size: 18px; font-weight: 700; color: #229ed9;">https://t.me/payfopus</a></p>
+                    
+                    <div class="download-actions" style="margin-top: 16px;">
+                        <a href="https://t.me/payfopus" target="_blank" rel="noopener noreferrer" class="btn-telegram">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+                            Connect on Telegram (@payfopus)
+                        </a>
+                    </div>
+                </div>
+
+                <h2>Developer Privileges</h2>
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <div class="feature-card-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polyline></svg></div>
+                        <h4>24/7 Deployment Assistance</h4>
+                        <p>Get direct technical assistance regarding Android Studio build synchronization, Supabase RLS policies, and OAuth keys.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-card-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path></svg></div>
+                        <h4>Early Release Access</h4>
+                        <p>Download preview APKs, experimental vector QR styling engines, and advanced Gemini prompt templates.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-card-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg></div>
+                        <h4>White-Label Request Pipeline</h4>
+                        <p>Submit custom branding specs, package name reconfigurations, and enterprise database connector requests.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-card-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg></div>
+                        <h4>Security & Policy Advisories</h4>
+                        <p>Stay updated on Google Play Store publishing guidelines, OAuth 2.0 policy updates, and Gemini API changes.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Important Buyer Notice -->
+            <section id="important-notice" class="doc-section" role="region" aria-labelledby="heading-important-notice">
+                <h1 id="heading-important-notice">Important Notice for Buyers</h1>
+                
+                <div class="notice-box">
+                    <h3>
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+                        Third-Party Service Dependencies & Account Configuration
+                    </h3>
+                    <p style="color: var(--text-secondary); line-height: 1.6;">
+                        <strong>NovaQR</strong> is a full-featured, production-ready Android application. To enable real-time user authentication, cloud profile database synchronization, AI assistant queries, and live support chat, the application integrates with external third-party services.
+                    </p>
+                    <ul style="color: var(--text-secondary); margin-left: 20px; line-height: 1.7; margin-top: 12px;">
+                        <li><strong>Supabase PostgreSQL Database & Auth (Third-party Service):</strong> Used for cloud account profiles, saved QR vault, and remote agent configs. You must create a free or paid Supabase account at <a href="https://supabase.com" target="_blank" rel="noopener noreferrer" style="color: #00f0ff;">supabase.com (Third-party Service)</a>.</li>
+                        <li><strong>Google Cloud Console (Third-party Service):</strong> Used for native Google CredentialManager OAuth 2.0 authentication. You must create a Google Cloud project and generate an OAuth Web Client ID and SHA-1 certificate fingerprints at <a href="https://console.cloud.google.com" target="_blank" rel="noopener noreferrer" style="color: #00f0ff;">console.cloud.google.com (Third-party Service)</a>.</li>
+                        <li><strong>Google Gemini AI API (Third-party Service):</strong> Used by the NOVA AI Assistant engine. You must retrieve a Google Gemini API Key from <a href="https://aistudio.google.com" target="_blank" rel="noopener noreferrer" style="color: #00f0ff;">aistudio.google.com (Third-party Service)</a>.</li>
+                        <li><strong>Tawk.to Live Support (Third-party Service):</strong> Used for optional in-app real-time live customer support chat widget at <a href="https://tawk.to" target="_blank" rel="noopener noreferrer" style="color: #00f0ff;">tawk.to (Third-party Service)</a>.</li>
+                    </ul>
+                    <p style="color: #fbbf24; margin-top: 16px; font-weight: 600; font-size: 14px;">
+                        ⚠️ Buyer Responsibility Disclaimer: Buyers are strictly responsible for setting up their own developer accounts, configuring API keys, maintaining quota limits, and managing any third-party subscription or usage fees. The source code does not include pre-configured private production keys.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Requirements -->
+            <section id="requirements" class="doc-section" role="region" aria-labelledby="heading-requirements">
+                <h1 id="heading-requirements">System & Software Requirements</h1>
+                <p>Before unzipping and building NovaQR, ensure your development computer meets the following software, SDK, and compiler specifications:</p>
+
+                <div class="data-table-wrapper">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Requirement</th>
+                                <th>Specification / Version</th>
+                                <th>Notes & Compatibility</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Android Studio (Third-party Software)</strong></td>
+                                <td>Android Studio Ladybug (2024.2.1+) / Jellyfish (2024.1.1+)</td>
+                                <td>Required IDE to import, build, and sign the Kotlin project.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Minimum Android SDK</strong></td>
+                                <td>API Level 24 (Android 7.0 Nougat)</td>
+                                <td>Ensures backward compatibility across 98%+ of global Android devices.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Target Android SDK</strong></td>
+                                <td>API Level 36 (Android 16)</td>
+                                <td>Fully compliant with latest Google Play Store target API requirements.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Compile Android SDK</strong></td>
+                                <td>API Level 36 (Android 16)</td>
+                                <td>Compiled with the newest Android 16 framework libraries.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Kotlin Compiler Version</strong></td>
+                                <td>Kotlin 2.2.10 (with Compose Compiler plugin)</td>
+                                <td>Supports Kotlin Coroutines 1.10.2 & Flow non-blocking reactive pipelines.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Java Development Kit (JDK)</strong></td>
+                                <td>JDK 17 LTS (Minimum) / JDK 21 LTS (Recommended)</td>
+                                <td>Set as the Gradle JDK in Android Studio Settings.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Gradle Build System</strong></td>
+                                <td>Gradle 8.9 / AGP 9.1.1+ (Kotlin DSL)</td>
+                                <td>Managed automatically via the included Gradle Wrapper.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Recommended OS</strong></td>
+                                <td>Windows 10/11 (64-bit), macOS 14+ (Sonoma/Sequoia), Linux Ubuntu 22.04+</td>
+                                <td>macOS Apple Silicon (M1/M2/M3) or Windows 11 recommended for best emulator speeds.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Dedicated AI Services Notice -->
+            <section id="ai-service-notice" class="doc-section" role="region" aria-labelledby="heading-ai-service-notice">
+                <h1 id="heading-ai-service-notice">AI Services & Third-Party Notice</h1>
+                <p>This section provides a clear, mandatory disclosure regarding external Artificial Intelligence APIs integrated into NovaQR.</p>
+
+                <div class="notice-box" style="border-left: 4px solid #00f0ff;">
+                    <h3 style="color: #00f0ff;">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+                        Third-Party AI Service Integration Disclosure
+                    </h3>
+                    <p style="color: var(--text-secondary); line-height: 1.6;">
+                        NovaQR incorporates AI features (NOVA Assistant, smart content recommendations, writing polishing, and contextual QR generation assistance) powered by <strong>Google Gemini AI (Third-party Service)</strong>.
+                    </p>
+                    <ul style="color: var(--text-secondary); margin-left: 20px; line-height: 1.7; margin-top: 12px;">
+                        <li><strong>Google Gemini API Key Required:</strong> AI functionality requires buyers to generate and configure their own Google Gemini API Key from <a href="https://aistudio.google.com" target="_blank" rel="noopener noreferrer" style="color: #00f0ff;">Google AI Studio (Third-party Service)</a>.</li>
+                        <li><strong>Not Included with Purchase:</strong> External AI service usage, API tokens, and subscription quotas are <strong>not included</strong> with the application purchase price.</li>
+                        <li><strong>Potential Usage Costs:</strong> Google provides a free development quota for Gemini API, but high-volume commercial production usage may incur separate usage fees billed directly by Google.</li>
+                        <li><strong>Buyer Account Management:</strong> Buyers are strictly responsible for managing their own Google Cloud / Gemini API accounts, setting up billing details, monitoring usage quotas, and enforcing rate limits.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Beginner Installation -->
+            <section id="installation" class="doc-section" role="region" aria-labelledby="heading-installation">
+                <h1 id="heading-installation">Beginner-Friendly Installation Guide</h1>
+                <p>Setting up NovaQR does not require Git knowledge or complex terminal commands. Follow these 4 simple steps to open and run the app in Android Studio:</p>
+
+                <h2>Step 1: Extract Downloaded Package</h2>
+                <p>Unzip the downloaded package file (e.g., <span class="inline-code">NovaQR_App_Full_Source_Code.zip</span>) on your computer. Inside, you will find the main project folder <span class="inline-code">NovaQR</span>.</p>
+
+                <h2>Step 2: Open Project in Android Studio</h2>
+                <ol>
+                    <li>Launch <strong>Android Studio</strong> on your machine.</li>
+                    <li>On the welcome screen, click <strong>Open</strong> (or go to <strong>File &gt; Open</strong>).</li>
+                    <li>Browse to the extracted <span class="inline-code">NovaQR</span> project directory and click <strong>OK</strong>.</li>
+                    <li>Wait 1–2 minutes while Android Studio automatically downloads dependencies and performs <strong>Gradle Sync</strong>.</li>
+                </ol>
+
+                <h2>Step 3: Create & Configure Your .env Credentials File</h2>
+                <ol>
+                    <li>In the left-hand Project explorer, locate the file named <span class="inline-code">.env.example</span> in the project root.</li>
+                    <li>Duplicate or rename it to create a new file named <span class="inline-code">.env</span> (with a leading dot).</li>
+                    <li>Paste your own credentials for Supabase, Google Cloud Web Client ID, and Gemini API Key:</li>
+                </ol>
+                <div class="code-block">
+                    <pre><code>SUPABASE_URL=https://your-project-ref.supabase.co
+SUPABASE_ANON_KEY=your_supabase_anon_key
+GEMINI_API_KEY=your_gemini_api_key
+GOOGLE_LOGIN_KEY=your_web_client_id.apps.googleusercontent.com</code></pre>
+                </div>
+
+                <h2>Step 4: Run the Application</h2>
+                <ol>
+                    <li>Connect a physical Android phone via USB with USB Debugging enabled, OR start an Android Virtual Device (Emulator).</li>
+                    <li>Click the green <strong>Run 'app'</strong> button (Play icon) in the top toolbar of Android Studio.</li>
+                    <li>Your app will compile and launch immediately on the device!</li>
+                </ol>
+
+                <h2>Step 5: App Evaluation & Guest Access</h2>
+                <p>For instant evaluation during setup, tap <strong>"Continue as Guest"</strong> on the welcome screen or register a new test account directly within the application. No pre-configured login credentials required.</p>
+            </section>
+
+            <!-- Application Assembly & APK Build Guide -->
+            <section id="app-assembly" class="doc-section" role="region" aria-labelledby="heading-app-assembly">
+                <h1 id="heading-app-assembly">Application Assembly & APK Build Guide</h1>
+                <p>Learn how to compile, assemble, and export signed Android binaries (APK and AAB) after making code or asset modifications.</p>
+
+                <div class="notice-box" style="border-left: 4px solid #10b981;">
+                    <h3 style="color: #10b981;">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                        Two Output Formats: APK vs AAB
+                    </h3>
+                    <p style="color: var(--text-secondary); line-height: 1.6;">
+                        <strong>APK (.apk):</strong> Android Package file used for direct device installation, side-loading, website downloads, or beta distribution.<br>
+                        <strong>AAB (.aab):</strong> Android App Bundle used strictly for uploading and publishing to the official <strong>Google Play Console</strong>.
+                    </p>
+                </div>
+
+                <h2>1. Assembling a Debug APK (Instant Testing)</h2>
+                <p>To compile a debug binary for local testing without keystore signing setup, run this Gradle command in Android Studio Terminal:</p>
+
+                <div class="code-block">
+                    <pre><code>./gradlew assembleDebug</code></pre>
+                </div>
+
+                <p style="color: var(--text-secondary); line-height: 1.6; margin-top: 8px;">
+                    <strong>Output File Path:</strong> <span class="inline-code">app/build/outputs/apk/debug/app-debug.apk</span>
+                </p>
+
+                <h2>2. Configuring Release Keystore Signing</h2>
+                <p>Before assembling a production Release APK or Play Store Bundle, configure your release keystore inside <span class="inline-code">app/build.gradle.kts</span>:</p>
+
+                <div class="code-block">
+                    <pre><code>android {
+    signingConfigs {
+        create("release") {
+            storeFile = file("your-release-key.jks") // Place your .jks file in project root or app folder
+            storePassword = "YOUR_KEYSTORE_PASSWORD"
+            keyAlias = "YOUR_KEY_ALIAS"
+            keyPassword = "YOUR_KEY_PASSWORD"
+        }
+    }
+    buildTypes {
+        getByName("release") {
+            isMinifyEnabled = true
+            isShrinkResources = true
+            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+            signingConfig = signingConfigs.getByName("release")
+        }
+    }
+}</code></pre>
+                </div>
+
+                <h2>3. Assembling a Production Release APK</h2>
+                <p>To compile the optimized, production-ready Release APK file, execute:</p>
+
+                <div class="code-block">
+                    <pre><code>./gradlew assembleRelease</code></pre>
+                </div>
+
+                <p style="color: var(--text-secondary); line-height: 1.6; margin-top: 8px;">
+                    <strong>Output File Path:</strong> <span class="inline-code">app/build/outputs/apk/release/app-release.apk</span>
+                </p>
+
+                <h2>4. Assembling an Android App Bundle (.aab) for Google Play</h2>
+                <p>To generate the official App Bundle binary required by Google Play Console:</p>
+
+                <div class="code-block">
+                    <pre><code>./gradlew bundleRelease</code></pre>
+                </div>
+
+                <p style="color: var(--text-secondary); line-height: 1.6; margin-top: 8px;">
+                    <strong>Output File Path:</strong> <span class="inline-code">app/build/outputs/bundle/release/app-release.aab</span>
+                </p>
+
+                <h2>5. Obtaining the Ready APK via Android Studio GUI (No Terminal Required)</h2>
+                <p>If you prefer using the Android Studio graphic interface instead of terminal commands:</p>
+                <ol style="color: var(--text-secondary); margin-left: 20px; line-height: 1.7;">
+                    <li>In the top menu bar, click <strong>Build &gt; Build APK(s) / Bundle(s) &gt; Build APK(s)</strong>.</li>
+                    <li>Wait for Android Studio to finish compiling (a pop-up notification will appear at the bottom right).</li>
+                    <li>Click the blue <strong>locate</strong> link inside the notification pop-up.</li>
+                    <li>Android Studio will automatically open your operating system file manager directly to the folder containing your compiled, ready <span class="inline-code">app-debug.apk</span> or <span class="inline-code">app-release.apk</span>!</li>
+                </ol>
+            </section>
+
+            <!-- Visual App Flow -->
+            <section id="app-flow" class="doc-section" role="region" aria-labelledby="heading-flow">
+                <h1 id="heading-flow">Visual Application & User Interaction Flow</h1>
+                <p>Below is a visual flow diagram mapping how users interact with NovaQR from launch to cloud synchronization:</p>
+
+                <div class="flow-diagram-container">
+                    <div class="flow-diagram-flex">
+                        <div class="flow-step-card">
+                            <div class="flow-step-icon">1</div>
+                            <div class="flow-step-title">Splash & Launch</div>
+                            <p style="font-size: 11px; color: var(--text-muted); margin-top:4px;">App Initialization & Credentials Load</p>
+                        </div>
+                        <div class="flow-arrow-icon">&rarr;</div>
+                        <div class="flow-step-card">
+                            <div class="flow-step-icon">2</div>
+                            <div class="flow-step-title">Google / Guest Auth</div>
+                            <p style="font-size: 11px; color: var(--text-muted); margin-top:4px;">CredentialManager Sign-In</p>
+                        </div>
+                        <div class="flow-arrow-icon">&rarr;</div>
+                        <div class="flow-step-card">
+                            <div class="flow-step-icon">3</div>
+                            <div class="flow-step-title">Home Dashboard</div>
+                            <p style="font-size: 11px; color: var(--text-muted); margin-top:4px;">Quick Scanner & Generator Cards</p>
+                        </div>
+                        <div class="flow-arrow-icon">&rarr;</div>
+                        <div class="flow-step-card">
+                            <div class="flow-step-icon">4</div>
+                            <div class="flow-step-title">QR Studio & AI</div>
+                            <p style="font-size: 11px; color: var(--text-muted); margin-top:4px;">Custom QR Styling & Gemini Chat</p>
+                        </div>
+                        <div class="flow-arrow-icon">&rarr;</div>
+                        <div class="flow-step-card">
+                            <div class="flow-step-icon">5</div>
+                            <div class="flow-step-title">Cloud Vault & Export</div>
+                            <p style="font-size: 11px; color: var(--text-muted); margin-top:4px;">Supabase Database & SVG/PNG</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Screen Walkthrough -->
+            <section id="app-screens" class="doc-section" role="region" aria-labelledby="heading-screens">
+                <h1 id="heading-screens">Application Screens & Feature Walkthrough</h1>
+                <p>NovaQR delivers a cohesive, Material 3 design experience across all primary user touchpoints:</p>
+
+                <div class="screen-grid">
+                    <div class="screen-card">
+                        <div class="screen-preview-header" style="margin-bottom: 12px; border-radius: 10px; overflow: hidden; border: 1px solid rgba(0, 240, 255, 0.25); background: #080d1a;">
+                            <img src="https://i.imgur.com/01M8j1B.png" alt="Home Dashboard" style="width: 100%; height: auto; display: block; filter: brightness(1.03) contrast(1.05); border-radius: 8px;" />
+                        </div>
+                        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px;">
+                            <h3 style="margin:0; font-size: 16px;">1. Home Dashboard</h3>
+                            <span class="screen-preview-badge">Screen 01</span>
+                        </div>
+                        <p style="font-size: 13px; color: var(--text-secondary); margin:0; line-height: 1.5;">
+                            Presents user status, daily scan/generation counters, quick launch shortcuts to Scanner and Generator, and system notification alerts fetched dynamically from Supabase.
+                        </p>
+                    </div>
+
+                    <div class="screen-card">
+                        <div class="screen-preview-header" style="margin-bottom: 12px; border-radius: 10px; overflow: hidden; border: 1px solid rgba(0, 240, 255, 0.25); background: #080d1a;">
+                            <img src="https://i.imgur.com/wKkhVBO.png" alt="Artistic QR Studio" style="width: 100%; height: auto; display: block; filter: brightness(1.03) contrast(1.05); border-radius: 8px;" />
+                        </div>
+                        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px;">
+                            <h3 style="margin:0; font-size: 16px;">2. Artistic QR Studio</h3>
+                            <span class="screen-preview-badge">Screen 02</span>
+                        </div>
+                        <p style="font-size: 13px; color: var(--text-secondary); margin:0; line-height: 1.5;">
+                            The main QR generation engine. Supports custom dot matrix styles (square, rounded, dots), eye frame designs, linear gradients, center logo image embedding, and instant SVG/PNG exports.
+                        </p>
+                    </div>
+
+                    <div class="screen-card">
+                        <div class="screen-preview-header" style="margin-bottom: 12px; border-radius: 10px; overflow: hidden; border: 1px solid rgba(0, 240, 255, 0.25); background: #080d1a;">
+                            <img src="https://i.imgur.com/rFeOtN3.png" alt="Real-Time Camera Scanner" style="width: 100%; height: auto; display: block; filter: brightness(1.03) contrast(1.05); border-radius: 8px;" />
+                        </div>
+                        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px;">
+                            <h3 style="margin:0; font-size: 16px;">3. Real-Time Camera Scanner</h3>
+                            <span class="screen-preview-badge">Screen 03</span>
+                        </div>
+                        <p style="font-size: 13px; color: var(--text-secondary); margin:0; line-height: 1.5;">
+                            High-speed ZXing camera scanner with flash toggle, touch auto-focus, image picking from photo gallery, instant URL previewing, and action buttons (Copy, Open URL, Save).
+                        </p>
+                    </div>
+
+                    <div class="screen-card">
+                        <div class="screen-preview-header" style="margin-bottom: 12px; border-radius: 10px; overflow: hidden; border: 1px solid rgba(0, 240, 255, 0.25); background: #080d1a;">
+                            <img src="https://i.imgur.com/vH6YlUb.png" alt="NOVA AI Assistant" style="width: 100%; height: auto; display: block; filter: brightness(1.03) contrast(1.05); border-radius: 8px;" />
+                        </div>
+                        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px;">
+                            <h3 style="margin:0; font-size: 16px;">4. NOVA AI Assistant</h3>
+                            <span class="screen-preview-badge">Screen 04</span>
+                        </div>
+                        <p style="font-size: 13px; color: var(--text-secondary); margin:0; line-height: 1.5;">
+                            Powered by Gemini 3.6 Flash model. Provides real-time streaming conversational assistant for QR optimization tips, Wi-Fi configuration formatting, vCard help, and context-aware guidance.
+                        </p>
+                    </div>
+
+                    <div class="screen-card">
+                        <div class="screen-preview-header" style="margin-bottom: 12px; border-radius: 10px; overflow: hidden; border: 1px solid rgba(0, 240, 255, 0.25); background: #080d1a;">
+                            <img src="https://i.imgur.com/EpbYijw.png" alt="Saved History & Cloud Vault" style="width: 100%; height: auto; display: block; filter: brightness(1.03) contrast(1.05); border-radius: 8px;" />
+                        </div>
+                        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px;">
+                            <h3 style="margin:0; font-size: 16px;">5. Saved History & Cloud Vault</h3>
+                            <span class="screen-preview-badge">Screen 05</span>
+                        </div>
+                        <p style="font-size: 13px; color: var(--text-secondary); margin:0; line-height: 1.5;">
+                            Displays all generated and scanned QR codes. Features offline caching, favorite bookmarks, category filtering, and automatic Supabase cloud profile synchronization across devices.
+                        </p>
+                    </div>
+
+                    <div class="screen-card">
+                        <div class="screen-preview-header" style="margin-bottom: 12px; border-radius: 10px; overflow: hidden; border: 1px solid rgba(0, 240, 255, 0.25); background: #080d1a;">
+                            <img src="https://i.imgur.com/JuWOFaE.png" alt="User Profile & Settings" style="width: 100%; height: auto; display: block; filter: brightness(1.03) contrast(1.05); border-radius: 8px;" />
+                        </div>
+                        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px;">
+                            <h3 style="margin:0; font-size: 16px;">6. Settings & Live Support</h3>
+                            <span class="screen-preview-badge">Screen 06</span>
+                        </div>
+                        <p style="font-size: 13px; color: var(--text-secondary); margin:0; line-height: 1.5;">
+                            Includes user profile settings, Dark/Light theme switching, legal compliance policies (GDPR/CCPA), and an embedded live Tawk.to chat widget for instant customer help.
+                        </p>
+                    </div>
+
+                    <div class="screen-card">
+                        <div class="screen-preview-header" style="margin-bottom: 12px; border-radius: 10px; overflow: hidden; border: 1px solid rgba(0, 240, 255, 0.25); background: #080d1a;">
+                            <img src="https://i.imgur.com/ch3MF54.png" alt="Pro Membership & Plan Upgrades" style="width: 100%; height: auto; display: block; filter: brightness(1.03) contrast(1.05); border-radius: 8px;" />
+                        </div>
+                        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px;">
+                            <h3 style="margin:0; font-size: 16px;">7. Pro Membership & Upgrades</h3>
+                            <span class="screen-preview-badge">Screen 07</span>
+                        </div>
+                        <p style="font-size: 13px; color: var(--text-secondary); margin:0; line-height: 1.5;">
+                            Presents subscription options, feature comparison tables, instant plan upgrading via Supabase profile status, and unlimited QR code generation access.
+                        </p>
+                    </div>
+
+                    <div class="screen-card">
+                        <div class="screen-preview-header" style="margin-bottom: 12px; border-radius: 10px; overflow: hidden; border: 1px solid rgba(0, 240, 255, 0.25); background: #080d1a;">
+                            <img src="https://i.imgur.com/ZaJvMRt.png" alt="Business Card Studio Showcase" style="width: 100%; height: auto; display: block; filter: brightness(1.03) contrast(1.05); border-radius: 8px;" />
+                        </div>
+                        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px;">
+                            <h3 style="margin:0; font-size: 16px;">8. Business Card Studio Showcase</h3>
+                            <span class="screen-preview-badge">Screen 08</span>
+                        </div>
+                        <p style="font-size: 13px; color: var(--text-secondary); margin:0; line-height: 1.5;">
+                            Interactive digital business card creator featuring 7 executive templates, multi-side card preview tabs, embedded vCard QR codes, and 300 DPI lossless PNG export.
+                        </p>
+                    </div>
+
+                    <div class="screen-card">
+                        <div class="screen-preview-header" style="margin-bottom: 12px; border-radius: 10px; overflow: hidden; border: 1px solid rgba(0, 240, 255, 0.25); background: #080d1a;">
+                            <img src="https://i.imgur.com/Xn4dNhZ.png" alt="Digital Business Card Builder" style="width: 100%; height: auto; display: block; filter: brightness(1.03) contrast(1.05); border-radius: 8px;" />
+                        </div>
+                        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px;">
+                            <h3 style="margin:0; font-size: 16px;">9. Digital Business Card Builder</h3>
+                            <span class="screen-preview-badge">Screen 09</span>
+                        </div>
+                        <p style="font-size: 13px; color: var(--text-secondary); margin:0; line-height: 1.5;">
+                            Comprehensive card builder customization suite allowing real-time contact detail editing, transparent company logo uploads, custom background image opacity sliders, and tier gating.
+                        </p>
+                    </div>
+
+                    <div class="screen-card">
+                        <div class="screen-preview-header" style="margin-bottom: 12px; border-radius: 10px; overflow: hidden; border: 1px solid rgba(0, 240, 255, 0.25); background: #080d1a;">
+                            <img src="https://i.imgur.com/EvjLzZ0.png" alt="Advanced QR & Geo Studio" style="width: 100%; height: auto; display: block; filter: brightness(1.03) contrast(1.05); border-radius: 8px;" />
+                        </div>
+                        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px;">
+                            <h3 style="margin:0; font-size: 16px;">10. Advanced QR & Geo Studio</h3>
+                            <span class="screen-preview-badge">Screen 10</span>
+                        </div>
+                        <p style="font-size: 13px; color: var(--text-secondary); margin:0; line-height: 1.5;">
+                            Full suite of 12 specialized QR code generators including Geo location GPS mapping, Wi-Fi credentials, vCard contact cards, Barcode formats, and artistic customization options.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Package Customization -->
+            <section id="package-customization" class="doc-section" role="region" aria-labelledby="heading-package">
+                <h1 id="heading-package">Package & Identity Configuration</h1>
+                <p>NovaQR is pre-configured with the standard production namespace <span class="inline-code">com.example.novaqr</span>. Follow these instructions to modify application identifiers for custom releases.</p>
+
+                <h2>1. Application Identifier & SDK Versioning</h2>
+                <p>The application package namespace and SDK target configurations are managed in <span class="inline-code">app/build.gradle.kts</span>:</p>
+
+                <div class="code-block">
+                    <pre><code>android {
+    namespace = "com.example.novaqr"
+    compileSdk = 36
+
+    defaultConfig {
+        applicationId = "com.example.novaqr"
+        minSdk = 24
+        targetSdk = 36
+        versionCode = 1
+        versionName = "1.0.0"
+
+        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        vectorDrawables {
+            useSupportLibrary = true
+        }
+    }
+}</code></pre>
+                </div>
+
+                <h2>2. App Display Name & Resource Strings</h2>
+                <p>The primary application launcher label displayed on the Android system home screen is defined in <span class="inline-code">app/src/main/res/values/strings.xml</span>:</p>
+
+                <div class="code-block">
+                    <pre><code>&lt;resources&gt;
+    &lt;string name="app_name"&gt;NovaQR&lt;/string&gt;
+    &lt;string name="app_description"&gt;Intelligent QR Generator &amp; AI Scanner&lt;/string&gt;
+&lt;/resources&gt;</code></pre>
+                </div>
+            </section>
+
+            <!-- Google Authentication -->
+            <section id="google-auth" class="doc-section" role="region" aria-labelledby="heading-google-auth">
+                <h1 id="heading-google-auth">Google Authentication Specification</h1>
+                <p>NovaQR implements modern dual-layer Google Authentication architecture on Android. The system attempts primary authentication via native on-device <strong>Google CredentialManager</strong>, falling back smoothly to <strong>Browser OAuth 2.0</strong> with custom deep links when required.</p>
+
+                <h2>1. Authentication Architecture</h2>
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <div class="feature-card-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg></div>
+                        <h4>Native CredentialManager (Primary)</h4>
+                        <p>Invokes Android's native bottom-sheet account picker. Retrieves a cryptographically signed Google ID Token directly within the app and passes it to Supabase Auth without opening external browser windows.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-card-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M12 2a10 10 0 0 0-7.07 17.07l1.41-1.41A8 8 0 1 1 12 4v-2z"></path></svg></div>
+                        <h4>Browser OAuth 2.0 (Fallback)</h4>
+                        <p>If CredentialManager is unsupported on older Play Services versions, the app opens Chrome Custom Tabs to complete OAuth authorization, returning via deep link <span class="inline-code">com.example.novaqr://callback</span>.</p>
+                    </div>
+                </div>
+
+                <h2>2. Google Cloud Console Provisioning</h2>
+                <p>To enable Google Authentication for your build, set up your OAuth parameters in Google Cloud Console:</p>
+                <ol>
+                    <li>Log into <a href="https://console.cloud.google.com/" target="_blank" rel="noopener noreferrer">Google Cloud Console</a> and create or select your project.</li>
+                    <li>Navigate to <strong>APIs & Services</strong> &gt; <strong>OAuth consent screen</strong>.</li>
+                    <li>Set <strong>User Type</strong> to <strong>External</strong> and fill in required app contact details.</li>
+                    <li>Configure mandatory authorization scopes:
+                        <ul>
+                            <li><span class="inline-code">openid</span></li>
+                            <li><span class="inline-code">https://www.googleapis.com/auth/userinfo.email</span></li>
+                            <li><span class="inline-code">https://www.googleapis.com/auth/userinfo.profile</span></li>
+                        </ul>
+                    </li>
+                    <li>Publish your consent screen status to <strong>In Production</strong> or register developer emails under <strong>Test Users</strong>.</li>
+                    <li>Navigate to <strong>Credentials</strong> &gt; <strong>Create Credentials</strong> &gt; <strong>OAuth client ID</strong>.</li>
+                    <li>Select <strong>Web application</strong> (This Web Client ID will be used as <span class="inline-code">GOOGLE_LOGIN_KEY</span> in Supabase and <span class="inline-code">.env</span>).</li>
+                </ol>
+
+                <h2>3. Generating Required SHA Fingerprints</h2>
+                <p>Google CredentialManager requires linking your Android app's signing certificate fingerprints (SHA-1 and SHA-256) to an Android Client ID entry in Google Cloud Console.</p>
+
+                <p><strong>Generating Debug SHA Fingerprints via Terminal:</strong></p>
+                <div class="code-block">
+                    <pre><code># Linux / macOS
+keytool -list -v -keystore ~/.android/debug.keystore -alias androiddebugkey -storepass android -keypass android
+
+# Windows
+keytool -list -v -keystore "%USERPROFILE%\.android\debug.keystore" -alias androiddebugkey -storepass android -keypass android
+
+# Alternatively via Gradle inside project:
+./gradlew signingReport</code></pre>
+                </div>
+
+                <p>Copy both <strong>SHA-1</strong> and <strong>SHA-256</strong> keys and paste them into your Android Client ID configuration in Google Cloud Console under matching package name <span class="inline-code">com.example.novaqr</span>.</p>
+
+                <h2>4. Redirect URI Whitelisting in Supabase</h2>
+                <p>To accept deep link redirects from Browser OAuth, register your custom schemes in <strong>Supabase Dashboard</strong> &gt; <strong>Authentication</strong> &gt; <strong>URL Configuration</strong> &gt; <strong>Redirect URLs</strong>:</p>
+
+                <div class="code-block">
+                    <pre><code>com.example.novaqr://callback
+novaqr://callback</code></pre>
+                </div>
+
+                <h2>5. Environment Variables Configuration</h2>
+                <p>Add your Web Client ID and Redirect scheme to your project <span class="inline-code">.env</span> file:</p>
+
+                <div class="code-block">
+                    <pre><code>GOOGLE_LOGIN_KEY=YOUR_GOOGLE_WEB_CLIENT_ID.apps.googleusercontent.com
+GOOGLE_CUSTOM_REDIRECT_URL=com.example.novaqr://callback</code></pre>
+                </div>
+            </section>
+
+            <!-- Environment Setup -->
+            <section id="env-setup" class="doc-section" role="region" aria-labelledby="heading-env">
+                <h1 id="heading-env">Environment Variables (.env & .env.example)</h1>
+                <p>NovaQR utilizes strict secret isolation. All API credentials, database keys, and configuration parameters are loaded dynamically at compile time through the Secrets Gradle Plugin into BuildConfig constants.</p>
+
+                <h2>Active Environment File (.env)</h2>
+                <div class="code-block">
+                    <pre><code>########################################
+# Application Settings
+########################################
+APP_NAME=NovaQR
+PACKAGE_NAME=com.example.novaqr
+
+########################################
+# Gemini AI Configuration
+########################################
+GEMINI_API_KEY=YOUR_GEMINI_API_KEY
+GEMINI_MODEL=gemini-3.6-flash
+GEMINI_FALLBACK_MODEL=gemini-3.1-pro
+GEMINI_SYSTEM_PROMPT=You are NOVA, an intelligent assistant for NovaQR.
+
+########################################
+# Supabase Database & Auth
+########################################
+SUPABASE_URL=YOUR_SUPABASE_URL
+SUPABASE_ANON_KEY=YOUR_SUPABASE_ANON_KEY
+
+########################################
+# External Database (Optional)
+########################################
+# EXTERNAL_DATABASE_URL=postgresql://user:password@localhost:5432/novaqr_db
+
+########################################
+# Google Authentication
+########################################
+GOOGLE_LOGIN_KEY=YOUR_GOOGLE_WEB_CLIENT_ID.apps.googleusercontent.com
+GOOGLE_CUSTOM_REDIRECT_URL=com.example.novaqr://callback
+
+########################################
+# Tawk.to Live Support
+########################################
+TAWK_PROPERTY_ID=YOUR_TAWK_PROPERTY_ID
+TAWK_WIDGET_ID=YOUR_TAWK_WIDGET_ID
+
+########################################
+# OpenRouter AI (Fallback Provider)
+########################################
+OPENROUTER_API_KEY=YOUR_OPENROUTER_API_KEY
+OPENROUTER_MODEL=YOUR_OPENROUTER_MODEL</code></pre>
+                </div>
+
+                <h2>Template Master File (.env.example)</h2>
+                <p>The repository includes <span class="inline-code">.env.example</span> containing clean template placeholders. Never commit populated <span class="inline-code">.env</span> files to version control repositories.</p>
+            </section>
+
+            <!-- Supabase Database -->
+            <section id="supabase-db" class="doc-section" role="region" aria-labelledby="heading-supabase">
+                <h1 id="heading-supabase">Supabase Database & Security Policies</h1>
+                <p>NovaQR relies on Supabase PostgreSQL for persistent user storage, saved QR code history, dynamic remote agent configuration, user plan management, and in-app system alerts.</p>
+
+                <div class="notice-box" style="border-left-color: #ef4444; background: rgba(239, 68, 68, 0.08); margin-bottom: 24px;">
+                    <h3 style="color: #f87171;">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+                        Critical Security Alert: Resolving Table Publicly Accessible (rls_disabled_in_public)
+                    </h3>
+                    <p style="color: var(--text-secondary); line-height: 1.6;">
+                        If you receive an email or notification from Supabase warning about <strong>"Table publicly accessible (rls_disabled_in_public)"</strong>, do not panic! This occurs when new tables are created without enabling Row-Level Security (RLS).
+                    </p>
+                    <p style="color: var(--text-secondary); line-height: 1.6; margin-top: 8px;">
+                        <strong>Resolution Steps:</strong> Copy and run the complete SQL script below inside your <strong>Supabase Dashboard &gt; SQL Editor</strong>. This enables RLS across all tables and restricts access so users can only read/write their own records.
+                    </p>
+                </div>
+
+                <h2>1. Complete Database Schema Setup & RLS Policies</h2>
+                <p>Execute this complete SQL initialization script in <strong>Supabase Dashboard &gt; SQL Editor</strong> to automatically construct all 7 required tables, indexes, triggers, and Row-Level Security (RLS) policies:</p>
+                <div class="code-block">
+                    <pre><code>-- 1. Create User Profiles Table (with plan expiry & trial metadata)
+CREATE TABLE IF NOT EXISTS public.profiles (
+  id uuid REFERENCES auth.users ON DELETE CASCADE PRIMARY KEY,
+  email text,
+  full_name text,
+  plan text DEFAULT 'free', -- Options: 'free', 'pro', 'enterprise'
+  plan_expires_at timestamp with time zone,
+  is_trial boolean DEFAULT false,
+  avatar_base64 text,
+  created_at timestamp with time zone DEFAULT timezone('utc'::text, now())
+);
+
+ALTER TABLE public.profiles ENABLE ROW LEVEL SECURITY;
+CREATE POLICY "Users can view own profile" ON public.profiles FOR SELECT USING (auth.uid() = id);
+CREATE POLICY "Users can insert own profile" ON public.profiles FOR INSERT WITH CHECK (auth.uid() = id);
+CREATE POLICY "Users can update own profile" ON public.profiles FOR UPDATE USING (auth.uid() = id);
+
+-- 2. Automatic User Profile Creation & Default Plan Trigger
+CREATE OR REPLACE FUNCTION public.handle_new_user()
+RETURNS trigger AS $$
+BEGIN
+  INSERT INTO public.profiles (id, email, full_name, plan, plan_expires_at, is_trial)
+  VALUES (
+    new.id,
+    new.email,
+    COALESCE(new.raw_user_meta_data-&gt;&gt;'full_name', split_part(new.email, '@', 1)),
+    'free', -- Set to 'pro' if you want a 100% free app for all users
+    NULL,   -- e.g. NOW() + INTERVAL '30 days' for an automatic $0 30-day Pro trial
+    false
+  )
+  ON CONFLICT (id) DO NOTHING;
+  RETURN new;
+END;
+$$ LANGUAGE plpgsql SECURITY DEFINER;
+
+DROP TRIGGER IF EXISTS on_auth_user_created ON auth.users;
+CREATE TRIGGER on_auth_user_created
+  AFTER INSERT ON auth.users
+  FOR EACH ROW EXECUTE FUNCTION public.handle_new_user();
+
+-- 3. Saved QR Code Vault Table
+CREATE TABLE IF NOT EXISTS public.saved_qrs (
+  id SERIAL PRIMARY KEY,
+  title text NOT NULL,
+  content text NOT NULL,
+  type_name text NOT NULL,
+  timestamp bigint NOT NULL,
+  is_favorite boolean NOT NULL DEFAULT false,
+  style_json text NOT NULL,
+  user_id uuid REFERENCES auth.users NOT NULL DEFAULT auth.uid()
+);
+
+ALTER TABLE public.saved_qrs ENABLE ROW LEVEL SECURITY;
+CREATE POLICY "Users can view own qrs" ON public.saved_qrs FOR SELECT USING (auth.uid() = user_id);
+CREATE POLICY "Users can insert own qrs" ON public.saved_qrs FOR INSERT WITH CHECK (auth.uid() = user_id);
+CREATE POLICY "Users can update own qrs" ON public.saved_qrs FOR UPDATE USING (auth.uid() = user_id);
+CREATE POLICY "Users can delete own qrs" ON public.saved_qrs FOR DELETE USING (auth.uid() = user_id);
+
+-- 4. Broadcast System Notifications Table (Global App Alerts)
+CREATE TABLE IF NOT EXISTS public.app_notifications (
+  id SERIAL PRIMARY KEY,
+  title text NOT NULL,
+  message text NOT NULL,
+  type text DEFAULT 'info', -- 'info', 'promo', 'update', 'alert'
+  action_url text,
+  is_active boolean DEFAULT true,
+  created_at timestamp with time zone DEFAULT timezone('utc'::text, now()),
+  expires_at timestamp with time zone
+);
+
+ALTER TABLE public.app_notifications ENABLE ROW LEVEL SECURITY;
+CREATE POLICY "Anyone can view notifications" ON public.app_notifications FOR SELECT USING (true);
+
+-- 5. Targeted Customer Notifications Table (Specific User Messages)
+CREATE TABLE IF NOT EXISTS public.user_notifications (
+  id SERIAL PRIMARY KEY,
+  user_id uuid REFERENCES auth.users ON DELETE CASCADE NOT NULL,
+  title text NOT NULL,
+  message text NOT NULL,
+  type text DEFAULT 'system', -- 'system', 'billing', 'reward', 'alert'
+  action_url text,
+  is_read boolean DEFAULT false,
+  created_at timestamp with time zone DEFAULT timezone('utc'::text, now())
+);
+
+ALTER TABLE public.user_notifications ENABLE ROW LEVEL SECURITY;
+CREATE POLICY "Users view own notifications" ON public.user_notifications FOR SELECT USING (auth.uid() = user_id);
+CREATE POLICY "Users update own notifications" ON public.user_notifications FOR UPDATE USING (auth.uid() = user_id);
+
+-- 6. Remote App Settings & Feature Flags Table
+CREATE TABLE IF NOT EXISTS public.app_settings (
+  id SERIAL PRIMARY KEY,
+  enable_paid_plans boolean DEFAULT true,
+  enable_ads boolean DEFAULT false,
+  admob_banner_id text,
+  free_qr_limit int DEFAULT 5,
+  default_signup_plan text DEFAULT 'free',
+  updated_at timestamp with time zone DEFAULT timezone('utc'::text, now())
+);
+
+ALTER TABLE public.app_settings ENABLE ROW LEVEL SECURITY;
+CREATE POLICY "Anyone view app settings" ON public.app_settings FOR SELECT USING (true);
+
+INSERT INTO public.app_settings (enable_paid_plans, enable_ads, free_qr_limit, default_signup_plan)
+VALUES (true, false, 5, 'free')
+ON CONFLICT DO NOTHING;
+
+-- 7. AI Agent Remote Configuration Table
+CREATE TABLE IF NOT EXISTS public.agent_config (
+  id SERIAL PRIMARY KEY,
+  system_prompt text,
+  model_name text DEFAULT 'gemini-1.5-flash',
+  is_enabled boolean DEFAULT true
+);
+
+ALTER TABLE public.agent_config ENABLE ROW LEVEL SECURITY;
+CREATE POLICY "Anyone view agent config" ON public.agent_config FOR SELECT USING (true);
+
+-- 8. Plan Subscriptions & Upgrade Audit Table
+CREATE TABLE IF NOT EXISTS public.plan_subscriptions (
+  id SERIAL PRIMARY KEY,
+  user_id uuid REFERENCES auth.users ON DELETE CASCADE NOT NULL,
+  plan_name text NOT NULL,
+  amount_paid numeric(10,2) DEFAULT 0.00,
+  payment_method text DEFAULT 'manual_admin',
+  started_at timestamp with time zone DEFAULT timezone('utc'::text, now()),
+  expires_at timestamp with time zone
+);
+
+ALTER TABLE public.plan_subscriptions ENABLE ROW LEVEL SECURITY;
+CREATE POLICY "Users view own subscriptions" ON public.plan_subscriptions FOR SELECT USING (auth.uid() = user_id);
+
+-- 9. Remote Plan Catalog & Pricing Table (Dynamic Prices & Descriptions)
+CREATE TABLE IF NOT EXISTS public.plan_catalog (
+  plan_id text PRIMARY KEY, -- 'free', 'pro', 'enterprise'
+  title text NOT NULL,
+  description text,
+  price_monthly numeric(10,2) DEFAULT 0.00,
+  price_yearly numeric(10,2) DEFAULT 0.00,
+  currency_symbol text DEFAULT '$',
+  badge_text text,
+  features text[], -- Array of feature string bullet points
+  is_active boolean DEFAULT true,
+  updated_at timestamp with time zone DEFAULT timezone('utc'::text, now())
+);
+
+ALTER TABLE public.plan_catalog ENABLE ROW LEVEL SECURITY;
+CREATE POLICY "Anyone view plan catalog" ON public.plan_catalog FOR SELECT USING (true);
+
+INSERT INTO public.plan_catalog (plan_id, title, description, price_monthly, price_yearly, currency_symbol, badge_text, features)
+VALUES 
+  ('free', 'Free Starter', 'Basic QR generation for everyday personal use', 0.00, 0.00, '$', 'Basic', ARRAY['PNG Export', 'Standard QR Types', 'Scan Barcodes & QRs']),
+  ('pro', 'Pro Studio', 'Professional QR studio with AI & vector exports', 4.99, 39.99, '$', 'POPULAR', ARRAY['SVG & PDF Vector Export', 'Logo Embedding', 'Unlimited AI Prompts', 'Ad-Free Experience', 'Priority Support'])
+ON CONFLICT (plan_id) DO UPDATE SET 
+  title = EXCLUDED.title,
+  price_monthly = EXCLUDED.price_monthly,
+  price_yearly = EXCLUDED.price_yearly,
+  features = EXCLUDED.features;</code></pre>
+                </div>
+
+                <h2>2. User Account Management Guide</h2>
+                <p>Supabase provides built-in user administration tools through both the web dashboard and SQL commands:</p>
+                <ul style="color: var(--text-secondary); margin-left: 20px; line-height: 1.7;">
+                    <li><strong>Viewing Registered Users:</strong> Navigate to <strong>Supabase Dashboard &gt; Authentication &gt; Users</strong> to search, filter, or view all signed-up accounts.</li>
+                    <li><strong>Banning or Disabling Accounts:</strong> In the Users list, click the <strong>...</strong> menu next to a user and select <strong>Ban User</strong> or <strong>Disable User</strong> to temporarily or permanently revoke login access.</li>
+                    <li><strong>Deleting Accounts & Data (GDPR Compliance):</strong> Selecting <strong>Delete User</strong> removes the user record from <span class="inline-code">auth.users</span>. Because of the <span class="inline-code">ON DELETE CASCADE</span> rule, their corresponding <span class="inline-code">profiles</span> record and <span class="inline-code">saved_qrs</span> entries are automatically wiped clean.</li>
+                </ul>
+
+                <h2>3. Upgrading & Managing User Plans in Supabase</h2>
+                <p>User access tiers (<span class="inline-code">'free'</span>, <span class="inline-code">'pro'</span>, <span class="inline-code">'enterprise'</span>) dictate feature gates and generation limits inside NovaQR:</p>
+
+                <div class="code-block">
+                    <pre><code>-- Manual Plan Upgrade via Supabase SQL Editor:
+UPDATE public.profiles 
+SET plan = 'pro' 
+WHERE email = 'user@example.com';
+
+-- Bulk Upgrade for Beta Testers:
+UPDATE public.profiles 
+SET plan = 'pro' 
+WHERE email LIKE '%@demo.com';</code></pre>
+                </div>
+
+                <p><strong>Automated Payment Webhooks (Stripe / RevenueCat / Play Billing):</strong> When integrating in-app purchases or subscription webhooks, send a secure server-side POST request to your Supabase Database or Edge Function to update the user's <span class="inline-code">plan</span> attribute automatically upon successful payment.</p>
+            </section>
+
+            <!-- Monetization, Revenue & Subscription Plans -->
+            <section id="monetization-guide" class="doc-section" role="region" aria-labelledby="heading-monetization">
+                <h1 id="heading-monetization">Monetization, Revenue Model & Subscription Plans Guide</h1>
+                <p>Understand how NovaQR generates revenue from source code execution, how to modify subscription plan pricing and feature lists, and how to configure Google Play In-App Purchases or external payment gateways.</p>
+
+                <div class="notice-box" style="border-left: 4px solid #f59e0b; background: rgba(245,158,11,0.08);">
+                    <h3 style="color: #fbbf24;">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+                        How App Owners Collect Revenue from Source Code
+                    </h3>
+                    <p style="color: var(--text-secondary); line-height: 1.6;">
+                        NovaQR is engineered as a commercial micro-SaaS application. All subscription revenue generated when end-users upgrade to the <strong>Pro Studio</strong> plan flows directly into your bank account or payment processor. No revenue shares or commission cuts are taken by the source code!
+                    </p>
+                </div>
+
+                <h2>1. Revenue Generation Channels</h2>
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <div class="feature-card-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg></div>
+                        <h4>A. Google Play Billing (Subscriptions)</h4>
+                        <p>End users pay via Google Play payment methods (Credit Card, Play Balance, PayPal). Google processes payouts directly into your linked developer bank account (85%–90% net revenue to app owner).</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-card-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect><line x1="1" y1="10" x2="23" y2="10"></line></svg></div>
+                        <h4>B. Direct Web Payment Gateway (PayPal / Stripe)</h4>
+                        <p>When users tap <strong>Upgrade to Pro</strong> in <span class="inline-code">PlansScreen.kt</span>, the app launches your custom PayPal or Stripe checkout link. Upon payment completion, a web webhook automatically activates the Pro license in Supabase.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-card-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="8.5" cy="7" r="4"></circle><polyline points="17 11 19 13 23 9"></polyline></svg></div>
+                        <h4>C. B2B Enterprise & Manual Admin Licenses</h4>
+                        <p>Sell bulk corporate licenses or VIP access to clients offline, then activate their account instantly via Supabase SQL Console by setting <span class="inline-code">plan = 'pro'</span>.</p>
+                    </div>
+                </div>
+
+                <h2>2. Modifying Plan Prices, Descriptions & Features</h2>
+                <p>NovaQR supports dual configuration: live remote database cataloging and fast local source code fallbacks.</p>
+
+                <p><strong>Method A: Modifying Live Prices via Supabase SQL Editor (Recommended)</strong></p>
+                <p>To change plan pricing (e.g., setting Pro to $9.99/mo or $49.99/yr) without republishing the APK, execute this query in <strong>Supabase Dashboard &gt; SQL Editor</strong>:</p>
+
+                <div class="code-block">
+                    <pre><code>-- Update Pro Plan Prices and Feature List in Supabase:
+UPDATE public.plan_catalog
+SET price_monthly = 9.99,
+    price_yearly = 49.99,
+    currency_symbol = '$',
+    description = 'Unlimited AI QR studio with vector PDF/SVG exports',
+    features = ARRAY[
+        'All Advanced QR Types (WiFi, Crypto, Social)',
+        'Custom Colors, Gradients & Embedded Logo',
+        'Unlimited Daily Generations',
+        'High-Resolution Vector Export (PDF & SVG)',
+        'NOVA Gemini 3.6 Flash AI Assistant',
+        'Cloud Vault Sync across Devices'
+    ]
+WHERE plan_id = 'pro';</code></pre>
+                </div>
+
+                <p style="margin-top: 16px;"><strong>Method B: Modifying Fallback Prices in Source Code</strong></p>
+                <p>If the user is offline, the app reads fallback values defined inside <span class="inline-code">app/src/main/java/com/example/ui/screens/PlansScreen.kt</span>:</p>
+
+                <div class="code-block">
+                    <pre><code>// Located inside PlansScreen.kt:
+val proPriceFormatted = proPlan?.getFormattedPrice() ?: "$9.99"
+val proFeatures = proPlan?.getFeaturesList()?.takeIf { it.isNotEmpty() } ?: listOf(
+    TranslationHelper.t("All Advanced QR Types (WiFi, Crypto, Social)"),
+    TranslationHelper.t("Custom Colors, Gradients & Logos"),
+    TranslationHelper.t("Unlimited Generations"),
+    TranslationHelper.t("Cloud Sync with Supabase"),
+    TranslationHelper.t("Premium High-res Exports (PDF, SVG)")
+)</code></pre>
+                </div>
+
+                <h2>3. Feature Locking & Privilege Enforcement Matrix</h2>
+                <div class="data-table-wrapper">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Feature / Capability</th>
+                                <th>Free Starter Tier</th>
+                                <th>Pro Studio Tier</th>
+                                <th>Code Enforcement Location</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Daily QR Generation Quota</strong></td>
+                                <td>5 Basic Generations / Day</td>
+                                <td>Unlimited Generations</td>
+                                <td><span class="inline-code">UsageLogDao.kt</span> & <span class="inline-code">QrStudioScreen.kt</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>QR Content Types</strong></td>
+                                <td>Text & Standard URL</td>
+                                <td>WiFi, VCard, Crypto, Phone, Email, Social</td>
+                                <td><span class="inline-code">QrContentInput.kt</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Custom Styling & Logo</strong></td>
+                                <td>Monochrome Black & White</td>
+                                <td>Custom Colors, Gradients, Eye Shapes & Logo Embedding</td>
+                                <td><span class="inline-code">QrStudioScreen.kt</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Export Resolution & Formats</strong></td>
+                                <td>Standard PNG (1x)</td>
+                                <td>High-Res PNG (4x), Vector SVG & Print-Ready PDF</td>
+                                <td><span class="inline-code">QrStudioScreen.kt</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>NOVA AI Assistant Chat</strong></td>
+                                <td>3 Prompts / Day</td>
+                                <td>Unlimited Gemini AI Queries & Prompt Enhancements</td>
+                                <td><span class="inline-code">AIChatScreen.kt</span> & <span class="inline-code">GeminiApiClient.kt</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Cloud Vault Storage</strong></td>
+                                <td>Local Device Room DB</td>
+                                <td>Automatic Multi-Device Supabase Cloud Sync</td>
+                                <td><span class="inline-code">SupabaseClient.kt</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h2>4. Step-by-Step Google Play In-App Purchase Integration</h2>
+                <p>To accept automated Google Play Subscriptions directly inside your published app:</p>
+                <ol style="color: var(--text-secondary); margin-left: 20px; line-height: 1.7;">
+                    <li>Ensure <span class="inline-code">com.android.billingclient:billing-ktx</span> is included in <span class="inline-code">app/build.gradle.kts</span> dependencies.</li>
+                    <li>Open <strong>Google Play Console &gt; Monetize &gt; Products &gt; Subscriptions</strong> and create a subscription product with ID <span class="inline-code">novaqr_pro_monthly</span>.</li>
+                    <li>Inside <span class="inline-code">PlansScreen.kt</span>, replace the payment dialog handler with the standard Play Billing launcher:
+                        <div class="code-block" style="margin-top: 8px;">
+                            <pre><code>val billingClient = BillingClient.newBuilder(context)
+    .setListener(purchasesUpdatedListener)
+    .enablePendingPurchases()
+    .build()
+
+val flowParams = BillingFlowParams.newBuilder()
+    .setProductDetailsParamsList(productDetailsParamsList)
+    .build()
+
+billingClient.launchBillingFlow(activity, flowParams)</code></pre>
+                        </div>
+                    </li>
+                    <li>Upon successful purchase verification callback, call <span class="inline-code">SupabaseClient.db.updateProfile("eq.$userId", mapOf("plan" to "pro"))</span> to unlock Pro features instantly!</li>
+                </ol>
+
+                <h2>5. Comprehensive Application Settings Guide</h2>
+                <p>NovaQR exposes a full suite of user controls, developer options, and system settings across UI menus and environment constants:</p>
+
+                <div class="data-table-wrapper">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Setting Category</th>
+                                <th>Available Settings & Controls</th>
+                                <th>Configuration / File Location</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Theme & Styling</strong></td>
+                                <td>8 Dynamic Color Schemes (Cyan, Purple, Emerald, Sunset, Crimson, Gold, Cyberpunk, Midnight) + Dark/Light Mode.</td>
+                                <td>Settings &gt; Theme Options (<span class="inline-code">ThemeState.kt</span>)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Language & Localization</strong></td>
+                                <td>7 Languages (English, Arabic, French, German, Korean, Turkish, Chinese) + Automatic Right-to-Left (RTL) layout switching.</td>
+                                <td>Settings &gt; Language (<span class="inline-code">TranslationHelper.kt</span> & <span class="inline-code">res/values-*/</span>)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Camera & Scanner</strong></td>
+                                <td>Haptic vibration feedback on scan, Auto-open scanned URLs toggle, Flashlight toggle state, Camera permission prompt.</td>
+                                <td>Settings &gt; Scanner Options (<span class="inline-code">ScannerScreen.kt</span>)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>NOVA AI Assistant</strong></td>
+                                <td>System prompt customization, Gemini Model selection (<span class="inline-code">gemini-3.6-flash</span> / <span class="inline-code">gemini-3.1-pro</span>), OpenRouter fallback key.</td>
+                                <td>Settings &gt; AI Agent Config (<span class="inline-code">.env</span> & <span class="inline-code">GeminiApiClient.kt</span>)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Export & Rendering</strong></td>
+                                <td>PNG scale resolution multiplier (1x to 4x), Vector SVG format toggle, Transparent canvas background toggle.</td>
+                                <td>QR Studio &gt; Export Dialog (<span class="inline-code">QrStudioScreen.kt</span>)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Auth & Cloud Account</strong></td>
+                                <td>Google CredentialManager OAuth, Email/Password login, Password recovery, Guest mode fallback, Account logout.</td>
+                                <td>Auth & Profile Screens (<span class="inline-code">AuthScreens.kt</span> & <span class="inline-code">SupabaseClient.kt</span>)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Support & Live Chat</strong></td>
+                                <td>Tawk.to live customer support widget property ID (<span class="inline-code">TAWK_PROPERTY_ID</span>), Direct email intent, Telegram portal link.</td>
+                                <td>Settings &gt; Help & Support (<span class="inline-code">SettingsScreens.kt</span>)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- External Database Integration -->
+            <section id="external-database" class="doc-section" role="region" aria-labelledby="heading-external-db">
+                <h1 id="heading-external-db">External Database Integration</h1>
+                <p>If your enterprise deployment requires self-hosted PostgreSQL, AWS RDS, GCP Cloud SQL, or custom REST APIs, NovaQR supports flexible database architecture adapters.</p>
+
+                <h2>Option 1: Connecting External Postgres to Supabase</h2>
+                <p>Supabase allows wrapping existing external PostgreSQL instances using Foreign Data Wrappers (FDW) or pgBouncer connection pooling under <strong>Database Settings</strong> &gt; <strong>Connection Strings</strong>.</p>
+
+                <h2>Option 2: Self-Hosting Supabase Stack</h2>
+                <p>Deploy a self-hosted Supabase engine using Docker Compose on any cloud server:</p>
+
+                <div class="code-block">
+                    <pre><code>cd supabase/docker
+cp .env.example .env
+docker compose up -d</code></pre>
+                </div>
+
+                <p>Update your client <span class="inline-code">.env</span> file to point directly to your custom server endpoint:</p>
+                <div class="code-block">
+                    <pre><code>SUPABASE_URL=YOUR_CUSTOM_SUPABASE_HOST
+SUPABASE_ANON_KEY=YOUR_CUSTOM_ANON_KEY</code></pre>
+                </div>
+            </section>
+
+            <!-- Branding & Customization (Beginner Friendly) -->
+            <section id="app-branding" class="doc-section" role="region" aria-labelledby="heading-branding">
+                <h1 id="heading-branding">Comprehensive Branding & Identity Customization Guide</h1>
+                <p>Customize the visual identity, launcher icons, package identifiers, logos, color palettes, subscription plans, pricing options, and third-party credentials.</p>
+
+                <h2>1. Changing App Display Name & Application ID</h2>
+                <p>To rename the application and re-package it under your unique domain identifier:</p>
+                <ul style="color: var(--text-secondary); margin-left: 20px; line-height: 1.7;">
+                    <li><strong>App Launcher Name:</strong> Open <span class="inline-code">app/src/main/res/values/strings.xml</span> and update <span class="inline-code">&lt;string name="app_name"&gt;Your Brand Name&lt;/string&gt;</span>. Also update the <span class="inline-code">name</span> field in <span class="inline-code">metadata.json</span> at project root to keep Android Studio project name in sync.</li>
+                    <li><strong>Application ID / Package ID:</strong> Open <span class="inline-code">app/build.gradle.kts</span> and update <span class="inline-code">defaultConfig { applicationId = "com.yourdomain.brandapp" }</span>.</li>
+                </ul>
+
+                <h2>2. Changing App Logo & Home Launcher Icon (Adaptive Icons)</h2>
+                <p>NovaQR implements modern Android Adaptive Icons (<span class="inline-code">ic_launcher.xml</span> and <span class="inline-code">ic_launcher_round.xml</span>) supporting vector foreground layers, custom background colors, and dynamic launcher masking across all Android versions.</p>
+
+                <p><strong>Method A: Using Android Studio Asset Studio (Recommended)</strong></p>
+                <ol style="color: var(--text-secondary); margin-left: 20px; line-height: 1.7;">
+                    <li>In Android Studio left sidebar, right-click the <strong>app</strong> directory folder.</li>
+                    <li>Select <strong>New &gt; Image Asset</strong> to launch Android Asset Studio.</li>
+                    <li>Select <strong>Icon Type: Launcher Icons (Adaptive and Legacy)</strong>.</li>
+                    <li>Under <strong>Foreground Layer</strong> tab: Set Asset Type to <strong>Image</strong> and choose your high-resolution PNG or SVG logo (512x512px recommended). Adjust resize slider to center your logo.</li>
+                    <li>Under <strong>Background Layer</strong> tab: Choose a solid background color (e.g., dark canvas <span class="inline-code">#050711</span>) or image background.</li>
+                    <li>Click <strong>Next</strong>, verify target paths, and click <strong>Finish</strong>. Android Studio automatically generates adaptive vector assets across all density buckets (<span class="inline-code">mipmap-hdpi</span>, <span class="inline-code">mipmap-xhdpi</span>, <span class="inline-code">mipmap-xxhdpi</span>, <span class="inline-code">mipmap-xxxhdpi</span>, <span class="inline-code">mipmap-anydpi-v26</span>).</li>
+                </ol>
+
+                <p style="margin-top: 16px;"><strong>Method B: Direct Resource File Replacement</strong></p>
+                <ul style="color: var(--text-secondary); margin-left: 20px; line-height: 1.7;">
+                    <li><strong>Foreground Asset:</strong> Replace <span class="inline-code">app/src/main/res/drawable/ic_launcher_foreground.xml</span> with your own brand vector XML asset.</li>
+                    <li><strong>Background Color:</strong> Edit <span class="inline-code">app/src/main/res/values/colors.xml</span> or <span class="inline-code">ic_launcher_background.xml</span> to set your background hex color.</li>
+                </ul>
+
+                <h2>3. Customizing Splash Screen Logo</h2>
+                <p>Replace the vector splash logo located at <span class="inline-code">app/src/main/res/drawable/ic_splash_logo.xml</span> with your custom brand logo. The Android splash screen automatically scales this asset smoothly during app launch.</p>
+
+                <h2>4. Modifying Credentials & API Keys</h2>
+                <p>All third-party credentials and server endpoints are isolated inside environment keys. Update your <span class="inline-code">.env</span> file or Android Studio project configuration:</p>
+
+                <div class="data-table-wrapper">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Environment Key</th>
+                                <th>Purpose / Description</th>
+                                <th>Source Location</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><span class="inline-code">SUPABASE_URL</span></td>
+                                <td>Supabase project HTTPS endpoint URL</td>
+                                <td>Supabase Dashboard &gt; Settings &gt; API</td>
+                            </tr>
+                            <tr>
+                                <td><span class="inline-code">SUPABASE_ANON_KEY</span></td>
+                                <td>Public anonymous client API key</td>
+                                <td>Supabase Dashboard &gt; Settings &gt; API</td>
+                            </tr>
+                            <tr>
+                                <td><span class="inline-code">GEMINI_API_KEY</span></td>
+                                <td>Google Gemini AI Assistant Key</td>
+                                <td>Google AI Studio (aistudio.google.com)</td>
+                            </tr>
+                            <tr>
+                                <td><span class="inline-code">GOOGLE_WEB_CLIENT_ID</span></td>
+                                <td>Google OAuth 2.0 Web Client ID</td>
+                                <td>Google Cloud Console &gt; Credentials</td>
+                            </tr>
+                            <tr>
+                                <td><span class="inline-code">TAWK_PROPERTY_ID</span></td>
+                                <td>Live Support Chat Property ID</td>
+                                <td>Tawk.to Dashboard &gt; Direct Chat Link</td>
+                            </tr>
+                            <tr>
+                                <td><span class="inline-code">TAWK_WIDGET_ID</span></td>
+                                <td>Live Support Chat Widget ID</td>
+                                <td>Tawk.to Dashboard &gt; Widget Settings</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Customizable Themes & Styling -->
+            <section id="theme-customization" class="doc-section" role="region" aria-labelledby="heading-themes-styling">
+                <h1 id="heading-themes-styling">Customizable Themes & Style Customization Guide</h1>
+                <p>NovaQR features an advanced, built-in dynamic theme engine in Jetpack Compose, supporting 8 distinctive color schemes and real-time theme switching.</p>
+
+                <div class="notice-box" style="border-left: 4px solid #a855f7; background: rgba(168,85,247,0.08);">
+                    <h3 style="color: #c084fc;">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"></circle><path d="M12 2a10 10 0 0 0-7.07 17.07l1.41-1.41A8 8 0 1 1 12 4v-2z"></path></svg>
+                        Modular Theme Architecture
+                    </h3>
+                    <p style="color: var(--text-secondary); line-height: 1.6;">
+                        All color schemes are centrally declared inside <span class="inline-code">app/src/main/java/com/example/ui/theme/Theme.kt</span> using Material 3 <span class="inline-code">darkColorScheme</span>. Theme selection is managed reactively through <span class="inline-code">ThemeState.kt</span>, enabling instant app-wide visual updates without restarting the application!
+                    </p>
+                </div>
+
+                <h2>1. The 8 Built-In Color Schemes Matrix</h2>
+                <div class="data-table-wrapper">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Theme Identifier</th>
+                                <th>Primary Accent Color</th>
+                                <th>Secondary Accent</th>
+                                <th>Background Canvas</th>
+                                <th>Visual Personality</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>cyan (Default)</strong></td>
+                                <td><span style="color:#00F0FF; font-weight:700;">#00F0FF</span> (Vivid Cyan)</td>
+                                <td><span style="color:#B062FF; font-weight:700;">#B062FF</span> (Electric Violet)</td>
+                                <td>#050711 (Midnight Dark)</td>
+                                <td>Futuristic Cyberpunk & Sleek Android Studio</td>
+                            </tr>
+                            <tr>
+                                <td><strong>purple</strong></td>
+                                <td><span style="color:#D08BFF; font-weight:700;">#D08BFF</span> (Vivid Purple)</td>
+                                <td><span style="color:#00F0FF; font-weight:700;">#00F0FF</span> (Cyan Glow)</td>
+                                <td>#0A0514 (Deep Purple Dark)</td>
+                                <td>Creative, Regal & Modern Digital</td>
+                            </tr>
+                            <tr>
+                                <td><strong>emerald</strong></td>
+                                <td><span style="color:#10B981; font-weight:700;">#10B981</span> (Emerald Green)</td>
+                                <td><span style="color:#0EA5E9; font-weight:700;">#0EA5E9</span> (Sky Blue)</td>
+                                <td>#020906 (Deep Forest)</td>
+                                <td>Eco, Financial & Fresh Organic</td>
+                            </tr>
+                            <tr>
+                                <td><strong>sunset</strong></td>
+                                <td><span style="color:#FF5A36; font-weight:700;">#FF5A36</span> (Solar Orange)</td>
+                                <td><span style="color:#FFB300; font-weight:700;">#FFB300</span> (Warm Amber)</td>
+                                <td>#140707 (Warm Twilight)</td>
+                                <td>Energetic, Warm & High Impact</td>
+                            </tr>
+                            <tr>
+                                <td><strong>crimson</strong></td>
+                                <td><span style="color:#FF1A40; font-weight:700;">#FF1A40</span> (Crimson Red)</td>
+                                <td><span style="color:#FF4D6D; font-weight:700;">#FF4D6D</span> (Neon Rose)</td>
+                                <td>#0F0406 (Ruby Dark)</td>
+                                <td>Bold, Passionate & Gaming Aesthetic</td>
+                            </tr>
+                            <tr>
+                                <td><strong>gold</strong></td>
+                                <td><span style="color:#FFD700; font-weight:700;">#FFD700</span> (Luxury Gold)</td>
+                                <td><span style="color:#E5E4E2; font-weight:700;">#E5E4E2</span> (Platinum)</td>
+                                <td>#0A0A0A (Rich Obsidian)</td>
+                                <td>Premium Luxury & Enterprise VIP</td>
+                            </tr>
+                            <tr>
+                                <td><strong>cyberpunk</strong></td>
+                                <td><span style="color:#FAED27; font-weight:700;">#FAED27</span> (Cyber Yellow)</td>
+                                <td><span style="color:#FF003C; font-weight:700;">#FF003C</span> (Neon Pink)</td>
+                                <td>#050510 (Synthwave Black)</td>
+                                <td>High-Contrast Retro-Futurism</td>
+                            </tr>
+                            <tr>
+                                <td><strong>midnight</strong></td>
+                                <td><span style="color:#4A90E2; font-weight:700;">#4A90E2</span> (Deep Ocean)</td>
+                                <td><span style="color:#81E6D9; font-weight:700;">#81E6D9</span> (Teal Wave)</td>
+                                <td>#030A14 (Navy Night)</td>
+                                <td>Professional, Calm & Corporate</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h2>2. How Users Switch Themes in the App</h2>
+                <p>Users can select their favorite color scheme anytime by navigating to <strong>Settings &gt; Theme Options</strong> inside the app. Tapping any color circle instantly updates <span class="inline-code">ThemeState.currentTheme.value</span> and persists the user preference in local storage.</p>
+
+                <h2>3. Modifying Color Schemes & Creating New Custom Themes</h2>
+                <p>To customize an existing theme or add a brand-new theme, edit <span class="inline-code">app/src/main/java/com/example/ui/theme/Theme.kt</span>:</p>
+
+                <div class="code-block">
+                    <pre><code>// Example: Adding a custom "Ocean Mint" color scheme in Theme.kt:
+val OceanMintColorScheme = darkColorScheme(
+    primary = Color(0xFF00E676),        // Mint Green Accent
+    onPrimary = Color(0xFF003818),
+    primaryContainer = Color(0xFF005B29),
+    onPrimaryContainer = Color(0xFFB9F6CA),
+    secondary = Color(0xFF00B0FF),      // Ocean Blue Accent
+    background = Color(0xFF03100B),     // Dark Deep Mint Canvas
+    surface = Color(0xFF03100B),
+    surfaceVariant = Color(0xFF082117)
+)
+
+// Register your custom scheme inside NovaQRTheme composable in Theme.kt:
+@Composable
+fun NovaQRTheme(
+    themeName: String = "cyan",
+    content: @Composable () -> Unit
+) {
+    val colorScheme = when(themeName.lowercase()) {
+        "mint" -> OceanMintColorScheme  // New theme case!
+        "purple" -> PurpleColorScheme
+        "emerald" -> EmeraldColorScheme
+        "sunset" -> SunsetColorScheme
+        "crimson" -> CrimsonColorScheme
+        "gold" -> LuxuryGoldColorScheme
+        "cyberpunk" -> CyberpunkColorScheme
+        "midnight" -> MidnightColorScheme
+        else -> CyanColorScheme
+    }
+
+    MaterialTheme(
+        colorScheme = colorScheme,
+        typography = Typography,
+        content = content
+    )
+}</code></pre>
+                </div>
+            </section>
+
+            <!-- Business Card Builder Feature & Configuration Guide -->
+            <section id="card-builder-setup" class="doc-section" role="region" aria-labelledby="heading-card-builder">
+                <h1 id="heading-card-builder">Business Card Builder Setup & Feature Guide</h1>
+                <p>NovaQR includes an interactive, production-grade Business Card Builder built in Jetpack Compose, allowing users to create, customize, preview, and export high-resolution digital and printable business cards with embedded vCard QR codes.</p>
+
+                <div class="notice-box" style="border-left: 4px solid #00f0ff; background: rgba(0, 240, 255, 0.08);">
+                    <h3 style="color: #00f0ff;">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="2" y="5" width="20" height="14" rx="2"></rect><line x1="2" y1="10" x2="22" y2="10"></line></svg>
+                        Unified Reactive Architecture (TemplateStyle)
+                    </h3>
+                    <p style="color: var(--text-secondary); line-height: 1.6;">
+                        The Business Card Studio relies on a reactive state model powered by <span class="inline-code">TemplateStyle</span> and the <span class="inline-code">rememberTemplateStyle(card)</span> state producer. All card elements—including background brushes, corner radii, borders, drop shadow spot colors, font families, contrast colors, and embedded QR code frame styling—update instantly and synchronously as the user edits any field or toggles styling parameters.
+                    </p>
+                </div>
+
+                <h2>1. Core Features & Customization Parameters</h2>
+                <div class="data-table-wrapper">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Customization Module</th>
+                                <th>Configurable Properties</th>
+                                <th>Implementation Detail & Behavior</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Card Templates</strong></td>
+                                <td>Modern Minimal, Sleek Mint, Executive Glass, Luxury Gold, Tech Dark, Creative Gradient, Standard Default</td>
+                                <td>Template IDs (<span class="inline-code">card.templateId</span>) trigger distinct <span class="inline-code">TemplateStyle</span> presets with customized frame borders, corner radii, backdrop brushes, and QR container styling.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Color Palette & Contrast</strong></td>
+                                <td>Primary Color, Accent Color, Background Color, Gradient End Color, Text Color</td>
+                                <td>Hex color pickers with automatic contrast legibility protection (via <span class="inline-code">rememberLegibleColors</span> and luminance checks for dark vs light backgrounds).</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Background Gradient</strong></td>
+                                <td>Enable/Disable Toggle, Dual Hex Colors</td>
+                                <td>Linear gradient interpolation between Background Color and Gradient End Color. Managed via polished Material 3 <span class="inline-code">Switch</span> with distinct <span class="inline-code">checkedThumbColor</span> and <span class="inline-code">checkedTrackColor</span> contrast.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Typography Styling</strong></td>
+                                <td>Default, Serif, Sans-Serif (Modern), Monospace</td>
+                                <td>Font family selector applies dynamically across card full name, job title, company name, contact labels, and exported PNG canvas rendering.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Company Logo & Branding</strong></td>
+                                <td>Upload Image Logo vs Write Name Instead</td>
+                                <td>Dual-mode branding with <span class="inline-code">FilterChip</span> selector. Uploaded logos render directly on card surfaces with <strong>100% transparent backgrounds</strong> (no solid white box artifact). Includes Change Logo, Remove Logo, and text-based Company Name fallback.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Custom Media Overlays</strong></td>
+                                <td>Gallery Background Image, Opacity Slider, Avatar Photo</td>
+                                <td>Custom gallery photo overlay with real-time opacity adjustment (0.1f to 1.0f) and automated legibility backdrop gradient overlay. Avatar photo picker with initial fallback badge.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Interactive Card Preview</strong></td>
+                                <td>Front Side, Back Side (QR Code), Digital Contact Info, Full Card View</td>
+                                <td>Real-time multi-side tab preview with smooth animated transitions (<span class="inline-code">AnimatedContent</span>) and live vCard QR bitmap rendering.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Lossless PNG Card Export</strong></td>
+                                <td>High-DPI Canvas Rasterization</td>
+                                <td>Custom Android <span class="inline-code">Canvas</span> draw pipeline duplicating Compose visual hierarchy for high-resolution 300 DPI printable card export.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h2>2. Free vs. Pro Tier Capability Matrix</h2>
+                <p>The Business Card Builder features built-in plan gating controlled by <span class="inline-code">profile.isPro</span> or global configuration in <span class="inline-code">AppConfig.kt</span>:</p>
+
+                <div class="data-table-wrapper">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Business Card Builder Capability</th>
+                                <th>Free Tier Users</th>
+                                <th>Pro / Premium Users</th>
+                                <th>Configuration & Paywall Behavior</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Standard Card Templates</strong></td>
+                                <td>Unlocked (Modern Minimal, Standard Default)</td>
+                                <td>Unlocked (All Templates)</td>
+                                <td>Free users can build and edit standard cards without restrictions.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Premium Executive Templates</strong></td>
+                                <td>Locked (Paywall Preview)</td>
+                                <td>Full Unlimited Access</td>
+                                <td>Templates like <em>Executive Glass, Luxury Gold, Sleek Mint, Tech Dark, Creative Gradient</em> display a Pro badge and trigger upgrade prompt for Free users.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Company Logo Upload & Text Branding</strong></td>
+                                <td>Text Name Branding Included / Standard Logo</td>
+                                <td>Full Transparent Logo Upload</td>
+                                <td>Free users can enter company names or upload logos; Pro users unlock unwatermarked, high-resolution logo uploads.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Custom Background Image Overlay & Opacity</strong></td>
+                                <td>Restricted / Preview Only</td>
+                                <td>Unlimited Gallery Overlays</td>
+                                <td>Gated in <span class="inline-code">BusinessCardBuilderScreen.kt</span> check for <span class="inline-code">profile.isPro</span>.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>High-DPI Lossless Card PNG Export</strong></td>
+                                <td>Standard PNG Export</td>
+                                <td>Ultra High-Res Lossless Output</td>
+                                <td>Pro users export ultra high-DPI cards with crisp vector QR graphics for printing.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h2>3. Business Card Data Model & Code Configuration</h2>
+                <p>To inspect or tweak card structure and template styling rules in source code:</p>
+
+                <div class="code-block">
+                    <pre><code>// Location: app/src/main/java/com/example/ui/screens/BusinessCardBuilderScreen.kt
+
+// 1. Template Style Definition & Parameter Customization:
+data class TemplateStyle(
+    val cornerRadius: Dp,
+    val borderWidth: Dp,
+    val borderBrush: Brush,
+    val shadowElevation: Dp,
+    val shadowSpotColor: Color,
+    val qrBgColor: Color,
+    val qrBorderBrush: Brush,
+    val qrCornerRadius: Dp,
+    val textColor: Color,
+    val primaryColor: Color,
+    val accentColor: Color,
+    val fontFamily: FontFamily,
+    val isDarkBackground: Boolean,
+    val shadowStyle: Shadow
+)
+
+// 2. Modifying Pro Template Gate Rules:
+val isTemplateLocked = !isProUser && when (templateId) {
+    "executive_glass", "luxury_gold", "sleek_compact", "tech_dark", "creative_gradient" -> true
+    else -> false
+}</code></pre>
+                </div>
+            </section>
+
+            <!-- Multi-Language Localization Guide -->
+            <section id="localization" class="doc-section" role="region" aria-labelledby="heading-localization">
+                <h1 id="heading-localization">Multi-Language Localization & RTL Guide</h1>
+                <p>NovaQR includes full internationalization (i18n) support, complete right-to-left (RTL) layout compatibility for Arabic and Hebrew, and pre-translated string resources for 7 global languages.</p>
+
+                <h2>1. Supported Built-In Languages</h2>
+                <div class="data-table-wrapper">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Language</th>
+                                <th>Resource Directory</th>
+                                <th>Text Direction</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>English (Default)</strong></td>
+                                <td><span class="inline-code">res/values/strings.xml</span></td>
+                                <td>Left-to-Right (LTR)</td>
+                                <td>100% Fully Translated</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Arabic (العربية)</strong></td>
+                                <td><span class="inline-code">res/values-ar/strings.xml</span></td>
+                                <td>Right-to-Left (RTL)</td>
+                                <td>100% Fully Translated with Native RTL Layouts</td>
+                            </tr>
+                            <tr>
+                                <td><strong>French (Français)</strong></td>
+                                <td><span class="inline-code">res/values-fr/strings.xml</span></td>
+                                <td>Left-to-Right (LTR)</td>
+                                <td>100% Fully Translated</td>
+                            </tr>
+                            <tr>
+                                <td><strong>German (Deutsch)</strong></td>
+                                <td><span class="inline-code">res/values-de/strings.xml</span></td>
+                                <td>Left-to-Right (LTR)</td>
+                                <td>100% Fully Translated</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Korean (한국어)</strong></td>
+                                <td><span class="inline-code">res/values-ko/strings.xml</span></td>
+                                <td>Left-to-Right (LTR)</td>
+                                <td>100% Fully Translated</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Turkish (Türkçe)</strong></td>
+                                <td><span class="inline-code">res/values-tr/strings.xml</span></td>
+                                <td>Left-to-Right (LTR)</td>
+                                <td>100% Fully Translated</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Chinese (中文)</strong></td>
+                                <td><span class="inline-code">res/values-zh/strings.xml</span></td>
+                                <td>Left-to-Right (LTR)</td>
+                                <td>100% Fully Translated</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h2>2. Adding a New Language Translation Step-by-Step</h2>
+                <p>To add a new language translation (e.g., Spanish <span class="inline-code">values-es</span>):</p>
+                <ol style="color: var(--text-secondary); margin-left: 20px; line-height: 1.7;">
+                    <li>In Android Studio, right-click <span class="inline-code">app/src/main/res</span> directory folder.</li>
+                    <li>Select <strong>New &gt; Android Resource Directory</strong>.</li>
+                    <li>Select Resource type: <strong>values</strong>, and add Locale qualifier: <strong>es: Spanish</strong>. This creates directory <span class="inline-code">app/src/main/res/values-es/</span>.</li>
+                    <li>Copy <span class="inline-code">strings.xml</span> from <span class="inline-code">values/</span> into <span class="inline-code">values-es/</span> and translate string values into Spanish.</li>
+                    <li>Android OS will now automatically serve Spanish strings to devices set to Spanish language!</li>
+                </ol>
+
+                <h2>3. Automatic Right-to-Left (RTL) Layout Adaptations</h2>
+                <p>Jetpack Compose UI components in NovaQR use logical alignment modifiers (<span class="inline-code">Alignment.Start</span>, <span class="inline-code">padding(start, end)</span>). When the device locale is switched to Arabic or Hebrew, the entire application layout (navigation drawers, card paddings, back arrows, and text flows) automatically mirrors seamlessly without requiring duplicate code!</p>
+            </section>
+
+            <!-- Legal & Privacy Policies -->
+            <section id="legal-policies" class="doc-section" role="region" aria-labelledby="heading-legal">
+                <h1 id="heading-legal">Legal Policies & Compliance Guide</h1>
+                <p>This guide provides a detailed, step-by-step explanation of how to modify and publish the Privacy Policy, Terms of Service, Refund Policy, and End User License Agreement (EULA) across the app and Play Console.</p>
+
+                <h2>1. Modifying In-App Policy Files & Text Content</h2>
+                <p>All compliance screens are maintained inside <span class="inline-code">app/src/main/java/com/example/ui/screens/LegalPoliciesScreen.kt</span> (and associated string resources in <span class="inline-code">strings.xml</span>):</p>
+
+                <div class="code-block">
+                    <pre><code>// Edit Company Name, Effective Date, and Contact Email in LegalPoliciesScreen.kt:
+const val LEGAL_COMPANY_NAME = "Your Company or App Name"
+const val LEGAL_CONTACT_EMAIL = "privacy@yourdomain.com"
+const val LEGAL_EFFECTIVE_DATE = "July 30, 2026"
+
+// 1. Privacy Policy Text
+const val PRIVACY_POLICY_TEXT = """
+PRIVACY POLICY
+1. Information We Collect:
+   - Account Details: Email address and profile name collected upon registration for cloud synchronization.
+   - Usage Data: Saved QR code history payloads and scan history stored securely in user tables.
+2. AI Queries:
+   - User prompts submitted to NOVA Assistant are transmitted over TLS 1.3 encrypted HTTPS to Google Gemini.
+   - User identity attributes are never sold or used for AI model re-training.
+3. Data Security:
+   - All profile data is secured behind Row-Level Security (RLS) policies.
+"""
+
+// 2. Terms of Service Text
+const val TERMS_OF_SERVICE_TEXT = """
+TERMS OF SERVICE
+1. Acceptance of Terms: By accessing NovaQR, you agree to these binding Terms of Service.
+2. User Conduct: Users may not generate malicious QR codes pointing to phishing or malware targets.
+3. Subscriptions & Billing: Pro subscriptions auto-renew unless cancelled 24 hours prior to billing.
+"""
+
+// 3. Refund Policy Text
+const val REFUND_POLICY_TEXT = """
+REFUND POLICY
+1. Google Play Purchase Refunds: Refunds for digital subscriptions are governed by Google Play Billing refund policies.
+2. Refund Eligibility: Users can request a full refund within 48 hours of initial purchase by contacting privacy@yourdomain.com or via Google Play order history.
+"""</code></pre>
+                </div>
+
+                <h2>2. Publishing Hosted Policy Web Pages for Google Play Console</h2>
+                <p>Google Play Console requires a public, web-accessible HTTPS URL for your Privacy Policy before releasing on Google Play:</p>
+                <ol style="color: var(--text-secondary); line-height: 1.7; margin-left: 20px;">
+                    <li><strong>Hosting Policy Files:</strong> Create HTML files (<span class="inline-code">privacy.html</span>, <span class="inline-code">terms.html</span>, <span class="inline-code">refund.html</span>) on your website domain (e.g., <span class="inline-code">https://yourdomain.com/privacy.html</span>).</li>
+                    <li><strong>Submitting to Play Console:</strong> Copy the HTTPS Privacy Policy URL into <strong>Google Play Console &gt; Policy and programs &gt; App content &gt; Privacy Policy</strong>.</li>
+                    <li><strong>Linking inside App:</strong> In <span class="inline-code">LegalPoliciesScreen.kt</span>, set <span class="inline-code">HOSTED_PRIVACY_URL = "https://yourdomain.com/privacy.html"</span> to allow opening external web policies in Chrome Custom Tabs or in-app WebViews.</li>
+                </ol>
+
+                <h2>3. User Data Deletion Requests (GDPR / CCPA Compliance)</h2>
+                <p>Google Play requires providing users a clear method to request account and data deletion:</p>
+                <ul style="color: var(--text-secondary); line-height: 1.7; margin-left: 20px;">
+                    <li><strong>In-App Deletion:</strong> Users can click <strong>Delete Account</strong> in Settings. This triggers <span class="inline-code">supabase.auth.admin.deleteUser(uid)</span> or drops their record from <span class="inline-code">profiles</span>, automatically deleting all linked QR codes via SQL cascades.</li>
+                    <li><strong>Web-Based Request Form:</strong> Provide a dedicated web contact email or form link (e.g. <span class="inline-code">https://yourdomain.com/delete-account</span>) in your Play Store listing.</li>
+                </ul>
+            </section>
+
+            <!-- AI Model Configuration -->
+            <section id="ai-agent" class="doc-section" role="region" aria-labelledby="heading-ai-agent">
+                <h1 id="heading-ai-agent">AI Model & Agent Security Configuration</h1>
+                <p>Comprehensive documentation covering the NOVA AI Assistant security policies, user permission controls, system prompt customization, and Gemini model safety thresholds.</p>
+
+                <h2>1. Agent Security Policy & Privacy Boundaries</h2>
+                <div class="notice-box">
+                    <h3>AI Data Protection Policy</h3>
+                    <p style="color: var(--text-secondary); line-height: 1.6;">
+                        The NOVA AI Assistant communicates directly with Google Gemini endpoints (<span class="inline-code">gemini-3.6-flash</span> primary, <span class="inline-code">gemini-3.1-pro</span> secondary) over TLS 1.3 encrypted connections. User prompts and QR context are transmitted solely to compute context-aware recommendations. User identities are isolated, and no user payloads are ever saved by third parties or utilized for AI model re-training.
+                    </p>
+                </div>
+
+                <h2>2. Granting & Managing Context Permissions</h2>
+                <p>The AI Agent can be granted or restricted permissions to read specific user information inside <span class="inline-code">AiAssistantViewModel.kt</span>:</p>
+
+                <div class="code-block">
+                    <pre><code>// Context Permission Flags in AiAssistantViewModel.kt
+data class AgentPermissions(
+    val canReadUserProfile: Boolean = true,      // Grants reading display name & plan status
+    val canReadScanStatistics: Boolean = true,   // Grants reading daily scan counters
+    val canReadQrVaultHistory: Boolean = false,  // Grants reading saved QR title/content payload
+    val canReadDeviceInfo: Boolean = true        // Grants reading Android OS version
+)
+
+// Building System Context Payload
+fun buildSystemContext(user: UserProfile, permissions: AgentPermissions): String {
+    val builder = StringBuilder("You are NOVA, an AI QR Code Assistant. ")
+    if (permissions.canReadUserProfile) {
+        builder.append("User Name: ${user.fullName}, Tier: ${user.plan}. ")
+    }
+    if (permissions.canReadScanStatistics) {
+        builder.append("Scans Today: ${user.dailyScanCount}. ")
+    }
+    return builder.toString()
+}</code></pre>
+                </div>
+
+                <h2>3. Customizing System Prompts & Recommendation Rules</h2>
+                <p>System prompts, assistant persona guidelines, recommendation rules, and prompt motifs can be configured locally or synced remotely:</p>
+                <ul style="color: var(--text-secondary); margin-left: 20px; line-height: 1.7;">
+                    <li><strong>Local System Prompt (.env):</strong> Set <span class="inline-code">GEMINI_SYSTEM_PROMPT="You are NOVA, an expert design assistant for artistic QR codes."</span> in <span class="inline-code">.env</span>.</li>
+                    <li><strong>Remote Supabase Agent Config:</strong> Update the <span class="inline-code">agent_config</span> table in Supabase to change system prompts dynamically for all installed apps without submitting a new APK build to Play Store:</li>
+                </ul>
+
+                <div class="code-block">
+                    <pre><code>UPDATE public.agent_config 
+SET prompt = 'You are NOVA Pro, an expert marketing & QR consultant. Always suggest vibrant gradients and high-contrast error correction.'
+WHERE id = 1;</code></pre>
+                </div>
+
+                <h2>4. Gemini Model Safety Thresholds & Moderation</h2>
+                <p>Configure safety filters inside <span class="inline-code">GeminiRepository.kt</span> to prevent inappropriate or harmful prompt processing:</p>
+
+                <div class="code-block">
+                    <pre><code>val safetySettings = listOf(
+    SafetySetting(HarmCategory.HATE_SPEECH, HarmBlockThreshold.BLOCK_MEDIUM_AND_ABOVE),
+    SafetySetting(HarmCategory.HARASSMENT, HarmBlockThreshold.BLOCK_MEDIUM_AND_ABOVE),
+    SafetySetting(HarmCategory.SEXUALLY_EXPLICIT, HarmBlockThreshold.BLOCK_MEDIUM_AND_ABOVE),
+    SafetySetting(HarmCategory.DANGEROUS_CONTENT, HarmBlockThreshold.BLOCK_MEDIUM_AND_ABOVE)
+)</code></pre>
+                </div>
+            </section>
+
+            <!-- Security & Policy Guide -->
+            <section id="proxy-security" class="doc-section" role="region" aria-labelledby="heading-security">
+                <h1 id="heading-security">Security Architecture & Proxy Middleware</h1>
+                <p>Detailed technical documentation covering API proxy routing, rate limiting middleware, system prompt protection, and AI context isolation.</p>
+
+                <h2>Rate-Limiting Proxy Middleware Sample</h2>
+                <div class="code-block">
+                    <pre><code>// Middleware proxy execution (/proxy/index.js)
+const express = require('express');
+const rateLimit = require('express-rate-limit');
+const app = express();
+
+const apiLimiter = rateLimit({
+    windowMs: 15 * 60 * 1000, // 15 Minute window
+    max: 100 // Maximum 100 requests per IP
+});
+
+app.use('/v1/', apiLimiter);
+
+app.post('/v1/ai/chat', async (req, res) => {
+    // Process and forward requests securely to Gemini 3.6 Flash REST endpoints
+});</code></pre>
+                </div>
+            </section>
+
+            <!-- Themes & Distribution -->
+            <section id="themes-freeware" class="doc-section" role="region" aria-labelledby="heading-themes">
+                <h1 id="heading-themes">Themes & Freeware Licensing Stack</h1>
+                <p>NovaQR utilizes a 100% royalty-free open-source toolchain that allows white-label redistribution without licensing fees.</p>
+
+                <div class="data-table-wrapper">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Component</th>
+                                <th>Open Source / Freeware License</th>
+                                <th>Commercial Rights</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Jetpack Compose</strong></td>
+                                <td>Apache License 2.0</td>
+                                <td>Free commercial modification & bundling.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>ZXing Core</strong></td>
+                                <td>Apache License 2.0</td>
+                                <td>Free commercial embedded QR processing.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Supabase SDK</strong></td>
+                                <td>MIT License</td>
+                                <td>Free self-hosting and managed hosting usage.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Gemini API</strong></td>
+                                <td>Google Developer Terms</td>
+                                <td>Free development tier quota.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- In-App Customer Notifications -->
+            <section id="in-app-notifications" class="doc-section" role="region" aria-labelledby="heading-notifications">
+                <h1 id="heading-notifications">In-App Customer Notifications & Broadcasts</h1>
+                <p>NovaQR includes a real-time system notification engine that delivers broadcast announcements and targeted individual alerts directly to customers within the application.</p>
+
+                <div class="notice-box" style="border-left: 4px solid #00f0ff;">
+                    <h3 style="color: #00f0ff;">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
+                        Dual Notification Channels
+                    </h3>
+                    <p style="color: var(--text-secondary); line-height: 1.6;">
+                        The notification architecture supports two distinct messaging modes:
+                    </p>
+                    <ul style="color: var(--text-secondary); margin-left: 20px; line-height: 1.7; margin-top: 8px;">
+                        <li><strong>Broadcast System Announcements (All Users):</strong> Stored in <span class="inline-code">public.app_notifications</span>. Delivered to every active app user (e.g. holiday sales, version updates, maintenance notices).</li>
+                        <li><strong>Targeted Customer Alerts (Specific User):</strong> Stored in <span class="inline-code">public.user_notifications</span>. Delivered exclusively to a specific <span class="inline-code">user_id</span> (e.g. payment confirmations, account upgrade alerts, reward badges).</li>
+                    </ul>
+                </div>
+
+                <h2>1. How to Send a Broadcast Announcement (All Users)</h2>
+                <p>To broadcast a promotional message, app update, or alert to all installed devices, execute this query in <strong>Supabase SQL Editor</strong>:</p>
+                <div class="code-block">
+                    <pre><code>-- Send a 7-day promotional banner announcement to ALL users:
+INSERT INTO public.app_notifications (title, message, type, action_url, is_active, expires_at)
+VALUES (
+  '🎉 50% Off Lifetime Pro Upgrade!', 
+  'Unlock unlimited SVG vector exports, custom logo embedding, and AI prompts today.', 
+  'promo', 
+  'novaqr://upgrade', 
+  true, 
+  NOW() + INTERVAL '7 days'
+);</code></pre>
+                </div>
+
+                <h2>2. How to Send a Targeted Message to a Specific Customer</h2>
+                <p>To send a private notification to a single registered user, specify their Supabase <span class="inline-code">user_id</span> (UUID):</p>
+                <div class="code-block">
+                    <pre><code>-- Send a targeted alert to a specific customer:
+INSERT INTO public.user_notifications (user_id, title, message, type, action_url)
+VALUES (
+  'e8f9b231-1234-4567-890a-bcdef1234567', -- Replace with customer's auth UUID
+  'Account Upgraded to Pro!', 
+  'Your Pro plan has been activated. Enjoy unlimited vector QR exports!', 
+  'billing', 
+  'novaqr://profile'
+);</code></pre>
+                </div>
+
+                <h2>3. Client-Side Rendering & In-App UI Display</h2>
+                <p>Inside the Android Kotlin application, the notification system automatically fetches unread messages via Supabase REST API & Realtime Kotlin Flows:</p>
+                <ul style="color: var(--text-secondary); margin-left: 20px; line-height: 1.7;">
+                    <li><strong>Home Screen Top Banner:</strong> Active announcements with <span class="inline-code">is_active = true</span> display as floating banner cards on the home dashboard.</li>
+                    <li><strong>Notification Center Screen:</strong> Users can tap the bell icon to open their personal Notification Inbox screen, view message history, mark alerts as read, or tap action buttons.</li>
+                </ul>
+            </section>
+
+            <!-- Premium Features & Plans -->
+            <section id="premium-features" class="doc-section" role="region" aria-labelledby="heading-premium-features">
+                <h1 id="heading-premium-features">Premium Features & Plan Activation Guide</h1>
+                <p>NovaQR includes a complete multi-tier plan management engine (Free vs Pro / Premium) for monetization, feature gating, and usage quota enforcement.</p>
+
+                <div class="notice-box" style="border-left: 4px solid #a855f7; background: rgba(168, 85, 247, 0.08); margin-bottom: 24px;">
+                    <h3 style="color: #c084fc;">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                        Subscription System (Optional)
+                    </h3>
+                    <p style="color: var(--text-secondary); line-height: 1.6;">
+                        The project includes a complete Free/Pro subscription system. By default, all features are enabled for the marketplace version, and the subscription system is disabled. Buyers who wish to operate a freemium or subscription-based application can enable the subscription system through the application configuration, as described in this documentation.
+                    </p>
+                    <p style="color: var(--text-secondary); line-height: 1.6; margin-top: 8px;">
+                        New users receive full access to all application features immediately after creating an account.
+                    </p>
+                    <p style="color: var(--text-secondary); line-height: 1.6; margin-top: 8px;">
+                        If you want to operate a freemium or subscription-based business, you can easily enable the subscription system by updating the configuration in "AppConfig" (<span class="inline-code">ENABLE_PAID_PLANS = true</span>) or the Supabase settings, as described in this documentation.
+                    </p>
+                </div>
+
+                <div class="notice-box" style="border-left: 4px solid #10b981;">
+                    <h3 style="color: #10b981;">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                        100% Source Code Provided — Total Operational Freedom
+                    </h3>
+                    <p style="color: var(--text-secondary); line-height: 1.6;">
+                        <strong>Full Access & Flexibility:</strong> The complete source code is provided without obfuscation. You have total freedom to activate paid subscription plans, run the application completely free ($0 for all users), display AdMob banner ads, or process manual upgrades via Supabase. Activating or deactivating paid features is completely optional and under your full control.
+                    </p>
+                </div>
+
+                <h2>1. Three Flexible Deployment & Plan Activation Options</h2>
+                <p>Choose the business model that best matches your strategy:</p>
+
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <div class="feature-card-icon" style="color: #38bdf8;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M12 6v6l4 2"></path></svg></div>
+                        <h4>Option A: 100% Completely Free App ($0 for All Users)</h4>
+                        <p>To offer the entire application completely free without any paywalls or limits, update Supabase <span class="inline-code">app_settings</span> table set <span class="inline-code">enable_paid_plans = false</span> or change <span class="inline-code">default_signup_plan = 'pro'</span> in your database trigger. All users immediately receive full access to vector exports, logo embedding, and AI tools.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-card-icon" style="color: #a855f7;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg></div>
+                        <h4>Option B: Freemium with Manual Admin Upgrades</h4>
+                        <p>Keep <span class="inline-code">default_signup_plan = 'free'</span>. Free users are limited to basic QR creation and standard templates. When a customer upgrades via external invoice, offline payment, or custom portal, manually set <span class="inline-code">plan = 'pro'</span> in Supabase SQL Editor.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-card-icon" style="color: #10b981;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg></div>
+                        <h4>Option C: Automatic $0 Trial / Auto-Upgrade (Recommended)</h4>
+                        <p>Automatically grant new users an automatic $0 trial upgrade on registration linked to a database expiry date (e.g. 30 days free Pro tier). Manage trial expirations automatically via Supabase PostgreSQL triggers.</p>
+                    </div>
+                </div>
+
+                <h2>2. Setting Up Automatic $0 Trial & Plan Expiry in Supabase</h2>
+                <p>To implement an automatic $0 trial or automated plan upgrade linked to database expiration dates, update the <span class="inline-code">handle_new_user()</span> trigger in Supabase SQL Editor:</p>
+                <div class="code-block">
+                    <pre><code>-- Trigger function for Automatic $0 30-Day Pro Trial on User Signup:
+CREATE OR REPLACE FUNCTION public.handle_new_user()
+RETURNS trigger AS $$
+BEGIN
+  INSERT INTO public.profiles (
+    id, 
+    email, 
+    full_name, 
+    plan, 
+    plan_expires_at, 
+    is_trial
+  )
+  VALUES (
+    new.id,
+    new.email,
+    COALESCE(new.raw_user_meta_data-&gt;&gt;'full_name', split_part(new.email, '@', 1)),
+    'pro',                            -- Grants Pro plan automatically ($0 trial)
+    NOW() + INTERVAL '30 days',       -- Sets plan expiry date 30 days in future
+    true                              -- Marks user as active trial participant
+  )
+  ON CONFLICT (id) DO NOTHING;
+  RETURN new;
+END;
+$$ LANGUAGE plpgsql SECURITY DEFINER;</code></pre>
+                </div>
+
+                <h2>3. Manual User Upgrade Query</h2>
+                <p>To manually upgrade a specific user account to Pro or extend their expiration date in Supabase:</p>
+                <div class="code-block">
+                    <pre><code>-- Upgrade specific user to Pro tier indefinitely:
+UPDATE public.profiles 
+SET plan = 'pro', plan_expires_at = NULL, is_trial = false
+WHERE email = 'customer@example.com';
+
+-- Extend user Pro trial for 1 year:
+UPDATE public.profiles 
+SET plan = 'pro', plan_expires_at = NOW() + INTERVAL '1 year'
+WHERE email = 'customer@example.com';</code></pre>
+                </div>
+
+                <h2>4. Ad Monetization & AdMob Display Configuration</h2>
+                <p>If you choose to monetize free tier users with advertisements, NovaQR includes built-in Google AdMob and custom banner ad placeholders:</p>
+                <ul style="color: var(--text-secondary); margin-left: 20px; line-height: 1.7;">
+                    <li><strong>Enabling Ads Remotely:</strong> Update <span class="inline-code">enable_ads = true</span> and set your <span class="inline-code">admob_banner_id</span> in the Supabase <span class="inline-code">app_settings</span> table.</li>
+                    <li><strong>Pro User Ad-Free Privilege:</strong> Pro users (where <span class="inline-code">plan = 'pro'</span>) are automatically exempted from seeing banner ads across all screens.</li>
+                    <li><strong>Disabling Ads Completely:</strong> Set <span class="inline-code">enable_ads = false</span> to turn off all advertising in the app.</li>
+                </ul>
+
+                <h2>5. Feature Gate Matrix</h2>
+                <div class="data-table-wrapper">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Feature / Capability</th>
+                                <th>Free Tier</th>
+                                <th>Pro / Premium Tier</th>
+                                <th>How to Customize</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>PNG QR Code Export</strong></td>
+                                <td>Unlimited</td>
+                                <td>Unlimited</td>
+                                <td>Standard core feature.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>SVG & PDF Vector Exports</strong></td>
+                                <td>Restricted / Gate Alert</td>
+                                <td>Full High-Res Vector Output</td>
+                                <td>Gated in <span class="inline-code">ExportUtils.kt</span> check <span class="inline-code">profile.isPro</span>.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Logo & Custom Icon Embedding</strong></td>
+                                <td>Basic Standard Logos</td>
+                                <td>Custom Gallery / Brand Logos</td>
+                                <td>Gated in <span class="inline-code">QRStudioViewModel.kt</span>.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>AI Assistant Generation Quotas</strong></td>
+                                <td>3 Requests / Day</td>
+                                <td>Unlimited AI Prompts</td>
+                                <td>Configurable in Supabase <span class="inline-code">app_settings</span>.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Ad-Free Experience</strong></td>
+                                <td>Contains Banner Ads (if enabled)</td>
+                                <td>100% Ad-Free UI</td>
+                                <td>Controlled by <span class="inline-code">AdManager.kt</span>.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Business Card Executive Templates</strong></td>
+                                <td>Standard Templates Only</td>
+                                <td>Full Executive & Gold Templates</td>
+                                <td>Gated in <span class="inline-code">BusinessCardBuilderScreen.kt</span>.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Business Card Transparent Logo Upload</strong></td>
+                                <td>Text Name Branding / Standard</td>
+                                <td>High-Res Transparent Logo Overlays</td>
+                                <td>Controlled by <span class="inline-code">profile.isPro</span>.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Card Custom Background Image Overlay</strong></td>
+                                <td>Preview Mode</td>
+                                <td>Full Custom Gallery Image & Opacity</td>
+                                <td>Gated in <span class="inline-code">BusinessCardBuilderScreen.kt</span>.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h2>6. Modifying Plan Prices, Descriptions, and Feature Lists Remotely from Supabase</h2>
+                <p>You can update plan titles, monthly/yearly prices, currencies, badge tags, and feature list bullet points in real-time directly from <strong>Supabase Table Editor &gt; public.plan_catalog</strong> or by executing SQL commands without recompiling or reissuing the APK:</p>
+                
+                <div class="code-block">
+                    <pre><code>-- Example 1: Update Pro Plan Price to $2.99/mo ($29.99/yr) with custom Euro (€) currency symbol:
+UPDATE public.plan_catalog 
+SET price_monthly = 2.99, price_yearly = 29.99, currency_symbol = '€', badge_text = 'BEST VALUE'
+WHERE plan_id = 'pro';
+
+-- Example 2: Update Pro Plan Feature Description Bullet Points:
+UPDATE public.plan_catalog 
+SET description = 'Ultimate QR Studio with Unlimited Gemini AI & Vector Output',
+    features = ARRAY[
+      'Unlimited High-Res SVG & PDF Exports', 
+      'Custom Logo & Brand Watermarks', 
+      'Unlimited Gemini AI Copywriting', 
+      'Zero Banner Advertisements', 
+      '24/7 Priority Support'
+    ]
+WHERE plan_id = 'pro';
+
+-- Example 3: Enable a 100% Free Special Promotion Plan ($0.00/mo):
+UPDATE public.plan_catalog 
+SET price_monthly = 0.00, price_yearly = 0.00, badge_text = 'FREE PROMO'
+WHERE plan_id = 'pro';</code></pre>
+                </div>
+                <p style="color: var(--text-secondary); line-height: 1.6; margin-top: 12px;">
+                    The NovaQR mobile app listens to the <span class="inline-code">public.plan_catalog</span> table using Supabase Realtime & REST APIs. Any price modification, description change, or promotional badge tweak updated in Supabase immediately reflects on the app's Upgrade / Paywall screen across all active user devices globally!
+                </p>
+
+                <h2>7. How to Re-Enable the Subscription System in Source Code (AppConfig.kt)</h2>
+                <p>By default, all features are enabled for the marketplace version (<span class="inline-code">AppConfig.ENABLE_PAID_PLANS = false</span>), granting all newly registered users immediate, full access to all features. To re-enable subscription paywalls, usage limits, and plan tiers, simply update the configuration in <span class="inline-code">com.example.util.AppConfig.kt</span>:</p>
+                
+                <div class="code-block">
+                    <pre><code>// Location: com/example/util/AppConfig.kt
+object AppConfig {
+    /**
+     * Controls whether Free/Pro subscription paywalls, limits, and plan tiers are enforced.
+     * 
+     * - false (Default for Marketplace): All features unlocked for all users ($0 required).
+     * - true: Enables Free vs Pro plan gating, daily limits, and upgrade paywalls.
+     */
+    const val ENABLE_PAID_PLANS: Boolean = true // Set to true to re-enable subscription model
+
+    /**
+     * Controls whether banner ads are displayed for free-tier users.
+     */
+    const val ENABLE_ADS: Boolean = false
+}</code></pre>
+                </div>
+                <p style="color: var(--text-secondary); line-height: 1.6; margin-top: 12px;">
+                    When <span class="inline-code">ENABLE_PAID_PLANS</span> is set to <span class="inline-code">true</span>, the subscription system instantly activates, enforcing plan limits, Pro badges, and paywall prompts across the application according to your Supabase plan rules!
+                </p>
+            </section>
+
+            <!-- Live Support -->
+            <section id="live-support" class="doc-section" role="region" aria-labelledby="heading-live-support">
+                <h1 id="heading-live-support">Live Customer Support Integration</h1>
+                <p>NovaQR embeds real-time live customer chat inside the Support screen using Tawk.to WebView integration.</p>
+
+                <h2>Configuring Tawk.to Keys</h2>
+                <div class="code-block">
+                    <pre><code>TAWK_PROPERTY_ID=YOUR_TAWK_PROPERTY_ID
+TAWK_WIDGET_ID=YOUR_TAWK_WIDGET_ID</code></pre>
+                </div>
+            </section>
+
+            <!-- Troubleshooting -->
+            <section id="troubleshooting" class="doc-section" role="region" aria-labelledby="heading-troubleshooting">
+                <h1 id="heading-troubleshooting">Comprehensive Troubleshooting Guide</h1>
+                <p>Diagnose and resolve common build, authorization, database, and API connection errors with this professional troubleshooting reference.</p>
+
+                <div class="data-table-wrapper">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Error / Code</th>
+                                <th>Root Cause</th>
+                                <th>Resolution Procedure</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>ERR_CONNECTION_REFUSED</strong></td>
+                                <td>Deep link redirect URL unwhitelisted in Supabase Auth.</td>
+                                <td>Add <span class="inline-code">com.example.novaqr://callback</span> to Supabase Dashboard &gt; Auth &gt; Redirect URLs.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Error 403: org_internal</strong></td>
+                                <td>Google Cloud OAuth Consent screen configured as "Internal".</td>
+                                <td>Go to Google Cloud Console &gt; OAuth Consent Screen, change User Type to <strong>External</strong>, and publish app.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Developer Error Code 10</strong></td>
+                                <td>SHA-1 / SHA-256 fingerprint missing or Web Client ID mismatch.</td>
+                                <td>Run <span class="inline-code">./gradlew signingReport</span>, add generated SHA keys to Google Cloud Android Client ID, and verify <span class="inline-code">GOOGLE_LOGIN_KEY</span>.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Redirect URI Mismatch</strong></td>
+                                <td>The URL in <span class="inline-code">GOOGLE_CUSTOM_REDIRECT_URL</span> does not match intent filters.</td>
+                                <td>Ensure manifest intent filters and <span class="inline-code">.env</span> match <span class="inline-code">com.example.novaqr://callback</span> identically.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Invalid SHA-1 / SHA-256</strong></td>
+                                <td>Keystore alias or password mismatch during release build.</td>
+                                <td>Verify release keystore credentials in <span class="inline-code">build.gradle.kts</span> and register production SHA keys in Google Cloud.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Gemini API 403 / 400 Error</strong></td>
+                                <td>Invalid API key, model deprecation, or quota exhaustion.</td>
+                                <td>Verify <span class="inline-code">GEMINI_API_KEY</span> in <span class="inline-code">.env</span>, check quota usage in Google AI Studio, and ensure model is set to <span class="inline-code">gemini-3.6-flash</span>.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Supabase RLS Policy Violation</strong></td>
+                                <td>Database query blocked by missing Row-Level Security policy.</td>
+                                <td>Execute the provided table schema SQL scripts in Supabase SQL Editor to grant proper <span class="inline-code">auth.uid() = user_id</span> permissions.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Gradle Sync / Android SDK Failure</strong></td>
+                                <td>Outdated Android Studio, incompatible Android Gradle Plugin (AGP), unsupported Gradle version, or the required Android SDK Platform is not installed</td>
+                                <td>Update Android Studio, Android Gradle Plugin (AGP), and Gradle to the latest stable versions, then install the required Android SDK Platform through SDK Manager.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Kotlin DSL / JDK 21 Mismatch</strong></td>
+                                <td>Gradle runner is configured with an incompatible JDK version (e.g., Java 17 or earlier). Configure the Gradle JDK to use JDK 21 or later in Android Studio.</td>
+                                <td>In Android Studio, go to Settings &gt; Build, Execution, Deployment &gt; Build Tools &gt; Gradle and select JDK 17+.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>ashmem: Pinning is deprecated since Android Q</strong></td>
+                                <td>Standard low-level Android OS kernel / Ashmem shared memory manager log message on Android 10+ (API Level 29+).</td>
+                                <td>Normal OS runtime log emitted by the Android graphics memory manager. It is not an application error or crash, causes zero instability, and can be safely ignored.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Camera Preview Black Screen</strong></td>
+                                <td>Runtime camera permissions not granted on target device.</td>
+                                <td>Check Manifest <span class="inline-code">android.permission.CAMERA</span> and accept the prompt on device.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Frequently Asked Questions -->
+            <section id="faq" class="doc-section" role="region" aria-labelledby="heading-faq">
+                <h1 id="heading-faq">Frequently Asked Questions (FAQ)</h1>
+                <p>Comprehensive self-service solutions categorized by sub-system.</p>
+
+                <h2>Google Authentication & OAuth</h2>
+                <div class="callout callout-warning">
+                    <div class="callout-content">
+                        <h4>Q: How does Google CredentialManager differ from standard Browser OAuth?</h4>
+                        <p><strong>Answer:</strong> Google CredentialManager provides native, zero-redirect authentication directly within Android. It presents a native system UI, retrieves a signed ID Token, and verifies it with Supabase without leaving the app. Browser OAuth serves as a fallback for older devices.</p>
+                    </div>
+                </div>
+
+                <div class="callout callout-warning">
+                    <div class="callout-content">
+                        <h4>Q: Why is SHA-1 and SHA-256 configuration mandatory for Google Sign-In?</h4>
+                        <p><strong>Answer:</strong> Google Play Services validates the calling APK's digital signature against the registered SHA fingerprints in Google Cloud Console to prevent unauthorized apps from spoofing your OAuth Web Client ID.</p>
+                    </div>
+                </div>
+
+                <h2>Supabase & AI Engine</h2>
+                <div class="callout callout-success">
+                    <div class="callout-content">
+                        <h4>Q: Which Gemini AI models are supported in NovaQR v2.0?</h4>
+                        <p><strong>Answer:</strong> NovaQR supports <span class="inline-code">gemini-3.6-flash</span> for ultra-fast response generation and <span class="inline-code">gemini-3.1-pro</span> for advanced reasoning. You can configure active models via <span class="inline-code">.env</span> or remotely in Supabase <span class="inline-code">agent_config</span>.</p>
+                    </div>
+                </div>
+
+                <h2>Internationalization, RTL & Release Signing</h2>
+                <div class="callout callout-success">
+                    <div class="callout-content">
+                        <h4>Q: Does NovaQR support Arabic and Right-to-Left (RTL) screen layouts?</h4>
+                        <p><strong>Answer:</strong> Yes! Jetpack Compose layouts in NovaQR utilize logical padding and alignment properties, making them fully compatible with Arabic, Persian, and Hebrew RTL rendering.</p>
+                    </div>
+                </div>
+
+                <div class="callout callout-danger">
+                    <div class="callout-content">
+                        <h4>Q: How do I generate an Android App Bundle (.aab) for Google Play Store publication?</h4>
+                        <p><strong>Answer:</strong> Execute <span class="inline-code">./gradlew bundleRelease</span> via terminal after configuring your signing keystore credentials inside <span class="inline-code">app/build.gradle.kts</span>.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- APK Download -->
+            <section id="apk-download" class="doc-section" role="region" aria-labelledby="heading-download">
+                <h1 id="heading-download">Binary Distribution & Release Download</h1>
+                <p>Download compiled release binaries for NovaQR for testing, evaluation, and direct deployment.</p>
+
+                <!-- Official Recommended Build (NovaQR.apk) -->
+                <div class="download-card" style="margin-bottom: 24px; border-left: 4px solid #00f0ff;">
+                    <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px; margin-bottom: 12px;">
+                        <span style="background: rgba(0, 240, 255, 0.15); color: #00f0ff; border: 1px solid rgba(0, 240, 255, 0.3); font-size: 12px; font-weight: 700; padding: 4px 12px; border-radius: 20px; text-transform: uppercase; letter-spacing: 0.5px;">⭐ Recommended Official Release</span>
+                        <span style="color: var(--text-secondary); font-size: 13px; font-weight: 600;">Current Source Code Build</span>
+                    </div>
+                    <h2 style="border: none; padding: 0; margin-bottom: 8px;">Download Official App — NovaQR.apk</h2>
+                    <p>This is the primary official build containing the exact application source code as provided in the repository. Highly recommended for standard deployment.</p>
+                    
+                    <div class="download-actions">
+                        <a href="NovaQR.apk" download="NovaQR.apk" class="btn-primary" style="font-weight: 700;">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                            Download NovaQR.apk (Recommended)
+                        </a>
+                        <a href="https://t.me/payfopus" target="_blank" rel="noopener noreferrer" class="btn-telegram">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+                            Telegram Community (@payfopus)
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Pro Preview Build (NovaQRPRO.apk) -->
+                <div class="download-card" style="margin-bottom: 24px; border-left: 4px solid #a855f7; background: linear-gradient(135deg, rgba(168,85,247,0.08) 0%, rgba(236,72,153,0.05) 100%);">
+                    <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px; margin-bottom: 12px;">
+                        <span style="background: rgba(168, 85, 247, 0.2); color: #c084fc; border: 1px solid rgba(168, 85, 247, 0.4); font-size: 12px; font-weight: 700; padding: 4px 12px; border-radius: 20px; text-transform: uppercase; letter-spacing: 0.5px;">💎 Paid Plans & Payments Preview</span>
+                        <span style="color: #c084fc; font-size: 13px; font-weight: 600;">Upcoming Tier Demo</span>
+                    </div>
+                    <h2 style="border: none; padding: 0; margin-bottom: 8px; color: #e879f9;">Download NovaQR PRO Preview — NovaQRPRO.apk</h2>
+                    <p>Download a special preview build demonstrating what the app looks like with its paid subscription plans, tier management, and payment system interface.</p>
+                    <p style="color: #cbd5e1; font-size: 13.5px; line-height: 1.6; margin-top: 8px;"><strong>Note:</strong> This is an older build and does not include the latest updates or features. It is intended solely for previewing the subscription plans, payment flow, and the differences between Free and Pro user accounts.</p>
+                    
+                    <div class="download-actions">
+                        <a href="NovaQRPRO.apk" download="NovaQRPRO.apk" class="btn-primary" style="background: linear-gradient(135deg, #a855f7 0%, #ec4899 100%); color: #ffffff !important; box-shadow: 0 4px 16px rgba(168, 85, 247, 0.4); font-weight: 700;">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                            Download NovaQRPRO.apk (Plans & Payments Preview)
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Payfopus Team Announcement & Welcome Card -->
+                <div class="notice-box" style="margin-top: 32px; border-left: 4px solid #a855f7; background: linear-gradient(135deg, rgba(168,85,247,0.1) 0%, rgba(0,240,255,0.05) 100%); padding: 24px; border-radius: 12px;">
+                    <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px;">
+                        <h2 style="margin: 0; color: #c084fc; font-size: 20px; font-weight: 700; border: none; padding: 0;">Welcome to NovaQR</h2>
+                    </div>
+                    <p style="color: var(--text-secondary); line-height: 1.7; font-size: 15px; margin: 0 0 16px 0;">
+                        Welcome to NovaQR. We are dedicated to providing continuous, long-term product updates, new feature releases, and technical support. As market standards evolve, we will periodically release upgrades, extra UI themes, expanded Gemini AI capabilities, and database enhancements to ensure this application consistently exceeds all your operational expectations.
+                    </p>
+                    <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; padding-top: 12px; border-top: 1px solid rgba(255,255,255,0.1);">
+                        <p style="color: #38bdf8; font-weight: 600; margin: 0; font-size: 15px;">
+                            We wish you a pleasant, rewarding, and successful experience with our team!
+                        </p>
+                        <span style="font-weight: 800; font-size: 16px; letter-spacing: 1px; color: #a855f7; background: rgba(168,85,247,0.15); padding: 6px 16px; border-radius: 20px; border: 1px solid rgba(168,85,247,0.3);">
+                            payfopus
+                        </span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section: Change Log -->
+            <section id="changelog" class="doc-section">
+                <h1 id="heading-changelog">Release History & Change Log</h1>
+                <p>Track releases, updates, bug fixes, and feature enhancements for NovaQR.</p>
+
+                <!-- Version 1.1.0 Release Card -->
+                <div style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(0, 240, 255, 0.3); border-radius: 16px; padding: 28px; margin-top: 24px; position: relative; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);">
+                    <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; margin-bottom: 20px; border-bottom: 1px solid rgba(255, 255, 255, 0.08); padding-bottom: 16px;">
+                        <div style="display: flex; align-items: center; gap: 12px; flex-wrap: wrap;">
+                            <span style="background: linear-gradient(135deg, #00f0ff 0%, #3b82f6 100%); color: #090d16; font-size: 13px; font-weight: 800; padding: 6px 16px; border-radius: 20px; text-transform: uppercase; letter-spacing: 0.5px;">v1.1.0 Business Card & UI Update</span>
+                            <span style="color: #94a3b8; font-size: 13px; font-weight: 500;">Latest Release</span>
+                        </div>
+                        <span style="background: rgba(16, 185, 129, 0.15); color: #10b981; border: 1px solid rgba(16, 185, 129, 0.3); font-size: 12px; font-weight: 700; padding: 4px 12px; border-radius: 20px;">Production Stable</span>
+                    </div>
+
+                    <h2 style="border: none; padding: 0; margin-bottom: 12px; color: #ffffff; font-size: 20px;">NovaQR v1.1.0 — Business Card Builder & UI Polish Release Notes</h2>
+                    <p style="color: #94a3b8; line-height: 1.6; margin-bottom: 24px;">
+                        Summary of major updates, new features, logo rendering bug fixes, Material 3 switch color enhancements, and documentation upgrades:
+                    </p>
+
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
+                        <!-- Category 1: Business Card Builder Engine & Studio Modules -->
+                        <div style="background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(0, 240, 255, 0.15); border-radius: 14px; padding: 20px;">
+                            <h3 style="color: #00f0ff; margin-top: 0; margin-bottom: 14px; font-size: 16px; display: flex; align-items: center; gap: 10px;">
+                                <span style="background: rgba(0, 240, 255, 0.1); padding: 4px 8px; border-radius: 6px; font-size: 12px; font-weight: 800;">FEATURE</span>
+                                <span>Business Card & QR Studios</span>
+                            </h3>
+                            <ul style="color: #cbd5e1; font-size: 13.5px; line-height: 1.8; margin: 0; padding-left: 18px;">
+                                <li><strong>Unified TemplateStyle Engine:</strong> Created a reactive state architecture (<span class="inline-code">rememberTemplateStyle</span>) that computes background brushes, borders, shadow spot colors, font families, and container metrics for instant re-renders.</li>
+                                <li><strong>Transparent Logo Rendering:</strong> Removed unwanted solid white box backdrops when uploading company logos, enabling clean, transparent logo display over custom card backgrounds.</li>
+                                <li><strong>Write Name Instead Branding:</strong> Added a FilterChip mode selector allowing users to switch between uploading an image logo and typing a company name, complete with Change Logo and Remove Logo controls.</li>
+                                <li><strong>Lossless PNG Canvas Export:</strong> Enhanced high-DPI Android Canvas draw pipeline to export 300 DPI business cards with crisp typography, avatar initial badges, and vCard QR graphics.</li>
+                                <li><strong>More features:</strong> Integrated Geo/Location QR Studio (GPS map coordinates), vCard Studio, WiFi Studio, AI Assistant, and Barcode Generator across 12 specialized QR creation modules.</li>
+                            </ul>
+                        </div>
+
+                        <!-- Category 2: UI Polish & Component Fixes -->
+                        <div style="background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(56, 189, 248, 0.15); border-radius: 14px; padding: 20px;">
+                            <h3 style="color: #38bdf8; margin-top: 0; margin-bottom: 14px; font-size: 16px; display: flex; align-items: center; gap: 10px;">
+                                <span style="background: rgba(56, 189, 248, 0.1); padding: 4px 8px; border-radius: 6px; font-size: 12px; font-weight: 800;">POLISH</span>
+                                <span>Material 3 & Controls</span>
+                            </h3>
+                            <ul style="color: #cbd5e1; font-size: 13.5px; line-height: 1.8; margin: 0; padding-left: 18px;">
+                                <li><strong>Material 3 Switch Color Contrast:</strong> Fixed the "Enable Background Gradient" toggle across Business Card Builder and QR Studio screens, replacing solid yellow colors with distinct <span class="inline-code">checkedThumbColor</span>, <span class="inline-code">checkedTrackColor</span>, <span class="inline-code">uncheckedThumbColor</span>, and <span class="inline-code">uncheckedTrackColor</span> states.</li>
+                                <li><strong>Contrast Legibility Safeguard:</strong> Improved <span class="inline-code">rememberLegibleColors</span> logic for text and icon contrast over dark vs light card canvases.</li>
+                                <li><strong>Multi-Side Preview Tabs:</strong> Smooth animated transitions between Front Side, Back Side (QR Code), Digital Contact View, and Full Combined View.</li>
+                            </ul>
+                        </div>
+
+                        <!-- Category 3: Monetization & Documentation -->
+                        <div style="background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(168, 85, 247, 0.15); border-radius: 14px; padding: 20px;">
+                            <h3 style="color: #a855f7; margin-top: 0; margin-bottom: 14px; font-size: 16px; display: flex; align-items: center; gap: 10px;">
+                                <span style="background: rgba(168, 85, 247, 0.1); padding: 4px 8px; border-radius: 6px; font-size: 12px; font-weight: 800;">DOCS</span>
+                                <span>Tier Gating & Documentation</span>
+                            </h3>
+                            <ul style="color: #cbd5e1; font-size: 13.5px; line-height: 1.8; margin: 0; padding-left: 18px;">
+                                <li><strong>Free vs. Pro Feature Gating:</strong> Clearly delineated Free tier capabilities (Standard cards, PNG downloads) from Pro tier features (Executive templates, custom image overlays, high-res exports).</li>
+                                <li><strong>Comprehensive Index.html Specification:</strong> Added complete Business Card Builder configuration guide, feature matrices, code snippets, and release documentation.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Version 1.0.0 Release Card -->
+                <div style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(0, 240, 255, 0.2); border-radius: 16px; padding: 28px; margin-top: 24px; position: relative; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);">
+                    <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; margin-bottom: 20px; border-bottom: 1px solid rgba(255, 255, 255, 0.08); padding-bottom: 16px;">
+                        <div style="display: flex; align-items: center; gap: 12px; flex-wrap: wrap;">
+                            <span style="background: linear-gradient(135deg, #00f0ff 0%, #3b82f6 100%); color: #090d16; font-size: 13px; font-weight: 800; padding: 6px 16px; border-radius: 20px; text-transform: uppercase; letter-spacing: 0.5px;">v1.0.0 Initial Version</span>
+                            <span style="color: #94a3b8; font-size: 13px; font-weight: 500;">First Release</span>
+                        </div>
+                        <span style="background: rgba(16, 185, 129, 0.15); color: #10b981; border: 1px solid rgba(16, 185, 129, 0.3); font-size: 12px; font-weight: 700; padding: 4px 12px; border-radius: 20px;">Production Stable</span>
+                    </div>
+
+                    <h2 style="border: none; padding: 0; margin-bottom: 12px; color: #ffffff; font-size: 20px;">NovaQR v1.0.0 — Official Version Release Notes</h2>
+                    <p style="color: #94a3b8; line-height: 1.6; margin-bottom: 24px;">
+                        Comprehensive breakdown of new additions, visual customizations, bug fixes, and core system capabilities in the initial release:
+                    </p>
+
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
+                        <!-- Category 1: New Additions -->
+                        <div style="background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(0, 240, 255, 0.15); border-radius: 14px; padding: 20px;">
+                            <h3 style="color: #00f0ff; margin-top: 0; margin-bottom: 14px; font-size: 16px; display: flex; align-items: center; gap: 10px;">
+                                <span style="background: rgba(0, 240, 255, 0.1); padding: 4px 8px; border-radius: 6px; font-size: 12px; font-weight: 800;">NEW</span>
+                                <span>Additions & Features</span>
+                            </h3>
+                            <ul style="color: #cbd5e1; font-size: 13.5px; line-height: 1.8; margin: 0; padding-left: 18px;">
+                                <li><strong>Full Guest Studio Mode:</strong> Unlocked complete QR code creation, design tweaking, and high-res PNG/SVG exports for guest users without forced login.</li>
+                                <li><strong>Expanded Logo Presets:</strong> Integrated center icons for 13 categories including <em>Heart, Shopping, Location, Music, Camera, Crypto, Shield, Star, Wi-Fi, Email, Link, Phone,</em> and <em>Person</em>.</li>
+                                <li><strong>New Pattern Shapes:</strong> Added <strong>Diamond</strong>, <strong>Star</strong>, and <strong>Grid</strong> matrix dots to complement Square, Dots, and Rounded.</li>
+                                <li><strong>Finder Eye Designs:</strong> Introduced <strong>Leaf</strong> and <strong>Diamond</strong> corner frame shapes.</li>
+                                <li><strong>One-Tap Style Presets:</strong> Added quick theme cards (Classic, Gold Lux, Cyberpunk, Emerald, Sunset, Neon Pink).</li>
+                                <li><strong>Custom Image Overlays:</strong> Capability to upload custom background images and gallery logos into generated QR codes.</li>
+                            </ul>
+                        </div>
+
+                        <!-- Category 2: Enhancements & UI -->
+                        <div style="background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(56, 189, 248, 0.15); border-radius: 14px; padding: 20px;">
+                            <h3 style="color: #38bdf8; margin-top: 0; margin-bottom: 14px; font-size: 16px; display: flex; align-items: center; gap: 10px;">
+                                <span style="background: rgba(56, 189, 248, 0.1); padding: 4px 8px; border-radius: 6px; font-size: 12px; font-weight: 800;">CHANGE</span>
+                                <span>UI & Experience Updates</span>
+                            </h3>
+                            <ul style="color: #cbd5e1; font-size: 13.5px; line-height: 1.8; margin: 0; padding-left: 18px;">
+                                <li><strong>Horizontal Scroll Controls:</strong> Upgraded shape pickers and color chips with smooth horizontal swipe gestures for compact screens.</li>
+                                <li><strong>Dual Preview Sync:</strong> Synchronized real-time Compose Canvas renderer with Android Bitmap draw pipelines for exact export matching.</li>
+                                <li><strong>Gemini 3.6 AI Integration:</strong> Built-in AI Studio Assistant for automated design suggestions, color contrast verification, and tag generation.</li>
+                                <li><strong>Interactive Dashboard Analytics:</strong> Added distribution counters and visual category breakdowns for generated QR codes.</li>
+                                <li><strong>Gradient Canvas Controls:</strong> Linear two-color gradient support with angle controls for QR code foregrounds.</li>
+                            </ul>
+                        </div>
+
+                        <!-- Category 3: Bug Fixes & Refinement -->
+                        <div style="background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(16, 185, 129, 0.15); border-radius: 14px; padding: 20px;">
+                            <h3 style="color: #10b981; margin-top: 0; margin-bottom: 14px; font-size: 16px; display: flex; align-items: center; gap: 10px;">
+                                <span style="background: rgba(16, 185, 129, 0.1); padding: 4px 8px; border-radius: 6px; font-size: 12px; font-weight: 800;">FIX</span>
+                                <span>Fixes & Stability</span>
+                            </h3>
+                            <ul style="color: #cbd5e1; font-size: 13.5px; line-height: 1.8; margin: 0; padding-left: 18px;">
+                                <li><strong>Enum Serialization Protection:</strong> Added safe fallback handling (<span style="font-family: monospace; color: #60a5fa;">runCatching</span>) in JSON converters to prevent crash loops when reading modified or legacy style properties.</li>
+                                <li><strong>Bitmap Bounds Safeguard:</strong> Corrected clipping and center logo size constraints during high-resolution canvas bitmap generation.</li>
+                                <li><strong>RTL Layout Adjustments:</strong> Resolved text alignment and mirror flipping for 7 supported languages in right-to-left layout mode.</li>
+                                <li><strong>Navigation Backstack Fix:</strong> Fixed screen state retention when toggling between Dashboard, Studio, Scanner, and History tabs.</li>
+                            </ul>
+                        </div>
+
+                        <!-- Category 4: Architecture & Backend -->
+                        <div style="background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(168, 85, 247, 0.15); border-radius: 14px; padding: 20px;">
+                            <h3 style="color: #a855f7; margin-top: 0; margin-bottom: 14px; font-size: 16px; display: flex; align-items: center; gap: 10px;">
+                                <span style="background: rgba(168, 85, 247, 0.1); padding: 4px 8px; border-radius: 6px; font-size: 12px; font-weight: 800;">CORE</span>
+                                <span>Architecture & Localization</span>
+                            </h3>
+                            <ul style="color: #cbd5e1; font-size: 13.5px; line-height: 1.8; margin: 0; padding-left: 18px;">
+                                <li><strong>One-Tap Google OAuth2:</strong> Implemented Android CredentialManager API for fast login flow.</li>
+                                <li><strong>Supabase Security (RLS):</strong> Configured cloud synchronization with Row Level Security policies protecting personal QR history.</li>
+                                <li><strong>Local Room Database Vault:</strong> Offline-first storage keeping QR history accessible without active internet connection.</li>
+                                <li><strong>Multi-Language Engine:</strong> Native runtime localization supporting English, Arabic, French, German, Korean, Chinese, and Turkish.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+    
+    <!-- External JavaScript Application Logic -->
+    <script src="script.js"></script>
+
+    <!-- Embedded Helper Script for RTL & Accessibility -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const rtlBtn = document.getElementById('rtlToggleBtn');
+            if (rtlBtn) {
+                rtlBtn.addEventListener('click', function() {
+                    const currentDir = document.documentElement.getAttribute('dir');
+                    if (currentDir === 'rtl') {
+                        document.documentElement.setAttribute('dir', 'ltr');
+                    } else {
+                        document.documentElement.setAttribute('dir', 'rtl');
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>
