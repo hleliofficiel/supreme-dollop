@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nova Musique documentation - Developer Documentation Portal</title>
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="app-container">
+    <!-- Header -->
+    <header class="top-header">
+      <div style="display: flex; align-items: center; gap: 16px;">
+        <button class="mobile-menu-btn" id="mobileMenuBtn">Menu</button>
+        <a href="index.html" class="brand-title">
+          <span><span data-i18n="brand_title">Nova Musique documentation</span></span>
+          <span class="brand-badge" data-i18n="doc_portal">DOCS PORTAL</span>
+        </a>
+      </div>
+
+      <div class="header-actions">
+        <div class="search-box">
+          <input type="text" id="docSearchInput" placeholder="Search documentation..." data-i18n-placeholder="search_placeholder">
+        </div>
+
+        <button class="control-btn" id="themeToggleBtn" title="Toggle Theme">
+          <span>Dark</span>
+        </button>
+
+        <select class="lang-select" id="langSelect" aria-label="Select Language">
+          <option value="en">English</option>
+          <option value="ar">العربية (RTL)</option>
+          <option value="fr">Français</option>
+          <option value="es">Español</option>
+        </select>
+      </div>
+    </header>
+
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <div class="nav-section-title" data-i18n="nav_getting_started">Getting Started</div>
+      <ul class="nav-list">
+        <li class="nav-item"><a href="index.html" class="nav-link active"><span data-i18n="nav_overview">Overview & Features</span></a></li>
+        <li class="nav-item"><a href="pages/restoration.html" class="nav-link"><span data-i18n="nav_requirements">Prerequisites & Requirements</span></a></li>
+        <li class="nav-item"><a href="pages/restoration.html#restoration" class="nav-link"><span data-i18n="nav_restoration">Android Studio Restoration</span></a></li>
+        <li class="nav-item"><a href="pages/restoration.html#assembly" class="nav-link"><span data-i18n="nav_assembly">App Assembly & Rebranding</span></a></li>
+      </ul>
+
+      <div class="nav-section-title" data-i18n="nav_configuration">Configuration</div>
+      <ul class="nav-list">
+        <li class="nav-item"><a href="pages/configuration.html" class="nav-link"><span data-i18n="nav_configuration">App Configuration & Secrets</span></a></li>
+        <li class="nav-item"><a href="pages/customization.html" class="nav-link"><span data-i18n="nav_customization">Colors, Icons & UI Themes</span></a></li>
+        <li class="nav-item"><a href="pages/customization.html#legal" class="nav-link"><span data-i18n="nav_legal">Legal Pages (Privacy & TOS)</span></a></li>
+        <li class="nav-item"><a href="pages/ads.html" class="nav-link"><span data-i18n="nav_monetization_sub">AdMob & Multi-Platform Ads</span></a></li>
+      </ul>
+
+      <div class="nav-section-title" data-i18n="nav_architecture">Architecture</div>
+      <ul class="nav-list">
+        <li class="nav-item"><a href="pages/features.html" class="nav-link"><span data-i18n="nav_architecture">Architecture & Modules</span></a></li>
+      </ul>
+
+      <div class="nav-section-title" data-i18n="nav_support">Support & Deployment</div>
+      <ul class="nav-list">
+        <li class="nav-item"><a href="pages/troubleshooting.html" class="nav-link"><span data-i18n="nav_troubleshooting">Troubleshooting & FAQ</span></a></li>
+        <li class="nav-item"><a href="pages/download.html" class="nav-link"><span data-i18n="nav_download">Download & Production APK</span></a></li>
+      </ul>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <!-- Hero Banner -->
+      <section class="doc-hero">
+        <h1 class="doc-title" data-i18n="hero_title">Nova Musique Developer Documentation</h1>
+        <p class="doc-subtitle" data-i18n="hero_subtitle">Complete, beginner-friendly technical guide for building, customizing, configuring, monetizing, and deploying Nova Musique with Android Studio.</p>
+        <div class="doc-badges">
+          <span class="tech-badge" data-i18n="hero_badge_tech">Kotlin + Jetpack Compose</span>
+          <span class="tech-badge" data-i18n="hero_badge_arch">Clean MVVM + Room DB</span>
+          <span class="tech-badge" data-i18n="hero_badge_media">AndroidX Media3 ExoPlayer</span>
+          <span class="tech-badge" data-i18n="hero_badge_ads">AdMob Monetization Ready</span>
+        </div>
+      </section>
+
+      <!-- Quick Sections Grid -->
+      <h2 style="font-size: 1.4rem; margin-bottom: 20px;" data-i18n="quick_start_title">Quick Documentation Sections</h2>
+      <div class="grid-cards">
+        <div class="doc-card">
+          <h3 class="card-title" data-i18n="card_requirements_title">System & Software Requirements</h3>
+          <p class="card-desc" data-i18n="card_requirements_desc">Prerequisites including JDK 17, Android Studio Ladybug/Jellyfish, Android SDK 36, Git, and Gradle 8.5+.</p>
+          <a href="pages/restoration.html" class="card-link">View Prerequisites</a>
+        </div>
+
+        <div class="doc-card">
+          <h3 class="card-title" data-i18n="card_restoration_title">Android Studio Restoration</h3>
+          <p class="card-desc" data-i18n="card_restoration_desc">Step-by-step guide for beginners to import, setup JDK 17, sync Gradle, and fix compilation errors.</p>
+          <a href="pages/restoration.html#restoration" class="card-link">View Setup Guide</a>
+        </div>
+
+        <div class="doc-card">
+          <h3 class="card-title" data-i18n="card_assembly_title">App Assembly & Rebranding Guide</h3>
+          <p class="card-desc" data-i18n="card_assembly_desc">How to compile debug/release APKs, rename packages, build custom releases like Peaky Baby or Nova Musique.</p>
+          <a href="pages/restoration.html#assembly" class="card-link">View Assembly Guide</a>
+        </div>
+
+        <div class="doc-card">
+          <h3 class="card-title" data-i18n="card_config_title">App Secrets & Package Config</h3>
+          <p class="card-desc" data-i18n="card_config_desc">How to change the package name (applicationId), app title, launcher icon, and set up .env environment secrets.</p>
+          <a href="pages/configuration.html" class="card-link">Configure Project</a>
+        </div>
+
+        <div class="doc-card">
+          <h3 class="card-title" data-i18n="card_customization_title">Colors, Icons & UI Themes</h3>
+          <p class="card-desc" data-i18n="card_customization_desc">Customize Material 3 color palettes in Color.kt, launcher vector icons, vector album covers, and dark/light themes.</p>
+          <a href="pages/customization.html" class="card-link">Customize Design</a>
+        </div>
+
+        <div class="doc-card">
+          <h3 class="card-title" data-i18n="card_legal_title">Legal Pages (Privacy Policy & TOS)</h3>
+          <p class="card-desc" data-i18n="card_legal_desc">How to edit, update, or localize the Privacy Policy and Terms of Service screens in LegalPagesScreen.kt.</p>
+          <a href="pages/customization.html#legal" class="card-link">Edit Legal Pages</a>
+        </div>
+
+        <div class="doc-card">
+          <h3 class="card-title" data-i18n="card_ads_title">AdMob & Ads Configuration</h3>
+          <p class="card-desc" data-i18n="card_ads_desc">Configure banner, interstitial, native, and rewarded ad units with test IDs or live publisher keys.</p>
+          <a href="pages/ads.html" class="card-link">Setup Monetization</a>
+        </div>
+
+        <div class="doc-card">
+          <h3 class="card-title" data-i18n="card_features_title">Complete Feature Modification Guide</h3>
+          <p class="card-desc" data-i18n="card_features_desc">Deep dive into 3D DSP Equalizer, Synced LrcLib lyrics, Room database schema, and Duplicate audio finder.</p>
+          <a href="pages/features.html" class="card-link">Explore Features</a>
+        </div>
+
+        <div class="doc-card">
+          <h3 class="card-title" data-i18n="card_download_title">Production APK Download & Testing</h3>
+          <p class="card-desc" data-i18n="card_download_desc">Direct download link for NovaMusique.apk and step-by-step assembly guide using Android Studio or Gradle CLI.</p>
+          <a href="pages/download.html" class="card-link">Download NovaMusique.apk</a>
+        </div>
+      </div>
+
+      <!-- Application Overview -->
+      <div class="section-block">
+        <h2 class="section-heading">Application Architectural Summary</h2>
+        <p class="section-text">Nova Musique is a flagship Android offline music suite engineered with modern Kotlin and Jetpack Compose. It includes advanced audio processing, offline storage indexing, synchronized lyrics retrieval, local audio duplicate file management, and customizable vector artwork fallbacks.</p>
+
+        <div class="doc-table-wrapper">
+          <table class="doc-table">
+            <thead>
+              <tr>
+                <th>Module / Layer</th>
+                <th>Technology Stack</th>
+                <th>Key Responsibilities</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>UI Framework</strong></td>
+                <td>Jetpack Compose + Material 3</td>
+                <td>Edge-to-edge screens, dynamic themes, responsive layouts, animated visualizers</td>
+              </tr>
+              <tr>
+                <td><strong>Playback Engine</strong></td>
+                <td>AndroidX Media3 ExoPlayer</td>
+                <td>Background audio service, notification media controls, audio session management</td>
+              </tr>
+              <tr>
+                <td><strong>Database Layer</strong></td>
+                <td>Room Database (SQLite) + KSP</td>
+                <td>Favorites storage, custom playlists, listening history, smart playlists</td>
+              </tr>
+              <tr>
+                <td><strong>Audio DSP & EQ</strong></td>
+                <td>Android Equalizer & BassBoost API</td>
+                <td>5-band equalizer curve, 3D spatializer, bass boost, reverb presets</td>
+              </tr>
+              <tr>
+                <td><strong>Lyrics Engine</strong></td>
+                <td>Retrofit + LrcLib API + LrcParser</td>
+                <td>Online LRC lyrics search, timestamp parsing, real-time karaoke scrolling</td>
+              </tr>
+              <tr>
+                <td><strong>Monetization</strong></td>
+                <td>Google Mobile Ads SDK (AdMob)</td>
+                <td>Banner ads, interstitial transitions on song change, fallback test ad keys</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <footer class="doc-footer">
+        <p data-i18n="footer_rights">© 2026 Nova Musique Audio Suite. All rights reserved to the team PayFopus.</p>
+        <div class="footer-nav">
+          <a href="pages/restoration.html">Restoration</a>
+          <a href="pages/configuration.html">Config</a>
+          <a href="pages/ads.html">Monetization</a>
+          <a href="pages/download.html">Download</a>
+        </div>
+      </footer>
+    </main>
+  </div>
+
+  <script src="assets/js/i18n.js"></script>
+  <script src="assets/js/script.js"></script>
+</body>
+</html>
