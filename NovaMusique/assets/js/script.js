@@ -27,7 +27,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const sidebar = document.querySelector(".sidebar");
 
   if (mobileMenuBtn && sidebar) {
-    mobileMenuBtn.addEventListener("click", () => {
+    mobileMenuBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
       sidebar.classList.toggle("mobile-open");
     });
 
@@ -35,6 +36,16 @@ document.addEventListener("DOMContentLoaded", () => {
       if (!sidebar.contains(e.target) && !mobileMenuBtn.contains(e.target) && sidebar.classList.contains("mobile-open")) {
         sidebar.classList.remove("mobile-open");
       }
+    });
+
+    // Close sidebar when a navigation link is clicked on mobile
+    const sidebarLinks = sidebar.querySelectorAll(".nav-link");
+    sidebarLinks.forEach(link => {
+      link.addEventListener("click", () => {
+        if (sidebar.classList.contains("mobile-open")) {
+          sidebar.classList.remove("mobile-open");
+        }
+      });
     });
   }
 
