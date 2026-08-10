@@ -13,7 +13,13 @@
   <div class="app-container">
     <header class="top-header">
       <div style="display: flex; align-items: center; gap: 16px;">
-        <button class="mobile-menu-btn" id="mobileMenuBtn">Menu</button>
+        <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle Navigation">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
         <a href="../index.html" class="brand-title">
           <span><span data-i18n="brand_title">Nova Musique documentation</span></span>
           <span class="brand-badge" data-i18n="doc_portal">DOCS PORTAL</span>
@@ -76,7 +82,7 @@
       <!-- Package Name / App ID -->
       <div class="section-block">
         <h2 class="section-heading">Changing Package Name (Application ID)</h2>
-        <p class="section-text">To publish your app or rename its unique store bundle ID, update the <code>applicationId</code> inside <code>app/build.gradle.kts</code>. Keep <code>namespace</code> as <code>com.example</code> so existing Java/Kotlin imports and R class bindings remain intact without needing refactoring.</p>
+        <p class="section-text">To publish your app or rename its unique store bundle ID, update the <code>applicationId</code> inside <code>app/build.gradle.kts</code>[span_7](start_span)[span_7](end_span). Keep <code>namespace</code> as <code>com.example</code> so existing Java/Kotlin imports and R class bindings remain intact without needing refactoring[span_8](start_span)[span_8](end_span).</p>
 
         <div class="code-box">
           <div class="code-header">
@@ -99,7 +105,7 @@
       <!-- App Name Sync -->
       <div class="section-block">
         <h2 class="section-heading">Updating App Name Across Project Files</h2>
-        <p class="section-text">To ensure consistency between the Android home launcher, system settings, and build configuration, update the application name in these 3 places:</p>
+        <p class="section-text">To ensure consistency between the Android home launcher, system settings, and build configuration, update the application name in these 3 places[span_9](start_span)[span_9](end_span):</p>
 
         <ol class="step-list">
           <li class="step-item">
@@ -145,7 +151,7 @@
       <!-- .env Configuration -->
       <div class="section-block">
         <h2 class="section-heading">Environment Credentials (.env)</h2>
-        <p class="section-text">Environment variables are configured in <code>.env</code> at the project root and automatically converted into <code>BuildConfig</code> static properties via the Secrets Gradle Plugin.</p>
+        <p class="section-text">Environment variables are configured in <code>.env</code> at the project root and automatically converted into <code>BuildConfig</code> static properties via the Secrets Gradle Plugin[span_10](start_span)[span_10](end_span).</p>
 
         <div class="code-box">
           <div class="code-header">
@@ -173,11 +179,11 @@ ADMOB_INTERSTITIAL_ID="ca-app-pub-3940256099942544/1033173712"</code></pre>
       <!-- App Icon Setup -->
       <div class="section-block">
         <h2 class="section-heading">App Launcher Icon Setup</h2>
-        <p class="section-text">The app uses Android Adaptive Icons defined in <code>res/mipmap-anydpi-v26/ic_launcher.xml</code>. To change the app launcher icon:</p>
+        <p class="section-text">The app uses Android Adaptive Icons defined in <code>res/mipmap-anydpi-v26/ic_launcher.xml</code>[span_11](start_span)[span_11](end_span). To change the app launcher icon[span_12](start_span)[span_12](end_span):</p>
         <ul style="margin-inline-start: 20px; color: var(--text-muted); line-height: 1.8;">
-          <li>Replace foreground vector layer: <code>app/src/main/res/drawable/ic_launcher_foreground.xml</code></li>
-          <li>Replace background color or vector layer: <code>app/src/main/res/drawable/ic_launcher_background.xml</code></li>
-          <li>Recompile the project in Android Studio to update desktop and launcher icons.</li>
+          <li>Replace foreground vector layer: <code>app/src/main/res/drawable/ic_launcher_foreground.xml</code>[span_13](start_span)[span_13](end_span)</li>
+          <li>Replace background color or vector layer: <code>app/src/main/res/drawable/ic_launcher_background.xml</code>[span_14](start_span)[span_14](end_span)</li>
+          <li>Recompile the project in Android Studio to update desktop and launcher icons[span_15](start_span)[span_15](end_span).</li>
         </ul>
       </div>
 
