@@ -82,14 +82,14 @@
       <!-- Direct Download Box -->
       <div class="section-block" style="text-align: center; padding: 40px; background: linear-gradient(135deg, rgba(156, 39, 176, 0.2), rgba(0, 229, 255, 0.15)); border: 2px solid var(--accent-cyan);">
         <h2 style="font-size: 1.8rem; margin-bottom: 12px; color: #fff;">NovaMusique Production APK</h2>
-        <p style="color: var(--text-muted); margin-bottom: 24px;">Compiled standalone release APK ready for testing on physical Android smartphones and emulators[span_61](start_span)[span_61](end_span).</p>
+        <p style="color: var(--text-muted); margin-bottom: 24px;">Compiled standalone release APK ready for testing on physical Android smartphones and emulators.</p>
         <a href="../NovaMusique.apk" download="NovaMusique.apk" style="display: inline-block; background: linear-gradient(135deg, var(--accent-pink), var(--primary)); color: #fff; text-decoration: none; font-weight: 800; padding: 14px 32px; border-radius: 30px; font-size: 1.1rem; box-shadow: 0 4px 20px rgba(0, 229, 255, 0.3);">Download NovaMusique.apk</a>
       </div>
 
       <!-- Building Debug APK -->
       <div class="section-block">
         <h2 class="section-heading">1. Building Debug APK for Local Testing</h2>
-        <p class="section-text">To assemble a debug APK via command line or Android Studio terminal[span_62](start_span)[span_62](end_span):</p>
+        <p class="section-text">To assemble a debug APK via command line or Android Studio terminal:</p>
 
         <div class="code-box">
           <div class="code-header">
@@ -100,7 +100,7 @@
 gradle assembleDebug</code></pre>
         </div>
 
-        <p class="section-text">The compiled APK file will be generated at[span_63](start_span)[span_63](end_span):</p>
+        <p class="section-text">The compiled APK file will be generated at:</p>
         <div class="code-box">
           <pre><code>app/build/outputs/apk/debug/app-debug.apk</code></pre>
         </div>
@@ -109,7 +109,7 @@ gradle assembleDebug</code></pre>
       <!-- Building Signed Release APK -->
       <div class="section-block">
         <h2 class="section-heading">2. Building Signed Release APK & App Bundle (AAB)</h2>
-        <p class="section-text">To compile an optimized, minified production release APK or Google Play Android App Bundle (AAB)[span_64](start_span)[span_64](end_span):</p>
+        <p class="section-text">To compile an optimized, minified production release APK or Google Play Android App Bundle (AAB):</p>
 
         <div class="code-box">
           <div class="code-header">
@@ -123,7 +123,7 @@ gradle assembleRelease
 gradle bundleRelease</code></pre>
         </div>
 
-        <p class="section-text">The compiled release artifacts will be saved at[span_65](start_span)[span_65](end_span):</p>
+        <p class="section-text">The compiled release artifacts will be saved at:</p>
         <div class="code-box">
           <pre><code># APK Location
 app/build/outputs/apk/release/app-release.apk
@@ -136,7 +136,7 @@ app/build/outputs/bundle/release/app-release.aab</code></pre>
       <!-- Keystore Signing Setup -->
       <div class="section-block">
         <h2 class="section-heading">Keystore Signing Configuration</h2>
-        <p class="section-text">For production release builds, configure signing in <code>app/build.gradle.kts</code> using environmental variables or keystore file properties[span_66](start_span)[span_66](end_span):</p>
+        <p class="section-text">For production release builds, configure signing in <code>app/build.gradle.kts</code> using environmental variables or keystore file properties:</p>
 
         <div class="code-box">
           <div class="code-header">
