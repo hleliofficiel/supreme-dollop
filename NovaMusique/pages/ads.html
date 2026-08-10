@@ -13,7 +13,13 @@
   <div class="app-container">
     <header class="top-header">
       <div style="display: flex; align-items: center; gap: 16px;">
-        <button class="mobile-menu-btn" id="mobileMenuBtn">Menu</button>
+        <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle Navigation">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
         <a href="../index.html" class="brand-title">
           <span><span data-i18n="brand_title">Nova Musique documentation</span></span>
           <span class="brand-badge" data-i18n="doc_portal">DOCS PORTAL</span>
@@ -73,16 +79,24 @@
         <p class="doc-subtitle">Configure banner ads, interstitial song change transitions, and test unit IDs using AdManager and environment secrets.</p>
       </section>
 
+      <!-- Third-Party Services Disclaimer Callout -->
+      <div class="callout callout-info" style="border-inline-start-color: var(--accent-cyan); background: rgba(0, 229, 255, 0.08); margin-bottom: 24px;">
+        <div>
+          <strong style="color: var(--accent-cyan); font-size: 1.05rem; display: block; margin-bottom: 4px;">Third-Party Services Notice:</strong>
+          Nova Musique may use third-party services such as Google AdMob for advertising. These services are provided by external providers and may require separate configuration and/or accounts. Any third-party service costs, policies, API requirements, or account requirements are the responsibility of the buyer and are not included with the source code purchase.
+        </div>
+      </div>
+
       <!-- Overview -->
       <div class="section-block">
         <h2 class="section-heading">AdMob Architecture Overview</h2>
-        <p class="section-text">Nova Musique includes an integrated AdMob monetization pipeline encapsulated inside <code>com.example.util.AdManager.kt</code> and rendered via <code>AdBannerView.kt</code> composables. Ads are disabled by default to keep local development clean, and can be activated instantly by toggling <code>ADS_ENABLED="true"</code> in <code>.env</code>.</p>
+        <p class="section-text">Nova Musique includes an integrated AdMob monetization pipeline encapsulated inside <code>com.example.util.AdManager.kt</code> and rendered via <code>AdBannerView.kt</code> composables[span_0](start_span)[span_0](end_span). Ads are disabled by default to keep local development clean, and can be activated instantly by toggling <code>ADS_ENABLED="true"</code> in <code>.env</code>[span_1](start_span)[span_1](end_span).</p>
       </div>
 
       <!-- Test Ad Units Table -->
       <div class="section-block">
         <h2 class="section-heading">Default Official Google Test Ad Units</h2>
-        <p class="section-text">If live production IDs are set to <code>"none"</code> or left empty, the app automatically falls back to official Google AdMob test keys:</p>
+        <p class="section-text">If live production IDs are set to <code>"none"</code> or left empty, the app automatically falls back to official Google AdMob test keys[span_2](start_span)[span_2](end_span):</p>
 
         <div class="doc-table-wrapper">
           <table class="doc-table">
@@ -122,7 +136,7 @@
       <!-- Manifest Setup -->
       <div class="section-block">
         <h2 class="section-heading">AndroidManifest.xml AdMob Meta Data</h2>
-        <p class="section-text">Check or update your AdMob App ID inside <code>app/src/main/AndroidManifest.xml</code>:</p>
+        <p class="section-text">Check or update your AdMob App ID inside <code>app/src/main/AndroidManifest.xml</code>[span_3](start_span)[span_3](end_span):</p>
 
         <div class="code-box">
           <div class="code-header">
@@ -141,7 +155,7 @@
       <!-- Interstitial Trigger Logic -->
       <div class="section-block">
         <h2 class="section-heading">Interstitial Ad Triggering Logic</h2>
-        <p class="section-text">In <code>AdManager.kt</code>, interstitial ads pre-load automatically and trigger every 4 song switches during playback:</p>
+        <p class="section-text">In <code>AdManager.kt</code>, interstitial ads pre-load automatically and trigger every 4 song switches during playback[span_4](start_span)[span_4](end_span):</p>
 
         <div class="code-box">
           <div class="code-header">
@@ -161,7 +175,7 @@
 
       <div class="callout callout-warning">
         <div>
-          <strong>Publisher Policy Warning:</strong> Always test with official test ad units before releasing to Google Play. Never click live ads during testing to prevent AdMob account suspension.
+          <strong>Publisher Policy Warning:</strong> Always test with official test ad units before releasing to Google Play[span_5](start_span)[span_5](end_span). Never click live ads during testing to prevent AdMob account suspension[span_6](start_span)[span_6](end_span).
         </div>
       </div>
 
