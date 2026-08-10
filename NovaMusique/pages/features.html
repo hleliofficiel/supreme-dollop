@@ -82,7 +82,7 @@
       <!-- Media3 ExoPlayer -->
       <div class="section-block">
         <h2 class="section-heading">1. Media3 ExoPlayer Engine (PlaybackManager.kt)</h2>
-        <p class="section-text">The playback engine is built on AndroidX Media3 ExoPlayer[span_22](start_span)[span_22](end_span). It runs inside a Foreground Service (<code>MusicService.kt</code>) ensuring smooth continuous audio playback when the screen is locked or the app is minimized[span_23](start_span)[span_23](end_span).</p>
+        <p class="section-text">The playback engine is built on AndroidX Media3 ExoPlayer. It runs inside a Foreground Service (<code>MusicService.kt</code>) ensuring smooth continuous audio playback when the screen is locked or the app is minimized.</p>
 
         <div class="code-box">
           <div class="code-header">
@@ -109,7 +109,7 @@
       <!-- Room DB -->
       <div class="section-block">
         <h2 class="section-heading">2. Room Local Database (NovaDatabase.kt)</h2>
-        <p class="section-text">Nova Musique uses SQLite via Android Room to manage persistent user data including favorites, custom playlists, track play counts, and listening history[span_24](start_span)[span_24](end_span).</p>
+        <p class="section-text">Nova Musique uses SQLite via Android Room to manage persistent user data including favorites, custom playlists, track play counts, and listening history.</p>
 
         <div class="doc-table-wrapper">
           <table class="doc-table">
@@ -124,17 +124,17 @@
               <tr>
                 <td><code>SongEntity</code></td>
                 <td><code>songs</code></td>
-                <td>Stores track metadata, play counts, favorite flag, and file paths[span_25](start_span)[span_25](end_span)</td>
+                <td>Stores track metadata, play counts, favorite flag, and file paths</td>
               </tr>
               <tr>
                 <td><code>PlaylistEntity</code></td>
                 <td><code>playlists</code></td>
-                <td>User-created playlist titles, created dates, and artwork tags[span_26](start_span)[span_26](end_span)</td>
+                <td>User-created playlist titles, created dates, and artwork tags</td>
               </tr>
               <tr>
                 <td><code>PlaylistSongCrossRef</code></td>
                 <td><code>playlist_song_cross_ref</code></td>
-                <td>Many-to-many relationship mapping songs into custom playlists[span_27](start_span)[span_27](end_span)</td>
+                <td>Many-to-many relationship mapping songs into custom playlists</td>
               </tr>
             </tbody>
           </table>
@@ -144,24 +144,24 @@
       <!-- Pro Studio Suite -->
       <div class="section-block">
         <h2 class="section-heading">3. Pro Studio Suite (DSP Equalizer & Visualizers)</h2>
-        <p class="section-text">The Pro Studio Suite provides pro-grade audio controls[span_28](start_span)[span_28](end_span):</p>
+        <p class="section-text">The Pro Studio Suite provides pro-grade audio controls:</p>
         <ul style="margin-inline-start: 20px; color: var(--text-muted); line-height: 1.8; margin-bottom: 16px;">
-          <li><strong>5-Band Equalizer:</strong> Direct hardware DSP tuning (60Hz, 230Hz, 910Hz, 3600Hz, 14000Hz)[span_29](start_span)[span_29](end_span).</li>
-          <li><strong>3D Spatializer & Bass Boost:</strong> Hardware virtualizer and bass enhancement controls[span_30](start_span)[span_30](end_span).</li>
-          <li><strong>Visualizer Studio Canvas:</strong> Custom Jetpack Compose Canvas rendering real-time frequency curves and spectrum bars[span_31](start_span)[span_31](end_span).</li>
+          <li><strong>5-Band Equalizer:</strong> Direct hardware DSP tuning (60Hz, 230Hz, 910Hz, 3600Hz, 14000Hz).</li>
+          <li><strong>3D Spatializer & Bass Boost:</strong> Hardware virtualizer and bass enhancement controls.</li>
+          <li><strong>Visualizer Studio Canvas:</strong> Custom Jetpack Compose Canvas rendering real-time frequency curves and spectrum bars.</li>
         </ul>
       </div>
 
       <!-- Duplicate Finder -->
       <div class="section-block">
         <h2 class="section-heading">4. Duplicate Audio Finder (DuplicateFinderScreen.kt)</h2>
-        <p class="section-text">Scans the device storage or local audio database to group audio files with identical titles, exact file sizes, or MD5 checksums, enabling users to perform one-tap storage cleanup[span_32](start_span)[span_32](end_span).</p>
+        <p class="section-text">Scans the device storage or local audio database to group audio files with identical titles, exact file sizes, or MD5 checksums, enabling users to perform one-tap storage cleanup.</p>
       </div>
 
       <!-- Synced Lyrics -->
       <div class="section-block">
         <h2 class="section-heading">5. Synced Lyrics Engine (LrcLib Integration)</h2>
-        <p class="section-text">Queries the LrcLib API using track title and artist name to retrieve LRC timestamped lyrics[span_33](start_span)[span_33](end_span). The custom <code>LrcParser.kt</code> parses timestamps into milliseconds for synchronized auto-scrolling during playback[span_34](start_span)[span_34](end_span).</p>
+        <p class="section-text">Queries the LrcLib API using track title and artist name to retrieve LRC timestamped lyrics. The custom <code>LrcParser.kt</code> parses timestamps into milliseconds for synchronized auto-scrolling during playback.</p>
       </div>
 
       <footer class="doc-footer">
