@@ -82,7 +82,7 @@
       <!-- Theme Colors -->
       <div class="section-block">
         <h2 class="section-heading">Modifying App Colors & Material 3 Palette</h2>
-        <p class="section-text">The app's brand palette is centralized in <code>app/src/main/java/com/example/ui/theme/Color.kt</code> and configured for light/dark themes in <code>Theme.kt</code>.</p>
+        <p class="section-text">The app's brand palette is centralized in <code>app/src/main/java/com/example/ui/theme/Color.kt</code> and configured for light/dark themes in <code>Theme.kt</code>[span_9](start_span)[span_9](end_span).</p>
 
         <div class="code-box">
           <div class="code-header">
@@ -112,18 +112,18 @@ val TextMuted = Color(0xFFA49BB5)</code></pre>
       <!-- Legal Pages Customization Section -->
       <div class="section-block" id="legal">
         <h2 class="section-heading">Editing Privacy Policy & Terms of Service Pages</h2>
-        <p class="section-text">The application includes built-in, tabbed legal document screens so users can read your Privacy Policy and Terms of Service directly in the app without external web links. Located in <code>app/src/main/java/com/example/ui/screens/LegalPagesScreen.kt</code>.</p>
+        <p class="section-text">The application includes built-in, tabbed legal document screens so users can read your Privacy Policy and Terms of Service directly in the app without external web links[span_10](start_span)[span_10](end_span). Located in <code>app/src/main/java/com/example/ui/screens/LegalPagesScreen.kt</code>[span_11](start_span)[span_11](end_span).</p>
 
         <h3 class="sub-heading">How to Update Privacy Policy & Terms Content:</h3>
         <ol class="step-list">
           <li class="step-item">
             <div class="step-title">1. Open LegalPagesScreen.kt in Android Studio</div>
-            <p class="section-text">Navigate to <code>app/src/main/java/com/example/ui/screens/LegalPagesScreen.kt</code>.</p>
+            <p class="section-text">Navigate to <code>app/src/main/java/com/example/ui/screens/LegalPagesScreen.kt</code>[span_12](start_span)[span_12](end_span).</p>
           </li>
 
           <li class="step-item">
             <div class="step-title">2. Modify Policy Text Strings</div>
-            <p class="section-text">Locate the state variable or content provider function <code>getPrivacyPolicyContent()</code> and <code>getTermsOfServiceContent()</code> inside the composable file. Update contact emails, developer entity name, and data storage details.</p>
+            <p class="section-text">Locate the state variable or content provider function <code>getPrivacyPolicyContent()</code> and <code>getTermsOfServiceContent()</code> inside the composable file[span_13](start_span)[span_13](end_span). Update contact emails, developer entity name, and data storage details[span_14](start_span)[span_14](end_span).</p>
             <div class="code-box">
               <div class="code-header">
                 <span>LegalPagesScreen.kt Policy Content Snippet</span>
@@ -149,7 +149,7 @@ val TextMuted = Color(0xFFA49BB5)</code></pre>
 
           <li class="step-item">
             <div class="step-title">3. Localize Strings in strings.xml</div>
-            <p class="section-text">You can also extract privacy text into <code>res/values/strings.xml</code> and localized string files (e.g., <code>res/values-ar/strings.xml</code> for Arabic) to ensure full RTL multi-language support!</p>
+            <p class="section-text">You can also extract privacy text into <code>res/values/strings.xml</code> and localized string files (e.g., <code>res/values-ar/strings.xml</code> for Arabic) to ensure full RTL multi-language support[span_15](start_span)[span_15](end_span)!</p>
           </li>
         </ol>
       </div>
@@ -157,7 +157,7 @@ val TextMuted = Color(0xFFA49BB5)</code></pre>
       <!-- Local Cover Artworks Fallback System -->
       <div class="section-block">
         <h2 class="section-heading">Local Vector Cover Artwork Fallback System</h2>
-        <p class="section-text">Nova Musique uses local vector drawables to ensure songs or empty library cards never display black or broken images. The fallback logic is handled in <code>SongArtworkImage.kt</code>.</p>
+        <p class="section-text">Nova Musique uses local vector drawables to ensure songs or empty library cards never display black or broken images[span_16](start_span)[span_16](end_span). The fallback logic is handled in <code>SongArtworkImage.kt</code>[span_17](start_span)[span_17](end_span).</p>
 
         <div class="doc-table-wrapper">
           <table class="doc-table">
@@ -172,37 +172,37 @@ val TextMuted = Color(0xFFA49BB5)</code></pre>
               <tr>
                 <td><code>cover_default.xml</code></td>
                 <td><code>R.drawable.cover_default</code></td>
-                <td>Default banner artwork for Home screen & empty library state</td>
+                <td>Default banner artwork for Home screen & empty library state[span_18](start_span)[span_18](end_span)</td>
               </tr>
               <tr>
                 <td><code>cover_vinyl.xml</code></td>
                 <td><code>R.drawable.cover_vinyl</code></td>
-                <td>Classic vinyl record fallback for music tracks</td>
+                <td>Classic vinyl record fallback for music tracks[span_19](start_span)[span_19](end_span)</td>
               </tr>
               <tr>
                 <td><code>cover_synth.xml</code></td>
                 <td><code>R.drawable.cover_synth</code></td>
-                <td>Synthwave keyboard artwork fallback</td>
+                <td>Synthwave keyboard artwork fallback[span_20](start_span)[span_20](end_span)</td>
               </tr>
               <tr>
                 <td><code>cover_piano.xml</code></td>
                 <td><code>R.drawable.cover_piano</code></td>
-                <td>Acoustic grand piano vector fallback</td>
+                <td>Acoustic grand piano vector fallback[span_21](start_span)[span_21](end_span)</td>
               </tr>
               <tr>
                 <td><code>cover_concert.xml</code></td>
                 <td><code>R.drawable.cover_concert</code></td>
-                <td>Live concert stage spotlights fallback</td>
+                <td>Live concert stage spotlights fallback[span_22](start_span)[span_22](end_span)</td>
               </tr>
               <tr>
                 <td><code>cover_waveform.xml</code></td>
                 <td><code>R.drawable.cover_waveform</code></td>
-                <td>Electric guitar & sound frequency spectrum fallback</td>
+                <td>Electric guitar & sound frequency spectrum fallback[span_23](start_span)[span_23](end_span)</td>
               </tr>
               <tr>
                 <td><code>cover_headphones.xml</code></td>
                 <td><code>R.drawable.cover_headphones</code></td>
-                <td>Studio headphones vector artwork fallback</td>
+                <td>Studio headphones vector artwork fallback[span_24](start_span)[span_24](end_span)</td>
               </tr>
             </tbody>
           </table>
