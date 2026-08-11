@@ -85,27 +85,27 @@
 
         <div class="step-item">
           <div class="step-title">Issue 1: "Unsupported class file major version 65" / Java SDK Error</div>
-          <p class="section-text"><strong>Cause:</strong> Android Studio is set to an incompatible Gradle JDK version (e.g. Java 21 instead of JDK 17)[span_50](start_span)[span_50](end_span).</p>
-          <p class="section-text"><strong>Fix:</strong> Go to <strong>Settings → Build Tools → Gradle → Gradle JDK</strong> and select <strong>JDK 17</strong>[span_51](start_span)[span_51](end_span). Then re-sync Gradle[span_52](start_span)[span_52](end_span).</p>
+          <p class="section-text"><strong>Cause:</strong> Android Studio is set to an incompatible Gradle JDK version (e.g. Java 21 instead of JDK 17).</p>
+          <p class="section-text"><strong>Fix:</strong> Go to <strong>Settings → Build Tools → Gradle → Gradle JDK</strong> and select <strong>JDK 17</strong>. Then re-sync Gradle.</p>
         </div>
 
         <div class="step-item">
           <div class="step-title">Issue 2: Room Schema / KSP Generation Failures</div>
-          <p class="section-text"><strong>Cause:</strong> KSP cache or Room database migration schema mismatch[span_53](start_span)[span_53](end_span).</p>
-          <p class="section-text"><strong>Fix:</strong> Run clean build in Android Studio: <strong>Build → Clean Project</strong>, then <strong>Build → Rebuild Project</strong>[span_54](start_span)[span_54](end_span).</p>
+          <p class="section-text"><strong>Cause:</strong> KSP cache or Room database migration schema mismatch.</p>
+          <p class="section-text"><strong>Fix:</strong> Run clean build in Android Studio: <strong>Build → Clean Project</strong>, then <strong>Build → Rebuild Project</strong>.</p>
         </div>
 
         <div class="step-item">
           <div class="step-title">Issue 3: Missing .env File or Unresolved BuildConfig Symbols</div>
-          <p class="section-text"><strong>Cause:</strong> <code>.env</code> file is missing from the project root directory[span_55](start_span)[span_55](end_span).</p>
-          <p class="section-text"><strong>Fix:</strong> Copy <code>.env.example</code> to <code>.env</code> and re-sync Gradle files[span_56](start_span)[span_56](end_span).</p>
+          <p class="section-text"><strong>Cause:</strong> <code>.env</code> file is missing from the project root directory.</p>
+          <p class="section-text"><strong>Fix:</strong> Copy <code>.env.example</code> to <code>.env</code> and re-sync Gradle files.</p>
         </div>
       </div>
 
       <!-- Audio File Permissions -->
       <div class="section-block">
         <h2 class="section-heading">Android Audio File Permissions</h2>
-        <p class="section-text">Android 13+ (API 33+) requires granular audio permissions instead of generic READ_EXTERNAL_STORAGE[span_57](start_span)[span_57](end_span):</p>
+        <p class="section-text">Android 13+ (API 33+) requires granular audio permissions instead of generic READ_EXTERNAL_STORAGE:</p>
 
         <div class="code-box">
           <div class="code-header">
@@ -131,12 +131,12 @@
 
         <div style="margin-bottom: 20px;">
           <h3 class="sub-heading">Q1: Can I publish Nova Musique on Google Play Store?</h3>
-          <p class="section-text">Yes! Ensure you update the package name (applicationId), app launcher icon, and replace test AdMob IDs with your live production AdMob publisher keys[span_58](start_span)[span_58](end_span).</p>
+          <p class="section-text">Yes! Ensure you update the package name (applicationId), app launcher icon, and replace test AdMob IDs with your live production AdMob publisher keys.</p>
         </div>
 
         <div style="margin-bottom: 20px;">
           <h3 class="sub-heading">Q2: Does Nova Musique work offline without internet?</h3>
-          <p class="section-text">Yes. Core audio playback, 3D DSP equalizer, Room database indexing, and duplicate finder run 100% offline[span_59](start_span)[span_59](end_span). LrcLib lyrics search will fetch cached lyrics when connected[span_60](start_span)[span_60](end_span).</p>
+          <p class="section-text">Yes. Core audio playback, 3D DSP equalizer, Room database indexing, and duplicate finder run 100% offline. LrcLib lyrics search will fetch cached lyrics when connected.</p>
         </div>
       </div>
 
