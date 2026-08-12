@@ -11,11 +11,14 @@
 </head>
 <body>
   <div class="app-container">
+    <!-- Top Header Navigation Bar -->
     <header class="top-header">
-      <div class="header-left">
-        <button class="mobile-menu-toggle" id="menuToggle" aria-label="Toggle Navigation">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M3 12h18M3 6h18M3 18h18"/>
+      <div style="display: flex; align-items: center; gap: 12px;">
+        <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle Navigation">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
           </svg>
         </button>
         <a href="../index.html" class="brand-title">
@@ -23,67 +26,71 @@
           <span class="brand-badge">DOCS PORTAL</span>
         </a>
       </div>
-      <div class="header-center">
-        <div class="search-wrapper">
-          <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
-          </svg>
-          <input type="text" id="searchInput" placeholder="Search architecture..." aria-label="Search Documentation">
-        </div>
+
+      <div class="search-box">
+        <input type="text" id="docSearchInput" placeholder="Search architecture..." aria-label="Search Documentation">
       </div>
-      <div class="header-right">
-        <a href="download.html" class="btn-download-apk">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/>
+
+      <div class="header-actions">
+        <a href="download.html" class="control-btn" style="text-decoration: none; background: var(--primary-dark); color: #fff;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+            <polyline points="7 10 12 15 17 10"></polyline>
+            <line x1="12" y1="15" x2="12" y2="3"></line>
           </svg>
-          <span>Download APK</span>
+          <span>APK</span>
         </a>
-        <button class="theme-toggle" id="themeToggle" title="Toggle Light/Dark Theme" aria-label="Toggle Light/Dark Theme">
-          <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
-          </svg>
-          <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
-          </svg>
+        <button class="control-btn" id="themeToggleBtn" title="Toggle Theme" aria-label="Toggle Theme">
+          <span>Dark</span>
         </button>
       </div>
     </header>
 
-    <aside class="sidebar-nav" id="sidebar">
-      <div class="sidebar-group">
-        <span class="group-title">GETTING STARTED</span>
-        <a href="../index.html" class="nav-link">Overview &amp; Intro</a>
-        <a href="../index.html#quickstart" class="nav-link">Quick Start Guide</a>
-        <a href="whats-included.html" class="nav-link">What's Included</a>
-      </div>
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <div class="nav-section-title">GETTING STARTED</div>
+      <ul class="nav-list">
+        <li class="nav-item"><a href="../index.html" class="nav-link">Overview &amp; Intro</a></li>
+        <li class="nav-item"><a href="../index.html#quickstart" class="nav-link">Quick Start Guide</a></li>
+        <li class="nav-item"><a href="whats-included.html" class="nav-link">What's Included</a></li>
+      </ul>
 
-      <div class="sidebar-group">
-        <span class="group-title">DOCUMENTATION PATHS</span>
-        <a href="buyer-guide.html" class="nav-link">Buyer Guide (Non-Technical)</a>
-        <a href="developer-guide.html" class="nav-link">Developer Guide (Technical)</a>
-      </div>
+      <div class="nav-section-title">DOCUMENTATION PATHS</div>
+      <ul class="nav-list">
+        <li class="nav-item"><a href="buyer-guide.html" class="nav-link">Buyer Guide (Non-Technical)</a></li>
+        <li class="nav-item"><a href="developer-guide.html" class="nav-link">Developer Guide (Technical)</a></li>
+      </ul>
 
-      <div class="sidebar-group">
-        <span class="group-title">CORE GUIDES</span>
-        <a href="features.html" class="nav-link">Features &amp; Screenshots</a>
-        <a href="configuration.html" class="nav-link">Configuration &amp; Secrets</a>
-        <a href="customization.html" class="nav-link">Customization &amp; Branding</a>
-        <a href="architecture.html" class="nav-link active">Architecture &amp; Design</a>
-        <a href="ads.html" class="nav-link">AdMob &amp; Monetization</a>
-        <a href="restoration.html" class="nav-link">Restoration &amp; Assembly</a>
-        <a href="troubleshooting.html" class="nav-link">Troubleshooting &amp; FAQ</a>
-      </div>
+      <div class="nav-section-title">CORE GUIDES</div>
+      <ul class="nav-list">
+        <li class="nav-item"><a href="features.html" class="nav-link">Features &amp; Screenshots</a></li>
+        <li class="nav-item"><a href="configuration.html" class="nav-link">Configuration &amp; Secrets</a></li>
+        <li class="nav-item"><a href="customization.html" class="nav-link">Customization &amp; Branding</a></li>
+        <li class="nav-item"><a href="architecture.html" class="nav-link active">Architecture &amp; Design</a></li>
+        <li class="nav-item"><a href="ads.html" class="nav-link">AdMob &amp; Monetization</a></li>
+        <li class="nav-item"><a href="restoration.html" class="nav-link">Restoration &amp; Assembly</a></li>
+        <li class="nav-item"><a href="troubleshooting.html" class="nav-link">Troubleshooting &amp; FAQ</a></li>
+      </ul>
 
-      <div class="sidebar-group">
-        <span class="group-title">DOWNLOADS &amp; HISTORY</span>
-        <a href="download.html" class="nav-link">Release APK Download</a>
-        <a href="../index.html#changelog" class="nav-link">Version Changelog</a>
-      </div>
+      <div class="nav-section-title">DOWNLOADS &amp; HISTORY</div>
+      <ul class="nav-list">
+        <li class="nav-item"><a href="download.html" class="nav-link">Release APK Download</a></li>
+        <li class="nav-item"><a href="../index.html#changelog" class="nav-link">Version Changelog</a></li>
+      </ul>
     </aside>
 
+    <!-- Main Content Body -->
     <main class="main-content">
       <section class="doc-hero">
-        <h1 class="doc-title">🏛️ Nova Music System Architecture</h1>
+        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px;">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--accent-cyan)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect>
+            <rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect>
+            <line x1="6" y1="6" x2="6.01" y2="6"></line>
+            <line x1="6" y1="18" x2="6.01" y2="18"></line>
+          </svg>
+          <h1 class="doc-title" style="margin: 0;">Nova Music System Architecture</h1>
+        </div>
         <p class="doc-subtitle">
           Visual architecture diagram and component-level technical specifications for Jetpack Compose UI, ViewModels, Repositories, Room DB, ExoPlayer Media3, LrcLib lyrics API, and DSP audio processing.
         </p>
@@ -104,32 +111,32 @@
         <div style="display: flex; flex-direction: column; gap: 16px; margin-top: 16px;">
           <!-- 1. UI Layer -->
           <div style="background: var(--bg-card); border-inline-start: 4px solid var(--accent-cyan); padding: 16px 20px; border-radius: var(--radius-sm);">
-            <h3 style="color: var(--accent-cyan); font-size: 1.1rem; font-weight: 700;">1. Jetpack Compose UI Layer (<code style="color: var(--text-main);">com.example.ui.*</code>)</h3>
-            <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: 4px;">
+            <h3 style="color: var(--accent-cyan); font-size: 1.1rem; font-weight: 700; margin: 0 0 4px 0;">1. Jetpack Compose UI Layer (<code style="color: var(--text-main);">com.example.ui.*</code>)</h3>
+            <p style="font-size: 0.9rem; color: var(--text-muted); margin: 0;">
               Declarative Material Design 3 UI composables managing state render, user gesture events, and dynamic theme switching. Includes single-activity entry (<code style="color: var(--text-main);">MainActivity.kt</code>), bottom navigation bar, hero carousels, artwork vector renderers, canvas visualizers, and sheet dialogs.
             </p>
           </div>
 
           <!-- 2. ViewModel & State -->
           <div style="background: var(--bg-card); border-inline-start: 4px solid var(--primary-light); padding: 16px 20px; border-radius: var(--radius-sm);">
-            <h3 style="color: var(--primary-light); font-size: 1.1rem; font-weight: 700;">2. State &amp; Playback Management (<code style="color: var(--text-main);">com.example.player.*</code>)</h3>
-            <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: 4px;">
+            <h3 style="color: var(--primary-light); font-size: 1.1rem; font-weight: 700; margin: 0 0 4px 0;">2. State &amp; Playback Management (<code style="color: var(--text-main);">com.example.player.*</code>)</h3>
+            <p style="font-size: 0.9rem; color: var(--text-muted); margin: 0;">
               Coordinates playback queueing, shuffle/repeat modes, seek positions, sleep timers, pitch shift, and playback rate via Kotlin <code style="color: var(--text-main);">StateFlow</code> and <code style="color: var(--text-main);">PlaybackManager</code>.
             </p>
           </div>
 
           <!-- 3. Repository Layer -->
           <div style="background: var(--bg-card); border-inline-start: 4px solid var(--accent-pink); padding: 16px 20px; border-radius: var(--radius-sm);">
-            <h3 style="color: var(--accent-pink); font-size: 1.1rem; font-weight: 700;">3. Repository Layer (<code style="color: var(--text-main);">com.example.data.repository.*</code>)</h3>
-            <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: 4px;">
+            <h3 style="color: var(--accent-pink); font-size: 1.1rem; font-weight: 700; margin: 0 0 4px 0;">3. Repository Layer (<code style="color: var(--text-main);">com.example.data.repository.*</code>)</h3>
+            <p style="font-size: 0.9rem; color: var(--text-muted); margin: 0;">
               Acts as the single source of truth orchestrating local SQLite queries, MediaStore device audio indexing, duplicate file hashing, LrcLib REST API network calls, and DataStore preference synchronization.
             </p>
           </div>
 
           <!-- 4. Room DB & Services -->
           <div style="background: var(--bg-card); border-inline-start: 4px solid #69F0AE; padding: 16px 20px; border-radius: var(--radius-sm);">
-            <h3 style="color: #69F0AE; font-size: 1.1rem; font-weight: 700;">4. System Services &amp; Room Database (<code style="color: var(--text-main);">com.example.data.db.*</code>)</h3>
-            <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: 4px;">
+            <h3 style="color: #69F0AE; font-size: 1.1rem; font-weight: 700; margin: 0 0 4px 0;">4. System Services &amp; Room Database (<code style="color: var(--text-main);">com.example.data.db.*</code>)</h3>
+            <p style="font-size: 0.9rem; color: var(--text-muted); margin: 0;">
               Houses <code style="color: var(--text-main);">NovaDatabase</code> SQLite database, AndroidX Media3 <code style="color: var(--text-main);">MusicService</code> foreground service, and Android AudioEffect 10-band DSP hardware filters.
             </p>
           </div>
@@ -138,6 +145,12 @@
 
       <footer class="doc-footer">
         <p>© 2026 Nova Music Audio Suite. All rights reserved to Team PayFopus.</p>
+        <div class="footer-nav">
+          <a href="buyer-guide.html">Buyer Guide</a>
+          <a href="developer-guide.html">Developer Guide</a>
+          <a href="configuration.html">Config</a>
+          <a href="download.html">Download APK</a>
+        </div>
       </footer>
     </main>
   </div>
