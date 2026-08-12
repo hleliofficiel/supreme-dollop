@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Troubleshooting & FAQ - Nova Music Documentation</title>
+  <title>Troubleshooting &amp; FAQ - Nova Music Documentation</title>
   <link rel="stylesheet" href="../assets/css/styles.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -11,11 +11,14 @@
 </head>
 <body>
   <div class="app-container">
+    <!-- Top Header Navigation Bar -->
     <header class="top-header">
-      <div class="header-left">
-        <button class="mobile-menu-toggle" id="menuToggle" aria-label="Toggle Navigation">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M3 12h18M3 6h18M3 18h18"/>
+      <div style="display: flex; align-items: center; gap: 12px;">
+        <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle Navigation">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
           </svg>
         </button>
         <a href="../index.html" class="brand-title">
@@ -23,67 +26,70 @@
           <span class="brand-badge">DOCS PORTAL</span>
         </a>
       </div>
-      <div class="header-center">
-        <div class="search-wrapper">
-          <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
-          </svg>
-          <input type="text" id="searchInput" placeholder="Search troubleshooting &amp; FAQ..." aria-label="Search Documentation">
-        </div>
+
+      <div class="search-box">
+        <input type="text" id="docSearchInput" placeholder="Search troubleshooting &amp; FAQ..." aria-label="Search Documentation">
       </div>
-      <div class="header-right">
-        <a href="download.html" class="btn-download-apk">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/>
+
+      <div class="header-actions">
+        <a href="download.html" class="control-btn" style="text-decoration: none; background: var(--primary-dark); color: #fff;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+            <polyline points="7 10 12 15 17 10"></polyline>
+            <line x1="12" y1="15" x2="12" y2="3"></line>
           </svg>
-          <span>Download APK</span>
+          <span>APK</span>
         </a>
-        <button class="theme-toggle" id="themeToggle" title="Toggle Light/Dark Theme" aria-label="Toggle Light/Dark Theme">
-          <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
-          </svg>
-          <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
-          </svg>
+        <button class="control-btn" id="themeToggleBtn" title="Toggle Theme" aria-label="Toggle Theme">
+          <span>Dark</span>
         </button>
       </div>
     </header>
 
-    <aside class="sidebar-nav" id="sidebar">
-      <div class="sidebar-group">
-        <span class="group-title">GETTING STARTED</span>
-        <a href="../index.html" class="nav-link">Overview &amp; Intro</a>
-        <a href="../index.html#quickstart" class="nav-link">Quick Start Guide</a>
-        <a href="whats-included.html" class="nav-link">What's Included</a>
-      </div>
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <div class="nav-section-title">GETTING STARTED</div>
+      <ul class="nav-list">
+        <li class="nav-item"><a href="../index.html" class="nav-link">Overview &amp; Intro</a></li>
+        <li class="nav-item"><a href="../index.html#quickstart" class="nav-link">Quick Start Guide</a></li>
+        <li class="nav-item"><a href="whats-included.html" class="nav-link">What's Included</a></li>
+      </ul>
 
-      <div class="sidebar-group">
-        <span class="group-title">DOCUMENTATION PATHS</span>
-        <a href="buyer-guide.html" class="nav-link">Buyer Guide (Non-Technical)</a>
-        <a href="developer-guide.html" class="nav-link">Developer Guide (Technical)</a>
-      </div>
+      <div class="nav-section-title">DOCUMENTATION PATHS</div>
+      <ul class="nav-list">
+        <li class="nav-item"><a href="buyer-guide.html" class="nav-link">Buyer Guide (Non-Technical)</a></li>
+        <li class="nav-item"><a href="developer-guide.html" class="nav-link">Developer Guide (Technical)</a></li>
+      </ul>
 
-      <div class="sidebar-group">
-        <span class="group-title">CORE GUIDES</span>
-        <a href="features.html" class="nav-link">Features &amp; Screenshots</a>
-        <a href="configuration.html" class="nav-link">Configuration &amp; Secrets</a>
-        <a href="customization.html" class="nav-link">Customization &amp; Branding</a>
-        <a href="architecture.html" class="nav-link">Architecture &amp; Design</a>
-        <a href="ads.html" class="nav-link">AdMob &amp; Monetization</a>
-        <a href="restoration.html" class="nav-link">Restoration &amp; Assembly</a>
-        <a href="troubleshooting.html" class="nav-link active">Troubleshooting &amp; FAQ</a>
-      </div>
+      <div class="nav-section-title">CORE GUIDES</div>
+      <ul class="nav-list">
+        <li class="nav-item"><a href="features.html" class="nav-link">Features &amp; Screenshots</a></li>
+        <li class="nav-item"><a href="configuration.html" class="nav-link">Configuration &amp; Secrets</a></li>
+        <li class="nav-item"><a href="customization.html" class="nav-link">Customization &amp; Branding</a></li>
+        <li class="nav-item"><a href="architecture.html" class="nav-link">Architecture &amp; Design</a></li>
+        <li class="nav-item"><a href="ads.html" class="nav-link">AdMob &amp; Monetization</a></li>
+        <li class="nav-item"><a href="restoration.html" class="nav-link">Restoration &amp; Assembly</a></li>
+        <li class="nav-item"><a href="troubleshooting.html" class="nav-link active">Troubleshooting &amp; FAQ</a></li>
+      </ul>
 
-      <div class="sidebar-group">
-        <span class="group-title">DOWNLOADS &amp; HISTORY</span>
-        <a href="download.html" class="nav-link">Release APK Download</a>
-        <a href="../index.html#changelog" class="nav-link">Version Changelog</a>
-      </div>
+      <div class="nav-section-title">DOWNLOADS &amp; HISTORY</div>
+      <ul class="nav-list">
+        <li class="nav-item"><a href="download.html" class="nav-link">Release APK Download</a></li>
+        <li class="nav-item"><a href="../index.html#changelog" class="nav-link">Version Changelog</a></li>
+      </ul>
     </aside>
 
+    <!-- Main Content Body -->
     <main class="main-content">
       <section class="doc-hero">
-        <h1 class="doc-title">❓ Troubleshooting &amp; FAQ Guide</h1>
+        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px;">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--accent-cyan)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+            <line x1="12" y1="17" x2="12.01" y2="17"></line>
+          </svg>
+          <h1 class="doc-title" style="margin: 0;">Troubleshooting &amp; FAQ Guide</h1>
+        </div>
         <p class="doc-subtitle">
           Solutions for common Gradle sync issues, JDK compatibility, missing media permissions, AdMob initialization, and release compilation.
         </p>
@@ -91,23 +97,23 @@
 
       <!-- Problem 1: Gradle Sync -->
       <div class="section-block" style="background: var(--bg-card); border: 1px solid var(--border-color); padding: 20px; border-radius: var(--radius-md);">
-        <h3 style="color: var(--accent-cyan); font-size: 1.1rem; font-weight: 700;">Issue 1: Gradle Synchronization Failure</h3>
-        <p style="font-size: 0.88rem; color: var(--text-muted); margin-top: 6px;"><strong>Possible Cause:</strong> JDK version mismatch or outdated Android Studio plugin.</p>
-        <p style="font-size: 0.88rem; color: #69F0AE; margin-top: 6px;"><strong>Solution:</strong> Open <em>File &gt; Settings &gt; Build, Execution, Deployment &gt; Build Tools &gt; Gradle</em> and set Gradle JDK to JDK 17 or JDK 21. Then click <strong>Sync Project with Gradle Files</strong>.</p>
+        <h3 style="color: var(--accent-cyan); font-size: 1.1rem; font-weight: 700; margin: 0 0 6px 0;">Issue 1: Gradle Synchronization Failure</h3>
+        <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 6px;"><strong>Possible Cause:</strong> JDK version mismatch or outdated Android Studio plugin.</p>
+        <p style="font-size: 0.88rem; color: #69F0AE; margin: 0;"><strong>Solution:</strong> Open <em>File &gt; Settings &gt; Build, Execution, Deployment &gt; Build Tools &gt; Gradle</em> and set Gradle JDK to JDK 17 or JDK 21. Then click <strong>Sync Project with Gradle Files</strong>.</p>
       </div>
 
       <!-- Problem 2: Missing Audio Files -->
       <div class="section-block" style="background: var(--bg-card); border: 1px solid var(--border-color); padding: 20px; border-radius: var(--radius-md); margin-top: 16px;">
-        <h3 style="color: var(--accent-cyan); font-size: 1.1rem; font-weight: 700;">Issue 2: Local Audio Files Not Appearing in Library</h3>
-        <p style="font-size: 0.88rem; color: var(--text-muted); margin-top: 6px;"><strong>Possible Cause:</strong> Missing runtime <code style="color: var(--text-main);">READ_MEDIA_AUDIO</code> permission or empty storage directory.</p>
-        <p style="font-size: 0.88rem; color: #69F0AE; margin-top: 6px;"><strong>Solution:</strong> Ensure runtime storage permission is granted when launching the app. Copy audio tracks (<code style="color: var(--text-main); font-weight: bold;">.mp3</code>, <code style="color: var(--text-main); font-weight: bold;">.flac</code>) into the device's <code style="color: var(--text-main);">Music/</code> folder.</p>
+        <h3 style="color: var(--accent-cyan); font-size: 1.1rem; font-weight: 700; margin: 0 0 6px 0;">Issue 2: Local Audio Files Not Appearing in Library</h3>
+        <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 6px;"><strong>Possible Cause:</strong> Missing runtime <code style="color: var(--text-main);">READ_MEDIA_AUDIO</code> permission or empty storage directory.</p>
+        <p style="font-size: 0.88rem; color: #69F0AE; margin: 0;"><strong>Solution:</strong> Ensure runtime storage permission is granted when launching the app. Copy audio tracks (<code style="color: var(--text-main); font-weight: bold;">.mp3</code>, <code style="color: var(--text-main); font-weight: bold;">.flac</code>) into the device's <code style="color: var(--text-main);">Music/</code> folder.</p>
       </div>
 
       <!-- Problem 3: AdMob Ads Not Serving -->
       <div class="section-block" style="background: var(--bg-card); border: 1px solid var(--border-color); padding: 20px; border-radius: var(--radius-md); margin-top: 16px;">
-        <h3 style="color: var(--accent-cyan); font-size: 1.1rem; font-weight: 700;">Issue 3: AdMob Ads Not Showing</h3>
-        <p style="font-size: 0.88rem; color: var(--text-muted); margin-top: 6px;"><strong>Possible Cause:</strong> New AdMob accounts take 24-48 hours to activate production IDs, or invalid Ad App ID in manifest.</p>
-        <p style="font-size: 0.88rem; color: #69F0AE; margin-top: 6px;"><strong>Solution:</strong> Test using Google's sample Test IDs first (<code style="color: var(--text-main);">ca-app-pub-3940256099942544/6300978111</code>) to verify UI placement before switching to live unit IDs.</p>
+        <h3 style="color: var(--accent-cyan); font-size: 1.1rem; font-weight: 700; margin: 0 0 6px 0;">Issue 3: AdMob Ads Not Showing</h3>
+        <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 6px;"><strong>Possible Cause:</strong> New AdMob accounts take 24-48 hours to activate production IDs, or invalid Ad App ID in manifest.</p>
+        <p style="font-size: 0.88rem; color: #69F0AE; margin: 0;"><strong>Solution:</strong> Test using Google's sample Test IDs first (<code style="color: var(--text-main);">ca-app-pub-3940256099942544/6300978111</code>) to verify UI placement before switching to live unit IDs.</p>
       </div>
 
       <!-- FAQ Section -->
@@ -116,17 +122,38 @@
         <div style="display: flex; flex-direction: column; gap: 12px; margin-top: 12px;">
           <div>
             <strong style="color: var(--text-main);">Q: Can I publish Nova Music on the Google Play Store?</strong>
-            <p style="font-size: 0.88rem; color: var(--text-muted); margin-top: 4px;">Yes. Nova Music is built explicitly for commercial publishing on Google Play. Be sure to change the package ID (<code style="color: var(--accent-cyan);">payfopus.novamusic.app</code>) and app title.</p>
+            <p style="font-size: 0.88rem; color: var(--text-muted); margin-top: 4px; margin-bottom: 0;">Yes. Nova Music is built explicitly for commercial publishing on Google Play. Be sure to change the package ID (<code style="color: var(--accent-cyan);">payfopus.novamusic.app</code>) and app title.</p>
           </div>
           <div>
             <strong style="color: var(--text-main);">Q: Does Nova Music work offline without internet?</strong>
-            <p style="font-size: 0.88rem; color: var(--text-muted); margin-top: 4px;">Yes! All core audio features, 10-band equalizer, playlists, and folder scanner work 100% offline. Internet access is only required for fetching LrcLib lyrics and serving AdMob ads.</p>
+            <p style="font-size: 0.88rem; color: var(--text-muted); margin-top: 4px; margin-bottom: 0;">Yes! All core audio features, 10-band equalizer, playlists, and folder scanner work 100% offline. Internet access is only required for fetching LrcLib lyrics and serving AdMob ads.</p>
           </div>
         </div>
       </div>
 
+      <!-- Third Party Notice -->
+      <div class="section-block" style="background: rgba(255, 0, 127, 0.08); border: 1px solid var(--accent-pink); padding: 20px; border-radius: var(--radius-md); margin-top: 24px;">
+        <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--accent-pink)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
+            <line x1="12" y1="9" x2="12" y2="13"></line>
+            <line x1="12" y1="17" x2="12.01" y2="17"></line>
+          </svg>
+          <h3 style="color: var(--accent-pink); font-size: 1.1rem; font-weight: 800; margin: 0;">Third-Party Services Notice</h3>
+        </div>
+        <p style="font-size: 0.9rem; color: var(--text-main); line-height: 1.6; margin: 0;">
+          <strong>Third-Party Services Notice:</strong> Nova Music may use third-party services such as Google AdMob for advertising. These services are provided by external providers and may require separate configuration and/or accounts. Any third-party service costs, policies, API requirements, or account requirements are the responsibility of the buyer and are not included with the source code purchase.
+        </p>
+      </div>
+
       <footer class="doc-footer">
         <p>© 2026 Nova Music Audio Suite. All rights reserved to Team PayFopus.</p>
+        <div class="footer-nav">
+          <a href="buyer-guide.html">Buyer Guide</a>
+          <a href="developer-guide.html">Developer Guide</a>
+          <a href="configuration.html">Config</a>
+          <a href="download.html">Download APK</a>
+        </div>
       </footer>
     </main>
   </div>
