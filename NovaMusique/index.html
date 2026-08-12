@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nova Music Documentation - Official Developer & Buyer Portal</title>
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="app-container">
+    <!-- Top Header Navigation Bar -->
+    <header class="top-header">
+      <div class="header-left">
+        <button class="mobile-menu-toggle" id="menuToggle" aria-label="Toggle Navigation">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M3 12h18M3 6h18M3 18h18"/>
+          </svg>
+        </button>
+        <a href="index.html" class="brand-title">
+          <span>Nova Music Documentation</span>
+          <span class="brand-badge">DOCS PORTAL</span>
+        </a>
+      </div>
+
+      <div class="header-center">
+        <div class="search-wrapper">
+          <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+          </svg>
+          <input type="text" id="searchInput" placeholder="Search documentation, guides, architecture, config..." aria-label="Search Documentation">
+        </div>
+      </div>
+
+      <div class="header-right">
+        <a href="pages/download.html" class="btn-download-apk">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/>
+          </svg>
+          <span>Download APK</span>
+        </a>
+        <button class="theme-toggle" id="themeToggle" title="Toggle Light/Dark Theme" aria-label="Toggle Light/Dark Theme">
+          <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+          </svg>
+          <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar-nav" id="sidebar">
+      <div class="sidebar-group">
+        <span class="group-title">GETTING STARTED</span>
+        <a href="index.html" class="nav-link active">Overview &amp; Intro</a>
+        <a href="index.html#quickstart" class="nav-link">Quick Start Guide</a>
+        <a href="pages/whats-included.html" class="nav-link">What's Included</a>
+      </div>
+
+      <div class="sidebar-group">
+        <span class="group-title">DOCUMENTATION PATHS</span>
+        <a href="pages/buyer-guide.html" class="nav-link">Buyer Guide (Non-Technical)</a>
+        <a href="pages/developer-guide.html" class="nav-link">Developer Guide (Technical)</a>
+      </div>
+
+      <div class="sidebar-group">
+        <span class="group-title">CORE GUIDES</span>
+        <a href="pages/features.html" class="nav-link">Features &amp; Screenshots</a>
+        <a href="pages/configuration.html" class="nav-link">Configuration &amp; Secrets</a>
+        <a href="pages/customization.html" class="nav-link">Customization &amp; Branding</a>
+        <a href="pages/architecture.html" class="nav-link">Architecture &amp; Design</a>
+        <a href="pages/ads.html" class="nav-link">AdMob &amp; Monetization</a>
+        <a href="pages/restoration.html" class="nav-link">Restoration &amp; Assembly</a>
+        <a href="pages/troubleshooting.html" class="nav-link">Troubleshooting &amp; FAQ</a>
+      </div>
+
+      <div class="sidebar-group">
+        <span class="group-title">DOWNLOADS &amp; HISTORY</span>
+        <a href="pages/download.html" class="nav-link">Release APK Download</a>
+        <a href="index.html#changelog" class="nav-link">Version Changelog</a>
+      </div>
+    </aside>
+
+    <!-- Main Content Body -->
+    <main class="main-content">
+      <!-- Hero Introduction Banner -->
+      <section class="doc-hero">
+        <div style="display: flex; gap: 10px; margin-bottom: 16px; flex-wrap: wrap;">
+          <span class="tech-badge">v1.1.0 Stable Release</span>
+          <span class="tech-badge">Package: payfopus.novamusic.app</span>
+          <span class="tech-badge">Kotlin + Jetpack Compose</span>
+          <span class="tech-badge">AndroidX Media3 ExoPlayer</span>
+        </div>
+        <h1 class="doc-title">Nova Music Official Documentation</h1>
+        <p class="doc-subtitle">
+          Welcome to the official developer and buyer documentation portal for <strong>Nova Music</strong>. This comprehensive guide provides step-by-step instructions for non-technical buyers and Android developers to set up, customize, rebrand, monetize, build, and publish the Nova Music application on the Google Play Store.
+        </p>
+        <div style="margin-top: 24px; display: flex; gap: 12px; flex-wrap: wrap;">
+          <a href="pages/buyer-guide.html" class="btn-download-apk" style="padding: 12px 24px; font-size: 0.95rem; background: linear-gradient(135deg, var(--accent-cyan), var(--primary-dark));">
+            Explore Buyer Guide
+          </a>
+          <a href="pages/developer-guide.html" class="btn-download-apk" style="padding: 12px 24px; font-size: 0.95rem; background: var(--bg-code); border: 1px solid var(--border-glow); color: var(--text-main);">
+            Explore Developer Guide
+          </a>
+        </div>
+      </section>
+
+      <!-- Introduction & Overview Section -->
+      <div class="section-block">
+        <h2 class="section-heading">What is Nova Music?</h2>
+        <p class="section-text">
+          <strong>Nova Music</strong> is a flagship, production-ready Android offline music player and audio processing application engineered using modern native <strong>Kotlin</strong> and <strong>Jetpack Compose</strong> (Material Design 3). Built on clean <strong>MVVM architecture</strong>, Nova Music delivers ultra-low-latency playback, full offline media indexing, synchronized LRC lyrics auto-fetching, a 10-band DSP equalizer, dynamic color theme engine, multi-language localization (including Arabic RTL), and Google AdMob monetization.
+        </p>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1f)); gap: 16px; margin-top: 24px;">
+          <div style="background: var(--bg-card); border: 1px solid var(--border-color); padding: 20px; border-radius: var(--radius-md);">
+            <h3 style="color: var(--accent-cyan); font-size: 1.1rem; margin-bottom: 8px;">📦 What You Receive</h3>
+            <p style="font-size: 0.9rem; color: var(--text-muted);">Full Android Studio Kotlin DSL project source code, Jetpack Compose layouts, Room database implementation, Media3 ExoPlayer service, LrcLib lyrics API integration, AdMob ad managers, 8 dynamic theme presets, documentation portal, and pre-compiled release APK.</p>
+          </div>
+
+          <div style="background: var(--bg-card); border: 1px solid var(--border-color); padding: 20px; border-radius: var(--radius-md);">
+            <h3 style="color: var(--accent-pink); font-size: 1.1rem; margin-bottom: 8px;">🎯 Designed For</h3>
+            <p style="font-size: 0.9rem; color: var(--text-muted);">Commercial publishing on the Google Play Store, white-label client projects, custom audio player releases, reselling on app marketplaces, and turnkey mobile application development.</p>
+          </div>
+
+          <div style="background: var(--bg-card); border: 1px solid var(--border-color); padding: 20px; border-radius: var(--radius-md);">
+            <h3 style="color: #69F0AE; font-size: 1.1rem; margin-bottom: 8px;">🎨 Customization Scope</h3>
+            <p style="font-size: 0.9rem; color: var(--text-muted);">Easily rename the app title, change launcher icons, set unique package ID (<code style="color: var(--accent-cyan);">payfopus.novamusic.app</code>), adjust dynamic color palettes, configure AdMob unit IDs, edit terms/privacy legal pages, and add localized language translations.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Start Section -->
+      <div class="section-block" id="quickstart">
+        <h2 class="section-heading">⚡ Quick Start Guide (7 Steps to Launch)</h2>
+        <p class="section-text">Follow this streamlined workflow to get Nova Music running in Android Studio and ready for release:</p>
+
+        <div style="display: flex; flex-direction: column; gap: 12px; margin-top: 16px;">
+          <div style="background: var(--bg-card); border-inline-start: 4px solid var(--accent-cyan); padding: 16px 20px; border-radius: 0 var(--radius-sm) var(--radius-sm) 0;">
+            <strong style="color: var(--accent-cyan);">Step 1: Extract Source Package</strong>
+            <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: 4px;">Download and unzip the purchased project folder onto your local development machine.</p>
+          </div>
+
+          <div style="background: var(--bg-card); border-inline-start: 4px solid var(--primary); padding: 16px 20px; border-radius: 0 var(--radius-sm) var(--radius-sm) 0;">
+            <strong style="color: var(--primary-light);">Step 2: Open in Android Studio</strong>
+            <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: 4px;">Launch Android Studio (Ladybug 2026.1+ or newer) and select <em>Open Existing Project</em> pointing to the root workspace directory.</p>
+          </div>
+
+          <div style="background: var(--bg-card); border-inline-start: 4px solid var(--accent-pink); padding: 16px 20px; border-radius: 0 var(--radius-sm) var(--radius-sm) 0;">
+            <strong style="color: var(--accent-pink);">Step 3: Sync Gradle Dependencies</strong>
+            <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: 4px;">Allow Gradle (8.10+) to download dependencies and build project indexing automatically.</p>
+          </div>
+
+          <div style="background: var(--bg-card); border-inline-start: 4px solid #69F0AE; padding: 16px 20px; border-radius: 0 var(--radius-sm) var(--radius-sm) 0;">
+            <strong style="color: #69F0AE;">Step 4: Review Project Configuration</strong>
+            <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: 4px;">Verify package ID <code style="color: var(--accent-cyan);">payfopus.novamusic.app</code> in <code style="color: var(--text-main);">app/build.gradle.kts</code> and inspect environment keys in <code style="color: var(--text-main);">.env.example</code>.</p>
+          </div>
+
+          <div style="background: var(--bg-card); border-inline-start: 4px solid #FFD600; padding: 16px 20px; border-radius: 0 var(--radius-sm) var(--radius-sm) 0;">
+            <strong style="color: #FFD600;">Step 5: Configure Branding &amp; AdMob</strong>
+            <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: 4px;">Update application title in <code style="color: var(--text-main);">strings.xml</code>, replace adaptive launcher icons, and paste your AdMob Publisher/Unit IDs in configuration files.</p>
+          </div>
+
+          <div style="background: var(--bg-card); border-inline-start: 4px solid var(--accent-cyan); padding: 16px 20px; border-radius: 0 var(--radius-sm) var(--radius-sm) 0;">
+            <strong style="color: var(--accent-cyan);">Step 6: Build &amp; Run Application</strong>
+            <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: 4px;">Connect a physical Android device or launch an Android Virtual Device (AVD) and click <strong>Run 'app'</strong>.</p>
+          </div>
+
+          <div style="background: var(--bg-card); border-inline-start: 4px solid #B388FF; padding: 16px 20px; border-radius: 0 var(--radius-sm) var(--radius-sm) 0;">
+            <strong style="color: #B388FF;">Step 7: Generate Release APK / AAB</strong>
+            <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: 4px;">Navigate to <em>Build &gt; Generate Signed Bundle / APK</em> to produce production binaries for the Google Play Store.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Separate Buyer and Developer Journeys -->
+      <div class="section-block">
+        <h2 class="section-heading">Choose Your Documentation Journey</h2>
+        <p class="section-text">Select the guide tailored specifically to your background and goal:</p>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px; margin-top: 20px;">
+          <!-- Non-Technical Buyer Path -->
+          <div style="background: var(--bg-card); border: 2px solid var(--accent-cyan); border-radius: var(--radius-lg); padding: 24px; display: flex; flex-direction: column; justify-content: space-between;">
+            <div>
+              <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px;">
+                <span style="font-size: 1.8rem;">💼</span>
+                <h3 style="color: var(--accent-cyan); font-size: 1.25rem; font-weight: 800;">Non-Technical Buyer Path</h3>
+              </div>
+              <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 16px;">Designed for app buyers, marketers, store managers, and publishers who want to rebrand, customize, monetize, and publish Nova Music with minimal coding.</p>
+
+              <ul style="list-style-type: square; margin-inline-start: 20px; font-size: 0.88rem; color: var(--text-main); display: flex; flex-direction: column; gap: 8px;">
+                <li>Rebrand application title &amp; store presence</li>
+                <li>Replace app launcher icons and artwork</li>
+                <li>Set unique package ID (<code style="color: var(--accent-cyan);">payfopus.novamusic.app</code>)</li>
+                <li>Customize dynamic theme palettes &amp; languages</li>
+                <li>Configure Google AdMob ad units &amp; monetization</li>
+                <li>Generate signed release APK / AAB for Google Play</li>
+              </ul>
+            </div>
+            <a href="pages/buyer-guide.html" class="btn-download-apk" style="margin-top: 24px; text-align: center; justify-content: center; background: linear-gradient(135deg, var(--accent-cyan), var(--primary-dark));">
+              Open Buyer Guide →
+            </a>
+          </div>
+
+          <!-- Developer Path -->
+          <div style="background: var(--bg-card); border: 2px solid var(--primary-light); border-radius: var(--radius-lg); padding: 24px; display: flex; flex-direction: column; justify-content: space-between;">
+            <div>
+              <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px;">
+                <span style="font-size: 1.8rem;">🛠️</span>
+                <h3 style="color: var(--primary-light); font-size: 1.25rem; font-weight: 800;">Developer Path</h3>
+              </div>
+              <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 16px;">Designed for Android Kotlin engineers who want to dive into the codebase, modify Jetpack Compose UI composables, adjust Media3 audio pipelines, and extend features.</p>
+
+              <ul style="list-style-type: square; margin-inline-start: 20px; font-size: 0.88rem; color: var(--text-main); display: flex; flex-direction: column; gap: 8px;">
+                <li>Explore clean MVVM codebase structure (<code style="color: var(--accent-cyan);">com.example.*</code>)</li>
+                <li>Modify Jetpack Compose UI screens &amp; components</li>
+                <li>Understand Media3 ExoPlayer background playback service</li>
+                <li>Inspect Room database DAOs &amp; migration schemas</li>
+                <li>Tune 10-Band Equalizer DSP audio processing pipeline</li>
+                <li>Extend LrcLib REST API lyrics fetcher &amp; parser</li>
+              </ul>
+            </div>
+            <a href="pages/developer-guide.html" class="btn-download-apk" style="margin-top: 24px; text-align: center; justify-content: center; background: var(--bg-code); border: 1px solid var(--primary-light); color: var(--text-main);">
+              Open Developer Guide →
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Application UI Screenshots Showcase -->
+      <div class="section-block">
+        <h2 class="section-heading">Application UI Screenshots</h2>
+        <p class="section-text">Explore real native Android Jetpack Compose interfaces rendered live in Nova Music v1.1.0:</p>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-top: 20px; justify-items: center;">
+          <div style="text-align: center; width: 100%;">
+            <div class="phone-mockup">
+              <img src="assets/images/screen_player.png" alt="Now Playing Screen">
+            </div>
+            <p style="font-size: 0.85rem; font-weight: 700; color: var(--text-main); margin-top: 6px;">Now Playing</p>
+          </div>
+
+          <div style="text-align: center; width: 100%;">
+            <div class="phone-mockup">
+              <img src="assets/images/screen_library.png" alt="Music Library Screen">
+            </div>
+            <p style="font-size: 0.85rem; font-weight: 700; color: var(--text-main); margin-top: 6px;">Music Library</p>
+          </div>
+
+          <div style="text-align: center; width: 100%;">
+            <div class="phone-mockup">
+              <img src="assets/images/screen_equalizer.png" alt="10-Band Equalizer Screen">
+            </div>
+            <p style="font-size: 0.85rem; font-weight: 700; color: var(--text-main); margin-top: 6px;">10-Band Equalizer</p>
+          </div>
+
+          <div style="text-align: center; width: 100%;">
+            <div class="phone-mockup">
+              <img src="assets/images/screen_lyrics.png" alt="Synchronized Lyrics Screen">
+            </div>
+            <p style="font-size: 0.85rem; font-weight: 700; color: var(--text-main); margin-top: 6px;">Karaoke Lyrics</p>
+          </div>
+
+          <div style="text-align: center; width: 100%;">
+            <div class="phone-mockup">
+              <img src="assets/images/screen_playlists.png" alt="Playlists Screen">
+            </div>
+            <p style="font-size: 0.85rem; font-weight: 700; color: var(--text-main); margin-top: 6px;">Playlists</p>
+          </div>
+
+          <div style="text-align: center; width: 100%;">
+            <div class="phone-mockup">
+              <img src="assets/images/screen_themes.png" alt="Dynamic Themes Screen">
+            </div>
+            <p style="font-size: 0.85rem; font-weight: 700; color: var(--text-main); margin-top: 6px;">Dynamic Themes</p>
+          </div>
+
+          <div style="text-align: center; width: 100%;">
+            <div class="phone-mockup">
+              <img src="assets/images/screen_languages.png" alt="Multi-Language Screen">
+            </div>
+            <p style="font-size: 0.85rem; font-weight: 700; color: var(--text-main); margin-top: 6px;">Languages &amp; RTL</p>
+          </div>
+
+          <div style="text-align: center; width: 100%;">
+            <div class="phone-mockup">
+              <img src="assets/images/screen_settings.png" alt="App Settings Screen">
+            </div>
+            <p style="font-size: 0.85rem; font-weight: 700; color: var(--text-main); margin-top: 6px;">App Settings</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Architecture Preview Card -->
+      <div class="section-block">
+        <h2 class="section-heading">System Architecture Overview</h2>
+        <p class="section-text">Nova Music follows Google's official recommended Android Clean MVVM architecture with unidirectional data flow:</p>
+
+        <div style="margin-top: 16px; background: var(--bg-card); padding: 16px; border-radius: var(--radius-md); border: 1px solid var(--border-color); text-align: center;">
+          <img src="assets/images/architecture_diagram.svg" alt="Nova Music Architecture Diagram" style="max-width: 100%; height: auto; border-radius: var(--radius-sm);">
+          <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 12px;">
+            Interaction Flow: <strong>UI Composables</strong> &rarr; <strong>ViewModels / StateFlow</strong> &rarr; <strong>Repository Layer</strong> &rarr; <strong>Room DB / Media3 ExoPlayer / LrcLib API / AdMob SDK</strong>
+          </p>
+          <a href="pages/architecture.html" style="display: inline-block; margin-top: 12px; color: var(--accent-cyan); font-weight: 700; text-decoration: none;">View Full Architectural Breakdown &rarr;</a>
+        </div>
+      </div>
+
+      <!-- Third-Party Services Notice Box (Verbatim as required) -->
+      <div class="section-block" style="background: rgba(255, 0, 127, 0.08); border: 1px solid var(--accent-pink); padding: 20px; border-radius: var(--radius-md);">
+        <h3 style="color: var(--accent-pink); font-size: 1.1rem; font-weight: 800; margin-bottom: 8px;">⚠️ Third-Party Services Notice</h3>
+        <p style="font-size: 0.9rem; color: var(--text-main); line-height: 1.6;">
+          <strong>Third-Party Services Notice:</strong> Nova Music may use third-party services such as Google AdMob for advertising. These services are provided by external providers and may require separate configuration and/or accounts. Any third-party service costs, policies, API requirements, or account requirements are the responsibility of the buyer and are not included with the source code purchase.
+        </p>
+      </div>
+
+      <!-- Release History & Version Changelog -->
+      <div class="section-block" id="changelog">
+        <h2 class="section-heading">Release History &amp; Version Changelog</h2>
+        <p class="section-text">Detailed timeline of releases, optimizations, rebrand logs, and future technical roadmap:</p>
+
+        <div style="display: flex; flex-direction: column; gap: 20px; margin-top: 20px;">
+          <!-- Version 1.1.0 -->
+          <div style="background: var(--bg-code); border: 1px solid var(--border-glow); border-radius: var(--radius-md); padding: 20px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; flex-wrap: wrap; gap: 8px;">
+              <span style="font-size: 1.1rem; font-weight: 800; color: var(--accent-cyan);">v1.1.0 — Official Rebranding &amp; Performance Upgrade</span>
+              <span style="font-size: 0.75rem; background: var(--primary); color: #fff; padding: 3px 10px; border-radius: 12px; font-weight: 700;">CURRENT RELEASE</span>
+            </div>
+            <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 12px;">Major release introducing brand alignment, dedicated application ID, audio engine optimizations, and documentation suite expansion.</p>
+            <ul style="list-style-type: square; margin-inline-start: 20px; font-size: 0.85rem; color: var(--text-main); display: flex; flex-direction: column; gap: 6px;">
+              <li><strong>Official Rebranding:</strong> Application rebranded from Nova Musique to <strong>Nova Music</strong> across Android strings, manifests, themes, and developer portal.</li>
+              <li><strong>Dedicated Package ID:</strong> Application package ID standardized to <code style="color: var(--accent-cyan);">payfopus.novamusic.app</code>.</li>
+              <li><strong>Audio Engine Optimization:</strong> Refactored ExoPlayer audio buffer handling and reduced latency during song transitions.</li>
+              <li><strong>LrcLib Lyrics Integration:</strong> Improved User-Agent headers and added multi-step fallback parser for synchronized LRC lyrics.</li>
+              <li><strong>Memory &amp; DSP Tuning:</strong> Optimized Room database queries and 10-Band EQ preset state retention across configuration changes.</li>
+              <li><strong>Production Build Assets:</strong> Generated optimized release APK <code style="color: var(--accent-cyan);">NovaMusic.apk</code> with complete keystore setup instructions.</li>
+            </ul>
+          </div>
+
+          <!-- Version 1.0.0 -->
+          <div style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 20px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; flex-wrap: wrap; gap: 8px;">
+              <span style="font-size: 1.1rem; font-weight: 800; color: var(--text-main);">v1.0.0 — Initial Architecture Release</span>
+              <span style="font-size: 0.75rem; background: var(--bg-code); color: var(--text-muted); padding: 3px 10px; border-radius: 12px; font-weight: 600;">STABLE RELEASE</span>
+            </div>
+            <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 12px;">Core architecture foundation built on Jetpack Compose, Room DB, and AndroidX Media3.</p>
+            <ul style="list-style-type: square; margin-inline-start: 20px; font-size: 0.85rem; color: var(--text-muted); display: flex; flex-direction: column; gap: 6px;">
+              <li>Initial release featuring Material Design 3 UI and 8 dynamic color themes.</li>
+              <li>Local storage media scanner supporting MP3, FLAC, M4A, and WAV audio indexing.</li>
+              <li>Duplicate Audio Finder utility with hash and metadata comparison.</li>
+              <li>Integrated AdMob monetization architecture for banner and interstitial ads.</li>
+            </ul>
+          </div>
+
+          <!-- Future Roadmap (Upcoming) -->
+          <div style="background: rgba(0, 229, 255, 0.05); border: 1px dashed var(--accent-cyan); border-radius: var(--radius-md); padding: 20px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+              <span style="font-size: 1.05rem; font-weight: 800; color: var(--accent-cyan);">🚀 Roadmap &amp; Upcoming Features (v1.2.0+)</span>
+              <span style="font-size: 0.75rem; background: rgba(0, 229, 255, 0.2); color: var(--accent-cyan); padding: 3px 10px; border-radius: 12px; font-weight: 700;">IN DEVELOPMENT</span>
+            </div>
+            <ul style="list-style-type: circle; margin-inline-start: 20px; font-size: 0.85rem; color: var(--text-muted); display: flex; flex-direction: column; gap: 6px;">
+              <li><strong>Cloud Backup &amp; Restore:</strong> Local backup export/import for custom playlists and listening statistics.</li>
+              <li><strong>Custom Sleep Timer Fade-Out:</strong> Gradual audio volume attenuation when sleep timer expires.</li>
+              <li><strong>Enhanced Tag Editor:</strong> Embedded ID3v2 tag editor with cover artwork downloader.</li>
+              <li><strong>Android Auto Support:</strong> Extended Media3 session integration for car displays.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Universal Footer -->
+      <footer class="doc-footer">
+        <p>© 2026 Nova Music Audio Suite. All rights reserved to Team PayFopus.</p>
+        <div class="footer-nav">
+          <a href="pages/buyer-guide.html">Buyer Guide</a>
+          <a href="pages/developer-guide.html">Developer Guide</a>
+          <a href="pages/configuration.html">Config</a>
+          <a href="pages/architecture.html">Architecture</a>
+          <a href="pages/download.html">Download APK</a>
+        </div>
+      </footer>
+    </main>
+  </div>
+
+  <script src="assets/js/script.js"></script>
+</body>
+</html>

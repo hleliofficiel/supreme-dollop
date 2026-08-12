@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Features & Application Screenshots - Nova Music Documentation</title>
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="app-container">
+    <header class="top-header">
+      <div class="header-left">
+        <button class="mobile-menu-toggle" id="menuToggle" aria-label="Toggle Navigation">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M3 12h18M3 6h18M3 18h18"/>
+          </svg>
+        </button>
+        <a href="../index.html" class="brand-title">
+          <span>Nova Music Documentation</span>
+          <span class="brand-badge">DOCS PORTAL</span>
+        </a>
+      </div>
+      <div class="header-center">
+        <div class="search-wrapper">
+          <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+          </svg>
+          <input type="text" id="searchInput" placeholder="Search features &amp; screenshots..." aria-label="Search Documentation">
+        </div>
+      </div>
+      <div class="header-right">
+        <a href="download.html" class="btn-download-apk">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/>
+          </svg>
+          <span>Download APK</span>
+        </a>
+        <button class="theme-toggle" id="themeToggle" title="Toggle Light/Dark Theme" aria-label="Toggle Light/Dark Theme">
+          <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+          </svg>
+          <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <aside class="sidebar-nav" id="sidebar">
+      <div class="sidebar-group">
+        <span class="group-title">GETTING STARTED</span>
+        <a href="../index.html" class="nav-link">Overview &amp; Intro</a>
+        <a href="../index.html#quickstart" class="nav-link">Quick Start Guide</a>
+        <a href="whats-included.html" class="nav-link">What's Included</a>
+      </div>
+
+      <div class="sidebar-group">
+        <span class="group-title">DOCUMENTATION PATHS</span>
+        <a href="buyer-guide.html" class="nav-link">Buyer Guide (Non-Technical)</a>
+        <a href="developer-guide.html" class="nav-link">Developer Guide (Technical)</a>
+      </div>
+
+      <div class="sidebar-group">
+        <span class="group-title">CORE GUIDES</span>
+        <a href="features.html" class="nav-link active">Features &amp; Screenshots</a>
+        <a href="configuration.html" class="nav-link">Configuration &amp; Secrets</a>
+        <a href="customization.html" class="nav-link">Customization &amp; Branding</a>
+        <a href="architecture.html" class="nav-link">Architecture &amp; Design</a>
+        <a href="ads.html" class="nav-link">AdMob &amp; Monetization</a>
+        <a href="restoration.html" class="nav-link">Restoration &amp; Assembly</a>
+        <a href="troubleshooting.html" class="nav-link">Troubleshooting &amp; FAQ</a>
+      </div>
+
+      <div class="sidebar-group">
+        <span class="group-title">DOWNLOADS &amp; HISTORY</span>
+        <a href="download.html" class="nav-link">Release APK Download</a>
+        <a href="../index.html#changelog" class="nav-link">Version Changelog</a>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <section class="doc-hero">
+        <h1 class="doc-title">📱 Features &amp; Application Screenshots</h1>
+        <p class="doc-subtitle">
+          Visual tour and technical documentation for all core features in Nova Music, accompanied by actual application screen mockups.
+        </p>
+      </section>
+
+      <!-- Feature 1: Music Player & Canvas Visualizer -->
+      <div class="section-block">
+        <h2 class="section-heading">1. Now Playing Screen &amp; Audio Visualizer</h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; align-items: center; margin-top: 16px;">
+          <div>
+            <p class="section-text">
+              The full-screen music player features a rotating vinyl artwork disc, dynamic ambient background gradient glow, waveform audio visualizer canvas (<code style="color: var(--accent-cyan);">AudioVisualizer.kt</code>), full playback controls (shuffle, previous, play/pause, next, repeat mode), pitch/speed adjustments, sleep timer, and bottom quick sheets.
+            </p>
+            <ul style="list-style-type: square; margin-inline-start: 20px; color: var(--text-muted); margin-top: 12px; font-size: 0.9rem;">
+              <li>Real-time animated audio canvas visualizer</li>
+              <li>ExoPlayer audio progress slider with duration display</li>
+              <li>Direct entry to Synchronized Lyrics and Equalizer</li>
+            </ul>
+          </div>
+          <div style="text-align: center;">
+            <div class="phone-mockup">
+              <img src="../assets/images/screen_player.png" alt="Now Playing Screen">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Feature 2: Music Library -->
+      <div class="section-block">
+        <h2 class="section-heading">2. Local Music Library &amp; Folder Browser</h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; align-items: center; margin-top: 16px;">
+          <div>
+            <p class="section-text">
+              Scans all local device audio files (<code style="color: var(--text-main);">.mp3</code>, <code style="color: var(--text-main);">.flac</code>, <code style="color: var(--text-main);">.m4a</code>, <code style="color: var(--text-main);">.wav</code>) and categorizes them into clear tabs: <strong>Tracks</strong>, <strong>Playlists</strong>, <strong>Albums</strong>, <strong>Artists</strong>, and <strong>Folders</strong>.
+            </p>
+            <ul style="list-style-type: square; margin-inline-start: 20px; color: var(--text-muted); margin-top: 12px; font-size: 0.9rem;">
+              <li>Real-time search bar &amp; sort ordering</li>
+              <li>Vector cover artwork fallback loader</li>
+              <li>Persistent Mini Player bottom bar</li>
+            </ul>
+          </div>
+          <div style="text-align: center;">
+            <div class="phone-mockup">
+              <img src="../assets/images/screen_library.png" alt="Music Library Screen">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Feature 3: Equalizer & Audio Lab -->
+      <div class="section-block">
+        <h2 class="section-heading">3. 10-Band Equalizer &amp; Audio Lab</h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; align-items: center; margin-top: 16px;">
+          <div>
+            <p class="section-text">
+              Built-in 10-band DSP Equalizer slider controls (60Hz to 14kHz) with interactive frequency curve canvas (<code style="color: var(--accent-cyan);">EqualizerCurveCanvas.kt</code>), hardware Bass Boost (+12dB), 3D Virtualizer surround effect, preset selector (Rock, Pop, Jazz, Acoustic, Flat), and custom preset persistence.
+            </p>
+          </div>
+          <div style="text-align: center;">
+            <div class="phone-mockup">
+              <img src="../assets/images/screen_equalizer.png" alt="Equalizer Screen">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Feature 4: Synchronized Lyrics -->
+      <div class="section-block">
+        <h2 class="section-heading">4. Synchronized Karaoke LRC Lyrics</h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; align-items: center; margin-top: 16px;">
+          <div>
+            <p class="section-text">
+              Integrates with LrcLib API to automatically fetch and cache synchronized LRC lyrics. Highlights active singing lines in bright neon text with auto-scroll and manual timestamp calibration controls.
+            </p>
+          </div>
+          <div style="text-align: center;">
+            <div class="phone-mockup">
+              <img src="../assets/images/screen_lyrics.png" alt="Lyrics Screen">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Feature 5: Playlists & Collections -->
+      <div class="section-block">
+        <h2 class="section-heading">5. Custom Playlists &amp; Favorites</h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; align-items: center; margin-top: 16px;">
+          <div>
+            <p class="section-text">
+              Create, rename, reorder, and remove custom playlist collections backed by local Room database (<code style="color: var(--text-main);">PlaylistEntity</code> &amp; <code style="color: var(--text-main);">PlaylistSongCrossRef</code>).
+            </p>
+          </div>
+          <div style="text-align: center;">
+            <div class="phone-mockup">
+              <img src="../assets/images/screen_playlists.png" alt="Playlists Screen">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Feature 6: Utilities & Insights -->
+      <div class="section-block">
+        <h2 class="section-heading">6. Utilities, Insights &amp; Duplicate Finder</h2>
+        <p class="section-text">
+          Nova Music includes advanced audio utilities:
+        </p>
+        <ul style="list-style-type: square; margin-inline-start: 20px; color: var(--text-muted); margin-top: 8px; display: flex; flex-direction: column; gap: 6px;">
+          <li><strong>Duplicate Audio Scanner:</strong> Scans device storage to detect duplicate audio tracks by file size, title, and hash comparison to free storage space.</li>
+          <li><strong>Listening Insights:</strong> Tracks most played songs, total listening hours, and favorite genre statistics.</li>
+          <li><strong>Metadata Tag Editor:</strong> Allows editing song title, artist name, and album information directly in local files.</li>
+        </ul>
+      </div>
+
+      <!-- Feature 7: App Settings & Customization -->
+      <div class="section-block">
+        <h2 class="section-heading">7. Application Settings &amp; Preferences</h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; align-items: center; margin-top: 16px;">
+          <div>
+            <p class="section-text">
+              Comprehensive application settings panel allowing buyers and users to configure theme palettes, audio crossfade, scan directories, active language localization, and audio hardware preferences.
+            </p>
+          </div>
+          <div style="text-align: center;">
+            <div class="phone-mockup">
+              <img src="../assets/images/screen_settings.png" alt="Settings Screen">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer class="doc-footer">
+        <p>© 2026 Nova Music Audio Suite. All rights reserved to Team PayFopus.</p>
+      </footer>
+    </main>
+  </div>
+  <script src="../assets/js/script.js"></script>
+</body>
+</html>

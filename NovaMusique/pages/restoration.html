@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prerequisites & Restoration Guide - Nova Music Documentation</title>
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="app-container">
+    <header class="top-header">
+      <div class="header-left">
+        <button class="mobile-menu-toggle" id="menuToggle" aria-label="Toggle Navigation">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M3 12h18M3 6h18M3 18h18"/>
+          </svg>
+        </button>
+        <a href="../index.html" class="brand-title">
+          <span>Nova Music Documentation</span>
+          <span class="brand-badge">DOCS PORTAL</span>
+        </a>
+      </div>
+      <div class="header-center">
+        <div class="search-wrapper">
+          <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+          </svg>
+          <input type="text" id="searchInput" placeholder="Search restoration guide..." aria-label="Search Documentation">
+        </div>
+      </div>
+      <div class="header-right">
+        <a href="download.html" class="btn-download-apk">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/>
+          </svg>
+          <span>Download APK</span>
+        </a>
+        <button class="theme-toggle" id="themeToggle" title="Toggle Light/Dark Theme" aria-label="Toggle Light/Dark Theme">
+          <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+          </svg>
+          <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <aside class="sidebar-nav" id="sidebar">
+      <div class="sidebar-group">
+        <span class="group-title">GETTING STARTED</span>
+        <a href="../index.html" class="nav-link">Overview &amp; Intro</a>
+        <a href="../index.html#quickstart" class="nav-link">Quick Start Guide</a>
+        <a href="whats-included.html" class="nav-link">What's Included</a>
+      </div>
+
+      <div class="sidebar-group">
+        <span class="group-title">DOCUMENTATION PATHS</span>
+        <a href="buyer-guide.html" class="nav-link">Buyer Guide (Non-Technical)</a>
+        <a href="developer-guide.html" class="nav-link">Developer Guide (Technical)</a>
+      </div>
+
+      <div class="sidebar-group">
+        <span class="group-title">CORE GUIDES</span>
+        <a href="features.html" class="nav-link">Features &amp; Screenshots</a>
+        <a href="configuration.html" class="nav-link">Configuration &amp; Secrets</a>
+        <a href="customization.html" class="nav-link">Customization &amp; Branding</a>
+        <a href="architecture.html" class="nav-link">Architecture &amp; Design</a>
+        <a href="ads.html" class="nav-link">AdMob &amp; Monetization</a>
+        <a href="restoration.html" class="nav-link active">Restoration &amp; Assembly</a>
+        <a href="troubleshooting.html" class="nav-link">Troubleshooting &amp; FAQ</a>
+      </div>
+
+      <div class="sidebar-group">
+        <span class="group-title">DOWNLOADS &amp; HISTORY</span>
+        <a href="download.html" class="nav-link">Release APK Download</a>
+        <a href="../index.html#changelog" class="nav-link">Version Changelog</a>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <section class="doc-hero">
+        <h1 class="doc-title">🔧 Restoration &amp; Assembly Guide</h1>
+        <p class="doc-subtitle">
+          Software prerequisites, Android Studio import instructions, Gradle synchronization, device testing, and production binary assembly.
+        </p>
+      </section>
+
+      <!-- System Requirements -->
+      <div class="section-block">
+        <h2 class="section-heading">System &amp; Software Requirements</h2>
+        <ul style="list-style-type: square; margin-inline-start: 20px; color: var(--text-muted); display: flex; flex-direction: column; gap: 8px;">
+          <li><strong>Android Studio:</strong> Ladybug (2026.1+) or newer</li>
+          <li><strong>Java Development Kit (JDK):</strong> JDK 17 / JDK 21</li>
+          <li><strong>Android SDK:</strong> API Level 36 (Android 16) target, API Level 24 (Android 7.0) minimum</li>
+          <li><strong>Gradle:</strong> Gradle 8.10+ &amp; Android Gradle Plugin 8.7+</li>
+        </ul>
+      </div>
+
+      <!-- Opening & Restoration -->
+      <div class="section-block">
+        <h2 class="section-heading">Restoring Project in Android Studio</h2>
+        <ol style="list-style-type: decimal; margin-inline-start: 20px; color: var(--text-muted); display: flex; flex-direction: column; gap: 8px;">
+          <li>Extract purchased source zip archive.</li>
+          <li>Launch Android Studio and click <strong>Open</strong>.</li>
+          <li>Select root project directory containing <code style="color: var(--text-main);">settings.gradle.kts</code>.</li>
+          <li>Wait for Gradle sync to complete automatically.</li>
+        </ol>
+      </div>
+
+      <!-- CLI Commands -->
+      <div class="section-block">
+        <h2 class="section-heading">Building Binaries via Gradle CLI</h2>
+        <div class="code-box">
+          <pre><code># Assemble Debug APK for local testing
+./gradlew assembleDebug
+
+# Assemble Release APK
+./gradlew assembleRelease
+
+# Assemble Release Android App Bundle (.aab) for Google Play
+./gradlew bundleRelease</code></pre>
+        </div>
+      </div>
+
+      <footer class="doc-footer">
+        <p>© 2026 Nova Music Audio Suite. All rights reserved to Team PayFopus.</p>
+      </footer>
+    </main>
+  </div>
+  <script src="../assets/js/script.js"></script>
+</body>
+</html>

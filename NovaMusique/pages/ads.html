@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AdMob & Multi-Platform Ads Guide - Nova Music Documentation</title>
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="app-container">
+    <header class="top-header">
+      <div class="header-left">
+        <button class="mobile-menu-toggle" id="menuToggle" aria-label="Toggle Navigation">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M3 12h18M3 6h18M3 18h18"/>
+          </svg>
+        </button>
+        <a href="../index.html" class="brand-title">
+          <span>Nova Music Documentation</span>
+          <span class="brand-badge">DOCS PORTAL</span>
+        </a>
+      </div>
+      <div class="header-center">
+        <div class="search-wrapper">
+          <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+          </svg>
+          <input type="text" id="searchInput" placeholder="Search ads guide..." aria-label="Search Documentation">
+        </div>
+      </div>
+      <div class="header-right">
+        <a href="download.html" class="btn-download-apk">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/>
+          </svg>
+          <span>Download APK</span>
+        </a>
+        <button class="theme-toggle" id="themeToggle" title="Toggle Light/Dark Theme" aria-label="Toggle Light/Dark Theme">
+          <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+          </svg>
+          <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <aside class="sidebar-nav" id="sidebar">
+      <div class="sidebar-group">
+        <span class="group-title">GETTING STARTED</span>
+        <a href="../index.html" class="nav-link">Overview &amp; Intro</a>
+        <a href="../index.html#quickstart" class="nav-link">Quick Start Guide</a>
+        <a href="whats-included.html" class="nav-link">What's Included</a>
+      </div>
+
+      <div class="sidebar-group">
+        <span class="group-title">DOCUMENTATION PATHS</span>
+        <a href="buyer-guide.html" class="nav-link">Buyer Guide (Non-Technical)</a>
+        <a href="developer-guide.html" class="nav-link">Developer Guide (Technical)</a>
+      </div>
+
+      <div class="sidebar-group">
+        <span class="group-title">CORE GUIDES</span>
+        <a href="features.html" class="nav-link">Features &amp; Screenshots</a>
+        <a href="configuration.html" class="nav-link">Configuration &amp; Secrets</a>
+        <a href="customization.html" class="nav-link">Customization &amp; Branding</a>
+        <a href="architecture.html" class="nav-link">Architecture &amp; Design</a>
+        <a href="ads.html" class="nav-link active">AdMob &amp; Monetization</a>
+        <a href="restoration.html" class="nav-link">Restoration &amp; Assembly</a>
+        <a href="troubleshooting.html" class="nav-link">Troubleshooting &amp; FAQ</a>
+      </div>
+
+      <div class="sidebar-group">
+        <span class="group-title">DOWNLOADS &amp; HISTORY</span>
+        <a href="download.html" class="nav-link">Release APK Download</a>
+        <a href="../index.html#changelog" class="nav-link">Version Changelog</a>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <section class="doc-hero">
+        <h1 class="doc-title">📢 Google AdMob &amp; Monetization Guide</h1>
+        <p class="doc-subtitle">
+          How to configure, test, and deploy Google AdMob banner and interstitial advertisements in Nova Music.
+        </p>
+      </section>
+
+      <!-- Verbatim Third Party Services Notice -->
+      <div class="section-block" style="background: rgba(255, 0, 127, 0.08); border: 1px solid var(--accent-pink); padding: 20px; border-radius: var(--radius-md);">
+        <h3 style="color: var(--accent-pink); font-size: 1.1rem; font-weight: 800; margin-bottom: 8px;">Third-Party Services Notice</h3>
+        <p style="font-size: 0.9rem; color: var(--text-main); line-height: 1.6;">
+          <strong>Third-Party Services Notice:</strong> Nova Music may use third-party services such as Google AdMob for advertising. These services are provided by external providers and may require separate configuration and/or accounts. Any third-party service costs, policies, API requirements, or account requirements are the responsibility of the buyer and are not included with the source code purchase.
+        </p>
+      </div>
+
+      <!-- Test vs Production IDs -->
+      <div class="section-block">
+        <h2 class="section-heading">Test IDs vs Production IDs</h2>
+        <p class="section-text">
+          During development, always use Google's official AdMob Test Unit IDs to prevent policy violations. Replace them with your production IDs prior to publishing on Google Play Store.
+        </p>
+        <div class="code-box">
+          <pre><code>// Official Google Test IDs (Default)
+Banner ID: ca-app-pub-3940256099942544/6300978111
+Interstitial ID: ca-app-pub-3940256099942544/1033173712
+
+// Replace in .env for production release
+ADMOB_APP_ID="ca-app-pub-YOUR_PUBLISHER_ID~YOUR_APP_ID"
+ADMOB_BANNER_ID="ca-app-pub-YOUR_PUBLISHER_ID/YOUR_BANNER_UNIT"
+ADMOB_INTERSTITIAL_ID="ca-app-pub-YOUR_PUBLISHER_ID/YOUR_INTERSTITIAL_UNIT"</code></pre>
+        </div>
+      </div>
+
+      <footer class="doc-footer">
+        <p>© 2026 Nova Music Audio Suite. All rights reserved to Team PayFopus.</p>
+      </footer>
+    </main>
+  </div>
+  <script src="../assets/js/script.js"></script>
+</body>
+</html>
