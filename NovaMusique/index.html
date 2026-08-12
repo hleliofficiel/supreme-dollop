@@ -15,8 +15,10 @@
     <header class="top-header">
       <div class="header-left">
         <button class="mobile-menu-toggle" id="menuToggle" aria-label="Toggle Navigation">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M3 12h18M3 6h18M3 18h18"/>
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
           </svg>
         </button>
         <a href="index.html" class="brand-title">
@@ -27,8 +29,9 @@
 
       <div class="header-center">
         <div class="search-wrapper">
-          <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+          <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
           </svg>
           <input type="text" id="searchInput" placeholder="Search documentation, guides, architecture, config..." aria-label="Search Documentation">
         </div>
@@ -36,17 +39,27 @@
 
       <div class="header-right">
         <a href="pages/download.html" class="btn-download-apk">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+            <polyline points="7 10 12 15 17 10"></polyline>
+            <line x1="12" y1="15" x2="12" y2="3"></line>
           </svg>
           <span>Download APK</span>
         </a>
         <button class="theme-toggle" id="themeToggle" title="Toggle Light/Dark Theme" aria-label="Toggle Light/Dark Theme">
-          <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+          <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
           </svg>
-          <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+          <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
           </svg>
         </button>
       </div>
@@ -116,63 +129,93 @@
           <strong>Nova Music</strong> is a flagship, production-ready Android offline music player and audio processing application engineered using modern native <strong>Kotlin</strong> and <strong>Jetpack Compose</strong> (Material Design 3). Built on clean <strong>MVVM architecture</strong>, Nova Music delivers ultra-low-latency playback, full offline media indexing, synchronized LRC lyrics auto-fetching, a 10-band DSP equalizer, dynamic color theme engine, multi-language localization (including Arabic RTL), and Google AdMob monetization.
         </p>
 
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1f)); gap: 16px; margin-top: 24px;">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; margin-top: 24px;">
+          <!-- Card 1: What You Receive -->
           <div style="background: var(--bg-card); border: 1px solid var(--border-color); padding: 20px; border-radius: var(--radius-md);">
-            <h3 style="color: var(--accent-cyan); font-size: 1.1rem; margin-bottom: 8px;">📦 What You Receive</h3>
-            <p style="font-size: 0.9rem; color: var(--text-muted);">Full Android Studio Kotlin DSL project source code, Jetpack Compose layouts, Room database implementation, Media3 ExoPlayer service, LrcLib lyrics API integration, AdMob ad managers, 8 dynamic theme presets, documentation portal, and pre-compiled release APK.</p>
+            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent-cyan)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+                <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+                <line x1="12" y1="22.08" x2="12" y2="12"></line>
+              </svg>
+              <h3 style="color: var(--accent-cyan); font-size: 1.1rem; margin: 0;">What You Receive</h3>
+            </div>
+            <p style="font-size: 0.9rem; color: var(--text-muted); margin: 0;">Full Android Studio Kotlin DSL project source code, Jetpack Compose layouts, Room database implementation, Media3 ExoPlayer service, LrcLib lyrics API integration, AdMob ad managers, 8 dynamic theme presets, documentation portal, and pre-compiled release APK.</p>
           </div>
 
+          <!-- Card 2: Designed For -->
           <div style="background: var(--bg-card); border: 1px solid var(--border-color); padding: 20px; border-radius: var(--radius-md);">
-            <h3 style="color: var(--accent-pink); font-size: 1.1rem; margin-bottom: 8px;">🎯 Designed For</h3>
-            <p style="font-size: 0.9rem; color: var(--text-muted);">Commercial publishing on the Google Play Store, white-label client projects, custom audio player releases, reselling on app marketplaces, and turnkey mobile application development.</p>
+            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent-pink)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <circle cx="12" cy="12" r="6"></circle>
+                <circle cx="12" cy="12" r="2"></circle>
+              </svg>
+              <h3 style="color: var(--accent-pink); font-size: 1.1rem; margin: 0;">Designed For</h3>
+            </div>
+            <p style="font-size: 0.9rem; color: var(--text-muted); margin: 0;">Commercial publishing on the Google Play Store, white-label client projects, custom audio player releases, reselling on app marketplaces, and turnkey mobile application development.</p>
           </div>
 
+          <!-- Card 3: Customization Scope -->
           <div style="background: var(--bg-card); border: 1px solid var(--border-color); padding: 20px; border-radius: var(--radius-md);">
-            <h3 style="color: #69F0AE; font-size: 1.1rem; margin-bottom: 8px;">🎨 Customization Scope</h3>
-            <p style="font-size: 0.9rem; color: var(--text-muted);">Easily rename the app title, change launcher icons, set unique package ID (<code style="color: var(--accent-cyan);">payfopus.novamusic.app</code>), adjust dynamic color palettes, configure AdMob unit IDs, edit terms/privacy legal pages, and add localized language translations.</p>
+            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#69F0AE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 19l7-7 3 3-7 7-3-3z"></path>
+                <path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"></path>
+                <path d="M2 2l7.58 7.58"></path>
+                <circle cx="11" cy="11" r="2"></circle>
+              </svg>
+              <h3 style="color: #69F0AE; font-size: 1.1rem; margin: 0;">Customization Scope</h3>
+            </div>
+            <p style="font-size: 0.9rem; color: var(--text-muted); margin: 0;">Easily rename the app title, change launcher icons, set unique package ID (<code style="color: var(--accent-cyan);">payfopus.novamusic.app</code>), adjust dynamic color palettes, configure AdMob unit IDs, edit terms/privacy legal pages, and add localized language translations.</p>
           </div>
         </div>
       </div>
 
       <!-- Quick Start Section -->
       <div class="section-block" id="quickstart">
-        <h2 class="section-heading">⚡ Quick Start Guide (7 Steps to Launch)</h2>
+        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px;">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent-cyan)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+          </svg>
+          <h2 class="section-heading" style="margin: 0; border-bottom: none; padding-bottom: 0;">Quick Start Guide (7 Steps to Launch)</h2>
+        </div>
         <p class="section-text">Follow this streamlined workflow to get Nova Music running in Android Studio and ready for release:</p>
 
         <div style="display: flex; flex-direction: column; gap: 12px; margin-top: 16px;">
           <div style="background: var(--bg-card); border-inline-start: 4px solid var(--accent-cyan); padding: 16px 20px; border-radius: 0 var(--radius-sm) var(--radius-sm) 0;">
             <strong style="color: var(--accent-cyan);">Step 1: Extract Source Package</strong>
-            <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: 4px;">Download and unzip the purchased project folder onto your local development machine.</p>
+            <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: 4px; margin-bottom: 0;">Download and unzip the purchased project folder onto your local development machine.</p>
           </div>
 
           <div style="background: var(--bg-card); border-inline-start: 4px solid var(--primary); padding: 16px 20px; border-radius: 0 var(--radius-sm) var(--radius-sm) 0;">
             <strong style="color: var(--primary-light);">Step 2: Open in Android Studio</strong>
-            <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: 4px;">Launch Android Studio (Ladybug 2026.1+ or newer) and select <em>Open Existing Project</em> pointing to the root workspace directory.</p>
+            <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: 4px; margin-bottom: 0;">Launch Android Studio (Ladybug 2026.1+ or newer) and select <em>Open Existing Project</em> pointing to the root workspace directory.</p>
           </div>
 
           <div style="background: var(--bg-card); border-inline-start: 4px solid var(--accent-pink); padding: 16px 20px; border-radius: 0 var(--radius-sm) var(--radius-sm) 0;">
             <strong style="color: var(--accent-pink);">Step 3: Sync Gradle Dependencies</strong>
-            <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: 4px;">Allow Gradle (8.10+) to download dependencies and build project indexing automatically.</p>
+            <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: 4px; margin-bottom: 0;">Allow Gradle (8.10+) to download dependencies and build project indexing automatically.</p>
           </div>
 
           <div style="background: var(--bg-card); border-inline-start: 4px solid #69F0AE; padding: 16px 20px; border-radius: 0 var(--radius-sm) var(--radius-sm) 0;">
             <strong style="color: #69F0AE;">Step 4: Review Project Configuration</strong>
-            <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: 4px;">Verify package ID <code style="color: var(--accent-cyan);">payfopus.novamusic.app</code> in <code style="color: var(--text-main);">app/build.gradle.kts</code> and inspect environment keys in <code style="color: var(--text-main);">.env.example</code>.</p>
+            <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: 4px; margin-bottom: 0;">Verify package ID <code style="color: var(--accent-cyan);">payfopus.novamusic.app</code> in <code style="color: var(--text-main);">app/build.gradle.kts</code> and inspect environment keys in <code style="color: var(--text-main);">.env.example</code>.</p>
           </div>
 
           <div style="background: var(--bg-card); border-inline-start: 4px solid #FFD600; padding: 16px 20px; border-radius: 0 var(--radius-sm) var(--radius-sm) 0;">
             <strong style="color: #FFD600;">Step 5: Configure Branding &amp; AdMob</strong>
-            <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: 4px;">Update application title in <code style="color: var(--text-main);">strings.xml</code>, replace adaptive launcher icons, and paste your AdMob Publisher/Unit IDs in configuration files.</p>
+            <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: 4px; margin-bottom: 0;">Update application title in <code style="color: var(--text-main);">strings.xml</code>, replace adaptive launcher icons, and paste your AdMob Publisher/Unit IDs in configuration files.</p>
           </div>
 
           <div style="background: var(--bg-card); border-inline-start: 4px solid var(--accent-cyan); padding: 16px 20px; border-radius: 0 var(--radius-sm) var(--radius-sm) 0;">
             <strong style="color: var(--accent-cyan);">Step 6: Build &amp; Run Application</strong>
-            <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: 4px;">Connect a physical Android device or launch an Android Virtual Device (AVD) and click <strong>Run 'app'</strong>.</p>
+            <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: 4px; margin-bottom: 0;">Connect a physical Android device or launch an Android Virtual Device (AVD) and click <strong>Run 'app'</strong>.</p>
           </div>
 
           <div style="background: var(--bg-card); border-inline-start: 4px solid #B388FF; padding: 16px 20px; border-radius: 0 var(--radius-sm) var(--radius-sm) 0;">
             <strong style="color: #B388FF;">Step 7: Generate Release APK / AAB</strong>
-            <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: 4px;">Navigate to <em>Build &gt; Generate Signed Bundle / APK</em> to produce production binaries for the Google Play Store.</p>
+            <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: 4px; margin-bottom: 0;">Navigate to <em>Build &gt; Generate Signed Bundle / APK</em> to produce production binaries for the Google Play Store.</p>
           </div>
         </div>
       </div>
@@ -187,8 +230,11 @@
           <div style="background: var(--bg-card); border: 2px solid var(--accent-cyan); border-radius: var(--radius-lg); padding: 24px; display: flex; flex-direction: column; justify-content: space-between;">
             <div>
               <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px;">
-                <span style="font-size: 1.8rem;">💼</span>
-                <h3 style="color: var(--accent-cyan); font-size: 1.25rem; font-weight: 800;">Non-Technical Buyer Path</h3>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent-cyan)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+                  <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+                </svg>
+                <h3 style="color: var(--accent-cyan); font-size: 1.25rem; font-weight: 800; margin: 0;">Non-Technical Buyer Path</h3>
               </div>
               <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 16px;">Designed for app buyers, marketers, store managers, and publishers who want to rebrand, customize, monetize, and publish Nova Music with minimal coding.</p>
 
@@ -202,7 +248,7 @@
               </ul>
             </div>
             <a href="pages/buyer-guide.html" class="btn-download-apk" style="margin-top: 24px; text-align: center; justify-content: center; background: linear-gradient(135deg, var(--accent-cyan), var(--primary-dark));">
-              Open Buyer Guide →
+              Open Buyer Guide &rarr;
             </a>
           </div>
 
@@ -210,8 +256,10 @@
           <div style="background: var(--bg-card); border: 2px solid var(--primary-light); border-radius: var(--radius-lg); padding: 24px; display: flex; flex-direction: column; justify-content: space-between;">
             <div>
               <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px;">
-                <span style="font-size: 1.8rem;">🛠️</span>
-                <h3 style="color: var(--primary-light); font-size: 1.25rem; font-weight: 800;">Developer Path</h3>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--primary-light)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path>
+                </svg>
+                <h3 style="color: var(--primary-light); font-size: 1.25rem; font-weight: 800; margin: 0;">Developer Path</h3>
               </div>
               <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 16px;">Designed for Android Kotlin engineers who want to dive into the codebase, modify Jetpack Compose UI composables, adjust Media3 audio pipelines, and extend features.</p>
 
@@ -225,7 +273,7 @@
               </ul>
             </div>
             <a href="pages/developer-guide.html" class="btn-download-apk" style="margin-top: 24px; text-align: center; justify-content: center; background: var(--bg-code); border: 1px solid var(--primary-light); color: var(--text-main);">
-              Open Developer Guide →
+              Open Developer Guide &rarr;
             </a>
           </div>
         </div>
@@ -241,56 +289,56 @@
             <div class="phone-mockup">
               <img src="assets/images/screen_player.png" alt="Now Playing Screen">
             </div>
-            <p style="font-size: 0.85rem; font-weight: 700; color: var(--text-main); margin-top: 6px;">Now Playing</p>
+            <p style="font-size: 0.85rem; font-weight: 700; color: var(--text-main); margin-top: 6px; margin-bottom: 0;">Now Playing</p>
           </div>
 
           <div style="text-align: center; width: 100%;">
             <div class="phone-mockup">
               <img src="assets/images/screen_library.png" alt="Music Library Screen">
             </div>
-            <p style="font-size: 0.85rem; font-weight: 700; color: var(--text-main); margin-top: 6px;">Music Library</p>
+            <p style="font-size: 0.85rem; font-weight: 700; color: var(--text-main); margin-top: 6px; margin-bottom: 0;">Music Library</p>
           </div>
 
           <div style="text-align: center; width: 100%;">
             <div class="phone-mockup">
               <img src="assets/images/screen_equalizer.png" alt="10-Band Equalizer Screen">
             </div>
-            <p style="font-size: 0.85rem; font-weight: 700; color: var(--text-main); margin-top: 6px;">10-Band Equalizer</p>
+            <p style="font-size: 0.85rem; font-weight: 700; color: var(--text-main); margin-top: 6px; margin-bottom: 0;">10-Band Equalizer</p>
           </div>
 
           <div style="text-align: center; width: 100%;">
             <div class="phone-mockup">
               <img src="assets/images/screen_lyrics.png" alt="Synchronized Lyrics Screen">
             </div>
-            <p style="font-size: 0.85rem; font-weight: 700; color: var(--text-main); margin-top: 6px;">Karaoke Lyrics</p>
+            <p style="font-size: 0.85rem; font-weight: 700; color: var(--text-main); margin-top: 6px; margin-bottom: 0;">Karaoke Lyrics</p>
           </div>
 
           <div style="text-align: center; width: 100%;">
             <div class="phone-mockup">
               <img src="assets/images/screen_playlists.png" alt="Playlists Screen">
             </div>
-            <p style="font-size: 0.85rem; font-weight: 700; color: var(--text-main); margin-top: 6px;">Playlists</p>
+            <p style="font-size: 0.85rem; font-weight: 700; color: var(--text-main); margin-top: 6px; margin-bottom: 0;">Playlists</p>
           </div>
 
           <div style="text-align: center; width: 100%;">
             <div class="phone-mockup">
               <img src="assets/images/screen_themes.png" alt="Dynamic Themes Screen">
             </div>
-            <p style="font-size: 0.85rem; font-weight: 700; color: var(--text-main); margin-top: 6px;">Dynamic Themes</p>
+            <p style="font-size: 0.85rem; font-weight: 700; color: var(--text-main); margin-top: 6px; margin-bottom: 0;">Dynamic Themes</p>
           </div>
 
           <div style="text-align: center; width: 100%;">
             <div class="phone-mockup">
               <img src="assets/images/screen_languages.png" alt="Multi-Language Screen">
             </div>
-            <p style="font-size: 0.85rem; font-weight: 700; color: var(--text-main); margin-top: 6px;">Languages &amp; RTL</p>
+            <p style="font-size: 0.85rem; font-weight: 700; color: var(--text-main); margin-top: 6px; margin-bottom: 0;">Languages &amp; RTL</p>
           </div>
 
           <div style="text-align: center; width: 100%;">
             <div class="phone-mockup">
               <img src="assets/images/screen_settings.png" alt="App Settings Screen">
             </div>
-            <p style="font-size: 0.85rem; font-weight: 700; color: var(--text-main); margin-top: 6px;">App Settings</p>
+            <p style="font-size: 0.85rem; font-weight: 700; color: var(--text-main); margin-top: 6px; margin-bottom: 0;">App Settings</p>
           </div>
         </div>
       </div>
@@ -302,17 +350,24 @@
 
         <div style="margin-top: 16px; background: var(--bg-card); padding: 16px; border-radius: var(--radius-md); border: 1px solid var(--border-color); text-align: center;">
           <img src="assets/images/architecture_diagram.svg" alt="Nova Music Architecture Diagram" style="max-width: 100%; height: auto; border-radius: var(--radius-sm);">
-          <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 12px;">
+          <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 12px; margin-bottom: 0;">
             Interaction Flow: <strong>UI Composables</strong> &rarr; <strong>ViewModels / StateFlow</strong> &rarr; <strong>Repository Layer</strong> &rarr; <strong>Room DB / Media3 ExoPlayer / LrcLib API / AdMob SDK</strong>
           </p>
           <a href="pages/architecture.html" style="display: inline-block; margin-top: 12px; color: var(--accent-cyan); font-weight: 700; text-decoration: none;">View Full Architectural Breakdown &rarr;</a>
         </div>
       </div>
 
-      <!-- Third-Party Services Notice Box (Verbatim as required) -->
+      <!-- Third-Party Services Notice Box -->
       <div class="section-block" style="background: rgba(255, 0, 127, 0.08); border: 1px solid var(--accent-pink); padding: 20px; border-radius: var(--radius-md);">
-        <h3 style="color: var(--accent-pink); font-size: 1.1rem; font-weight: 800; margin-bottom: 8px;">⚠️ Third-Party Services Notice</h3>
-        <p style="font-size: 0.9rem; color: var(--text-main); line-height: 1.6;">
+        <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--accent-pink)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
+            <line x1="12" y1="9" x2="12" y2="13"></line>
+            <line x1="12" y1="17" x2="12.01" y2="17"></line>
+          </svg>
+          <h3 style="color: var(--accent-pink); font-size: 1.1rem; font-weight: 800; margin: 0;">Third-Party Services Notice</h3>
+        </div>
+        <p style="font-size: 0.9rem; color: var(--text-main); line-height: 1.6; margin: 0;">
           <strong>Third-Party Services Notice:</strong> Nova Music may use third-party services such as Google AdMob for advertising. These services are provided by external providers and may require separate configuration and/or accounts. Any third-party service costs, policies, API requirements, or account requirements are the responsibility of the buyer and are not included with the source code purchase.
         </p>
       </div>
@@ -330,7 +385,7 @@
               <span style="font-size: 0.75rem; background: var(--primary); color: #fff; padding: 3px 10px; border-radius: 12px; font-weight: 700;">CURRENT RELEASE</span>
             </div>
             <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 12px;">Major release introducing brand alignment, dedicated application ID, audio engine optimizations, and documentation suite expansion.</p>
-            <ul style="list-style-type: square; margin-inline-start: 20px; font-size: 0.85rem; color: var(--text-main); display: flex; flex-direction: column; gap: 6px;">
+            <ul style="list-style-type: square; margin-inline-start: 20px; font-size: 0.85rem; color: var(--text-main); display: flex; flex-direction: column; gap: 6px; margin-bottom: 0;">
               <li><strong>Official Rebranding:</strong> Application rebranded from Nova Musique to <strong>Nova Music</strong> across Android strings, manifests, themes, and developer portal.</li>
               <li><strong>Dedicated Package ID:</strong> Application package ID standardized to <code style="color: var(--accent-cyan);">payfopus.novamusic.app</code>.</li>
               <li><strong>Audio Engine Optimization:</strong> Refactored ExoPlayer audio buffer handling and reduced latency during song transitions.</li>
@@ -347,7 +402,7 @@
               <span style="font-size: 0.75rem; background: var(--bg-code); color: var(--text-muted); padding: 3px 10px; border-radius: 12px; font-weight: 600;">STABLE RELEASE</span>
             </div>
             <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 12px;">Core architecture foundation built on Jetpack Compose, Room DB, and AndroidX Media3.</p>
-            <ul style="list-style-type: square; margin-inline-start: 20px; font-size: 0.85rem; color: var(--text-muted); display: flex; flex-direction: column; gap: 6px;">
+            <ul style="list-style-type: square; margin-inline-start: 20px; font-size: 0.85rem; color: var(--text-muted); display: flex; flex-direction: column; gap: 6px; margin-bottom: 0;">
               <li>Initial release featuring Material Design 3 UI and 8 dynamic color themes.</li>
               <li>Local storage media scanner supporting MP3, FLAC, M4A, and WAV audio indexing.</li>
               <li>Duplicate Audio Finder utility with hash and metadata comparison.</li>
@@ -357,11 +412,21 @@
 
           <!-- Future Roadmap (Upcoming) -->
           <div style="background: rgba(0, 229, 255, 0.05); border: 1px dashed var(--accent-cyan); border-radius: var(--radius-md); padding: 20px;">
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
-              <span style="font-size: 1.05rem; font-weight: 800; color: var(--accent-cyan);">🚀 Roadmap &amp; Upcoming Features (v1.2.0+)</span>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; flex-wrap: wrap; gap: 8px;">
+              <div style="display: flex; align-items: center; gap: 8px;">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent-cyan)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.71 1.1-1.38 1.12-2.12a.96.96 0 0 0-.27-.72l-1.61-1.61a.96.96 0 0 0-.72-.27c-.74.02-1.41.41-2.12 1.12z"></path>
+                  <path d="M15 9l-6 6"></path>
+                  <path d="M9 18c-4.51 2-5-2-7-2"></path>
+                  <path d="M18 9c2-4.51-2-5-2-7"></path>
+                  <path d="M12 12c-2.5 2.5-2.5 6.5 0 9l3-3"></path>
+                  <path d="M12 12c2.5-2.5 6.5-2.5 9 0l-3 3"></path>
+                </svg>
+                <span style="font-size: 1.05rem; font-weight: 800; color: var(--accent-cyan);">Roadmap &amp; Upcoming Features (v1.2.0+)</span>
+              </div>
               <span style="font-size: 0.75rem; background: rgba(0, 229, 255, 0.2); color: var(--accent-cyan); padding: 3px 10px; border-radius: 12px; font-weight: 700;">IN DEVELOPMENT</span>
             </div>
-            <ul style="list-style-type: circle; margin-inline-start: 20px; font-size: 0.85rem; color: var(--text-muted); display: flex; flex-direction: column; gap: 6px;">
+            <ul style="list-style-type: circle; margin-inline-start: 20px; font-size: 0.85rem; color: var(--text-muted); display: flex; flex-direction: column; gap: 6px; margin-bottom: 0;">
               <li><strong>Cloud Backup &amp; Restore:</strong> Local backup export/import for custom playlists and listening statistics.</li>
               <li><strong>Custom Sleep Timer Fade-Out:</strong> Gradual audio volume attenuation when sleep timer expires.</li>
               <li><strong>Enhanced Tag Editor:</strong> Embedded ID3v2 tag editor with cover artwork downloader.</li>
