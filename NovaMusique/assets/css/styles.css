@@ -83,7 +83,7 @@ body {
   left: 0;
   right: 0;
   height: var(--header-height);
-  background: rgba(18, 12, 30, 0.9);
+  background: rgba(18, 12, 30, 0.95);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--border-color);
@@ -96,7 +96,7 @@ body {
 }
 
 [data-theme="light"] .top-header {
-  background: rgba(240, 235, 247, 0.9);
+  background: rgba(240, 235, 247, 0.95);
 }
 
 .brand-title {
@@ -578,13 +578,16 @@ pre code {
 
   .sidebar {
     transform: translateX(-100%);
+    box-shadow: 10px 0 30px rgba(0, 0, 0, 0.5);
   }
 
   [dir="rtl"] .sidebar {
     transform: translateX(100%);
   }
 
-  .sidebar.mobile-open {
+  /* دعم كلا الكلاسين لمنع أي مشكلة في التجاوب */
+  .sidebar.mobile-open,
+  .sidebar.active {
     transform: translateX(0) !important;
   }
 
